@@ -81,3 +81,24 @@ The realistic options are:
 - **(N) Numerics, to decide truth.** By the dimension count, a crossing curve, if it exists, is visible with a targeted sweep near the extremal corner: least-damped m = 1, 2 coupled modes, looking for a sign change of Im ω. The validated solver already exists.
 - **(W) A nonlocal transform for the coupled system.** Find an integral transform in (t, r), at the PDE level in (r, θ), that maps Giorgi's (p, q_F) system to one with no superradiant sign. Whiting's kernel is explicit for Kerr. The first concrete step is to write Whiting's transform in a form that does not separate θ (an operator-valued kernel) and see where the KN coupling breaks it.
 - **(P) Accept A5 as a hypothesis**, numerically supported, and finish the rest of the programme conditionally. That would give "KN is nonlinearly stable for all subextremal parameters, provided mode stability holds". This is the same logical shape as Hintz's Kerr theorem, where mode stability is a black-box input, except that for KN the input is unproven.
+
+---
+## Option (W), step 1: where Whiting's transform breaks for Kerr–Newman
+
+**Whiting's transform at operator level (Kerr).** Whiting's map is a product kernel: a radial kernel K_r(x, r) times an angular kernel K_θ(z, cosθ), applied to Σ·(Teukolsky operator). For Kerr, Σ·T_s is **sum-separable**: Σ·T_s = 𝓡(r, ∂_r; ω, m) + 𝓢(θ, ∂_θ; ω, m). The kernels satisfy 𝓡̃K_r = K_r𝓡 + λ and 𝓢̃K_θ = K_θ𝓢 − λ, with the same constant λ. So the product kernel intertwines Σ·T_s with a transformed operator Σ̃·T̃ **on all functions of (r, θ)**, not only on separated ones. Separation is used only to verify the intertwining; the intertwining itself is an operator identity. This is the key observation: **Whiting's transform does not need separability of solutions, only sum-separability of the operator.**
+
+**Kerr–Newman.** Multiply Giorgi's RW system (94)–(95) by |q|². The diagonal parts are sum-separable, exactly as in Kerr. The coupling terms become
+
+ |q|²·4Q² (q̄³/|q|⁵) D·q_F = 4Q² (q̄/q)^{3/2}·(|q| D)·q_F,
+
+and similarly with the conjugate factor (q/q̄)^{3/2} in the other equation. Note that |q|D is the r-independent angular operator. The factor
+
+ (q̄/q)^{3/2} = e^{−3i arctan(a cosθ / r)}
+
+is a pure phase, but it is **not** of the form f(r) + g(θ), nor a product f(r)g(θ). That is the **entire** obstruction: the Q²-coupling has a non-separable phase. (The L-terms have the same issue, with coefficients O(|a|/r²), etc.)
+
+**Consequences and a concrete next question.**
+1. When Q = 0 the coupling vanishes and Whiting applies, as known. When a = 0 the phase is 1 and the system is RN, which is separable.
+2. Expand the phase: (q̄/q)^{3/2} = Σ_k c_k(θ) r^{−k} (a cosθ)^k. Each term is a product f_k(r)g_k(θ). A product term intertwines under the product kernel only if K_r(x, r) is compatible with multiplication by r^{−k}, i.e. only if r^{−k}K_r = K_r·(some operator in x). For Whiting's radial kernel, which is an exponential-polynomial in r·x, multiplication by r^{−1} corresponds to an integral operator in x. So the transformed system is **nonlocal in x** but possibly still has a **positive** structure.
+3. **Next question (W2).** Does the transformed coupling preserve the adjoint pairing (D· vs D⊗ with conjugate coefficients) that Giorgi's energy argument uses? If yes, the transformed system has a conserved non-superradiant energy, and A5 follows. If no, we learn exactly which term destroys positivity.
+This is a concrete symbolic computation: Whiting's radial kernel, applied to the r^{−k} multiplication, for the first two orders in a cosθ/r.
