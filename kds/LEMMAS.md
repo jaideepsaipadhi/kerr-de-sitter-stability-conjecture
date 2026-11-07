@@ -443,3 +443,29 @@ Outstanding, all finite or check-type:
     - items 39-40: floating-point ranks only; exact certification plus Khavkine prolongation order still OPEN;
     - item 42: HPV25's exact hypothesis is unverified (paper not public);
     - the cosmological-side lemma (item 19) and the C0 floor (item 36) are analytic: OK.
+
+55. [P] TRANSFORM INJECTIVITY, written out (replaces the sketch in item 17(c)).  Real omega makes every kappa_j purely
+    imaginary.  In Heun gauge (0,0,0), y = (z-1)^rho sum_k a_k (z-1)^k near z = 1, with rho = 1 - delta = -2 kappa_1 - s, and
+    mu = A - 2 = s - 1 - 2 kappa_3.  The Riemann-Liouville / Pochhammer integral I^{mu+1} based at z = 1 acts termwise:
+       (z-1)^{rho+k}  ->  Gamma(rho+k+1)/Gamma(rho+k+mu+2) (z-1)^{rho+k+mu+1},   with rho + k + mu + 2 = k + 1 - e_1,
+    e_1 = 2(kappa_1 + kappa_3).  Gamma(rho+k+1) is finite (rho non-real: Im rho = -2 Im kappa_1 != 0 on the window), and
+    1/Gamma(k+1-e_1) != 0 (k+1-e_1 is non-real inside the window and equals k+1 at the endpoint e_1 = 0).  So every
+    termwise factor is finite and nonzero, and I^{mu+1} y = 0 forces all a_k = 0.  Injective on the CLOSED window.
+    The leading coefficient B(mu+1, rho+1) = Gamma(mu+1)Gamma(rho+1)/Gamma(1-e_1) is nonzero for the same reasons.
+    No Titchmarsh argument is needed.
+
+56. [Reduction] REMAINING CORNERS.
+    t -> inf (zf fixed, A = t a, B = t b, b >= 5.5): with z = t zeta, mu ~ t^3 zeta^2 (1-zeta) and L ~ t(b - 3 zeta) + a/zeta;
+      the WKB slope in zeta tends to 3/(b - 3 zeta), and a drops out.  The z -> 1 end tends to the exact (p-1)/(p+1) margin.
+      So the corner is a 2-parameter (zf, b) explicit limit inequality, numerically -0.2835.
+    A -> inf: the proved large-m leading-order lemma (steps 13-15) plus O(A^{-1/2}) seam-layer corrections; needs the
+      constants written out.
+
+57. [OPEN, precise statement] B1 FINITE-TYPE STEP (Khavkine).  Computed: at each point p and each jet order J = 3..6,
+    pi_J(solutions) = pi_J(gauge) + span(PD tangents).  Needed: a solution h vanishing modulo gauge to order J0 at p is
+    pure gauge near p.  Equivalently, the gauge-invariant content of {linearised Lam-vacuum, dpsi_0 = dpsi_4 = 0} is a
+    FLAT CONNECTION on a rank-4 bundle, determined by its J0-jet.  Route: Khavkine 1805.03751 Thm 9 (regular finite type
+    Killing operator => complete compatibility complex) gives completeness for SOME K1.  Identifying ker of
+    {dpsi_0, dpsi_4} within K1 needs the KdS analogue of AABKW's identification, or a direct proof that the system above
+    closes (involutive) at an explicit order N, checked by verifying that the order-(N+1) prolongation adds no new
+    conditions.  That verification is again a finite rank computation, but it must be EXACT and paired with Cartan-Kuranishi.
