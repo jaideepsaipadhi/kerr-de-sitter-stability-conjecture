@@ -1,0 +1,3 @@
+pt0 G1: T_3 deficiency on every line = 2 => mult_0 >= 2  [42s]
+pt0 G2: T_3 deficiency on every line = 4 => mult_0 >= 4  [76s]
+pt0: mult_0 E >= 6 (need 21)

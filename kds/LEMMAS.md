@@ -657,3 +657,21 @@ then m mod p ≠ 0 would be a root of μ³⁵⁷. Impossible. Repeating at k pri
      At μ₀ = 1, point 1: exact reversed T₉ gives deg ≤ 11 + 6 + 12 = 29 ✓. Uniform-in-μ version = run_degcert.py
      (62 + 8 + 11 μ₀ values × 3 points, ~50 min on 2 cores) — HANDED OFF.
 Then the (σ, m) question = large-|m| asymptotics with any explicit M₀ < 2^120, plus m = 0 (already exact).
+
+## 70. Item 4 (large |m|) — NO ASYMPTOTICS NEEDED; reduced to an exact local statement at the origin
+
+Structure found (step59, mod p, exact 81-grid):  E_i(σ, μ) = σ⁶ μ⁶ H_i(σ, μ) at all three test points.
+ - Res_σ of the F_i = E_i/σ⁶ therefore carries a spurious μ^(6·46) = μ²⁷⁶; for the H_i: R'_ij = Res_σ(H_i, H_j) has degree
+   859, ord_{μ=0} = 81, and gcd(R'12, R'13, R'23) mod p = μ⁸¹ EXACTLY.
+ - H_i(σ, 0) = σ⁹ · (distinct factors); the common root is σ* = 0, i.e. the ORIGIN (σ, m) = (0, 0), and 81 = 9·9 is the
+   intersection multiplicity of two curves with 9-fold points there.
+Argument (all integer m ≠ 0, no size bound):  let a = exact ord_{μ=0} R'12 ≤ 81.  If a = 81, write R'12 = μ⁸¹ T with T(0)
+a 𝔭-unit.  An integer m ≠ 0 with a σ ≠ 0 exceptional at all three points has m mod p a root of μ⁸¹, so p | m, and then
+T(m) ≡ T(0) ≢ 0 mod 𝔭, contradicting T(m) = 0.  So the whole (σ, m) question reduces to a = 81, and
+  a ≥ I_(0,0)(H1, H2) ≥ mult_0 H1 · mult_0 H2,   mult_0 H = mult_0 E − 12,
+so it suffices that mult_0 E_i ≥ 21 EXACTLY.  Also needed: exact μ⁶ | E_i (same Toeplitz method as σ⁶; mod-p evidence
+only so far) and the degree certificate of §69 (now for H, same degrees in σ).
+Exact progress (step59b; lower bound on mult_0 via T_K deficiency along EVERY line, interpolated over the slope):
+   G1: 2, G2: 4 at all three points (K = 2, saturated).  C: 11 (K=2), 13 (K=3) at point 1; mod-p scan saturates at 15
+   from K = 4, so exact K = 4 should give 15 + 2 + 4 = 21. Exact K = 4 for C is ~1 h per point -> run_origin_cert.sh.
+STATUS: item 4 = run_degcert.py + run_origin_cert.sh + exact μ⁶ divisibility.  No analytic large-m lemma required.
