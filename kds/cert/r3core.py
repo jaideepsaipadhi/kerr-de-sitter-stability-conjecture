@@ -11,7 +11,7 @@ def run(tile):
     return tile, d, len(f), n, f[:1]
 if __name__ == '__main__':
     t0 = time.time(); tot = {'R1': 0, 'R2': 0, 'R3': 0}; bad = []
-    with Pool() as P:
+    with Pool(1) as P:
         for tile, d, nf, n, f in P.imap_unordered(run, tiles):
             for k in tot: tot[k] += d[k]
             if nf: bad.append((tile, nf, f))

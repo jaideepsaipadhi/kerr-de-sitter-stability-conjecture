@@ -513,3 +513,42 @@ Outstanding, all finite or check-type:
     needs an m-uniform argument, since m enters polynomially; again symbolic in m.
     Also observed: the "full column rank of C_HH" shortcut fails because the linearised contracted Bianchi identity
     makes the equations dependent, so exact null vectors really are needed.
+
+61. [P at sample points, EXACT] B1 FOR MODES (step52_exact_modes.py).  Exact Q(i) arithmetic (python-flint); mode-reduced 2-D
+    jets at r = 3, x = cos th = 3/5, Lam = 1/20, a = 3/5, M = 1.  Exact upper bounds on d_J; truncation artifacts sit only
+    at the top two levels J = K-2, K-1 (they move up with K).
+      sigma = 1/3 + i/5, m = 1:  K=7 -> d_J = 0 for J <= 4;   K=9 -> d_J = 0 for J <= 6.
+      sigma in {1/2, i/4} (m=0), 5/2 + i/9 (m=4), 1/10 (m=-2), 3 + 2i (m=7), 1/1000 and i/1000 (m=1): d_0 = d_1 = 0
+      (and d_2 = 0 at K=6).
+    With d_{J0} = d_{J0+1} = 0 (J0 = 0), item 58(b) applies on a rank-0 bundle: at these (sigma, m) and this point, every
+    mode with dpsi_0 = dpsi_4 = 0 is LOCALLY PURE GAUGE.  This is rigorous: exact ranks, and upper bounds are what (a)
+    needs.
+    OWED: (i) uniformity over all sigma in the closed upper half-plane, all m, and all points.  The ranks are algebraic in
+        (sigma, m, r, x), so this needs symbolic exact rank or explicit exceptional-set analysis.
+      (ii) *** sigma = 0 ANOMALY ***: at sigma = 0 the exact counts are stable in K and grow like 2J+1
+        (m=1: K=7 and K=9 give 0,3,5,7,9,11,...; m=0, with the 4 extra t- and phi-linear Killing gauges added:
+        0,2,5,7,9,11).  Taken at face value that is infinitely many local stationary non-gauge solutions, which
+        CONTRADICTS the 4-D count of 4 (which reproduced Kerr's known answer).  sigma = 1/1000 is clean, so sigma = 0
+        is an isolated exceptional point of the mode-reduced system.  Either (A) a sigma = 0-specific bug or incomplete
+        gauge in the mode code, or (B) the floating 4-D count under-counted (float rank can be inflated by noise).
+        MUST be resolved: sigma = 0 is exactly where linearised KdS (dM, da) lives in item 42.
+        Diagnostic plan: check that dg/dM lies in S at sigma = 0; compute the exact 4-D count at the rational point;
+        list a basis of the excess at J = 1 and test each against Lie derivatives along non-mode vector fields.
+
+62. [Status] R3 core certification (cert/r3core.py, 1 core, 60 s per-tile cap), partial: 69/192 tiles done; 61 fully
+    certified, 8 with 4-8 leftover boxes each.  All 8 are at t < 2.5 with large A or zf near 1, consistent with the
+    per-tile time cap rather than failures.
+
+63. [Estimate] HPV25 HYPOTHESIS MATCH.  Public descriptions (HHV 2506.21183; the 2606.28253 survey) say HPV assume mode stability
+    for the UNGAUGED linearised Einstein equation, which is the Hintz-Vasy UEMS notion of HV18.  UEMS: for Im sigma >= 0, a
+    generalised mode solution of Ric'(h) = Lam h is pure gauge (sigma != 0), or linearised KdS plus pure gauge with a
+    gauge 1-form allowed to grow polynomially in t (sigma = 0).  Item 42 gives exactly this, given B1 (items 40, 58, 61)
+    and Theorem A.  Likely mismatches and how much each would cost:
+      - HPV may phrase it on their own Fredholm spaces (variable-order Sobolev at the horizons), not "smooth modes".  Our
+        modes are smooth across both horizons (items 43/(i)), so we expect only a regularity bridge (a few lemmas).
+      - They may require the result for the GAUGE-FIXED operator (as in HHV for Kerr).  That needs, in addition, the 1-form
+        (constraint damping) mode analysis and the gauge-fixed zero-energy space (HHV25 + Hintz 2024b analogues on KdS).
+        This is a real extra project, though Hintz-Vasy did it for slowly rotating KdS.
+      - The sigma = 0 statement must match their zero-energy description: it depends on resolving item 61(ii).
+    Best guess: a ~70% chance the ungauged UEMS form is exactly what is needed, ~30% that a gauge-fixed or 1-form
+    supplement is required.
