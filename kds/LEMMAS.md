@@ -572,3 +572,18 @@ Outstanding, all finite or check-type:
     ~1e-16 vector (step52k).  Entrywise, the mode operator equals the 4-D one exactly (steps 52e-52j).
     B1 for modes, closure: sigma = 0, m = 0 gives d_2 = d_3 = 4, every other case d_0 = d_1 = 0, so item 58(b) applies.
     STILL OWED: uniformity over all (sigma, m) and all points (exact symbolic ranks / exceptional sets).
+
+65. [P exact at samples + reduction] UNIFORMITY of B1 for modes.
+    (a) With all four conditions imposed, K = 4 already gives d_0 = d_1 = 0 (the sigma = 0, m = 0 PD sector needs K >= 5).
+    (b) step53_sample.py: 30 random exact samples (Lam M^2 <= 0.09, a in [0.12, 0.98], points across (r+, r_c) x (-1, 1),
+        sigma real/imaginary/complex/zero, |m| <= 4), all d_0 = d_1 = 0.
+    (c) [P] Points: only ONE good point per mode is needed.  If d_0 = d_1 = 0 at some p for (sigma, m), closure (item 58(b))
+        makes h pure gauge near p.  The counts are analytic in the point, so the good set is open and dense.  Khavkine
+        1805.03751 (the KdS Killing operator is of regular finite type) gives an abstractly complete compatibility
+        operator K1; K1(h) = 0 on a dense set, hence everywhere, so h is locally pure gauge everywhere, and globally pure
+        gauge by simple connectivity (AHW Lemma 6.6).
+    (d) OWED: for each m, existence of ONE good point for EVERY sigma in the closed upper half-plane.  At a fixed point,
+        the constraint and gauge matrices are polynomials in sigma of degree <= 2, so C(sigma) = C0 + C1 sigma + C2 sigma^2
+        can be built exactly by interpolating 3 builds.  The bad sigma are the roots of explicit determinant polynomials
+        (random compressions), a finite set that can be checked exactly at that point or at a second point.  Then large |m|:
+        m enters polynomially, so treat m the same way; an m-uniform bound is needed for |m| -> inf.
