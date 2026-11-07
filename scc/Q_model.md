@@ -151,3 +151,47 @@ Korn needs **ω ∈ L²** and the frame change to map L² tensors to L² chart c
 - **(Q) has a candidate proof via Korn's inequality, which is new to this problem as far as I know.** The rigidity that the Lorentz group lacks is supplied by the flat chart structure.
 - It is complete in the model and in the DL setting **modulo**: (a) the uniform-boundedness gap above, and (b) checking that the e₃-slots of sym∇Y♭ are L² in the DL norms.
 - If (a) and (b) close, then **Christodoulou's formulation holds near i⁺ wherever Luk–Sbierski's lower bound gives χ̂ ∉ L².**
+
+---
+# Gap (a): what closes, what doesn't
+
+## Improvement 1: Korn in L^p, and the shear is not even in L^{1+}
+
+- Korn's inequality holds in L^p for every 1 < p < ∞ (on Lipschitz domains; Nečas, Ornstein's counterexample being p = 1).
+- The singular shear χ̂ ~ U⁻¹|log U|^{−1−2δ} is in L¹, but **not in L^p for any p > 1**.
+- So we only need sym∂ω ∈ L^p and ω ∈ L^p **for some p > 1**.
+- With Γ̃ ∈ L², the term Γ̃·ω lies in L^p as soon as ω ∈ L^q with q > 2.
+
+So the uniform L∞ requirement drops to:
+
+> **(A_q)** the chart components of V, Y and the inverse frame lie in L^q_loc for some q > 2.
+
+## Improvement 2: linear (not exponential) control where the null structure allows it
+
+- **F = −g̃(V, T).** Since d(1/F)/dU = −(Γ̃VV)/F²·F² is linear in Γ̃, we get
+ 1/F ≤ 1/F₀ + ∫|Γ̃∘Φ|dU.
+ The **lower** bound on F is therefore polynomially integrable (q < ∞ for all q, by Fubini). The **upper** bound fails exactly when ∫|Γ̃∘Φ| dU reaches 1/F₀, which happens on a set of generators of measure ≤ ε²|U₀|F₀²·‖Γ̃‖²_{L²}.
+- **Y** satisfies a linear ODE with coefficient |χ| + |Γ̃||V|. Here |χ| is uniformly L¹ (this is the DL bound), and |Γ̃||V| is the only problematic part.
+
+## What remains
+
+On the **exceptional set E** of generators, V may concentrate in the chart (F → ∞), and Y may grow exponentially. **(A_q) on E is not implied by Γ̃ ∈ L² alone**, because L² is supercritical in 4D (the critical exponent is L⁴). This is a genuine analytic gap, not bookkeeping.
+
+## What is proved: a conditional theorem that already goes beyond Lipschitz
+
+> **Theorem (conditional on (A_q) and the e₃-slot check).** Assume the Luk–Sbierski lower bound, so that χ̂ ∉ L^p_loc for every p > 1 near a point of CH⁺. Then the DL interior admits **no** extension with g̃ ∈ C⁰, Γ̃ ∈ L²_loc, in which the DL generator and Jacobi fields have chart components in L^{2+ε}_loc.
+
+This is strictly stronger than Lipschitz inextendibility:
+- Lipschitz extensions have bounded geodesic tangents, so they satisfy (A_q) automatically. Luk–Sbierski's theorem is the special case **Γ̃ ∈ L∞**.
+- Here Γ̃ is only L², and the frame is only L^{2+}-integrable, not bounded.
+
+## Route to removing (A_q): two concrete options
+
+1. **Prove (A_q) from the eikonal structure.** V = −∇u, with u Lipschitz in the extension (u is continuous and its level sets are achronal null hypersurfaces). A **Lipschitz** u gives ∂u ∈ L∞, hence V = −g̃⁻¹∂u ∈ **L∞**, with no ODE needed. So the real question is **whether the DL optical function u extends to a Lipschitz function on the extension**.
+ - For achronal null hypersurfaces in a C⁰ spacetime, the level sets are Lipschitz graphs (Chruściel–Grant).
+ - The **spacing** between level sets, i.e. |∂u| bounded and bounded below, needs a uniform lower bound on the "null distance" between N_u and N_{u'}. That is continuity of the time-separation structure, which a C⁰ metric does provide (Lorentzian length structure).
+ - **This looks like the right route.** It replaces the generator ODE (supercritical) by causal-theoretic Lipschitz bounds, which need only g̃ ∈ C⁰.
+ - Y can then be handled the same way through the angular DL coordinates θ, which are Lie-dragged along V: θ is constant along generators, so ∂θ is controlled by the Lipschitz structure of the generator foliation.
+2. **Exceptional-set Korn.** Use Korn with a removed set E of small measure and show the ℓ = 2-averaged shear lower bound cannot concentrate on E.
+
+**Next:** route 1, i.e. prove that u (and θ) extend as Lipschitz functions near p in any C⁰ extension. If true, (A_∞) holds, the theorem becomes unconditional (modulo the e₃ check), and **(Q) is settled: Christodoulou's formulation holds near i⁺ under the Luk–Sbierski lower bound.**
