@@ -195,3 +195,28 @@ This is strictly stronger than Lipschitz inextendibility:
 2. **Exceptional-set Korn.** Use Korn with a removed set E of small measure and show the ℓ = 2-averaged shear lower bound cannot concentrate on E.
 
 **Next:** route 1, i.e. prove that u (and θ) extend as Lipschitz functions near p in any C⁰ extension. If true, (A_∞) holds, the theorem becomes unconditional (modulo the e₃ check), and **(Q) is settled: Christodoulou's formulation holds near i⁺ under the Luk–Sbierski lower bound.**
+
+---
+# Route 1 (Lipschitz extension of u) checked: it collapses back onto gap (a)
+
+**What C⁰ causality gives.** In a chart where g̃ is C⁰-close to Minkowski, every causal curve, parametrised by chart time t, is Lipschitz with a uniform constant. Achronal null hypersurfaces are Lipschitz graphs (Chruściel–Grant). So the level sets N_c of u are **individually** Lipschitz graphs.
+
+**What it does not give.** Lipschitz-ness of u also needs the **spacing** between N_c and N_{c+Δ} to be ≳ Δ in the chart. Equivalently, the DL parameter u along the ingoing null generators (the e₃ curves, which near p run along CH⁺) must be comparable to chart time. Its chart speed F₃ = −g̃(e₃, T) satisfies the same linear-in-Γ̃ transport. Fubini gives control only along **a.e.** e₃-curve, and the supercritical problem returns.
+
+At the pure C⁰ level this cannot be fixed. Continuous extensions across weak null singularities are known to be non-unique; that is the failure of uniqueness cited in Luk–Sbierski. So some C⁰ extensions do reparametrise the DL coordinates wildly. **Any proof of (A_q) must use Γ̃ ∈ L².** Γ̃ ∈ L² is supercritical (L⁴ is critical in 4D), which is exactly why the generator/Jacobi ODEs give only a.e. control.
+
+## The core problem, stated sharply
+
+> **Proposition (A) (open).** Let (M̃, g̃) be a C⁰ extension of the DL interior near p ∈ ι(CH⁺) with Γ̃ ∈ L²_loc. Then the DL coordinate fields (∂_U, ∂_u, ∂_θ) have chart components in L^q_loc for some q > 2 near p.
+
+**(A) + Korn ⇒ (Q) ⇒ Christodoulou's SCC near i⁺** under the Luk–Sbierski lower bound. This is the conditional theorem in the previous section.
+
+**Why (A) is plausible.**
+- The DL fields satisfy linear ODEs along generators, with coefficients |Γ̃| (L² in 4D) plus quantities that are **uniformly** L¹ in the DL parameter (χ, ω̲, ζ).
+- A wild reparametrisation would need Γ̃ to concentrate along whole null generator segments. That is a 1-dimensional concentration in 4D, which **is** compatible with Γ̃ ∈ L². So (A) is **not** automatic.
+- **Candidate counterexample shape:** a chart that "pinches" a thin tube of generators near p. Γ̃ ~ (tube radius)^{−1} on a tube of cross-section ρ³ (3 transverse dimensions × U-length) gives ‖Γ̃‖²_{L²} ~ ρ³·ρ⁻² = ρ, which is small. A countable union of such pinches with Σρ_k < ∞ is in L². So an L²-Christoffel chart **can** distort the DL frame wildly on a null set of generators.
+- **But** Korn only needs L^q integrability (q > 2) of the frame, not boundedness. Pinches with frame distortion ~ ρ^{−s} on tubes of volume ρ³ contribute ~ ρ^{3−qs} to ∫|frame|^q. So whether (A) can fail is a **quantitative** competition between the Christoffel cost of a pinch and the frame-distortion gain.
+
+**Next step.** Compute that competition exactly in the plane-wave model. Construct the optimal "pinch" chart (a localised reparametrisation of the generators) and compare its Γ̃-L² cost with its frame-L^q distortion.
+- If every pinch with finite Γ̃-cost has frame distortion in L^{2+}, then (A) holds, plausibly via a covering argument.
+- If not, the pinch is the mechanism by which Christodoulou's formulation could fail.
