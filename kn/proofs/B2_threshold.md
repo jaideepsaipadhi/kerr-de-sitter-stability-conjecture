@@ -35,10 +35,25 @@ Notes:
 - In **Reissner–Nordström** the gauge-invariant Regge–Wheeler system of Giorgi has a positive conserved energy for the full subextremal range. This strongly suggests that the coupling is "non-growing" on Γ for a = 0.
 - For a ≠ 0, Giorgi's generalised RW system (94)–(95) also has the coupling with the **adjoint structure in a positive metric** (conjugate coefficients, D· ↔ D⊗). This is the positive-metric analogue of what B2-c needs, and suggests that **working in the gauge-invariant RW variables at the trapped set** gives growth 0. Hintz's Kerr proof likewise transfers trapping estimates through gauge-invariant quantities in part.
 
-**Plan for B2-c.** Check the threshold in Giorgi's RW variables, not in (h, Ȧ). On Γ the principal symbol is scalar (□), the first-order i(2a cosθ/|q|²)∇_t terms are purely imaginary times a real coefficient (no growth), and the coupling is 4Q² q̄³/|q|⁵ D· versus −½q³/|q|⁵ D⊗. Its symbol on Γ is ξ_θ-linear with conjugate coefficients. In the positive metric |p|² + 8Q²|q_F|², which is Giorgi's energy weighting, this symbol is anti-Hermitian, so its growth is 0. Then lift the trapping estimate from (p, q_F) back to (h, Ȧ) using the transport equations (90)–(91) and (78), which are non-trapping, since they are transports along e₃.
-**Residue:** (1) confirm the 8Q² weighting makes the symbol exactly anti-Hermitian (algebra: |4Q² c|·|D·| versus 8Q²·|½ c̄|·|D⊗|, which match because D· and D⊗ are adjoint up to a factor 2 on 1-forms and 2-tensors, Lemma 2.11); (2) the lift back to the full system, which is a standard composition argument of the kind in Hintz's Kerr linear-stability paper.
+**Plan for B2-c.** Check the threshold in Giorgi's RW variables, not in (h, Ȧ). On Γ the principal symbol is scalar (□), the first-order i(2a cosθ/|q|²)∇_t terms are purely imaginary times a real coefficient (no growth), and the coupling is 4Q² q̄³/|q|⁵ D· versus −½q³/|q|⁵ D⊗. Its symbol on Γ is ξ_θ-linear with conjugate coefficients. In a positive metric |p|² + w|q_F|² the coupling's subprincipal symbol is Hermitian (zero growth) for a suitable w > 0; the computation below gives w = 4Q². Then lift the trapping estimate from (p, q_F) back to (h, Ȧ) using the transport equations (90)–(91) and (78), which are non-trapping, since they are transports along e₃.
+**(1) Done (see below).** (2) the lift back to the full system, which is a standard composition argument of the kind in Hintz's Kerr linear-stability paper.
 
 **Status of B2:**
 - (a) closed modulo citation;
 - (b) design choice;
 - (c) reduced to the anti-Hermitian check in Giorgi's weighting, which looks favourable, plus a lift.
+
+### B2-c(1): the Hermitian check (done)
+
+- Subprincipal symbol of the coupling: σ = i[[0, α ξ·],[β ξ⊗, 0]], with α = 4Q² q̄³/|q|⁵ and β = −½ q³/|q|⁵.
+- Contraction identity: for a 1-form p and a symmetric traceless 2-tensor q, ⟨ξ⊗̂p, q⟩ = 2⟨p, ξ·q⟩.
+- The adjoint of q ↦ iαξ·q, taken from (q-space, weight w) to (p-space, weight 1), is p ↦ −(iᾱ/(2w)) ξ⊗̂p.
+- Hermiticity of σ requires this to equal iβ ξ⊗̂p, i.e. w = −ᾱ/(2β).
+- Using ᾱ = 4Q² q³/|q|⁵, this gives w = −(4Q² q³/|q|⁵) / (2·(−½) q³/|q|⁵) = **4Q² > 0**.
+- The phases cancel exactly because the coefficients are conjugate (Giorgi's structure).
+
+The other first-order term, i(2a cosθ/|q|²)∇_t, has symbol −(2a cosθ/|q|²)ξ_t. That is real, hence Hermitian, so it causes no growth. Zeroth-order terms, including −(3/2)(H−H̄)⊗̂p, are below the threshold order.
+
+⇒ **In the (p, q_F) variables with metric |p|² + 4Q²|q_F|², the subprincipal operator on Γ has growth 0. The threshold condition holds with full margin ν/2, for the full subextremal range.**
+
+The remaining B2 work is the lift (2). The L-terms are first order in B, F and X, and those are given by non-trapping transports (the D2-type argument, now at the trapped set). The tensor-bundle Killing–Yano point (a) is still needed for the frame in which ξ· and ξ⊗ are transported.
