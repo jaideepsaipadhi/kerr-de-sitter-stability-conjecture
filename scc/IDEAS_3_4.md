@@ -63,3 +63,56 @@ so ρ (the "mass aspect", ∼ Re Ψ₂) is driven by **∫ χ̲̂·α dv**. Near
 1. The 4.1 phase computation: confirm that α and χ̲̂ at CH⁺_A carry the same frame-dragging phase per m, using Kerr interior asymptotics of the s = ±2 Teukolsky fields (Gurriaran 2025 and 2503.24114). Then compute the ℓ = 2 sesquilinear form.
 2. 4.2: interior Teukolsky–Starobinsky constants.
 3. 4.3: write the non-spherical trapped-region Hawking-mass variation formula and identify the ζ error terms.
+
+---
+# Step 1 results (literature check): two corrections, one of them major
+
+## Correction A: Idea 4.1 is refuted as stated, and it was not needed
+
+Gurriaran (arXiv:2503.24114, eq. (1.7) and Thm 3.3; and his CMP 2025 paper on s = +2):
+- ψ̂₊₂ ~ Δ⁻² u̲⁻⁷ Σ_{|m|≤2} A_m(r₋) Q_{m,2} **e^{2im r_mod}** Y^{+2}_{m,2} e^{imφ₋}, with r_mod ~ a log(r − r₋). This is the "violent oscillation".
+- ψ̂₋₂ ~ u⁻⁸ Σ C_m Y^{−2}_{m,2} e^{imφ₋}. This is **regular** at CH⁺ and has **no** e^{2im r_mod} factor.
+
+So the two fields do **not** carry the same frame-dragging phase. In the sphere-averaged product, pairing m with −m in the φ-integral still leaves the factor e^{2im r_mod}, so averaging does **not** remove the oscillation. Idea 4.1 is false.
+
+It is also unnecessary. The oscillation is log-periodic in Δ, i.e. it sits on top of an exponentially growing amplitude e^{2κ₋v}. Integrals ∫ e^{(2κ₋ + iω_m)v} dv blow up in modulus whatever the phase, and a finite sum of distinct frequencies with nonzero coefficients cannot be o(amplitude). So the oscillation does not prevent blow-up. (Gurriaran also notes A_m(r₋) ≠ 0 only for m = ±1, ±2.)
+
+## Correction B (major): Christodoulou's formulation does NOT require mass inflation
+
+From Dafermos–Luk (arXiv:1710.01722, §1.4 and §1.5.3, Luk's local weights):
+- At a weak null singularity, in the regular coordinate U, the shear behaves like
+ χ̂ ~ (−U)⁻¹ |log(−U)|^{−1−2δ}.
+ This is in L¹ but **not in L²**.
+- So the **Christoffel symbols fail to be L² already at the level of χ̂**, i.e. directly from the s = +2 (α / Ψ₀) blue-shift. No product of two singular fields and no Hawking-mass blow-up is involved.
+- DL state this explicitly: for the continuous extensions in Luk's construction, the Christoffel symbols fail to be square integrable, and conjecturally this holds for **any** continuous extension. That conjecture is exactly what Christodoulou's formulation needs.
+
+**My earlier claim "χ̂ ∈ L²_v at a weak null singularity" was wrong:** the weighted quantity f(U)χ̂ is L², not χ̂ itself. Consequently:
+- Item **F2 (nonlinear mass inflation) is not on the critical path** for Christodoulou's formulation near Kerr. It is a separate, stronger statement about Hawking-mass blow-up.
+- There is also a structural reason mass inflation is harder in vacuum. The Hawking mass is governed by the **renormalised** quantities ρ̌ = ρ − ½χ̂·χ̲̂ (equivalently the Gauss curvature K), and ∇₄ trχ̲ involves ρ̌, not α. So the Hawking mass does not see α directly, and Idea 4.2 (Teukolsky–Starobinsky positivity for mass inflation) is moot for Item 4.
+
+## Item 4, restated correctly
+
+> **(F1′) Low-regularity inextendibility.** Luk–Sbierski / Gurriaran give the following. In the Dafermos–Luk chart (u, U_CH, θ), the metric is C⁰ up to CH⁺ and the Christoffel symbol χ̂ satisfies a weighted lower bound that forces χ̂ ∉ L²_loc. **Show that no C⁰ extension (M̃, g̃) has Γ̃ ∈ L²_loc near any point of ι(CH⁺).**
+
+The only obstruction is **non-uniqueness of the differentiable structure at the boundary**. Uniqueness of continuous extensions across weak null singularities is known to fail. Sbierski proved uniqueness at the Lipschitz level and deduced Lipschitz inextendibility from it. We need the Christoffel-L² level.
+
+## New ideas for F1′
+
+**Idea F-a: Regularity of the optical function in any extension (eikonal + Raychaudhuri).**
+- Let u be the DL optical function, so that the u = const hypersurfaces are null, with generators L = −∇u. In an extension chart near p, u is defined only on ι(M).
+- **Step 1:** show that u extends continuously to a neighbourhood of p in M̃ with ∇u ∈ C⁰. The level sets are achronal null hypersurfaces in a C⁰ spacetime, which are Lipschitz hypersurfaces by C⁰ causality theory (Chruściel–Grant). Then improve to C¹ using that their generators are limits of smooth null geodesics, i.e. via the known C^{1,1} regularity of null hypersurfaces with bounded expansion. **This is the delicate point, since here the expansion is unbounded.**
+- **Step 2:** in the extension chart, ∇²u = ∂²u − Γ̃·∂u. Its restriction to the spheres is χ, and χ̂ ∉ L². If Γ̃ ∈ L² and ∂u ∈ L∞, then ∂²u ∉ L² near p.
+- **Step 3: contradiction from the eikonal equation.** Differentiate g̃^{ab}∂_a u ∂_b u = 0. With g̃ ∈ C⁰ ∩ H¹ this gives g̃^{ab}∂_a u ∂_b∂_c u = −½(∂_c g̃^{ab})∂_a u ∂_b u ∈ L². So **the L-directional second derivatives of u are L²**. The **angular** ones (χ̂) are not. They are linked by the Riccati/Raychaudhuri equation along L,
+ L(χ̂) = −trχ χ̂ − α (schematically),
+ so the obstruction is the size of α as a distribution. In a Γ̃ ∈ L² chart, α = (∂Γ̃ + Γ̃Γ̃)-components lies in H⁻¹ + L¹, while our α is a blue-shifted, non-H⁻¹ object along the generators. **Precise test:** does Luk–Sbierski's weighted L² lower bound on α (ℓ = 2 modes) imply α ∉ H⁻¹_loc + L¹_loc, uniformly in the class of C¹ coordinate changes that fix the generators? If yes, this gives a chart-independent obstruction at the Christoffel-L² level.
+
+**Idea F-b: Lorentzian-length / synthetic route (backup).**
+A C⁰ metric defines a Lorentzian length space (Kunzinger–Sämann), and Γ ∈ L² with *weak* Ric = 0 should give a synthetic timelike-Ricci bound (TCD(0, 4)-type, Cavalletti–Mondino). That would be violated by the unbounded tidal focusing at the weak null singularity (θ → −∞ along generators while area stays bounded). This needs the extension to be a weak solution, which Christodoulou's formulation does **not** assume. So it proves a weaker variant: inextendibility **as a weak solution of the vacuum equations**. This is still meaningful (it is Christodoulou's stated motivation), and plausibly more tractable.
+
+## Item 3 status after the check
+
+Dafermos–Luk announce a third paper, *[33] in their numbering*: global C⁰-stability of the **entire bifurcate Cauchy horizon** for two-ended data whose horizons asymptote to Kerr. If that has appeared, Item 3 reduces to:
+- (i) citing it;
+- (ii) extending Luk–Sbierski's nonlinear approximation (dynamical ψ₀ ≈ linear ψ₀) along each CH⁺ component **up to the bifurcation sphere**, where DL's corner estimates replace the near-i⁺ smallness. This is Idea 3.1, with the doubly renormalised system (K, σ̌, β, β̲), which DL already use (§1.5.3).
+
+**Next check:** whether DL III ([33]) is available.
