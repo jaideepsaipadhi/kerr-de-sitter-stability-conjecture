@@ -1,0 +1,8 @@
+m=6 a=1.000 Q=0.000: delta(osc)=[np.float64(5.1659), np.float64(4.7698), np.float64(3.4044)]  nu(real)=[np.float64(2.1917), np.float64(2.5392), np.float64(4.7898)]
+m=6 a=0.900 Q=0.436: delta(osc)=[np.float64(5.0041), np.float64(4.3393), np.float64(3.1208)]  nu(real)=[]
+m=6 a=0.800 Q=0.600: delta(osc)=[np.float64(4.6849), np.float64(3.7302), np.float64(2.4707)]  nu(real)=[]
+m=6 a=0.700 Q=0.714: delta(osc)=[np.float64(4.1585), np.float64(2.7947), np.float64(0.7269)]  nu(real)=[]
+m=6 a=0.600 Q=0.800: delta(osc)=[np.float64(3.316), np.float64(0.6898)]  nu(real)=[np.float64(2.6676)]
+m=6 a=0.500 Q=0.866: delta(osc)=[np.float64(1.7828)]  nu(real)=[]
+m=6 a=0.450 Q=0.893: delta(osc)=[]  nu(real)=[np.float64(4.6768)]
+m=6 a=0.400 Q=0.917: delta(osc)=[]  nu(real)=[np.float64(2.387), np.float64(4.1569), np.float64(5.2257)]

@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}\newtheorem{remark}{Remark}
+\begin{document}
+\section*{Bridge, Part 2: the positive-spin pair vanishes identically (real $\omega\neq0$)}
+
+\paragraph{Setting.} Let $\psi_+=(\psi_{+2},\psi_{+1})$ be the positive-spin DGS pair. It is gauge invariant and is obtained from $(\psi_{-2},\psi_{-1})$ by the GHP prime/star operation; see footnote~37 of DGS. Its equations are the GHP-dual of DGS eq.~(4): a $2\times2$ system
+\[
+\mathcal P_+\psi_+=0,\qquad \mathcal P_+=\Sigma\,\Box_g\otimes I_2+(\text{first-order terms with smooth, matrix-valued coefficients}),
+\]
+whose principal part is scalar. A mode $\psi_+=e^{-i\omega t+im\varphi}u(r,\theta)$ satisfies $\widehat{\mathcal P}_+(\omega,m)u=0$, a $2\times2$ system in $(r,\theta)$ on $r>r_+$.
+
+We consider real $\omega\neq0$ only. The case $\operatorname{Im}\omega>0$ is handled by the real-axis reduction: continuity in parameters, so that modes enter the upper half-plane only through the real axis or $\omega=0$. This is a separate item of the programme.
+
+\begin{proposition}\label{prop:vanish}
+Let $\omega\in\mathbb R\setminus\{0\}$. Let $u$ be an outgoing solution of $\widehat{\mathcal P}_+(\omega,m)u=0$, smooth up to $\mathcal H^+$ in ingoing coordinates, whose leading coefficients at $\mathcal I^+$ vanish (the conclusion of Bridge Part~1). Then $u\equiv0$ on $r>r_+$.
+\end{proposition}
+
+\paragraph{Proof structure.} Four steps.
+
+\emph{Step A: formal vanishing at infinity.}
+Write $u=r^{-1-2s}e^{i\omega r_*}\,v$ with $s=+2,+1$ componentwise. For outgoing solutions, $v$ has an asymptotic expansion
+\[
+v\sim\sum_{n\ge0}r^{-n}\,v_n(\theta)
+\]
+(polyhomogeneous; possible $\log r$ factors are treated in (R5)). Inserting this into the equation gives a recursion
+\[
+2i\omega(n+1)\,v_{n+1}=\mathcal A_n v_n+\sum_{j<n}\mathcal B_{n,j}v_j ,
+\]
+with $\mathcal A_n,\mathcal B_{n,j}$ differential operators on $S^2$, including the coupling terms. Since $\omega\neq0$, the hypothesis $v_0=0$ gives $v_n=0$ for every $n$: $u$ vanishes to infinite order at $\mathcal I^+$.
+
+\emph{Step B: from formal to actual rapid decay.}
+Formal vanishing does not by itself give $u=O(r^{-N})$ for all $N$. The standard route works in Melrose's scattering calculus at a nonzero real energy. An outgoing solution whose leading term vanishes lies in the weighted space below threshold. Propagation of regularity through the radial sets then upgrades this to $u\in\dot C^\infty$ at infinity, i.e.\ rapid decay. These are Melrose, \emph{Spectral and scattering theory for the Laplacian on asymptotically Euclidean spaces}, and Vasy's radial-point estimates. They are microlocal and only use the scalar principal symbol, so they apply to the coupled system.
+
+\emph{Step C: unique continuation at infinity.}
+A rapidly decaying solution of $(\Delta_g+\omega^2+W)u=0$, where $W$ is a first-order operator with coefficients that are symbols of order $-1$ (Coulomb-type long-range terms included) and $\omega\neq0$ is real, vanishes for $r\gg1$. The tool is a Carleman estimate at infinity: Froese--Herbst/Vasy-type absence of rapidly decaying solutions at positive energy, or Hörmander ALPDO II \S14.7 / \S17.2.
+\emph{This is the most delicate step} because the lower-order terms are \emph{complex} and \emph{matrix-valued}: Meshkov-type counterexamples show that unique continuation at infinity can fail for complex potentials in general. Here, however, the potentials decay and the energy is positive. The precise theorem that applies must be pinned down; see (R4).
+
+\emph{Step D: unique continuation inward.}
+Fix $m$ and restore the $e^{im\varphi}$ dependence. Then $\widehat{\mathcal P}_+(\omega,m)$ is the restriction of an operator on the 3-dimensional exterior region, with principal part $\Delta\partial_r^2+\Delta_{S^2}$ times the identity matrix. This is elliptic for $r>r_+$ even inside the ergoregion, because the frequency enters only at lower order. By Aronszajn--Cordes unique continuation for elliptic systems with diagonal (scalar) principal part, $u\equiv0$ near infinity implies $u\equiv0$ on all of $r>r_+$.
+
+\paragraph{Consequence.} Combined with Part~1: a real-frequency mode ($\omega\neq0$) with $\psi_{-2}=\psi_{-1}=0$ has $\psi_{+2}=\psi_{+1}=0$ as well. All four extreme-type gauge invariants vanish, which is the input for Part~3 (linearised Plebański--Demiański rigidity).
+
+\paragraph{Open items (referee).}
+\begin{itemize}
+\item[(R4)] Step C: identify a precise published theorem covering systems with a scalar principal part, complex long-range first-order terms, and positive energy, or prove the needed Carleman estimate. \textbf{This is the main risk item for Part~2.}
+\item[(R5)] Step A: verify the expansion structure, including possible $\log r$ terms caused by the long-range Coulomb terms (the $M$ and $Q$ dependence of $r_*$). The recursion must remain triangular, with the factor $2i\omega(n+1)$ nonzero.
+\item[(R6)] Step B: write out the scattering-calculus setup for the reduced DGS positive-spin operator: confirm it is a scattering operator of the required class and check the threshold weights.
+\item[(R7)] Confirm the GHP-dual system's principal part is exactly $\Sigma\Box_g$ times the identity (with no first-order coupling at principal level), as for the negative-spin system in DGS eq.~(7).
+\end{itemize}
+\end{document}

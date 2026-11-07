@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{proposition}{Proposition}\theoremstyle{remark}\newtheorem{remark}{Remark}
+\begin{document}
+\section*{Bridge, Part 1: vanishing of the radiation fields at $\mathcal I^+$}
+
+\paragraph{Source of the asymptotic equations.} All equations below are taken from Adamo--Newman--Kozameh, \emph{Null geodesic congruences, asymptotically-flat spacetimes and their physical interpretation} (Living Rev.\ Rel.; arXiv:0906.2155v3), \S2.4, eqs.\ (2.36)--(2.56). They are written in a Bondi coordinate system and tetrad $(u_B,r,\zeta,\bar\zeta)$ near $\mathcal I^+$, with $k=2Gc^{-4}$.
+
+\emph{Peeling}, (2.36)--(2.37):
+\[
+\psi_n=\psi_n^0\,r^{n-5}+\dots,\qquad \phi_j=\phi_j^0\,r^{j-3}+\dots .
+\]
+\emph{Radiation data}, (2.47)--(2.48):
+\[
+\psi_4^0=-\ddot{\bar\sigma}{}^0,\qquad \psi_3^0=\eth\dot{\bar\sigma}{}^0 .
+\]
+\emph{Asymptotic Bianchi and Maxwell equations}, (2.52)--(2.56):
+\begin{align*}
+\dot\psi_2^0&=-\eth\psi_3^0+\sigma^0\psi_4^0+k\phi_2^0\bar\phi_2^0, &
+\dot\psi_1^0&=-\eth\psi_2^0+2\sigma^0\psi_3^0+2k\phi_1^0\bar\phi_2^0,\\
+\dot\psi_0^0&=-\eth\psi_1^0+3\sigma^0\psi_2^0+3k\phi_0^0\bar\phi_2^0, &
+\dot\phi_1^0&=-\eth\phi_2^0,\qquad \dot\phi_0^0=-\eth\phi_1^0+\sigma^0\phi_2^0 .
+\end{align*}
+\emph{Correction to the earlier sketch:} I had quoted ``$\dot\psi_3^0=-\eth\psi_4^0$'' as an independent equation. In the source, $\psi_3^0$ and $\psi_4^0$ are instead given directly in terms of $\sigma^0$ by (2.47)--(2.48). The relation I quoted follows from these, and the argument below uses the stronger form.
+
+\paragraph{Background.} Kerr--Newman is stationary. In a Bondi frame built on stationary good cuts, $\sigma^0_{\rm bg}=0$, so $\psi^0_{3,\rm bg}=\psi^0_{4,\rm bg}=0$ (cf.\ \S5.4, eq.\ (5.34)). Stationarity also forces $\phi^0_{2,\rm bg}=0$. The reason is the mass-loss law (2.58), $\dot\Psi=\dot\sigma^0\dot{\bar\sigma}{}^0+k\phi_2^0\bar\phi_2^0$: a stationary solution has $\dot\Psi=0$, and both terms on the right are non-negative. Finally $\phi^0_{1,\rm bg}=q\neq0$ and $\psi^0_{2,\rm bg}=-M\cdot(\text{normalisation})\neq0$.
+
+\begin{proposition}\label{prop:rad}
+Let $\delta$ be a linearised Einstein--Maxwell solution on subextremal Kerr--Newman with $Q\neq0$ or $Q=0$. Assume:
+\begin{itemize}
+\item[(a)] $\delta$ is a mode: in Bondi retarded time it is $e^{-i\omega u_B}\times(\text{a function of the other variables})$, with $\omega\neq0$ and $\operatorname{Im}\omega\ge0$;
+\item[(b)] $\delta$ admits the peeling expansions above at leading order (in particular, it can be put in linearised Bondi gauge near $\mathcal I^+$);
+\item[(c)] $\delta\Psi_4\equiv0$ and $\delta\psi_{-1}\equiv0$, where $\psi_{-1}\propto 2\Phi_1\Psi_3-3\Psi_2\Phi_2$ is the Dias--Godazgar--Santos gauge invariant.
+\end{itemize}
+Then every leading coefficient vanishes:
+\[
+\delta\sigma^0=\delta\psi^0_n=\delta\phi^0_j=0\qquad (n=0,\dots,4,\ j=0,1,2).
+\]
+\end{proposition}
+
+\begin{proof}
+In each step, ``const in $u$ $\Rightarrow 0$'' uses (a): a function of the form $e^{-i\omega u}f$ with $\omega\neq0$ is constant in $u$ only if $f=0$.
+\begin{enumerate}
+\item From $\delta\psi_4^0=-\partial_u^2\delta\bar\sigma^0=0$ and (a): $\delta\sigma^0=0$. By (2.48), $\delta\psi_3^0=\eth\partial_u\delta\bar\sigma^0=0$.
+
+\item \emph{Frame independence of (c).} The DGS invariants are written in the Kinnersley frame, whereas the asymptotic equations use the Bondi frame. The two background frames differ by a constant boost and by null rotations whose parameters are $O(r^{-1})$. Under such a change the leading coefficients of $\delta\Psi_4$ and of $\delta(2\Phi_1\Psi_3-3\Psi_2\Phi_2)$ change only by a constant nonzero factor; all other contributions are of lower order in $r$. Gauge invariance of both quantities under linearised diffeomorphisms and tetrad rotations means the choice of gauge does not matter.
+
+\item The $r^{-4}$ coefficient of $\delta\psi_{-1}$, up to nonzero constants, is $2\phi^0_{1,\rm bg}\,\delta\psi_3^0-3\psi^0_{2,\rm bg}\,\delta\phi_2^0$. With $\delta\psi_3^0=0$ and $\psi^0_{2,\rm bg}\propto M\neq0$, this forces $\delta\phi_2^0=0$.
+
+\item Linearise (2.52). Since $\sigma^0_{\rm bg}=\psi^0_{3,\rm bg}=\psi^0_{4,\rm bg}=\phi^0_{2,\rm bg}=0$, we get $\partial_u\delta\psi_2^0=-\eth\delta\psi_3^0=0$. Hence $\delta\psi_2^0=0$.
+
+\item Linearise (2.53): $\partial_u\delta\psi_1^0=-\eth\delta\psi_2^0+2k\,\phi^0_{1,\rm bg}\,\delta\bar\phi_2^0=0$. Hence $\delta\psi_1^0=0$.
+
+\item Linearise (2.55): $\partial_u\delta\phi_1^0=0$, so $\delta\phi_1^0=0$. Linearise (2.56): $\partial_u\delta\phi_0^0=0$, so $\delta\phi_0^0=0$.
+
+\item Linearise (2.54): $\partial_u\delta\psi_0^0=-\eth\delta\psi_1^0+3\delta\sigma^0\psi^0_{2,\rm bg}+3k\big(\delta\phi_0^0\bar\phi^0_{2,\rm bg}+\phi^0_{0,\rm bg}\delta\bar\phi_2^0\big)=0$. Hence $\delta\psi_0^0=0$. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{remark}[What this does and does not give]
+It gives zero outgoing gravitational radiation ($\delta\sigma^0=0$) and zero outgoing electromagnetic radiation ($\delta\phi_2^0=0$). It also kills the leading coefficients of the positive-spin quantities $\delta\psi_0$, $\delta\psi_1$, $\delta\phi_0$, and hence of the positive-spin DGS pair $\psi_{+2},\psi_{+1}$. That is the input needed for the Rellich step (Part~2).
+\end{remark}
+
+\paragraph{Open items for Part 1 (referee).}
+\begin{itemize}
+\item[(R1)] Step 2 is argued at the level of orders of magnitude. It needs an explicit computation: the KN Kinnersley-to-Bondi transformation to the relevant order, with constants.
+\item[(R2)] Hypothesis (b): one must show that outgoing modes of the gauge-fixed operator can be put in linearised Bondi gauge, with polyhomogeneous expansions whose leading terms are as stated. Possible $\log r$ terms at subleading orders do not affect the argument but must be checked.
+\item[(R3)] The normalisation constants in step 3 must be computed explicitly, to confirm the coefficient of $\delta\phi_2^0$ is nonzero. It is expected to be $\propto M$.
+\end{itemize}
+\end{document}

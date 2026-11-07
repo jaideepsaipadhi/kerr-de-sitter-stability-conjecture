@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}\newtheorem{remark}{Remark}
+\begin{document}
+\section*{Lemma A: superradiant null geodesics are not trapped (Kerr--Newman, full subextremal range)}
+
+\paragraph{Setting.} Kerr--Newman in Boyer--Lindquist coordinates with parameters $M>0$, $a\ge 0$ (the case $a<0$ follows by $\varphi\mapsto-\varphi$), $Q\in\mathbb R$, strictly subextremal: $a^2+Q^2<M^2$. Put
+\[
+\Delta(r)=r^2-2Mr+a^2+Q^2,\qquad r_\pm=M\pm\sqrt{M^2-a^2-Q^2},\qquad \omega_H=\frac{a}{r_+^2+a^2}.
+\]
+Note $r_+^2+a^2=2Mr_+-Q^2>0$ and $M<r_+<2M$.
+
+A null geodesic has conserved energy $E$, azimuthal momentum $L$ and Carter constant $K$. With $\Sigma=r^2+a^2\cos^2\theta$ and an affine parameter $s$,
+\begin{equation}\label{eq:RT}
+\Big(\Sigma\frac{dr}{ds}\Big)^2=R(r):=\big((r^2+a^2)E-aL\big)^2-\Delta K,\qquad
+\Big(\Sigma\frac{d\theta}{ds}\Big)^2=\Theta(\theta):=K-\Big(\frac{L}{\sin\theta}-aE\sin\theta\Big)^2 .
+\end{equation}
+(The charge enters only through $\Delta$; these are the standard Kerr--Newman separated geodesic equations.)
+
+\paragraph{Spherical photon orbits.} A null geodesic with $r\equiv r_c\in(r_+,\infty)$ satisfies $R(r_c)=R'(r_c)=0$ and $\Theta\ge0$ somewhere along it.
+
+\begin{remark}[Dependency]
+Lemma~A is a statement about spherical photon orbits. Its use in the stability argument requires that the trapped set of Kerr--Newman (null geodesics that neither cross $\mathcal H^+$ nor escape to $r=\infty$) consists exactly of spherical photon orbits. For Kerr this is standard (Wunsch--Zworski, Dyatlov). For Kerr--Newman it is part of item~3 of the programme (r-normally hyperbolic trapping) and is \emph{not} proved here.
+\end{remark}
+
+\begin{lemma}[Lemma A]\label{lem:A}
+Let $a^2+Q^2<M^2$ and $a>0$. There is no spherical photon orbit with $r_c\in(r_+,\infty)$, $L\neq0$, and $\Omega:=E/L\in[0,\omega_H]$.
+\end{lemma}
+
+\begin{proof}
+Since $R$ and $\Theta$ are homogeneous of degree~2 in $(E,L,\sqrt K)$, we may normalise $L=1$, so $E=\Omega$. Write
+\[
+P(r)=(r^2+a^2)\Omega-a,\qquad R=P^2-\Delta K .
+\]
+
+\emph{Step 1: a lower bound on $K$.} Since $\Theta(\theta)\ge0$ for some $\theta$, we have $K\ge g(\sin^2\theta)$ with $g(\sigma)=(1-b\sigma)^2/\sigma$ and $b:=a\Omega$. Here
+\[
+0\le b\le a\omega_H=\frac{a^2}{r_+^2+a^2}<1 .
+\]
+For $\sigma\in(0,1]$ we have $g'(\sigma)=-(1-b\sigma)(1+b\sigma)/\sigma^2<0$, so $g$ is decreasing and $K\ge g(1)=(1-b)^2>0$.
+
+\emph{Step 2: the two equations.} $R(r_c)=0$ gives $K=P(r_c)^2/\Delta(r_c)$; note $\Delta(r_c)>0$. Substituting this into $R'(r_c)=2PP'-\Delta'K=0$ and multiplying by $\Delta$ gives
+\[
+P(r_c)\,G(r_c)=0,\qquad G:=2P'\Delta-\Delta'P=4r\Omega\Delta-2(r-M)P .
+\]
+If $P(r_c)=0$ then $K=0$, contradicting Step~1. It remains to show $G>0$ on $(r_+,\infty)$.
+
+\emph{Step 3: $G>0$.} Expanding,
+\[
+\tfrac12 G(r)=\Omega\,h(r)+a(r-M),\qquad h(r)=r^3-3Mr^2+(a^2+2Q^2)r+Ma^2 .
+\]
+This is affine in $\Omega$, so it suffices to check the endpoints $\Omega=0$ and $\Omega=\omega_H$.
+
+At $\Omega=0$: $\tfrac12G=a(r-M)>0$, since $r>r_+>M$.
+
+At $\Omega=\omega_H=a/(2Mr_+-Q^2)$:
+\[
+\tfrac12G=\frac{a}{2Mr_+-Q^2}\,k(r),\qquad k(r)=h(r)+(2Mr_+-Q^2)(r-M)=r^3-3Mr^2+(a^2+Q^2+2Mr_+)r+M(a^2+Q^2)-2M^2r_+ .
+\]
+Using $a^2+Q^2=2Mr_+-r_+^2$ one checks $k(r_+)=0$. Next,
+\[
+k'(r)=3r^2-6Mr+a^2+Q^2+2Mr_+ ,
+\]
+whose minimum over $r\in\mathbb R$ is attained at $r=M$, with value
+\[
+-3M^2+4Mr_+-r_+^2=(r_+-M)(3M-r_+)>0 ,
+\]
+because $M<r_+<2M$. Hence $k$ is strictly increasing, so $k>0$ on $(r_+,\infty)$, and $G>0$ there. Thus $P(r_c)G(r_c)\neq0$, a contradiction.
+\end{proof}
+
+\begin{remark}[The case $a=0$]
+If $a=0$ then $\omega_H=0$, and the only frequency in the band is $\Omega=0$, i.e.\ $E=0$. Then $R=-\Delta K$, and $K\ge 1$ (from $\Theta\ge0$ with $L=1$). So $R<0$ on $(r_+,\infty)$, and no such null geodesic exists in the exterior at all.
+\end{remark}
+
+\begin{corollary}[Form used in the programme]
+On the trapped set (assuming the dependency in Remark~1), every null covector $\xi$ satisfies $\xi(\partial_t)/\xi(\partial_\varphi)\notin[0,\omega_H]$ whenever $\xi(\partial_\varphi)\ne0$. Equivalently, the energy $-\xi(T+\omega_H\Phi)$ of the horizon generator has the same strict sign as $-\xi(T)$ there: superradiance and trapping are separated in phase space.
+\end{corollary}
+
+\paragraph{Machine checks} (\texttt{lemmaA\_check.py}): the identity for $\tfrac12G$; the identity for $k$; $k(r_+)=0$; the value of $k'(M)$; random sampling of $G>0$.
+
+\paragraph{Referee notes (open).}
+(i) The Corollary's equivalence ``$\Omega\notin[0,\omega_H]$ $\Leftrightarrow$ sign statement'' needs care with the signs of $L$ and $E$ (negative-energy covectors). This must be redone carefully, case by case.
+(ii) Remark~1's dependency is genuine and must be discharged by item~3.
+\end{document}
