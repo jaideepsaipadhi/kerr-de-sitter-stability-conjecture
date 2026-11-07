@@ -623,3 +623,21 @@ E1 = δ_C δ_G0 δ_G1 (exact minors, exceptional set ⊂ their zeros).
 Hence for m = 1, 2: no σ ≠ 0 is exceptional at both test points — EXACT, no probabilistic or mod-P caveat.
 The "root at infinity" flag of step55 is a non-issue: it only reflected the degree bound 2r exceeding the true degree.
 Method scales to any fixed m at ~5 min per m; it is the finite-m part of the (σ, m) argument (items 4/5).
+
+## 68. Joint (σ, m) resultant test (items 4/5) — fast, but single-prime certificate FAILS; status
+
+step58_resultant_fast.py: E_i(σ, μ) interpolated once as a bivariate polynomial mod p (40×40 grid, spot-checked);
+σ-order 6, deg_σ 29, deg_μ 29 at both points. R(μ) = formal Res_σ(E1/σ⁶, E2/σ⁶): degree 1135 (bound 1334), not ≡ 0.
+~90 s per prime (was ~1 h).
+Result at 4 primes (998244353, 1073741789, 1073741741, 1073741717): R mod p has 51 / 59 / 47 / 59 roots in F_p,
+in ± pairs (m ↔ −m symmetry), always including μ = 0. Only integer root with |m| ≤ 2000 at every prime: m = 0.
+No common small-height rational root across primes.
+Reading: ~50 roots per prime (vs ~1 for a generic polynomial) ⇒ R splits into ~50 irreducible factors over Q(i)
+(Chebotarev). So "R mod p has no F_p root" will NEVER hold for any prime — that certificate route is dead.
+Heuristic: an integer m ≠ 0 surviving all 4 primes has density ~ Π(#roots/p) ≈ 2⁻⁹⁷. Not a proof.
+Rigorous routes still open:
+ (A) third test point: g_p = gcd(R12, R13) mod p. If g_p = cμ^k then any integer common m has m ≡ 0 mod p, and
+     with the exact μ-order of R12 at 0 (one exact slice computation at m = 0) the lemma of §67 kills m ≠ 0.
+ (B) lift caveat for both routes: exact divisibility σ⁶ | E_i (bivariate). Fixed-m exact data (§67) shows order 4 for
+     δ_C, so the σ⁶ must be split between δ_C and the gauge minors; needs an exact argument (structural σ-factor
+     of gauge rows from ∂_t ↦ −iσ) rather than computation.

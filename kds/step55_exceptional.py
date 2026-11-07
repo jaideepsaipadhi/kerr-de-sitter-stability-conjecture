@@ -16,8 +16,9 @@ from sympy.polys.matrices import DomainMatrix
 import step52_exact_modes as S
 P = 1000000009 if (1000000009 % 4 == 1) else None
 # choose a prime p = 1 mod 4 with p < 2^30 (products fit int64 after mod)
-P = 998244353   # = 119*2^23+1, p % 4 == 1
-I_MOD = pow(3, (P - 1)//4, P)    # 3 is a primitive root mod 998244353; this is sqrt(-1)
+import os
+P = int(os.environ.get('PRIME', 998244353))   # default 119*2^23+1; any prime = 1 mod 4 below 2^30
+I_MOD = next(pow(g, (P - 1)//4, P) for g in range(2, 200) if pow(g, (P - 1)//2, P) == P - 1)
 assert I_MOD*I_MOD % P == P - 1
 def fr_mod(q): return (q.numerator % P)*pow(q.denominator % P, P - 2, P) % P
 def gauss_mod(re, im): return (fr_mod(re) + I_MOD*fr_mod(im)) % P
