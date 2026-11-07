@@ -297,3 +297,47 @@ The remaining case is **E = Θ_E × (all u)**, where Θ_E has positive measure b
 - (B) is **reduced** to the θ-lemma and the topology lemma.
 - Single-generator absorption is possible (§1). The u-direction lemma (§2) and open-set collapse (§3) are done in sketch.
 - **If the θ-lemma closes, then (B) ⇒ (Q) ⇒ Christodoulou's SCC near i⁺**, under the Luk–Sbierski lower bound.
+
+---
+# θ-lemma: computed. It is BORDERLINE.
+
+**Transport of F along a θ-line.** Here F = −g̃(V, T) = k and Y = ∂_θ. Then
+ Y(F) = −g̃(∇_Y V, T) − g̃(V, ∇_Y T),
+with ∇_Y V = χ(Y) + (ζ-terms)·V. This gives
+ |∂_θ k| ≲ |χ|·A + (|Γ̃| + |ζ|) k,
+where A := sup |g̃(e_A, T)| is the "screen tilt", i.e. the chart size of the screen frame.
+
+**Key difference from the u-direction.** The singular shear enters **unweighted**, as |χ|·A, not as χh. So k can vary across θ by up to ~ |χ|·A·δθ **at zero Christoffel cost**. Geometrically, neighbouring generators' tangents differ by χ·δθ, which is the shear itself.
+
+**Minimal absorbing boost.** To make the chart-normalised shear χh square-integrable along a generator, k ~ C|χ| suffices for any constant C > 0:
+- χh = 1/C is then bounded;
+- the chart length ∫k dU = C∫|χ| dU is finite;
+- the U-cost is ∫|∂_U(1/(C|χ|))|² dU ~ C⁻²∫ log^{q} < ∞.
+
+So **the minimal absorber has exactly the size of the free transverse allowance |χ|·A. The θ-lemma is borderline.**
+
+## Candidate resolution of the borderline (heuristic)
+
+- A transition across a θ-gap of width δθ, from k ~ 1 to k ~ C|χ|, needs C ≲ A·δθ if it is paid by the free χ-term.
+- Suppose A is bounded. Then a blow-up set E that is Cantor-like in θ (gaps δ_i → 0) forces C ≲ Aδ_i near the gap edges. There χh = 1/C ≳ 1/δ_i on a θ-neighbourhood of size ~ δ_i, contributing ~ 1/δ_i to ‖χh‖²_{L²}.
+- Infinitely many gaps then give Σ 1/δ_i = ∞, so **χh ∉ L²**, and the Korn contradiction applies after all.
+- If instead E has only finitely many gaps near p, it has interior, and the open-set collapse (§3) gives the contradiction.
+
+## The remaining genuine gap: is the screen tilt A bounded under boosts?
+
+- The Jacobi field ODE in the chart is Y′ = χ(Y) − Γ̃(Y, V). With V ~ k unbounded, the coefficient |Γ̃|k need not be integrable in U.
+- Equivalently, ∫|Γ̃| dt in chart time is controlled only by ∫|Γ̃|² k dx, which is a **k-weighted** norm.
+- So under a boost blow-up, the screen frame may also degenerate in the chart. **A bounded is not established.**
+
+## Status of Level 3 after this pass
+
+| piece | status |
+|---|---|
+| Korn mechanism; reduction (Q) ⇔ (B) bounded boost where shear is singular | done (sketch) |
+| single-generator absorption is possible | shown: not an obstruction |
+| u-line lemma (no partial blow-up in u) | done (sketch) |
+| open-set collapse contradicts boundary being a hypersurface | done modulo citation |
+| θ-direction | **borderline**: closes if the screen tilt A is bounded (Cantor-gap argument) |
+| **A bounded under boost blow-up** | **open**: this is now the single sharpest open point |
+
+**Honest assessment:** every reduction has landed exactly on a critical (borderline) exponent: L² Christoffel against shear only marginally non-L², and absorber size equal to the free shear allowance. That pattern suggests either a clean but subtle proof, or a genuine counterexample built from boosted, tilted frames. The next step should be decisive: **try to construct the counterexample with both boost and screen tilt in the plane-wave model**, using an explicit ansatz with h = |U|log^{q/2}/C(θ) and a θ-dependent tilt, and compute its Christoffel-L² norm exactly. That is a concrete calculation and could be scripted.
