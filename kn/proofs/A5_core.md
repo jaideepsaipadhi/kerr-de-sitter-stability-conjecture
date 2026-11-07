@@ -102,3 +102,31 @@ is a pure phase, but it is **not** of the form f(r) + g(θ), nor a product f(r)g
 2. Expand the phase: (q̄/q)^{3/2} = Σ_k c_k(θ) r^{−k} (a cosθ)^k. Each term is a product f_k(r)g_k(θ). A product term intertwines under the product kernel only if K_r(x, r) is compatible with multiplication by r^{−k}, i.e. only if r^{−k}K_r = K_r·(some operator in x). For Whiting's radial kernel, which is an exponential-polynomial in r·x, multiplication by r^{−1} corresponds to an integral operator in x. So the transformed system is **nonlocal in x** but possibly still has a **positive** structure.
 3. **Next question (W2).** Does the transformed coupling preserve the adjoint pairing (D· vs D⊗ with conjugate coefficients) that Giorgi's energy argument uses? If yes, the transformed system has a conserved non-superradiant energy, and A5 follows. If no, we learn exactly which term destroys positivity.
 This is a concrete symbolic computation: Whiting's radial kernel, applied to the r^{−k} multiplication, for the first two orders in a cosθ/r.
+
+## W2: does the transformed coupling keep a positive structure? (Answer: not as it stands)
+
+**What a mode argument needs after transforming.** Let T = K_r ⊗ K_θ be Whiting's product transform, and L̃ = T L T⁻¹ the transformed operator. Whiting's diagonal part has **real** coefficients, i.e. no superradiance. That gives, for each component, the Wronskian identity Im⟨ũ, L̃_diag ũ⟩ = (boundary fluxes, all of one sign). For the coupled system, Im⟨ũ, L̃ũ⟩ also picks up the coupling contribution
+
+ Im( ⟨p̃, C̃ q̃⟩ + ⟨q̃, C̃′ p̃⟩ ),
+
+which vanishes for all inputs iff C̃′ = C̃*. Here C and C′ are the two coupling operators, C = 4Q²(q̄/q)^{3/2}|q|D· and C′ = −½(q/q̄)^{3/2}|q|D⊗. In the original variables C′ = (const)·C* up to lower-order terms; this is Giorgi's adjoint structure. After transforming,
+
+ C̃′ = T C′ T⁻¹,  C̃* = T⁻* C* T*.
+
+So the pairing survives iff **T*T commutes with C**, up to the constant and lower order.
+
+**Check.**
+- Radial kernel: Whiting's K_r is exponential-polynomial in r·x. K_r*K_r is a non-trivial integral operator in r, so it commutes with multiplication by f(r) only for constant f.
+- Leading term: the leading coupling term 4Q²·|q|D·, the zeroth order in a cosθ/r, is r-independent. It therefore commutes with the radial part, so the radial obstruction starts at order 4Q²·(3i a cosθ / r).
+- Angular kernel: Whiting's K_θ is a non-unitary exponential kernel in cosθ. Then K_θ*K_θ does **not** commute with D· (the spin-raising/lowering angular operator), except when a = 0, where Whiting's angular transform is trivial.
+
+⇒ For a ≠ 0 and Q ≠ 0, Whiting's transform **destroys the adjoint pairing of the Kerr–Newman coupling already at leading order**, through the angular kernel. The transformed system has real diagonal parts but non-self-adjoint coupling. There is no sign-definite identity, and A5 does not follow.
+
+**What would rescue W (an open, precise question).** Find an intertwiner T for the full |q|²-multiplied KN system such that (1) the diagonal transforms are non-superradiant, and (2) T*T commutes with the coupling. Equivalently, find a **unitary** (up to a positive constant) non-superradiant intertwiner for the angular coupling. Whiting's kernels are far from unitary, and both conditions fight. I do not see a candidate. This is a precise formulation of the "new idea" needed for KN mode stability on the real axis.
+
+## A5 status after N/W
+
+- (i) Local currents: dead, by the argument above.
+- (W) Whiting-type transform: the naive version fails at the angular kernel. The rescue question is stated precisely; no candidate is known.
+- (N) Numerics: script ready (`kn/numerics/crossing_sweep.py`), to decide truth.
+- (P) Conditional theorem: available whatever happens.
