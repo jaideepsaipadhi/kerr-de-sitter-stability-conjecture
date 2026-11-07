@@ -220,3 +220,31 @@ At the pure C⁰ level this cannot be fixed. Continuous extensions across weak n
 **Next step.** Compute that competition exactly in the plane-wave model. Construct the optimal "pinch" chart (a localised reparametrisation of the generators) and compare its Γ̃-L² cost with its frame-L^q distortion.
 - If every pinch with finite Γ̃-cost has frame distortion in L^{2+}, then (A) holds, plausibly via a covering argument.
 - If not, the pinch is the mechanism by which Christodoulou's formulation could fail.
+
+## Pinch competition: first computation
+
+**(i) Isotropic pinches cannot break (A) for 2 < q < 6.**
+- Take a coordinate change of amplitude A on a tube of cross-section ρ (three transverse directions) and unit length along the generator.
+- The frame distortion is |∂Φ| ~ A and the Christoffel change is ~ A/ρ. So the L² cost is ~ (A/ρ)²·ρ³ = A²ρ, and the frame L^q mass is ~ A^qρ³.
+- Write c := A²ρ. Then A^qρ³ = c^{q/2}ρ^{3−q/2} ≤ c^{q/2}, using ρ ≤ 1 and q < 6.
+- Summing over countably many pinches: Σc_k < ∞ implies Σ c_k^{q/2} < ∞, for q ≥ 2 and c_k ≤ 1.
+
+⇒ **Isotropic pinches are harmless.** Moreover, metric continuity forbids them anyway: A ≫ 1 would make g̃ blow up, unless the distortion is a Lorentz transformation.
+
+**(ii) The dangerous case is boost pinches, where the Lorentz group's non-compactness enters.**
+- A boost field s(x) with V → e^{s}V and e₃ → e^{−s}e₃ preserves the metric, so continuity is automatic.
+- The connection cost is |∂s| ~ s/ρ, with **no e^{s} factor**, because Λ⁻¹∂Λ ~ ∂s. So the L² cost is ~ s²ρ.
+- The frame distortion is e^{s}, so the frame L^q mass is ~ e^{qs}ρ³.
+- With s ~ (c/ρ)^{1/2}, this gives e^{q(c/ρ)^{1/2}}ρ³ → ∞.
+
+⇒ **Pointwise boost pinches would break (A) at arbitrarily small Christoffel-L² cost.**
+
+**(iii) The curl constraint.** A boost field must be **integrable**: J = Λ(s)J₀ has to be a Jacobian, so curl(ΛJ₀) = 0. Example: a pure reparametrisation U′ = h(U), u′ = k(u) gives g = −2(h′k′)⁻¹dU′du′. Continuity forces h′k′ continuous and positive, hence h′ and k′ separately bounded. So **global** boosts are rigid. A **localised** boost must mix in the screen directions, and the curl constraint then generates terms ~ e^{s}∂s, which do carry the exponential factor and so pay the exponential cost.
+
+> **Decisive question (B).** Does curl(Λ(s)J₀) = 0, together with g̃ ∈ C⁰ and Γ̃ ∈ L², force ∫ e^{qs} < ∞ for some q > 2?
+
+This is a Lorentzian **quantitative rigidity** statement (a hyperbolic analogue of Friesecke–James–Müller), restricted to the boost subgroup along the null direction V.
+- If (B) holds, then (A) holds, and with it (Q) and Christodoulou's SCC near i⁺.
+- If not, a boost-pinch extension is a candidate counterexample.
+
+Question (B) is now the single analytic question that Level 3 hinges on.
