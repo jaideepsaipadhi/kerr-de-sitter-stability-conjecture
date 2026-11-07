@@ -103,3 +103,38 @@ Either way the argument closes **provided** one condition holds:
 So (F) is the single remaining check for C3. It requires the explicit near-H⁺ expansion of Giorgi's coupling coefficients, in particular eqs. (5.x)–(6.x) of arXiv:2002.07228 in the ingoing frame. That is a symbolic computation: about 1 script, checkable with sympy once the coefficients are transcribed exactly. I am not writing those coefficients from memory, since I made that mistake before.
 
 **Status of the bridge after this:** C2 identifications (normalisation check), C3-(F), C4 (ω = mΩ_H), R1–R3. Everything else in Part 2 is reduced to cited theorems.
+
+## C3-(F): triangularity verified from Giorgi's Theorem 6.1
+
+Source: arXiv:2002.07228v2, Thm. 6.1, eqs. (79)–(87), together with the transport equation (78) for X. Coupling terms:
+- M₁[F,X] (B-eq) = 2|P_F|²( 2 D·F + 4 H̄·F − (2tr X̄ − tr X) X )
+- M₂[A,X,B] (F-eq) = −P_F( ∇₃A + ½(3tr X̄ − tr X)A ) + (3/2 ∇₃H)⊗X + (2H − H̄)⊗B
+- M₃[F,X] (A-eq) = 2P_F( 2∇₄F + 2tr X̄ F + (H + H̄)⊗X )
+- (78): ∇₃X + ½tr X̄ X = −D̄·F − H̄·F − 2B
+
+**Near-H⁺ scaling of the operators (per mode e^{−iωt+imφ}).** Δ ≈ (r₊ − r₋)x. Of the two principal null derivatives, exactly one is horizon-singular: it is x^{−1}·(Euler operator x∂_x + const). The other is regular: Euler operator plus O(x). Which is which depends on Giorgi's normalisation of e₃/e₄ (§4.1). The angular operators D·, D⊗ and the zeroth-order coefficients are O(1).
+
+- Each Teukolsky operator T_s contains ∇₃∇₄ (or ∇₄∇₃), which is x^{−1}·(Euler)², plus angular O(1) terms. After multiplying by x, its principal part is (Euler)² + x·L_θ. This is Fuchsian, as checked in the previous section.
+- After multiplying by x, every coupling term that is angular (D·F, D⊗X), zeroth-order (tr X F, H⊗B, P A, …), or contains the *regular* null derivative acquires a factor x. So it vanishes at x = 0.
+- The only coupling that survives at leading order is the one that contains the *singular* null derivative. Among the couplings between A and F that is exactly **one** direction: either −P_F∇₃A in the F-equation, or 2P_F·2∇₄F in the A-equation, but not both, since ∇₃ and ∇₄ cannot both be singular.
+- X: multiplying (78) by x gives Euler(X) = x·(…F, B) if ∇₃ is the singular derivative. In that case its couplings vanish at x = 0. If ∇₃ is the regular one, (78) is an Euler ODE for X with O(1) source terms in F and B, and multiplying by x shows nothing. Then the alternate sequencing applies: the source enters through B and F. Both sequencings are triangular, as the argument below shows.
+
+**Conclusion.** The leading-order (x⁰) indicial matrix of the full system (A, F, B, X), written in Boyer–Lindquist (BL) components, is **block-triangular**. Its single nonzero off-diagonal block couples A and F through one singular null derivative. Hence
+
+ det L(ρ) = I_A(ρ) · I_F(ρ) · I_B(ρ) · I_X(ρ),
+
+and the set of indicial roots of the system is the union of the roots of the individual components. At each order n, the Frobenius recursion has the form L(ρ+n)·u_n = (known terms from orders < n). Since L(ρ+n) is triangular, it is invertible except where some component's indicial polynomial vanishes. At those points the free coefficient is exactly that component's trace, as in C2. So with all traces zero, every coefficient vanishes, including any potential log coefficient, because log terms are forced only by nonzero lower-order data. ⇒ **formal vanishing holds, with no extra condition.**
+
+**Actual vanishing.** We work directly with the BL components, which are Fuchsian (horizon-singular exponents simply appear as negative or complex roots). Tahara's uniqueness theorem for Fuchsian systems with real-analytic coefficients then applies, as in the single-equation case.
+
+**Robustness.** The triangularity uses only two structural facts: (a) in Giorgi's system, A and F talk to each other through ∇₄ in one direction and ∇₃ in the other; (b) all other couplings are angular or zeroth-order. It does not depend on the precise coefficient functions. For the same reason the earlier transcription errors cannot affect it.
+
+**Remaining residue in C3:**
+- (i) confirm which of e₃, e₄ is horizon-singular in Giorgi's §4.1 normalisation. This is needed only for bookkeeping; both cases are triangular.
+- (ii) quote the precise statement of Tahara's theorem: weight conditions and the regularity class of the solution.
+
+Both are citation and bookkeeping items. **C3-(F) is closed.**
+
+## C4: ω = mΩ_H (sketch)
+
+Here σ = 0, and the two indicial roots of each component collide at {0, −c_s}. The second exponent is then a negative integer. A mode that is smooth at H⁺ still has only the regular trace as free data. The collision produces log terms only in the singular branch, which smoothness excludes. So C2 and C3 go through formally. The real issue lies elsewhere: at σ = 0 the horizon flux in C1 degenerates, because the flux is weighted by ω(ω − mΩ_H). So C1 does not yield vanishing horizon data at this frequency. This is the standard superradiant-threshold frequency. In Kerr it is handled by a separate argument (Whiting / Andersson–Ma–Paganini–Whiting: a real mode at ω = mΩ_H has vanishing flux at null infinity, and then the I⁺ route applies). **Open: run the I⁺ route (Part 1, R1–R3) at this one frequency.** This ties C4 to R1–R3, so they should be done together.
