@@ -469,3 +469,22 @@ Outstanding, all finite or check-type:
     {dpsi_0, dpsi_4} within K1 needs the KdS analogue of AABKW's identification, or a direct proof that the system above
     closes (involutive) at an explicit order N, checked by verifying that the order-(N+1) prolongation adds no new
     conditions.  That verification is again a finite rank computation, but it must be EXACT and paired with Cartan-Kuranishi.
+
+58. [Reduction, P modulo exact ranks] B1 CLOSURE WITHOUT AABKW-TYPE INVARIANTS.  Let S_J(p) be the TRUE space of J-jets at p
+    of local solutions of {linearised Lam-vacuum, dpsi_0 = dpsi_4 = 0}, and G_J(p) the J-jets of gauge terms.  Put
+    d_J(p) = dim S_J/G_J.
+    (a) Upper bounds are computable: S_J ⊂ pi_J(S_K) for every K (truncated jets over-count), so
+        dim pi_J(S_K) - dim G_J >= d_J.  Lower bound: the 4 PD tangents are actual solutions, independent mod gauge
+        (item 40), so d_J >= 4.
+    (b) If d_{J0}(p) = d_{J0+1}(p) = 4, the projection S_{J0+1}/G -> S_{J0}/G is onto between spaces of equal dimension,
+        hence injective: the gauge-reduced symbol vanishes at order J0+1, and by prolongation at every higher order.
+        So the gauge-invariant data is a finite-type system, a flat connection on a rank-4 bundle of J0-jets, and smooth
+        solutions are determined by the J0-jet at a point (ODE uniqueness along paths).
+    (c) Then a local solution h has J0-jet in G_{J0} + span(PD) at p, i.e. h - delta^*X - v vanishes mod gauge to order J0
+        at p, and so is pure gauge near p (Khavkine finite-type Killing operator: the gauge normal form is smooth).
+    Floating point gives d_3 = d_4 = 4 at the test point (items 39/40), so J0 = 3.
+    What is still owed: (i) EXACT ranks for dim pi_3(S_7), dim pi_4(S_7) and G_3, G_4 at a rational point (cos th = 3/5,
+        r = 3, Lam = 1/20, a = 3/5: all TPS coefficients are rational, so FLINT fmpz_mat ranks are exact);
+      (ii) every point, not only a generic one: the ranks are analytic in (r, th), so the bound holds off an analytic
+        subset Z; on Z the dimension can only jump UP.  Close it via (b) applied on the complement plus continuity of the
+        constant PD coefficients across Z, or by exact ranks over Q(r, cos th) symbolically.
