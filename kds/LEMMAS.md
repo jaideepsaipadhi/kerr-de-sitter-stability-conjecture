@@ -723,3 +723,13 @@ Finite-t cross-check: check(...) at t = 1e2..1e4, zf = 0.05, α ∈ {0.01, 0.1, 
 REMAINING for this corner: (i) sub-limits b -> inf, α -> inf of the outer problem (closed forms); (ii) the
   overlap/matching estimate (both zone limits agree on 1 ≪ z ≪ t); (iii) explicit O(1/t) error bounds so the corner
   is a theorem for t ≥ T0, with the bounded part t ≤ T0 going to the R3 certification.
+
+## 74. A -> inf corner, repaired multiplier: limits are explicit
+
+Sequences A = 10^2..10^10 (B at floor, and A,B -> inf together), t ∈ {1.05, 2, 10, 100}, zf ∈ {0.05, 0.5, 0.95}: all pass,
+all converge.  D-margin -> −0.2590 for EVERY (t, zf);  C-margin -> −0.379 (= (p−1)/(p+1), z -> 1 end) or a t-dependent
+value ≥ −0.119 at t = 100, zf = 0.95 (joins the t -> inf corner, item 73, where C -> −0.081).
+[P, leading order] Bulk D limit = −δ/(2+δ): as A -> inf off the seam, sLh ~ A and s|L'| ~ A dominate the μ-terms (O(1)·h);
+  with Lh = ψ|L'| and ψ -> 1+δ, D/nD -> (1−ψ)/(1+ψ) = −δ/(2+δ)  (= −0.2593 at δ = 0.7; = −1/3 at δ = 1, matching item 53).
+  Seam (ψ -> 0) is the A-independent rescaled layer problem, items 13–15 (leading order proved); numerically never the max.
+REMAINING: explicit O(A^{-1/2}) bounds for (i) the μ-term corrections in the bulk and (ii) the layer/bulk overlap.
