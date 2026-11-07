@@ -693,3 +693,16 @@ STATUS: item 4 = run_degcert.py + run_origin_cert.sh + exact μ⁶ divisibility.
     the corner analysis (item 5) now has a new corner A/B → ∞ (with t → ∞), where the inner-zone C limit is the explicit
     inequality (1+δ)(z−1) + p ≤ 2z − 1 (margin (1−δ)z − δ + 1 − p ... > 0 for z ≥ 1 when δ < 1, p < 1).
     Inner-zone D limit (t → ∞, z = O(1), A = ta, B = tb): leading ratio −(a/z² + X)/(3a/z² + X) ≤ −1/3, X = (a/z+b) p w > 0.
+
+## 72. ITEM 23 PROVED (analytic; replaces the 12-geometry numerics; independent of the valid_kds bug)
+
+C0 = 3 / (Λ (r1 − r0)(r2 − r3))  [identified; matches ncoef to 1e-8 on 14 geometries, ω-independent — step: inline check].
+With Δ_r = −(Λ/3) ∏(r − r_i):  Σ r_i = 0,  e2 = −3(1−α)/Λ,  t = (r1−r3)(r2−r0)/((r1−r0)(r2−r3)).
+Claim C0 > (2t−1)/(3(1−α))  ⟺  (3/2)Σ r_i² − 2(r1−r3)(r2−r0) + (r1−r0)(r2−r3) > 0, which after r3 = −(r0+r1+r2) is
+   f = 4r0² + 7r0r1 + r0r2 + 4r1² + r1r2 + r2²,  positive definite (leading minors 4, 15/4, 7/2).   ∎
+Sharp form:  C0 − 1.5 (2t−1)/(3(1−α)) = 3 (r0 + r1)² / (2 Λ (r1 − r0)(r2 − r3)) ≥ 0,
+   i.e. C0 / bound ≥ 3/2 EXACTLY, equality iff r0 = −r1 — explaining the numerical 1.50 → 1.5 (Kerr limit).
+Holds for every Λ > 0 with four real ordered roots: no subextremality restriction enters.
+Corollary: c1 = 1 + t + 3(1−α) C0 ≥ 4t − 1/2.  The c1 identity itself (item 22) is still numerical (1e-8 here,
+1e-13 before): closed form 3(1−α)C0 = 9(1−α)/(Λ(r1−r0)(r2−r3)); deriving it from the Heun accessory parameter is a
+bookkeeping exercise left open.
