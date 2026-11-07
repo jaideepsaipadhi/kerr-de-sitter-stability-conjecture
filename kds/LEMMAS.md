@@ -675,3 +675,21 @@ Exact progress (step59b; lower bound on mult_0 via T_K deficiency along EVERY li
    G1: 2, G2: 4 at all three points (K = 2, saturated).  C: 11 (K=2), 13 (K=3) at point 1; mod-p scan saturates at 15
    from K = 4, so exact K = 4 should give 15 + 2 + 4 = 21. Exact K = 4 for C is ~1 h per point -> run_origin_cert.sh.
 STATUS: item 4 = run_degcert.py + run_origin_cert.sh + exact μ⁶ divisibility.  No analytic large-m lemma required.
+
+## 71. CORRECTION to item 51 (R3 multiplier) + μ⁶ exact
+
+(a) μ⁶ | E_i EXACTLY at all three points (step60_mu6.py, forward T₂ in μ, interpolated over σ): all six from δ_C.
+    Item 4 now waits only on run_degcert.py + run_origin_cert.sh.
+(b) ITEM 51 WAS WRONG.  The fixed multiplier h = 2g(1 − e^{−2κs²}) + p(1−u)/x FAILS condition C for t large and A ≫ B
+    (A/B ≥ 100 at t ≥ 100: margin +0.005 … +0.08).  Never sampled before (corner sequences had A ≈ B).
+    Mechanism (zone 1 ≪ z ≪ t, ψ = 1+δ, g ≈ 1/z):  C needs z(z−1)h ≤ 2z − 1, i.e. (1+δ)(z−1) + p·z(z−1)w(z) ≤ 2z − 1.
+    With w = (1−u)/x this needs p z ≤ 1 (fails for z > 1/p); with δ = 1 the g-term alone saturates up to O(1/z).
+    REPAIR:  h = (1+δ) g (1 − e^{−2κs²}) + p (1−u)/(x z),  δ = 0.7  (same p, β = 2).
+      Near z = 1 unchanged (exact (p−1)/(p+1) C-margin kept); large-z C condition becomes (1+δ)(z−1) + p ≤ 2z−1, margin ~ (1−δ)z.
+    step61_retune.py, 1200 cases (t ∈ [1.01, 1e5], zf ∈ [0.05, 0.95], B/floor ∈ {1, 10, 1e3}, A/B ∈ [0.01, 1e6]): no failures;
+      worst C −0.082 (t = 1e5, A/B = 1e6), worst D −0.033 (t = 1.01, zf = 0.05: the known degenerate zf → 0 corner, margin ~ −0.65 zf,
+      item 33 rescaling).  δ = 0.5: C −0.14 but D −0.026; δ = 0.85: C −0.040.
+    CONSEQUENCES: items 51/53 margins and the parked R3 tile certification must be redone with the repaired multiplier;
+    the corner analysis (item 5) now has a new corner A/B → ∞ (with t → ∞), where the inner-zone C limit is the explicit
+    inequality (1+δ)(z−1) + p ≤ 2z − 1 (margin (1−δ)z − δ + 1 − p ... > 0 for z ≥ 1 when δ < 1, p < 1).
+    Inner-zone D limit (t → ∞, z = O(1), A = ta, B = tb): leading ratio −(a/z² + X)/(3a/z² + X) ≤ −1/3, X = (a/z+b) p w > 0.

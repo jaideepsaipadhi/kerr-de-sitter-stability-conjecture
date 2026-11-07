@@ -14,7 +14,7 @@ We scan (t, z0, A, B) over wide ranges, including values far below anything phys
 import numpy as np
 
 
-def check(t, z0, A, B, delta, p, beta):
+def check(t, z0, A, B, delta, p, beta, zdecay=False):
     mu = lambda z: z*(z - 1)*(t - z); mup = lambda z: -3*z**2 + 2*(1 + t)*z - t
     L = lambda z: A/z + B - 3*z; Lp = lambda z: -A/z**2 - 3; Lpp = lambda z: 2*A/z**3
     x0 = z0 - 1
@@ -28,7 +28,11 @@ def check(t, z0, A, B, delta, p, beta):
     g = -Lp(z)/L(z); gp = -(Lpp(z)*L(z) - Lp(z)**2)/L(z)**2
     E = np.exp(-beta*kap*s**2); psi = (1 + delta)*(1 - E); psip = -(1 + delta)*E*2*beta*kap*s  # d/dz
     u = (z - 1)/x0
-    h = g*psi + p*(1 - u)/(z - 1); hp = gp*psi + g*psip - p/(z - 1)**2
+    if zdecay:
+        q = (z - 1)*z
+        h = g*psi + p*(1 - u)/q; hp = gp*psi + g*psip + p*(-(1/x0)/q - (1 - u)*(2*z - 1)/q**2)
+    else:
+        h = g*psi + p*(1 - u)/(z - 1); hp = gp*psi + g*psip - p/(z - 1)**2
     muv, mupv = mu(z), mup(z)
     H = 2*muv + s*mupv
     Cc = s*h*muv - H                 # need <= 0
