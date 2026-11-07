@@ -81,3 +81,25 @@ The characteristic exponent −(c_s + 2iσ) is non-real, so the non-integer cond
 ⇒ The mode vanishes near H⁺. Step D (elliptic unique continuation, already done) then gives vanishing on the whole exterior.
 
 **To verify:** (i) the precise Fuchsian normal form for the Giorgi system after eliminating X, including how the coupling enters at each order in x; (ii) that the hypotheses of the Tahara/Baouendi–Goulaouic theorem match; (iii) at ω = mΩ_H we have σ = 0 and the exponents collide, consistent with excluding that frequency (C4).
+
+## C3 refined: the Fuchsian framework, and the one condition left to check
+
+**Setting.** The modes are separated only in t and φ. In Kerr–Newman the θ-dependence does not separate for the coupled system, so the problem is a PDE in (x, θ) and not an ODE. That is exactly the setting of Baouendi–Goulaouic (BG): the variable t of their papers is our x, and their y is our θ.
+
+**Weight check, single component.** For a single component, the radial part is Δ^{-s}∂_r(Δ^{s+1}∂_r) with Δ ≈ 2κ' x, where κ' = r₊ − r₋ > 0 (subextremal). Multiplying by x gives
+ x²∂_x² + x·(a₀ + iσ-terms)∂_x + b₀ + x·L_θ + O(x²),
+where L_θ is the angular elliptic operator. In BG's normal form (order m = 2, weight k = 2), a term ∂_θ^α ∂_x^j with j < 2 must carry a coefficient that vanishes at x = 0. Here the angular term has the factor x, so the condition holds. The indicial polynomial is ρ(ρ−1) + a₀ρ + b₀. Its roots are {0, −(c_s + 2iσ)} after the shift u_s = x^{c_s+iσ}ψ_s (C2).
+
+**BG uniqueness (CPAM 1973, Thm. 3).** The coefficients must be real-analytic in θ and C^∞ in x; Kerr–Newman supplies this. Suppose the characteristic exponents other than the prescribed ones are not in ℕ. Then a C^∞ solution whose traces at the prescribed exponents vanish is identically zero near x = 0. The free trace u_s(0, θ) is a function of θ, and C1/C2 kill it. The exponent −(c_s + 2iσ) is not real, so it never lies in ℕ. ⇒ **Single component: done**, modulo citing the exact statement.
+
+**The coupled system: what remains.** Giorgi's system couples A (c = 2) to F and B (c = 1) through first-order terms. After the shifts u_s, a coupling term P_{AF} u_F appears in the A-equation with a factor x^{c_F − c_A} = x^{−1}.
+- If the coupling coefficient vanishes at H⁺ to order ≥ 1, the system is Fuchsian as it stands (Tahara 1979 applies), and C3 closes.
+- If it doesn't, rescale to ũ_F = x·u_F. That restores the Fuchsian form, but shifts F's regular exponent to 1. The trace of ũ_F at exponent 1 is then the free datum, and it is again ∝ δφ_{0,H} (C2). The non-integer condition is unaffected.
+
+Either way the argument closes **provided** one condition holds:
+
+ **(F) Triangularity.** The leading-order (x⁰) part of the rescaled coupling matrix must be block-triangular in (A | F, B). This prevents an exponent from one block landing at an integer offset from the other block's prescribed exponent with a nonzero resonance coefficient. If it fails, log terms appear. They still carry vanishing coefficients (C2), so uniqueness survives, but Tahara's theorem would then have to be applied in its resonant form.
+
+So (F) is the single remaining check for C3. It requires the explicit near-H⁺ expansion of Giorgi's coupling coefficients, in particular eqs. (5.x)–(6.x) of arXiv:2002.07228 in the ingoing frame. That is a symbolic computation: about 1 script, checkable with sympy once the coefficients are transcribed exactly. I am not writing those coefficients from memory, since I made that mistake before.
+
+**Status of the bridge after this:** C2 identifications (normalisation check), C3-(F), C4 (ω = mΩ_H), R1–R3. Everything else in Part 2 is reduced to cited theorems.
