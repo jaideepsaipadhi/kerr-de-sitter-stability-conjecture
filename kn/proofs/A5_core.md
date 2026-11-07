@@ -51,3 +51,33 @@ Because of the dimension count, a short targeted computation can tell whether we
 - track the **least-damped** m = 1, 2 coupled modes along a coarse (a, Q) grid near the extremal boundary, where superradiance is strongest;
 - look for Im ω changing sign.
 DGS covered much of this already. The value of rerunning it is to target the near-extremal corner, where our own near-extremal analysis found coupled transitions at a* ≈ 0.36–0.5.
+
+---
+## Test of idea (i): local currents, in the simplest model (Kerr, s = 0, separated)
+
+**Model.** u'' + V(r*)u = 0, with real V, V → ω² as r* → ∞ and V → k² as r* → −∞, where k = ω − mΩ_H < 0 in the band.
+An outgoing mode has u ~ A_I e^{iωr*} at infinity and u ~ A_H e^{−ikr*} at the horizon.
+
+**General local quadratic current.**
+J = 𝒜|u'|² + ℬ Re(ūu') + 𝒞|u|² + 𝒟 Im(ūu').
+Using the ODE, J' = (𝒜' + ℬ)|u'|² + (ℬ' − 2𝒜V + 2𝒞)Re(ūu') + (𝒞' − ℬV)|u|² + 𝒟' Im(ūu').
+- J' ≥ 0 for all u forces 𝒟' = 0. The 𝒟-part is then just the conserved Wronskian, i.e. the flux identity ω|A_I|² = |k||A_H|², and contributes nothing new.
+- The real part 𝒬 = 𝒜|u'|² + ℬRe(ūu') + 𝒞|u|² must have a PSD derivative. Its endpoint values on pure exponentials are c_I|A_I|² and c_H|A_H|², with c_I = 𝒜_∞ω² + 𝒞_∞ and c_H = 𝒜_H k² + 𝒞_H.
+
+**Condition for a contradiction.** 𝒬(∞) ≥ 𝒬(H) together with the flux ratio |A_I|²/|A_H|² = |k|/ω gives a contradiction iff
+ **c_I |k| < c_H ω.**
+In the simplest admissible family (ℬ = 0, 𝒞 = 𝒜V, needing 𝒜' ≥ 0 and (𝒜V)' ≥ 0), this becomes 𝒜_∞ ω < 𝒜_H |k| with 𝒜 nondecreasing. That is possible only if ω < |k|, i.e. **ω < mΩ_H/2, the lower half of the band**, and only if V stays positive wherever 𝒜 > 0. The Kerr potential is negative in a barrier region, so this fails. With ℬ ≠ 0 the feasibility question becomes a Riccati / Sturm-comparison problem.
+
+**Verdict on (i).**
+- A local current proving A5 would, already for Kerr s = 0, give an elementary proof of Kerr mode stability on the real axis.
+- The decay literature does not contain one. Dafermos–Rodnianski–Shlapentokh-Rothman use exactly this class of currents (y|u'|², h-currents) and still had to call Whiting for bounded superradiant frequencies.
+- Moreover, for *general* real potentials with these asymptotics, real superradiant modes do exist (1-D scattering with a negative-energy horizon end). So any proof must use fine structure of V, not just the pointwise sign conditions available to local currents.
+
+⇒ **Local currents: very likely dead.** A proof of A5 must be **nonlocal** in r, as Whiting's is, or must avoid working at fixed ω altogether.
+
+## Where this leaves A5
+
+The realistic options are:
+- **(N) Numerics, to decide truth.** By the dimension count, a crossing curve, if it exists, is visible with a targeted sweep near the extremal corner: least-damped m = 1, 2 coupled modes, looking for a sign change of Im ω. The validated solver already exists.
+- **(W) A nonlocal transform for the coupled system.** Find an integral transform in (t, r), at the PDE level in (r, θ), that maps Giorgi's (p, q_F) system to one with no superradiant sign. Whiting's kernel is explicit for Kerr. The first concrete step is to write Whiting's transform in a form that does not separate θ (an operator-valued kernel) and see where the KN coupling breaks it.
+- **(P) Accept A5 as a hypothesis**, numerically supported, and finish the rest of the programme conditionally. That would give "KN is nonlinearly stable for all subextremal parameters, provided mode stability holds". This is the same logical shape as Hintz's Kerr theorem, where mode stability is a black-box input, except that for KN the input is unproven.
