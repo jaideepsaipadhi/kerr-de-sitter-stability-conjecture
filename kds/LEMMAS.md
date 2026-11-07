@@ -427,8 +427,19 @@ Outstanding, all finite or check-type:
       Bulk: s delta |L'| >= (1/2)(mu'G + mu G' + mu G^2), where the right side is scale-free.
       C: Lemma G with delta capped by min G z/(s mu).
 
-52. [N -> cert pending] R3 interval certification with the FIXED multiplier (cert/r3cert.py, cert/r3core.py).
-    Boxes inside R1/R2 are skipped as analytically covered.  The formerly hardest tile (t in [1.2,1.6], zf in [0.7,0.95],
-    A in [0.01,1], Bf in [1,3]; 717 boxes uncertified before) now certifies completely: 116 boxes, 10 s.
-    Full core run (192 tiles, t <= 100, A <= 1e4, B <= 1e3 floor) deferred, at the user's request.
-    Run: cd kds/cert && python3 r3core.py 240   (2 cores: hours; it parallelises across cores).
+53. [N + partial P] CORNERS with the FIXED R3 multiplier (step51_corners_fixed.py).  Every corner sequence stays
+    negative and converges: B->inf -0.379, A,B->inf -0.335, A->inf -0.334, t->inf -0.284, zf->0 (inside R3, which forces
+    A ~ x0^-2) -0.379, zf->1 -0.372, t->1 -0.379.
+    [P] The recurring -0.3793 is exact: the C condition at z -> 1, where h ~ p/x and p = 0.45, gives (p-1)/(p+1) = -0.55/1.45.
+    [P] B -> inf: g -> 0, so h -> p(1-u)/x and D's right side s L h -> +inf off the seam.  At the seam the left side tends to
+        -(1/2) mu(z0) p/x0^2 < 0, uniformly in B.  C is B-independent in the limit and is covered by Lemma G (p <= 0.45 < 1).
+    TODO (analytic): write the A -> inf / t -> inf limit problems.  For A -> inf this is the proved large-m leading-order
+        lemma, plus O(A^{-1/2}) layer corrections.
+
+54. AUDIT NOTES (hostile pass, short).  Dependencies to re-verify before believing the whole:
+    - item 23 (two-current window argument) was validated numerically only under the OLD valid_kds region; rerun on the full
+      subextremal region (steps 26/28 layer sweeps) to be safe;
+    - item 17 transform injectivity: write the Riemann-Liouville / Titchmarsh argument out in full;
+    - items 39-40: floating-point ranks only; exact certification plus Khavkine prolongation order still OPEN;
+    - item 42: HPV25's exact hypothesis is unverified (paper not public);
+    - the cosmological-side lemma (item 19) and the C0 floor (item 36) are analytic: OK.
