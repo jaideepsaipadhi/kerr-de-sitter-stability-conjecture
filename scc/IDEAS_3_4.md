@@ -116,3 +116,42 @@ Dafermos–Luk announce a third paper, *[33] in their numbering*: global C⁰-st
 - (ii) extending Luk–Sbierski's nonlinear approximation (dynamical ψ₀ ≈ linear ψ₀) along each CH⁺ component **up to the bifurcation sphere**, where DL's corner estimates replace the near-i⁺ smallness. This is Idea 3.1, with the doubly renormalised system (K, σ̌, β, β̲), which DL already use (§1.5.3).
 
 **Next check:** whether DL III ([33]) is available.
+
+---
+# Working F-a: what goes through and where it stops
+
+**Setup.** M is the Dafermos–Luk (DL) interior near CH⁺, with regular DL coordinates (u, U, θ), CH⁺ = {U = 0}, and frame vector V := ∂_U (null, tangent to the outgoing generators). DL give: the metric is C⁰ up to U = 0, Ω is continuous and nonzero, and the volume density in (U, u, θ) is continuous and positive. Luk–Sbierski / Gurriaran give: the shear χ̂ of V is ∉ L²(dU du dθ), with χ̂ ~ U⁻¹|log U|^{−1−2δ}, which is L¹ but not L².
+
+Suppose (M̃, g̃) is an extension, x a chart near p ∈ ι(CH⁺), g̃ ∈ C⁰, Γ̃ ∈ L²_loc. Let Φ: (U, u, θ) ↦ x be the transition map. It is smooth for U < 0 and continuous up to U = 0.
+
+## Lemma F1 (proved in sketch): in any such extension, the generator field and the Jacobi fields are bounded, uniformly up to the Cauchy horizon, along a.e. generator
+
+1. **Fubini is available.** Both the DL volume density (in (U, u, θ)) and the chart density (in x) are continuous and positive, so Φ pushes Lebesgue measure to a measure with bounded density. Hence ∫∫ (∫_{U₀}^0 |Γ̃(Φ(U, u, θ))|² dU) du dθ ≲ ‖Γ̃‖²_{L²}. So for **a.e.** generator, Γ̃ ∘ Φ ∈ L²(dU) ⊂ L¹(dU) on [U₀, 0).
+2. **Bounded tangents.** Fix a chart-smooth timelike field T and let F := −g̃(V, T) > 0. The geodesic equation (with V affine up to the continuous lapse) gives dV^a/dU = −Γ̃^a_{bc}V^bV^c + (continuous)·V. Hence |d(1/F)/dU| ≲ |Γ̃∘Φ| + 1. Choose U₀ close to 0 so that the L¹ tail of Γ̃∘Φ is small. Then F is bounded above and below on [U₀, 0). Since g̃ is C⁰, null vectors with F ~ 1 have bounded chart components, so V^a is **bounded, and bounded away from 0, up to CH⁺**.
+3. **Bounded Jacobi fields.** Let Y := ∂_θΦ. Then dY/dU = ∂_θ V = χ(Y) + Γ̃(Y, V)-terms. Here χ = χ̂ + ½trχ is **L¹ in U** (the key fact: a weak null singularity is L¹ but not L² in the shear). Gronwall in both directions gives **Y bounded above and below up to CH⁺**.
+
+⇒ In any C⁰ ∩ (Γ̃ ∈ L²) extension, Φ is **bi-Lipschitz up to CH⁺ along a.e. generator**: ∂Φ ∈ L∞ with bounded inverse. *(This is the Christoffel-L² analogue of the step that Sbierski needs geodesics in a Lipschitz extension for. Here Fubini plus the L¹ (not L²) integrability of the shear replaces that.)*
+
+## Reduction: what an extension would need to do
+
+Christoffel symbols transform as Γ_DL = (∂Φ)⁻¹[∂²Φ + Γ̃(∂Φ, ∂Φ)]. With ∂Φ bounded (Lemma F1) and Γ̃ ∈ L²:
+
+ **Γ_DL ∈ (∂Φ)⁻¹∂²Φ + L²**, i.e. **the singular part of Γ_DL (the shear χ̂ ~ U⁻¹log^{−1−2δ}) must be pure gauge modulo L².**
+
+A pure-gauge connection (∂Φ)⁻¹∂²Φ is **flat**. The singular shear, on the other hand, carries curvature: α = ∂_Uχ̂ + … is a tensor, and Luk–Sbierski give a lower bound on it. So the extension exists only if the singular curvature α can be produced by the L² remainder, i.e. **α ∈ ∂(L²) + L²·L² in DL coordinates, tested against the bounded (but only W^{1,1}) frame fields V and Y.**
+
+## Where it stops: a precise remaining question
+
+The natural test is to pair α(Y, Y) with a cutoff φ and integrate by parts. This produces terms ∫ Γ̃ ∂(φ V Y V Y). Here ∂Y ∈ L¹ \ L² (Lemma F1 gives only boundedness of Y), so Γ̃ ∈ L² times ∂Y ∈ L¹ is **not** controlled. Equivalently, the H⁻¹ + L¹ test of my previous note fails at the **multiplier step**: L∞ ∩ W^{1,1} functions do not multiply H⁻¹.
+
+> **(Q) Compensated-compactness question.** Let V and Y be bounded vector fields with ∂_U Y = χ̂ Y + (L²), where χ̂ ≥ c U⁻¹|log U|^{−1−2δ} on a set of positive measure (in an ℓ = 2 averaged sense). Is
+>  sup_φ |∫ α(Y, Y) φ| / (‖Γ̃‖_{L²}‖∂φ‖ + …) = ∞
+> forced?
+
+There is reason to expect structure. The bad product Γ̃·∂_U Y has ∂_U Y **along the generator**, while Γ̃'s relevant components are tied to the null structure. That suggests a **div–curl / null-form** cancellation: the bad derivative falls in the null direction, where Γ̃'s component V-V-contracted is better, being ∂F-controlled by step 2. This is the next thing to test.
+
+## Status
+
+- **Lemma F1 is new and robust.** It says Christoffel-L² extensions are automatically bi-Lipschitz on the DL structure, a.e. along generators.
+- F-a now hinges on one bilinear estimate, **(Q)**: the "pure gauge modulo L²" obstruction.
+- If (Q) fails, the singular shear could be gauged away in L². That would mean **Christodoulou's formulation is false near Kerr**, an equally important outcome. So (Q) is the decisive question either way.
