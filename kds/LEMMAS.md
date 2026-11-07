@@ -552,3 +552,6 @@ Outstanding, all finite or check-type:
       - The sigma = 0 statement must match their zero-energy description: it depends on resolving item 61(ii).
     Best guess: a ~70% chance the ungauged UEMS form is exactly what is needed, ~30% that a gauge-fixed or 1-form
     supplement is required.
+    61(ii) diagnostic, first step: h = dg/dM satisfies ALL 120 exact sigma = 0 constraints (step52b_check_dM.py), so the
+    sigma = 0 constraint matrix is consistent.  The anomaly therefore lies in the gauge side or the counting, not in wrong
+    equations.  Next: exact 4-D count at the rational point (decides between (A) and (B)), then a basis of the J=1 excess.
