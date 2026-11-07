@@ -34,3 +34,21 @@ Real ω ∉ {0, mΩ_H}. Let the mode have all gauge invariants' radiation fields
 - **(C2)** The precise relation between the horizon flux data and the leading horizon coefficients of (A, F, B, X), plus the non-resonance of the indicial roots.
 - **(C3)** Check the hypotheses of Baouendi–Goulaouic for the mode-reduced Giorgi system near r₊ (Fuchsian structure and indicial-root conditions). Alternatively, prove a direct Carleman estimate near the regular singular point; that is a much easier setting than infinity, because it is local and has a fixed singular structure.
 - **(C4)** ω = mΩ_H is excluded here: the horizon flux factor vanishes. That frequency is covered by the threshold-strip and threshold analysis instead.
+
+## C1: canonical-energy flux (status after literature check)
+
+**Sources:**
+- Hollands–Wald, CMP 321 (2013): canonical energy E relative to the horizon Killing field K = T + Ω_H Φ.
+- Keir, arXiv:1306.6087: extension to theories with p-form gauge fields, which includes Einstein–Maxwell. Property 5 there: the fluxes of E across I⁺ and H⁺ are non-negative "for a certain class of perturbations".
+- Sorce–Wald (PRD 96, 104014): canonical energy for Einstein–Maxwell on Kerr–Newman.
+- Note: the *manifest* positivity of BOTH fluxes is stated for **axisymmetric** perturbations, or for static backgrounds (Hollands–Wald; see also Holzegel et al., arXiv:1602.04524).
+
+**What we need is weaker, and it holds for m ≠ 0 as well:**
+- **Horizon flux.** The K-canonical-energy flux through H⁺ is a positive-definite quadratic form in L_K of the horizon shear and of the horizon Maxwell flux. This is the Hollands–Wald horizon flux; it does not need axisymmetry. For a mode, L_K = −i(ω − mΩ_H), so the horizon flux is (ω − mΩ_H)²·(positive-definite form in δσ_H, δφ_{0,H}).
+- **Flux through I⁺.** It is quadratic in the radiation data (δσ⁰ and δφ₂⁰), which vanish by Bridge Part 1. So it is zero, whatever its sign would otherwise be.
+- **Balance.** For a real-ω mode, Re h is periodic in t, so E(Σ_t) is periodic. Averaging the flux balance over one period: total horizon flux = −(total I⁺ flux) = 0. Hence δσ_H = δφ_{0,H} = 0 whenever ω ≠ mΩ_H.
+
+**Remaining checks for C1:**
+- (i) Hollands–Wald impose gauge conditions near H⁺ and I⁺. The mode must be put in such a gauge with regular gauge vectors.
+- (ii) The Maxwell part of the horizon flux must be confirmed positive-definite: use Keir's or Sorce–Wald's form.
+- (iii) Bookkeeping for non-axisymmetric perturbations, where E uses K and not T: the I⁺ flux of the K-current involves both energy and angular-momentum flux. Both are quadratic in the radiation data, so both vanish here.
