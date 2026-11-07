@@ -104,3 +104,50 @@ Equivalently, **the optical function u, which is Lipschitz in the extension beca
 Use Brinkmann-type coordinates and a **null rotation about V whose parameter oscillates in the screen directions at a U-dependent frequency.** Null rotations are the only part of O(1,3) that Lemma F1 does not control. Then check whether curl(ΛJ₀) = 0 together with Γ̃ ∈ L² can coexist with screen derivatives of V^a ∉ L².
 - **If yes:** this is a counterexample model, and Christodoulou's formulation is in danger.
 - **If the curl constraint forbids it:** that computation is the rigidity proof, and it should lift.
+
+---
+# The null-rotation test turns into a proof mechanism: the KORN ARGUMENT
+
+## Idea
+
+Let ω be a covector field on the extension chart. **Korn's inequality** is a statement about the **flat** symmetric gradient sym∂ω = ½(∂_a ω_b + ∂_b ω_a) in chart coordinates. It does not involve the metric g̃ at all, so it is **elliptic whatever the Lorentzian signature**. Specifically (Nečas–Lions lemma / second Korn inequality on a bounded Lipschitz domain D ⊂ ℝ⁴): if ω ∈ L²(D) and sym∂ω ∈ L²(D), then ∂ω ∈ L²(D).
+
+**The point:** it gives a way to control the antisymmetric part of a derivative using only the symmetric part. The singular shear of a Cauchy horizon lives in an antisymmetric slot of a suitable field. That is the rigidity statement §1 asked for, obtained from the flat chart structure rather than from the Lorentz group, which is not rigid.
+
+## The field: the Jacobi (Lie-dragged) screen field Y
+
+Take Y = ∂_θ in Dafermos–Luk (DL) coordinates, so [V, Y] = 0 and ∇_V Y = ∇_Y V = χ(Y). Compute ∇Y♭ in the DL null frame (V, e₃, e_A):
+- (V, e_A) slot: (∇_V Y)(e_A) = χ(Y, e_A).
+- (e_A, V) slot: (∇_{e_A} Y)(V) = −g(Y, ∇_{e_A}V) = −χ(e_A, Y).
+- So the **symmetric part vanishes in the (V, e_A) slot**, since χ is symmetric because V is hypersurface-orthogonal. The **antisymmetric part equals χ(Y, ·)**, which is singular, ∉ L².
+- The other slots of sym∇Y♭:
+ - (V, V): g(∇_V Y, V) = 0.
+ - Screen–screen: these are angular derivatives of γ_AB(u, U, θ), which are integrals in U of ∂_θχ ~ U⁻¹log^{−1−2δ}, hence **bounded**.
+ - Slots involving e₃: these involve χ̲, η and ζ, which are **regular at CH⁺_A** away from the bifurcation corner, at least in L². **Check against the DL norms.**
+
+⇒ **sym∇Y♭ ∈ L², but the antisymmetric part of ∇Y♭ ∉ L².**
+
+## The contradiction
+
+Suppose an extension chart has g̃ ∈ C⁰ and Γ̃ ∈ L². Let ω := chart components of Y♭. Then
+ sym∂ω = sym∇̃ω + Γ̃·ω.
+The first term is the tensor sym∇Y♭ ∈ L² transported by the frame change. The second is L²·bounded. Korn gives ∂ω ∈ L², hence ∇̃ω = ∂ω − Γ̃ω ∈ L². Its antisymmetric part is χ(Y, ·) ∈ L², which **contradicts χ̂ ∉ L²**. ∎ (modulo the gap below)
+
+## Check in the plane-wave model
+
+Here Y can be taken to be the Killing field ξ = ∂_x, for which sym∇ξ♭ = 0 **exactly**, while ∇ξ♭ ∝ f′e^{2f}(dU ∧ dx). Korn then forces f′ ∈ L², a contradiction. This **covers all charts, not just symmetry-adapted ones**, subject to the same gap.
+
+## THE GAP (now precise and quantitative)
+
+Korn needs **ω ∈ L²** and the frame change to map L² tensors to L² chart components. Both follow if **Y and V have chart components in L∞** (bounded above, and bounded below where inverses are needed). Lemma F1 gives this only **along almost every generator**, with constants exp(C ∫|Γ̃∘Φ|dU) that are **not uniform** across generators. Γ̃ ∈ L² is supercritical in 4D, critical being L⁴, so naive bootstrapping (Korn + Sobolev) loses integrability at each step.
+
+**Ways to close it:**
+1. **Smallness + exceptional set.** On a small enough neighbourhood, ∫|Γ̃∘Φ| dU ≤ ε except on a set E of generators whose measure → 0. Off E the bounds are uniform. Use a **Korn inequality with a removed set**: on John domains with holes, or in a weighted / capacity form. Here the work is to show that E cannot carry the whole non-L² shear. That should follow because the shear lower bound is **ℓ = 2-averaged over the sphere**, so it lives on a set of positive measure that is not concentrated on small sets.
+2. **Maximal-function control.** sup over U of ∫|Γ̃∘Φ| is dominated by a strong maximal function of |Γ̃|², whose weak-L¹ bound might suffice together with the exponential only on the exceptional set.
+3. **Linear (not exponential) bounds.** Use the null structure: d(1/F)/dU = −(Γ̃VV-components), whose integral is **linear** in Γ̃. So F's lower bound degrades only linearly, which is fine. The upper bound of F is the only exponential place, and it can be handled by choosing the normalising field T adapted to V.
+
+## Status
+
+- **(Q) has a candidate proof via Korn's inequality, which is new to this problem as far as I know.** The rigidity that the Lorentz group lacks is supplied by the flat chart structure.
+- It is complete in the model and in the DL setting **modulo**: (a) the uniform-boundedness gap above, and (b) checking that the e₃-slots of sym∇Y♭ are L² in the DL norms.
+- If (a) and (b) close, then **Christodoulou's formulation holds near i⁺ wherever Luk–Sbierski's lower bound gives χ̂ ∉ L².**
