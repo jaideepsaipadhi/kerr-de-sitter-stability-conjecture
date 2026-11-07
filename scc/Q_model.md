@@ -48,3 +48,59 @@ is **continuous**, and moreover H¹ along generators. Equivalently, 𝒦 is dete
 
 - (Q) holds in the plane-wave model for symmetry-adapted charts. The mechanism is identified: the gauge must be continuous because it enters the metric undifferentiated.
 - Next: remove the symmetry-adapted assumption in the model, i.e. arbitrary charts on the plane wave, using Lemma F1 plus Heisenberg-group translations to average. Then transfer to Dafermos–Luk via (Q′).
+
+---
+# Removing the symmetry assumption: what happens for general charts
+
+## 1. Why the symmetric argument does not extend directly
+
+The symmetric proof used linearity, X = Ẽ(U)x, which made the gauge term K = Ẽ'Ẽ⁻¹ appear **undifferentiated** in g_UX, as K·X. For a general chart Φ⁻¹: (U, u, X) ↦ (U, u, x), that link is gone.
+
+**The genuine gauge freedom.** Continuity of g̃ = (∂Φ⁻¹)ᵀ g (∂Φ⁻¹) only fixes the Jacobian J = ∂Φ⁻¹ **up to a pointwise Lorentz transformation**: J = Λ J₀ with Λ(x) ∈ O(g) measurable. Then
+- Γ̃ ∈ L² constrains Λ⁻¹∂Λ, up to compensation;
+- J must still be a Jacobian, so curl(Λ J₀) = 0.
+
+**So (Q) for general charts is a Lorentzian rigidity problem:** can a Lorentz-valued field Λ, subject to curl(ΛJ₀) = 0 and Λ⁻¹∂Λ ∈ L² modulo compensation, produce the non-L² rotation needed to cancel χ̂?
+- The Riemannian analogue is **rigid** (Reshetnyak; Friesecke–James–Müller).
+- The Lorentzian one is **not rigid in general**, because O(1,3) is non-compact and the problem is hyperbolic.
+
+This is a real obstruction to a cheap proof, and a real possibility for a counterexample.
+
+## 2. A frame-invariant reduction (proved)
+
+χ̂ is a tensor on the screen bundle V^⊥/V.
+- Under the residual frame freedom it changes only by:
+ - null rotations about V: χ̂ is invariant;
+ - screen rotations: |χ̂| is invariant;
+ - boosts: χ̂ is rescaled by a factor that Lemma F1 bounds above and below.
+- So |χ̂|² is invariant up to bounded factors.
+- In the chart, χ̂(e_A, e_B) = g̃(e_A(V^a)∂_a, e_B) + Γ̃(e_A, V, e_B), with e_A and V bounded (Lemma F1).
+
+Hence
+
+ **(Q) ⇔ the chart components V^a of the generator field have L² derivatives in the screen directions** (modulo L²).
+
+Equivalently, **the optical function u, which is Lipschitz in the extension because ∇u = −V is bounded, must lie in H² in screen directions.** Its Hessian is ∇²u = ∂²u − Γ̃∂u, and its screen part is −χ.
+
+## 3. Candidate route via semiconvexity, and why it is circular as it stands
+
+- In smooth spacetimes, achronal boundaries such as ∂J⁺(S) have null second fundamental form bounded **above**: light cones of points slightly to the past on a generator touch from inside.
+- Our singular shear is traceless-dominated, so one eigenvalue of χ → **+∞**. An upper bound would therefore give a contradiction.
+- **But** the comparison cone's own χ is governed by the same Riccati equation along the same generator, with forcing α, so the comparison constant degenerates exactly as α blows up.
+- Without an a-priori constraint on α from Γ̃ ∈ L², this is circular.
+- **What would break the circularity:** a low-regularity version of the comparison. Light cones of a C⁰ metric with Γ̃ ∈ L² should have screen second fundamental forms in L² near their vertex, averaged over cones (Fubini over vertices). If true, comparing the averaged cone bound with the eigenvalue → +∞ of N_u's χ gives (Q). **This is the cleanest candidate new idea, and it is chart-free.**
+
+## 4. Honest status
+
+| claim | status |
+|---|---|
+| (Q) in the plane-wave model, symmetry-adapted charts | **proved** |
+| reduction of (Q) to screen-H² regularity of the optical function in an arbitrary extension | **proved** (sketch) |
+| general (Q) | **open**: equivalent to a Lorentzian rigidity / null-hypersurface regularity statement |
+| the averaged light-cone L² lemma (§3) | **conjectural**: proposed new idea |
+
+## 5. Next decisive test: try to build a counterexample in the plane wave
+
+Use Brinkmann-type coordinates and a **null rotation about V whose parameter oscillates in the screen directions at a U-dependent frequency.** Null rotations are the only part of O(1,3) that Lemma F1 does not control. Then check whether curl(ΛJ₀) = 0 together with Γ̃ ∈ L² can coexist with screen derivatives of V^a ∉ L².
+- **If yes:** this is a counterexample model, and Christodoulou's formulation is in danger.
+- **If the curl constraint forbids it:** that computation is the rigidity proof, and it should lift.
