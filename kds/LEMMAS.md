@@ -706,3 +706,20 @@ Holds for every Λ > 0 with four real ordered roots: no subextremality restricti
 Corollary: c1 = 1 + t + 3(1−α) C0 ≥ 4t − 1/2.  The c1 identity itself (item 22) is still numerical (1e-8 here,
 1e-13 before): closed form 3(1−α)C0 = 9(1−α)/(Λ(r1−r0)(r2−r3)); deriving it from the Heun accessory parameter is a
 bookkeeping exercise left open.
+
+## 73. t -> inf corner for the REPAIRED multiplier (δ = 0.7): inner + outer limit problems
+
+Scaling A = t²α (α ≥ 0 covers both A ~ tB and A/B -> inf), B = t b (b ≥ 5.5), zf -> ζ0.
+OUTER zone z = tζ (step62_outer_limit.py): every term of C is Θ(t³), every term of D is Θ(t); the p-term is O(t⁻²)
+  and drops.  With Λ = α/ζ + b − 3ζ, g∞ = (α/ζ² + 3)/Λ, ψ = 1.7(1 − e^{−2K}), K = Λ(ζ0)(ζ0−ζ)²/(ζ0²(1−ζ0)), G = ψ g∞,
+  m = ζ²(1−ζ):
+     C∞ = (ζ0−ζ) G m − 2m − (ζ0−ζ) m',
+     D∞ = ½(m' G + m(G' + G²)) + (ζ0−ζ)(α/ζ² + 3)(1 − ψ).
+  Normalised maxima over ζ0 ∈ [0.02, 0.999], b ∈ [5.5, 1e5], α ∈ [0, 1e5], all ζ:  C ≤ −0.081, D ≤ −0.196.
+  Worst C at ζ -> 0, α large = the inner/outer overlap, consistent with the inner analysis.
+  (A first run gave D = +0.316: sign error in g∞' — caught because the finite-t check passed there; fixed.)
+INNER zone z = O(1) (item 71): D ratio ≤ −1/3 at leading order; C ⇔ 1.7(z−1)·(gz) + p ≤ 2z − 1, margin ≥ 0.3(z−1) + (1−p).
+Finite-t cross-check: check(...) at t = 1e2..1e4, zf = 0.05, α ∈ {0.01, 0.1, 1}: all pass, D ≤ −0.156.
+REMAINING for this corner: (i) sub-limits b -> inf, α -> inf of the outer problem (closed forms); (ii) the
+  overlap/matching estimate (both zone limits agree on 1 ≪ z ≪ t); (iii) explicit O(1/t) error bounds so the corner
+  is a theorem for t ≥ T0, with the bounded part t ≤ T0 going to the R3 certification.
