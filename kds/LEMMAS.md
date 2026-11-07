@@ -488,3 +488,19 @@ Outstanding, all finite or check-type:
       (ii) every point, not only a generic one: the ranks are analytic in (r, th), so the bound holds off an analytic
         subset Z; on Z the dimension can only jump UP.  Close it via (b) applied on the complement plus continuity of the
         constant PD coefficients across Z, or by exact ranks over Q(r, cos th) symbolically.
+
+59. [Design note] EXACT-RANK STEP for B1 (item 58(i)): what is needed, and why the shortcuts fail.
+    Write the constraint matrix C (rows = unknown jet coefficients), split into low (degree <= J) rows C_L and high rows C_H.
+      dim pi_J(S_K) = n_L - rank C + rank C_H.
+    So the UPPER bound on d_J that the closure needs requires a lower bound on rank C (mod-p ranks give this) AND an UPPER
+    bound on rank C_H.  Upper bounds on rank are never certifiable from mod-p ranks or from verified floating point:
+    both only certify LOWER bounds.  An exact null space of C_H over Q is unavoidable.
+    Shortcuts considered and rejected:
+      - many-prime CRT against the Hadamard bound: thousands of primes, each needing a full rebuild;
+      - verified numerics: certifies rank lower bounds only;
+      - semicontinuity in Lam from Kerr (AABKW at Lam = 0): rank C_H moves in the wrong direction;
+      - explicit gauge elements of S ∩ ker pi_J: they miss the non-extendable top-level jets.
+    Feasible route: build C EXACTLY via symbolic coefficients.  dRic and dpsi_{0,4} are second-order operators whose
+    coefficients are explicit rational functions of (r, cos th, sin th); take their exact 2-D Taylor series at the rational
+    point (r = 3, cos th = 3/5, sin th = 4/5, Lam = 1/20, a = 3/5), assemble C (and the gauge map) over Q, and run FLINT
+    exact rank / null space for K = 7, J = 3, 4.  Estimated a few hours of engineering plus compute.  Not done in this pass.
