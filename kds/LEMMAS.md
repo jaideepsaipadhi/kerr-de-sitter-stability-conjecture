@@ -587,3 +587,20 @@ Outstanding, all finite or check-type:
         can be built exactly by interpolating 3 builds.  The bad sigma are the roots of explicit determinant polynomials
         (random compressions), a finite set that can be checked exactly at that point or at a second point.  Then large |m|:
         m enters polynomially, so treat m the same way; an m-uniform bound is needed for |m| -> inf.
+
+66. [P mod-P certificate, m = 1] sigma-UNIFORMITY of B1 for modes (step54, step55_exceptional.py).  K = 4, J in {0, 1}.
+    Build C(sigma), G(sigma) EXACTLY as degree-<=2 polynomials (3 exact builds).  At p1 = (r=3, x=3/5) and
+    p2 = (r=7/2, x=-1/5), Lam = 1/20, a = 3/5, m = 1:
+      rank C = 66 (exceptional polynomial delta_C of degree 11); generic rank C_H over Q(i)(sigma) EXACT (sympy):
+      66 (J=0), 60 (J=1); rank G_L = 10, 24.  Generic d bound n_L - r_C + R_H - r_G = 0 for J = 0 and J = 1 at both
+      points.  So d_J(sigma) <= 0 at every sigma that is not exceptional at that point.
+    Exceptional polynomials E1 = delta_C delta_G0 delta_G1 (at p1) and E2 (at p2): gcd(E1, E2) mod P (P = 998244353 = 1 mod 4,
+    i = sqrt(-1) mod P) is EXACTLY c * sigma^4.  So the only possible common exceptional sigma is sigma = 0, and sigma = 0
+    is checked directly (exact, K = 7, all four conditions, d = 0; item 64).
+    => for m = 1, every sigma in C has a good point; with item 65(c), every m = 1 mode with all four Teukolsky
+       conditions is pure gauge.
+    Caveat for full rigour: a nonzero common root over Qbar could reduce mod a prime above P to 0 (excluded after deflating
+    sigma^4, since the deflated polynomials are coprime mod P) or to infinity (needs exact leading coefficients nonzero
+    mod P; corroborate with a second prime, or compute delta exactly by multimodular CRT).
+    Other m: same script (python3 step55_exceptional.py <m>, about 10 min per m).  |m| -> inf needs an m-uniform argument
+    (m enters polynomially; treat m as a second symbol, or use a large-|m| asymptotic rank argument).
