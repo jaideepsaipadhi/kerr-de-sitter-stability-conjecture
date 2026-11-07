@@ -1,0 +1,9 @@
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(3, 1), Fraction(3, 5)) C: size 66  deg mod P 11 vs tropical max 45;  ord mod P 4 vs tropical min 0  -> not pinned
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(3, 1), Fraction(3, 5)) G0: size 10  deg mod P 2 vs tropical max 2;  ord mod P 0 vs tropical min 0  -> PINNED
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(3, 1), Fraction(3, 5)) G1: size 24  deg mod P 6 vs tropical max 6;  ord mod P 0 vs tropical min 0  -> PINNED
+  (19s)
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(7, 2), Fraction(-1, 5)) C: size 66  deg mod P 11 vs tropical max 45;  ord mod P 4 vs tropical min 0  -> not pinned
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(7, 2), Fraction(-1, 5)) G0: size 10  deg mod P 2 vs tropical max 2;  ord mod P 0 vs tropical min 0  -> PINNED
+m=1 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(7, 2), Fraction(-1, 5)) G1: size 24  deg mod P 6 vs tropical max 6;  ord mod P 0 vs tropical min 0  -> PINNED
+  (23s)
+m=1: (a),(b) certified exactly at both points: False

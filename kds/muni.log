@@ -1,0 +1,5 @@
+  point r=3 x=3/5: rank C = 66;  J -> (rank G_L, R_H upper bound, d bound): (24, 60, 0), (40, 46, 0)   [37s]
+  point r=7/2 x=-1/5: rank C = 66;  J -> (rank G_L, R_H upper bound, d bound): (24, 60, 0), (40, 46, 0)   [83s]
+generic (sigma, mu) d bounds <= 0 at both points: True
+deg_sigma E1 = 29 (sigma^6 factor), deg_sigma E2 = 29 (sigma^6) at random mu
+deg_mu E1 = 29, deg_mu E2 = 29

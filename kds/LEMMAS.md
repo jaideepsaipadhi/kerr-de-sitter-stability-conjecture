@@ -607,3 +607,19 @@ Outstanding, all finite or check-type:
     m = 2: identical outcome (generic d bounds 0 at both points; gcd(E1, E2) = c sigma^4 exactly); sigma = 0, m = 2 is
     exact-checked (K=4: d_0 = d_1 = d_2 = 0).  CERTIFIED (same caveat).  The script's last line prints False only because
     it does not special-case sigma = 0; the exact sigma = 0 check closes it.
+
+## 67. Prime rigor for the σ-uniformity certificates (item 6) — CLOSED for m = 1, 2
+
+Lemma (reduction). E1, E2 ∈ Z[i][σ], 𝔭 | P the prime with i ↦ I_MOD. If (a) 𝔭 ∤ lc(E1), (b) 𝔭 ∤ lowest nonzero
+coefficient of E1, (c) gcd(E1 mod 𝔭, E2 mod 𝔭) = u σ^c, then every common complex root of E1, E2 is σ = 0.
+Proof: primitive gcd h has lc(h) | lc(E1), so its roots are 𝔭-integral and ≡ 0 mod 𝔭; write E1 = σ^b F with F(0) a
+𝔭-unit by (b); a root σ0 ≠ 0 would give F(σ0) = 0 yet F(σ0) ≡ F(0) ≢ 0. ∎
+E1 = δ_C δ_G0 δ_G1 (exact minors, exceptional set ⊂ their zeros).
+ - δ_G0, δ_G1: degree and order pinned exactly by the tropical (assignment) bound = mod-P values (step57_lc_check.py).
+ - δ_C: tropical bound is loose (45 vs 11), so δ_C computed EXACTLY over Z[i] by multimodular CRT with proved
+   Hadamard bound (log2 B ≈ 9.1k / 11.9k bits; 147 / 192 primes; ~2 min per point; step57b_exact_deltaC.py).
+   Result at both points, m = 1 and m = 2: exact ord_0 = 4, exact degree = 11, both extreme coefficients 𝔭-units.
+ - (c) is step55's gcd = c σ^4.
+Hence for m = 1, 2: no σ ≠ 0 is exceptional at both test points — EXACT, no probabilistic or mod-P caveat.
+The "root at infinity" flag of step55 is a non-issue: it only reflected the degree bound 2r exceeding the true degree.
+Method scales to any fixed m at ~5 min per m; it is the finite-m part of the (σ, m) argument (items 4/5).

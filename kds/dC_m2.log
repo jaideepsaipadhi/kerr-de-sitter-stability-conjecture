@@ -1,0 +1,6 @@
+    size 66, log2 B = 9058, primes used 147, 97s; exact degree 11, exact ord_0 4
+m=2 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(3, 1), Fraction(3, 5)): delta_C exact ord 4, deg 11; lowest coeff P-unit? True; leading coeff P-unit? True
+    lowest coeff bits 8569, leading coeff bits 8570
+    size 66, log2 B = 11832, primes used 191, 127s; exact degree 11, exact ord_0 4
+m=2 pt=(Fraction(1, 20), Fraction(3, 5), Fraction(7, 2), Fraction(-1, 5)): delta_C exact ord 4, deg 11; lowest coeff P-unit? True; leading coeff P-unit? True
+    lowest coeff bits 11271, leading coeff bits 11275
