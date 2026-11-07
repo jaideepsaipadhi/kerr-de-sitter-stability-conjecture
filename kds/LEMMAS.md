@@ -426,3 +426,9 @@ Outstanding, all finite or check-type:
       Leading balance at the seam: (1+delta) beta E >= (1+delta) E - delta (true for beta >= 1, margin delta).
       Bulk: s delta |L'| >= (1/2)(mu'G + mu G' + mu G^2), where the right side is scale-free.
       C: Lemma G with delta capped by min G z/(s mu).
+
+52. [N -> cert pending] R3 interval certification with the FIXED multiplier (cert/r3cert.py, cert/r3core.py).
+    Boxes inside R1/R2 are skipped as analytically covered.  The formerly hardest tile (t in [1.2,1.6], zf in [0.7,0.95],
+    A in [0.01,1], Bf in [1,3]; 717 boxes uncertified before) now certifies completely: 116 boxes, 10 s.
+    Full core run (192 tiles, t <= 100, A <= 1e4, B <= 1e3 floor) deferred, at the user's request.
+    Run: cd kds/cert && python3 r3core.py 240   (2 cores: hours; it parallelises across cores).
