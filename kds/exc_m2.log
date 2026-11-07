@@ -1,0 +1,7 @@
+  point (Lam=1/20, a=3/5, r=3, x=3/5) m=2: rank C = 66 (deg delta_C 11/132); (rank G_L, generic rank C_H, d bound) J=0: (10, 66, 0), J=1: (24, 60, 0); 253s
+  point (Lam=1/20, a=3/5, r=7/2, x=-1/5) m=2: rank C = 66 (deg delta_C 11/132); (rank G_L, generic rank C_H, d bound) J=0: (10, 66, 0), J=1: (24, 60, 0); 333s
+gcd coefficients (low->high): [0, 0, 0, 0, 90993630] ... len 5
+m=2: gcd(E1, E2) mod P has degree 4;  common root at infinity possible: True
+generic d bounds <= 0 at both points: True
+NO sigma is exceptional at both points (mod-P certificate): False
+=> every sigma has a good point for this m: False

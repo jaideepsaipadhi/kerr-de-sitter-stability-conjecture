@@ -604,3 +604,6 @@ Outstanding, all finite or check-type:
     mod P; corroborate with a second prime, or compute delta exactly by multimodular CRT).
     Other m: same script (python3 step55_exceptional.py <m>, about 10 min per m).  |m| -> inf needs an m-uniform argument
     (m enters polynomially; treat m as a second symbol, or use a large-|m| asymptotic rank argument).
+    m = 2: identical outcome (generic d bounds 0 at both points; gcd(E1, E2) = c sigma^4 exactly); sigma = 0, m = 2 is
+    exact-checked (K=4: d_0 = d_1 = d_2 = 0).  CERTIFIED (same caveat).  The script's last line prints False only because
+    it does not special-case sigma = 0; the exact sigma = 0 check closes it.
