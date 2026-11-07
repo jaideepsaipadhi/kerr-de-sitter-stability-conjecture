@@ -504,3 +504,12 @@ Outstanding, all finite or check-type:
     coefficients are explicit rational functions of (r, cos th, sin th); take their exact 2-D Taylor series at the rational
     point (r = 3, cos th = 3/5, sin th = 4/5, Lam = 1/20, a = 3/5), assemble C (and the gauge map) over Q, and run FLINT
     exact rank / null space for K = 7, J = 3, 4.  Estimated a few hours of engineering plus compute.  Not done in this pass.
+
+60. [Key simplification] Theorem B only needs B1 for (generalised) MODES, h = e^{-i sigma t + i m phi} H(r, x), x = cos th.
+    Jets then live in 2 variables (r, x) instead of 4, and the metric is RATIONAL in (r, x) (no trig).  At K = 7 that is about
+    10 x 36 = 360 unknowns instead of 3300: an exact computation is small.  Owed: (a) exact Q(i) linear algebra at fixed
+    (sigma, m); (b) uniformity in (sigma, m).  The ranks drop only on an algebraic subset of (sigma, m), so handle the
+    generic case by exact symbolic rank over Q(i)(sigma) per m, and the exceptional sigma explicitly.  (c) Large |m|
+    needs an m-uniform argument, since m enters polynomially; again symbolic in m.
+    Also observed: the "full column rank of C_HH" shortcut fails because the linearised contracted Bianchi identity
+    makes the equations dependent, so exact null vectors really are needed.
