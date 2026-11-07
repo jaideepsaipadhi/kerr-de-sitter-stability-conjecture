@@ -248,3 +248,52 @@ This is a Lorentzian **quantitative rigidity** statement (a hyperbolic analogue 
 - If not, a boost-pinch extension is a candidate counterexample.
 
 Question (B) is now the single analytic question that Level 3 hinges on.
+
+---
+# Working (B): boost fields
+
+**Notation.** Along the generators, write V = e^{s}V̂ and e₃ = e^{−s}ê₃, where V̂ and ê₃ are chart-normalised (bounded). Set k := e^{s} and h := e^{−s}. By Lemma F1, s is bounded **below**. The danger is s → +∞.
+
+## 0. Correction to the Korn step
+
+The antisymmetric part of ∇Y♭ is χ(Y, e_A)·θ^V ∧ θ^A. The coframe dual to V is θ^V = −½e₃♭, whose chart size is ~ e^{−s}. So in the chart the singular term is **χ·e^{−s}**, not χ. Korn gives a contradiction only if χe^{−s} ∉ L^p. **So (Q) is exactly (B): the boost must stay bounded where the shear is singular.** All other parts of the Korn argument go through with unbounded boosts: ω = Y♭ stays bounded, and the remaining slots of sym∇Y♭ come with bounded or decaying coframe factors.
+
+## 1. Per generator, the blue-shift CAN be absorbed by a boost at finite cost
+
+Along a generator, with dx ≍ dU du dθ (both volume densities are continuous):
+- |ds/dU|·e^{−s} ≲ |Γ̃|, i.e. |∂_U h| ≲ |Γ̃|;
+- the chart length ∫k dU must be finite;
+- the chart-normalised shear is χh.
+
+Example: h = |U| |log|U||^{β} with 1 < β < q/2 (with χ ~ U⁻¹|log U|^{−q/2} and q = 7 or 11 from Luk–Sbierski). This gives
+- finite chart length,
+- U-cost ∫|h'|² dU < ∞,
+- χh ∈ L².
+
+⇒ **No obstruction along a single generator. The obstruction must come from transverse variation of the boost, or from topology.**
+
+## 2. Lemma (no partial blow-up along u-lines)
+
+Along the ingoing curves (fixed U, θ, varying u), F₃ = −g̃(e₃, T) satisfies |∂_u F₃| ≲ |ω̲|F₃ + |Γ̃|F₃², where ω̲ is regular in DL. Hence
+ |∂_u k| ≲ |ω̲| k + |Γ̃|.
+Gronwall along the line gives |k(u₂) − k(u₁)e^{±C}| ≲ (∫|Γ̃(U, ·, θ)|² du)^{1/2}.
+
+Let E = {(u, θ): s → ∞ as U → 0} and F_c = {h(0) ≥ c}. Suppose a positive measure of u-lines meets both E and F_c in sets of positive length. On E, h(U) ≤ |U|^{1/2}ε(U) by Hölder from the U-cost, with ε → 0. Then on those lines ∫|Γ̃(U, ·)|² du ≳ 1/(|U|ε(U)²), and integrating in U gives **∫|Γ̃|² dx = ∞**. ∎
+
+So along each u-line, the boost blows up either nowhere (up to null sets) or everywhere.
+
+## 3. Blow-up along a whole u-line collapses the Cauchy horizon there
+
+If k → ∞ for all u on a line, the chart displacement ∫h du → 0 by dominated convergence (h is bounded, since s is bounded below). So the boundary map Ψ(u, θ) := lim_{U→0} Φ(U, u, θ) is **constant in u** on that line. If this happens on an open set of θ, then ι(CH⁺) near p is the image of a 2-dimensional set. That contradicts the future boundary of ι(M) being a **topological hypersurface** near p (achronal boundary in a C⁰ spacetime). **[Citation check: Galloway–Ling / Sbierski for future boundaries of C⁰ extensions.]**
+
+## 4. What remains for (B)
+
+The remaining case is **E = Θ_E × (all u)**, where Θ_E has positive measure but **empty interior** (Cantor-like in θ). Two things are needed:
+- **(θ-lemma)** The analogue of §2 along θ-lines. The transport of F along ∂_θ is ∂_θF = −g̃(χ(Y), T) − g̃(V, Γ̃(Y, T)), so the singular χ enters, but only through χ·h (the chart-normalised shear), which is exactly the quantity being estimated. Expect a closed bootstrap: assume χh ∈ L² for contradiction, then run §2's argument in θ.
+- **(topology)** Collapse on a positive-measure, nowhere-dense set of θ must contradict Ψ being a surjection onto a hypersurface. This is a measure-versus-topology statement.
+
+## Status
+
+- (B) is **reduced** to the θ-lemma and the topology lemma.
+- Single-generator absorption is possible (§1). The u-direction lemma (§2) and open-set collapse (§3) are done in sketch.
+- **If the θ-lemma closes, then (B) ⇒ (Q) ⇒ Christodoulou's SCC near i⁺**, under the Luk–Sbierski lower bound.
