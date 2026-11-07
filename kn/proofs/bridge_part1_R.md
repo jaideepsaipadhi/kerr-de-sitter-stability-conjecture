@@ -91,3 +91,74 @@ I expect (D2-a) to be cleaner. In both versions, the point is that **every coeff
 **Then, after vanishing near infinity:** unique continuation into the interior uses the same elliptic/Fuchsian step as before (Step D). It applies because at the mode level, away from the horizon and the ergosurface, the system is elliptic in (r, θ) for |ω| small relative to …. Correction: it is not elliptic in general. The mode-reduced wave operator is of real principal type in (r, θ) where the K-reduction is hyperbolic. Interior propagation of zero must therefore use either analyticity (Holmgren/John: the coefficients are real-analytic, and Holmgren's theorem needs only non-characteristic surfaces) or the original Step D argument. **Holmgren suffices.** The surfaces {r = const} are non-characteristic for the mode-reduced operator wherever Δ ≠ 0, since the coefficient of ∂_r² is Δ/|q|² > 0. Zero data on r = R₀ ⇒ zero on {r ≥ r₊ + ε}, sweeping inward through r = const, by analytic coefficients + Holmgren applied to the PDE in (r, θ) for each fixed mode.
 
 **C4 status:** reduced to (D1), a bookkeeping check, and (D2), a Carleman absorption of nonlocal O(r⁻²)-coupled terms. This is a definite, standard-looking technical step, not a missing idea. The main risk is that Koch–Tataru's precise hypotheses on the long-range part (derivative bounds on g and V_L) must hold for the tensor-valued RW system in Giorgi's frame. The background quantities are polynomial in 1/r, so this should be routine.
+
+---
+## Frame facts from Giorgi §4.1 (closes the C3 bookkeeping item (i))
+
+Giorgi's principal frame (Giorgi §4.1) is
+ e₄ = ((r²+a²)/Δ)∂_t + ∂_r + (a/Δ)∂_φ,  e₃ = ((r²+a²)/|q|²)∂_t − (Δ/|q|²)∂_r + (a/|q|²)∂_φ,
+with e₄ geodesic. Hence **∇₄ is the horizon-singular derivative** (factor Δ⁻¹), and ∇₃ is regular, of Euler type at H⁺. In C3-(F) the surviving A–F coupling is therefore **2P_F·2∇₄F in the A-equation**. The term −P_F∇₃A in the F-equation drops out at leading order.
+
+**The X row needs a correction.** The transport equation (78) for X uses the *regular* ∇₃, so its sources −D·F − H·F − 2B appear at order x⁰. The leading indicial matrix, in the order (F, B, A, X), is
+
+ F: [I_F, 0, 0, 0]
+ B: [0, I_B, 0, 0]
+ A: [∗, 0, I_A, 0]  (∗ = the singular-∇₄ coupling)
+ X: [−D·, −2, 0, I_X]
+
+This is still **lower-triangular**, so formal vanishing holds as stated. The X row, however, has a tangential derivative at order x⁰. Baouendi–Goulaouic's weight condition does not allow that in a scalar equation, so the actual-vanishing step must use a **mixed-order** Fuchsian uniqueness theorem: Tahara's theorem for systems with block weights, or the Leray–Volevich weighting of the system. Alternatively, eliminate X: after multiplying by x, X enters the other three equations only at order x¹. So one solves for X by the Volterra-type transport (78) along ∇₃ from the horizon and substitutes it back. **New residue C3-(ii′):** choose one of these two routes and check its hypotheses.
+
+## D1: radiation fields of p and q_F (closed modulo R2)
+
+From Giorgi's Remark 5.5, in NP projections:
+- b = 3φ₀Ψ₂ − 2φ₁Ψ₁ (↔ B)
+- f = −δφ₀ + (2β + 3τ)φ₀ − 2σφ₁ (↔ F)
+- x = Dφ₀ − (3ρ + 2ε)φ₀ + 2κφ₁ (↔ X)
+
+**Peeling** (e₄ ≈ ∂_t + ∂_r is the outgoing direction). φ₀ ~ r⁻³, Ψ₁ ~ r⁻⁴, Ψ₂ ~ r⁻³, φ₁ ~ r⁻², σ ~ r⁻², δ ~ r⁻¹ð, and β, τ ~ r⁻¹ or smaller. Linearising about the background (φ₀ = Ψ₁ = σ = 0 there):
+- δb = r⁻⁶ (3ψ⁰₂,bg δφ₀⁰ − 2φ⁰₁,bg δψ₁⁰) + O(r⁻⁷ log r)
+- δf = r⁻⁴ (−ð δφ₀⁰ + c·δφ₀⁰ − 2φ⁰₁,bg δσ⁰) + O(r⁻⁵ log r)
+
+Part 1's proposition gives δφ₀⁰ = δψ₁⁰ = δσ⁰ = 0. So **B = O(r⁻⁷ log r)** and **F = O(r⁻⁵ log r)**.
+
+**Frame transfer.** These values are computed in a Bondi frame, but B and F are defined in the principal frame. The transfer works like R1:
+- *Null rotation about n.* The terms of b linear in the rotation parameter cancel identically: 6b̄φ₁Ψ₂ − 6b̄φ₁Ψ₂ = 0. This is Chandrasekhar's observation, quoted in Giorgi's Remark 5.5.
+- *Null rotation about l.* Linearised, this produces only terms like c·φ₁,bg·δΨ₀ = O(r⁻⁷), which is beyond the leading order.
+- f is handled the same way. This uses the gauge-invariance computation in Giorgi's Lemma 5.4, applied with a bounded *finite* background rotation.
+
+**Weights.** f₁ = q^{1/2}q̄^{9/2} ~ r⁵ and f₂ = q q̄² ~ r³. On outgoing modes e^{−iω(t−r*)}, ∇₃ ≈ ∂_t − ∂_{r*} acts as multiplication by −2iω at leading order. Hence
+ p = f₁(∇₃B + C₁B) = O(r⁻² log r),  q_F = f₂(∇₃F + C₂F) = O(r⁻² log r).
+Without the vanishing, both would be ~ r⁻¹ (the radiation fields). So Koch–Tataru's averaged hypothesis liminf R⁻¹∫_{R<|x|<2R}|u|² = 0 holds. ∎ (modulo R2, polyhomogeneity)
+
+## D2: absorbing the nonlocal L-terms (estimate written out)
+
+Use the radial Carleman weight e^{τφ(r)}, with φ′ > 0 and φ′ ~ r^{−1+δ}-type, as in Koch–Tataru.
+
+**Transport part.** For a mode at large r,
+ ∇₃ + C₁ = −(Δ/|q|²)(∂_r + iω(r²+a²)/Δ) + O(r⁻¹).
+Set v = e^{τφ}B. Conjugating gives (∂_r − τφ′ + iω + O(r⁻¹))v. The ODE energy identity (multiply by v̄, take the real part, integrate in r; the boundary term at large r vanishes by D1) gives
+ τ ‖(φ′)^{1/2} e^{τφ} B‖ ≲ ‖(φ′)^{−1/2} e^{τφ} p/f₁‖,
+and the same bound with angular derivatives: [∂_θ, ∇₃] = O(r⁻¹)·∂ is absorbed for large r.
+
+**Coupling into the RW equation.** L_p[B,F] = f₁·[O(|a| r⁻²)·(∇B, B) + O(r⁻²)·(D·F, F, X)]. These fall-offs are Giorgi Prop. 7.6 (Y, W = O(|a|/r²) or better). **To verify:** the Z^B and Z^F fall-offs in Prop. 7.4, which are not displayed in Thm 7.3. Hence, pointwise in the weighted norms,
+ ‖e^{τφ} L_p‖ ≲ r⁵·r⁻²·τ⁻¹(φ′)⁻¹·r⁻⁵·(‖e^{τφ}∇p‖ + ‖e^{τφ}p‖) ~ τ⁻¹ r^{−1−δ}(…).
+Koch–Tataru's estimate bounds τ^{1/2}‖(φ′)^{1/2} e^{τφ}(∇p, τp)‖ by ‖(φ′)^{−1/2} e^{τφ}(RW-operator)p‖. The L-term is therefore smaller by a factor τ^{−3/2} r^{−δ′}, and **absorbs for τ large**. The same holds for q_F, and for X via (78), whose transport is also along ∇₃.
+
+**D2 residue:**
+- (a) the Z^B and Z^F fall-off rates;
+- (b) the exact form of Koch–Tataru's estimate for vector-valued, tensor-bundle operators with long-range metric. KT handle the scalar case; the bundle version needs a frame with bounded derivatives, which Giorgi's frame provides at large r;
+- (c) the transport boundary term, which uses D1.
+
+## Bridge ledger (updated)
+
+| item | status |
+|---|---|
+| R1, R3 | closed |
+| R2 | citations (Hintz resolvent, Chruściel–MacCallum–Singleton) |
+| C1 | closed earlier (canonical energy), residual checks (i)–(iii) |
+| C2 | normalisation check |
+| C3 | (F) closed; (i) closed now (∇₄ singular); (ii′) mixed-order Fuchsian uniqueness or elimination of X |
+| C4 / I⁺ route for real ω | D1 closed (mod R2); D2 reduced to (a)–(c) |
+| Step D / interior | Holmgren (analytic coefficients, r = const non-characteristic) |
+
+Nothing on this list now needs a new idea. What remains is citation, fall-off bookkeeping, and two standard-looking uniqueness theorems that have to be matched to exact hypotheses: Tahara-type mixed-order Fuchsian uniqueness and vector-valued Koch–Tataru.
