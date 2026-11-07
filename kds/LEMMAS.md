@@ -555,3 +555,20 @@ Outstanding, all finite or check-type:
     61(ii) diagnostic, first step: h = dg/dM satisfies ALL 120 exact sigma = 0 constraints (step52b_check_dM.py), so the
     sigma = 0 constraint matrix is consistent.  The anomaly therefore lies in the gauge side or the counting, not in wrong
     equations.  Next: exact 4-D count at the rational point (decides between (A) and (B)), then a basis of the J=1 excess.
+
+64. [P, EXACT] sigma = 0 ANOMALY RESOLVED.  Cause: the mode code imposed only psi_0(h) = dC(h)(l,m,l,m) = 0 and
+    psi_4(h) = dC(h)(n,mb,n,mb) = 0 on the COMPLEX mode h.  A real perturbation's psi_0 = 0 is two real conditions, and
+    complexified that is FOUR complex conditions: dC(l,m,l,m) = dC(l,mb,l,mb) = dC(n,mb,n,mb) = dC(n,m,n,m) = 0.
+    Theorem B is entitled to all four: if h is a mode with Im sigma >= 0, then hbar is a mode with frequency -conj(sigma),
+    which is also in the closed upper half-plane, so Theorem A applied to hbar gives the two conjugate-tetrad conditions.
+    With all four imposed (step52, CONJ=1), K = 7, exact:
+      sigma = 0, m = 1:          d_J = 0 for ALL J <= 5 (even the top-level artifacts are gone);
+      sigma = 0, m = 0:          d_J = 0, 2, 4, 4, 4, 4  -> 4 = the PD tangents (dM, da, NUT, acceleration), matching 4-D;
+      sigma = 1/3 + i/5, m = 1:  d_J = 0 for all J <= 5.
+    Earlier sigma != 0 results (item 61) remain valid: fewer constraints give LARGER upper bounds, so their d = 0 was
+    already a valid bound.
+    Diagnostics recorded for the referee: the 4-D lift test (step52d) is invalid for the psi blocks (complex psi_0 of the
+    complex mode does not vanish on Re h and Im h separately), and its Ricci "violations" were roundoff normalised by a
+    ~1e-16 vector (step52k).  Entrywise, the mode operator equals the 4-D one exactly (steps 52e-52j).
+    B1 for modes, closure: sigma = 0, m = 0 gives d_2 = d_3 = 4, every other case d_0 = d_1 = 0, so item 58(b) applies.
+    STILL OWED: uniformity over all (sigma, m) and all points (exact symbolic ranks / exceptional sets).

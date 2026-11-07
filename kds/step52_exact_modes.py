@@ -9,7 +9,8 @@ Expected: sigma = 0, m = 0 -> 4 (the PD tangents are stationary and axisymmetric
 """
 import itertools, sys, time
 from fractions import Fraction as Fr
-import flint
+import flint, os
+CONJ = os.environ.get('CONJ', '1') == '1'   # impose also the conjugate-tetrad conditions (Theorem A applied to hbar)
 
 def setup(N):
     mons = [(i, d - i) for d in range(N + 1) for i in range(d, -1, -1)]
@@ -157,7 +158,7 @@ def run(Lam, a, Mm, r0, x0, sigma, m, K):
     # Riemann pert, Ricci pert and dpsi0, dpsi4
     keep = [k for k, mo in enumerate(C.mons) if sum(mo) <= K - 2]
     Ric = [[Z() for _ in range(4)] for _ in range(4)]
-    psi0 = Z(); psi4 = Z()
+    psi0 = Z(); psi4 = Z(); psi0b = Z(); psi4b = Z()
     # complex vector components: m = mre + i mim; mbar = mre - i mim
     def cvec(sign): return [(mre[k], C.scal(sign, mim[k])) for k in range(4)]
     mC, mbC = cvec(1), cvec(-1)
@@ -180,7 +181,7 @@ def run(Lam, a, Mm, r0, x0, sigma, m, K):
                     for (cc, dd, sg) in ((c, d, 1), (d, c, -1)):
                         Rs = R.scale((Fr(sg), Fr(0)))
                         if e == cc: Ric[b][dd] = Ric[b][dd] + Rs
-                        for (vl, vu, A2v, out) in ((ll, lv, mC, 0), (nl, nv, mbC, 1)):
+                        for (vl, vu, A2v, out) in ((ll, lv, mC, 0), (nl, nv, mbC, 1), (ll, lv, mbC, 2), (nl, nv, mC, 3)):
                             # w = vl_e * A2v^b * vu^cc * A2v^dd   (complex)
                             w = cmulb(cmulb((vl[e], z), A2v[b]), cmulb((vu[cc], z), A2v[dd]))
                             if not (any(w[0]) or any(w[1])): continue
@@ -191,7 +192,9 @@ def run(Lam, a, Mm, r0, x0, sigma, m, K):
                                 if sg < 0: ww = (C.scal(-1, ww[0]), C.scal(-1, ww[1]))
                                 if any(ww[0]) or any(ww[1]): contrib = contrib + pmulc(H[a_][e], ww)
                             if out == 0: psi0 = psi0 + contrib
-                            else: psi4 = psi4 + contrib
+                            elif out == 1: psi4 = psi4 + contrib
+                            elif out == 2: psi0b = psi0b + contrib
+                            else: psi4b = psi4b + contrib
     # constraint matrix over C: columns = equations (keep degrees), rows = unknowns
     def cols(P):
         Re = flint.fmpq_mat(ncol, len(keep)); Im = flint.fmpq_mat(ncol, len(keep))
@@ -203,6 +206,7 @@ def run(Lam, a, Mm, r0, x0, sigma, m, K):
     for (p, q) in comps:
         blocks.append(cols(Ric[p][q] - hcomp(p, q).scale((Fr(Lam), Fr(0)))))
     blocks.append(cols(psi0)); blocks.append(cols(psi4))
+    if CONJ: blocks.append(cols(psi0b)); blocks.append(cols(psi4b))
     neq = sum(B[0].ncols() for B in blocks)
     CR = flint.fmpq_mat(ncol, neq); CI = flint.fmpq_mat(ncol, neq); off = 0
     for (Re, Im) in blocks:
@@ -279,8 +283,9 @@ def counts(res, K):
 
 if __name__ == '__main__':
     K = int(sys.argv[1]) if len(sys.argv) > 1 else 6
+    LAM = Fr(sys.argv[3]) if len(sys.argv) > 3 else Fr(1, 20)
     cases = eval(sys.argv[2]) if len(sys.argv) > 2 else [((Fr(0), Fr(0)), 0), ((Fr(1, 3), Fr(1, 5)), 1), ((Fr(2, 7), Fr(0)), 2), ((Fr(0), Fr(0)), 1)]
     for sigma, m in cases:
         t0 = time.time()
-        res = run(Fr(1, 20), Fr(3, 5), Fr(1), Fr(3), Fr(3, 5), sigma, m, K)
+        res = run(LAM, Fr(3, 5), Fr(1), Fr(3), Fr(3, 5), sigma, m, K)
         print(f'K={K} sigma={sigma[0]}+{sigma[1]}i m={m}: exact d_J upper bounds {counts(res, K)}  ({time.time()-t0:.0f}s)', flush=True)
