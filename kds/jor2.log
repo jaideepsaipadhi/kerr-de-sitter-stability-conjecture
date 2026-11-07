@@ -1,0 +1,4 @@
+  C: size 66, T_2: max rank over 265 integer mu = 128/132 => sigma^4 | det exactly
+  G1: size 24, T_2: max rank over 97 integer mu = 48/48 => sigma^0 | det exactly
+  G2: size 40, T_2: max rank over 161 integer mu = 78/80 => sigma^2 | det exactly
+pt (Fraction(1, 20), Fraction(3, 5), Fraction(4, 1), Fraction(1, 3)): sigma^6 | E exactly; need 6: True  [114s]

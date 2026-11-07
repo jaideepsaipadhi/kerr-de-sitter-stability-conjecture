@@ -641,3 +641,19 @@ Rigorous routes still open:
  (B) lift caveat for both routes: exact divisibility σ⁶ | E_i (bivariate). Fixed-m exact data (§67) shows order 4 for
      δ_C, so the σ⁶ must be split between δ_C and the gauge minors; needs an exact argument (structural σ-factor
      of gauge rows from ∂_t ↦ −iσ) rather than computation.
+
+## 69. Joint (σ, m) uniformity — reduced to one handed-off certificate
+
+Three test points (r, x) = (3, 3/5), (7/2, −1/5), (4, 1/3) at Λ = 1/20, a = 3/5, M = 1.
+(i) σ⁶ | E_i EXACTLY in Q(i)[σ, μ] (step58f): block-Toeplitz deficiency at σ = 0, T₂ of each minor, rank bounded at
+    2n+1 integer μ ⇒ all relevant minors vanish identically. δ_C contributes σ⁴, G₂(J=2) σ², G₁ σ⁰. Lemma used:
+    ord_σ det A ≥ K r − rank T_K(A₀, A₁, A₂) for every K; transfers to Q(i)(μ) since minors have μ-degree ≤ 2Kr.
+(ii) Exact degree bounds deg_σ, deg_μ E_i ≤ 80, 78 (step58g, reversed T₂) ⇒ the 81×81 mod-p interpolation is exact.
+(iii) On that exact grid (step58h): deg_σ = deg_μ = 29, R_ij(μ) = formal Res_σ(F_i, F_j), F = E/σ⁶, degree 1135 with
+     ord_{μ=0} = 357, and gcd(R12, R13, R23) mod p = μ³⁵⁷ EXACTLY.
+Consequence (rigorous once (iv) holds): if an integer m with 0 < |m| < p had a σ ≠ 0 exceptional at all three points,
+then m mod p ≠ 0 would be a root of μ³⁵⁷. Impossible. Repeating at k primes: no such m with |m| < ∏ p (≥ 2^120 for 4).
+(iv) NEEDED: exact deg_σ E_i = 29 (so formal degrees are honest; excludes exceptional σ with a 𝔭-denominator).
+     At μ₀ = 1, point 1: exact reversed T₉ gives deg ≤ 11 + 6 + 12 = 29 ✓. Uniform-in-μ version = run_degcert.py
+     (62 + 8 + 11 μ₀ values × 3 points, ~50 min on 2 cores) — HANDED OFF.
+Then the (σ, m) question = large-|m| asymptotics with any explicit M₀ < 2^120, plus m = 0 (already exact).
