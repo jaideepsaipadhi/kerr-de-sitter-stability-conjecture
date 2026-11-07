@@ -57,3 +57,37 @@ At ω = mΩ_H (m ≠ 0, ω real):
 - (γ) Continuity in parameters: exclude real modes at ω = mΩ_H via a Kerr deformation argument. This is weak, because it does not give the full subextremal range.
 
 **Bridge status:** C1–C3 (with citation residue), R1 and R3 are closed. R2 is reduced to citations. **C4 is open and now the largest risk in the bridge.**
+
+---
+## C4, route (α): Rellich uniqueness from I⁺ for real ω, run on Giorgi's Regge–Wheeler system
+
+**Why the earlier Carleman failed, and why this is different.** The earlier attempt worked with the Teukolsky-type variables. There the first-order term ~ (2s/r)∂_r is **long-range**: r·|W| does not tend to 0. On top of that, complex ω produced the wrong-sign τ³/r⁴ term. Every Rellich/Carleman theorem for non-self-adjoint operators excludes long-range complex first-order terms. Here instead we use Giorgi's **generalized Regge–Wheeler system** (arXiv:2002.07228, Thm 7.3, eqs. (94)–(95)) for p and q_F, at **real** ω. For a mode e^{−iωt+imφ}, at large r:
+
+| term | size | class |
+|---|---|---|
+| □̇₁, □̇₂ principal part | metric δ + O(M/r) | long-range **metric**, real, smooth |
+| ω²g^{tt} part | ω²(1 + 4M/r + …) | long-range **real** potential (Coulomb-type) |
+| −i(2a cosθ/\|q\|²)∇_t p | 2aω cosθ / r² | **short-range** complex, zeroth order |
+| V₁, V₂ | real | long-range real potentials |
+| 4Q² q̄³/\|q\|⁵ D·q_F, ½ q³/\|q\|⁵ D⊗p | r⁻² · (r⁻¹∂_θ) | **short-range** first-order coupling |
+| L_p[B,F], L_{q_F}[B,F] | coefficients O(\|a\|/r²), O(\|a\|/r³) | short-range, **but nonlocal**: involves B, F, X, not p, q_F |
+| a m ω cross terms | O(r⁻³) | short-range |
+
+So, apart from the L-terms, the system is exactly in the class of **Koch–Tataru** (CMP 2006, *Carleman estimates and absence of embedded eigenvalues*). That class is −Δ_g + W·∇ + V, with g a long-range perturbation of Euclidean space, V = V_L (real, long-range) + V_S (complex, short-range), and W complex short-range. It is vector-valued with smooth coupling. The Rellich-type conclusion: at energy λ = ω² > 0, if liminf_{R→∞} R⁻¹∫_{R<|x|<2R}|u|² = 0, then u ≡ 0 outside a compact set.
+
+**The decay hypothesis.** We need p and q_F = o(r⁻¹) on average. Part 1's proposition gives δσ⁰ = δψ_n⁰ = δφ_j⁰ = 0 for all leading peeling coefficients. This uses hypothesis (c), which in the bridge is supplied by the negative-spin vanishing. B, F and X are polynomial combinations of these with background coefficients, so all of them gain one order of decay. p = f₁(∇₃B + C₁B) and q_F = f₂(∇₃F + C₂F) are built so that RW solutions behave like r⁻¹ e^{iωr*}. With the leading coefficients of B and F gone, p and q_F are O(r⁻² log r) by polyhomogeneity (R2). This gives the averaged decay condition.
+**To verify (D1):** the exact r-weights of B and F under peeling, and that the r⁻¹ coefficients p⁰ and q_F⁰ are linear in the vanished coefficients. This is a mechanical peeling bookkeeping check.
+
+**The crux (D2): the nonlocal L-terms.** B, F and X are recovered from p, q_F through transport equations along e₃ (ingoing), from (90)–(91) and (78). At large r, for a mode, ∇₃ ≈ −(∂_r + iω) + O(1/r). Since B and F decay (D1), the transport equations integrate from infinity:
+ B(r) = −∫_r^∞ e^{iω(s−r)} (p/f₁)(s) ds·(1 + O(1/s)),
+and similarly for F and X. Two ways to handle this:
+- (D2-a) **Enlarge the system.** Take u = (p, q_F, B, F, X) and run the Carleman estimate for a mixed second-order/transport system. With a radial weight e^{τφ(r)}, φ′ > 0, the transport part ∂_r + iω + O(1/r) has a Carleman estimate with a **gain** of τ^{1/2} in the weighted norm. The coupling back into the RW equations comes with coefficients O(|a|/r²), and the Koch–Tataru estimate controls τ^{1/2}·r^{-1/2}-weighted quantities. So the L-terms are absorbed for large r and τ, provided the coefficient decay r⁻² beats the r⁻¹ that short-range absorption requires. It does, by one power. This is the standard way of adding ODE components to a Carleman estimate (cf. Hörmander Vol. III 17.2 with first-order systems).
+- (D2-b) **Eliminate B, F, X.** The tail integral is a Volterra operator. Under the zero-radiation decay, ‖r⁻² ∫_r^∞ |g|‖ ≲ ‖r^{-1−ε} g‖ in the weighted spaces, so the L-terms become a nonlocal short-range perturbation. This needs Koch–Tataru's estimate to tolerate a nonlocal but Volterra-type short-range term, which is plausible because their argument is a weighted L² estimate with radial weights.
+
+I expect (D2-a) to be cleaner. In both versions, the point is that **every coefficient that couples to B, F or X is O(r⁻²)**. That follows from Giorgi's explicit fall-offs (Prop. 7.6: Y, W = O(|a|/r²) or better) and from the multiplicative factors f₁ and f₂.
+
+**Payoff.** If (D1) and (D2) hold, route (α) gives unique continuation from I⁺ for **every real ω ≠ 0**, not only at ω = mΩ_H. So for real frequencies the I⁺ route and the horizon route become redundant, which is a safety margin. Complex ω (Im ω > 0) still uses the horizon route (C1–C3), where the flux identity has no degeneracy.
+
+**Then, after vanishing near infinity:** unique continuation into the interior uses the same elliptic/Fuchsian step as before (Step D). It applies because at the mode level, away from the horizon and the ergosurface, the system is elliptic in (r, θ) for |ω| small relative to …. Correction: it is not elliptic in general. The mode-reduced wave operator is of real principal type in (r, θ) where the K-reduction is hyperbolic. Interior propagation of zero must therefore use either analyticity (Holmgren/John: the coefficients are real-analytic, and Holmgren's theorem needs only non-characteristic surfaces) or the original Step D argument. **Holmgren suffices.** The surfaces {r = const} are non-characteristic for the mode-reduced operator wherever Δ ≠ 0, since the coefficient of ∂_r² is Δ/|q|² > 0. Zero data on r = R₀ ⇒ zero on {r ≥ r₊ + ε}, sweeping inward through r = const, by analytic coefficients + Holmgren applied to the PDE in (r, θ) for each fixed mode.
+
+**C4 status:** reduced to (D1), a bookkeeping check, and (D2), a Carleman absorption of nonlocal O(r⁻²)-coupled terms. This is a definite, standard-looking technical step, not a missing idea. The main risk is that Koch–Tataru's precise hypotheses on the long-range part (derivative bounds on g and V_L) must hold for the tensor-valued RW system in Giorgi's frame. The background quantities are polynomial in 1/r, so this should be routine.
