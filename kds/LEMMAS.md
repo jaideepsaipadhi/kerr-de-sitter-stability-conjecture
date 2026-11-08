@@ -1090,3 +1090,42 @@ L2 [P modulo write-up]: in item 94's L1, B (the ∂φ ∝ ∂σ coefficient) is 
   acceleration tangent; A (the ∂t ∝ ∂τ coefficient) is the phase of δk, since ξ/k ∝ ∂τ on the background.  After this
   the perturbed ξ is real to first order.  Matches Hughston–Sommers: reality of ξ ⇔ no acceleration.
 Remaining for Theorem B's B-set: L3 (Carter canonical form for the real-ξ perturbation, to first order; count 3).
+
+## 96. THEOREM B LOCAL STEP FOR ALL (σ, m) ≠ (0, 0), a ≠ 0 — BY HAND, NO CERTIFICATE, NO BAD SET
+Replaces items 75–87 (jets, descent, Khavkine order, bad set B) for (σ, m) ≠ (0, 0).
+Setting: h a (complex) mode of the linearised Λ-vacuum equations on KdS with δΨ0 = δΨ4 = 0 (Theorem A).
+(1) Tetrad gauge (item 90): δΨ1 = δΨ3 = 0 by null rotations; then δκ = δσ = δκ' = δσ' = 0.  The perturbed principal
+    tetrad is fixed up to boost-spin, so every quantity below is a LINEAR, LOCAL function of h that COMMUTES with
+    L_∂t, L_∂φ (the background tetrad is t, φ-independent) and is boost-spin invariant.
+(2) ξ := B l + A n − D m − C m̄, A = φρ, B = −φρ', C = φτ, D = −φτ', φ = Ψ2^{−1/3}.  Its 10 Killing equations are
+    GHP identities on ANY type D Λ-vacuum (item 93(c), with the tetrad table 93(b)), so they linearise:
+       L_ξ h + L_{δξ} g = 0,   δξ = δξ[h].
+    On KdS ξ = k ξ_R, ξ_R = −Ξ∂t real (k a fixed constant; φ = r − i a cos θ normalisation).
+(3) Reality for free.  J[h] := (δξ[h] − conj(δξ[h̄]))/(2ik) is complex-linear in h; for real h it is Im(δξ/k), and
+    taking the imaginary part of (2)/k gives L_{J[h]} g = 0: J[h] is a background Killing field, A'∂t + B'∂φ.
+    J commutes with L_∂t, L_∂φ, so for a mode J[h] is a mode of type (σ, m); a constant combination of ∂t, ∂φ is
+    annihilated by both, so (σ, m) ≠ (0, 0) forces J[h] = 0.  Hence ξ + δξ is k × (real) to first order, and the
+    reality relations  φρ = φ̄ρ̄,  φρ' = φ̄ρ̄',  φτ = −φ̄τ̄'  (normalised φ) hold to first order.
+    [No subtraction of PD tangents needed for modes: the acceleration/phase constants of items 94–95 are (0,0)-modes.]
+(4) Second Killing field, BY HAND.  Put R = Re φ, I = Im φ.  The reality relations give
+       ÞR = −A, Þ'R = B, ðR = ð'R = 0;   ÞI = Þ'I = 0, ðI = iC, ð'I = −iD
+    (R, I are the Carter coordinates r, a cos θ).  Define ζ := I²(B l + A n) + R²(D m + C m̄)
+    (= K·ξ with K = |φ|²(l⊗n + n⊗l) − R² g).  Its Killing equations, using those of ξ:
+       ll, nn, mm, m̄m̄: immediate;
+       ln:  sum = −|φ|² φ(ττ̄ − τ'τ̄') = 0, since ττ̄ = τ'τ̄' = −φττ'/φ̄ by reality;
+       mm̄:  sum = |φ|² φ(ρρ̄' − ρ'ρ̄) = 0, since φρρ̄' = φ̄ρ̄ρ̄' = φρ'ρ̄ by reality;
+       lm:  sum = 2ACφ + |φ|²(ðA + τ̄'A) = 2ACφ − 2ACφ = 0  (ðA = −φρ̄τ, τ̄' = −φτ/φ̄, φρ = φ̄ρ̄ = A);
+       lm̄, nm, nm̄: the conjugate/primed computations, identical.
+    All algebraic in GHP ⇒ linearises:  L_ζ h + L_{δζ} g = 0, δζ a mode of type (σ, m).
+    On KdS (step96_zeta.py, two points): ζ = −0.36216 ∂t − 0.6036 ∂φ = c2 ∂t − Ξa ∂φ  (constant; the R² g term is what
+    makes it constant — K = |φ|²(ln+nl) alone is not).
+(5) Conclusion.  ξ_R = c0 ∂t with c0 = −Ξ ≠ 0, ζ = c2∂t + c1∂φ with c1 = −Ξa ≠ 0 for a ≠ 0.
+      σ ≠ 0:          −iσ c0 k h = L_ξ h = −L_{δξ} g          ⇒ h = L_X g, X = δξ/(iσ c0 k).
+      σ = 0, m ≠ 0:   i m c1 h = L_ζ h = −L_{δζ} g            ⇒ h = L_X g, X = −δζ/(i m c1).
+    So every mode with (σ, m) ≠ (0, 0) and vanishing Teukolsky scalars is GLOBALLY pure gauge on the exterior, with
+    an explicit gauge vector (linear differential expression in h; smooth where Ψ2 ≠ 0, i.e. everywhere outside r = 0).
+    No genericity, no open-dense set, no analyticity, no bad set.  HPV's T-frequency-zero modes with m ≠ 0 have
+    ∂t-frequency σ = Ω m ≠ 0, so they fall in the first case.
+REMAINING for Theorem B: (i) σ = m = 0 (PD sector, items 41, 64; acceleration/NUT excluded by axis regularity);
+  (ii) generalised modes (L_T + iσ)^k h = 0 by induction on k; (iii) symbolic check of c1 = −Ξa and of the three
+  "identical" Killing components (lm̄, nm, nm̄) — cheap; (iv) referee pass on (1)–(5).
