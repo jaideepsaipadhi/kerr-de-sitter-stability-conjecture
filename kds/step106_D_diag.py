@@ -45,3 +45,9 @@ lhs2=t1+0.85*mu*g*g+0.5*mu*hup**2
 rhs2=0.5455*s*L*g+s*L*q
 m=((lhs2-rhs2)/(np.abs(t1)+0.85*mu*g*g+0.5*mu*hup**2+rhs2))[msk]; i=np.argmax(m); idx=np.where(msk)[0][i]
 print('attempt2 max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+cpm=np.where(mup>0,1.7,17/11)
+a_l=0.5*mup*cpm+2.295*mu*g; a_r=0.5455*s*L
+b_l=0.5*mup+1.7*mu*g+0.5*mu*q; b_r=s*L
+for nm,l_,r_ in (('(a)',a_l,a_r),('(b)',b_l,b_r)):
+    m=((l_-r_)/(np.abs(l_)+r_))[msk]; i=np.argmax(m); idx=np.where(msk)[0][i]
+    print(nm,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))

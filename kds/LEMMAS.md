@@ -1302,3 +1302,7 @@ Bulk attempt 2 (HOLDS numerically, margin −0.092 on all w ≥ 10 points): keep
   (B2) implies (D) in the bulk (uses only ψ ∈ [10/11, 1), g' ≤ g², and the two dropped terms being ≤ 0).
   (B2) has no cutoff function left: a rational inequality in (z, t, z0, A, B) plus the side condition
   s² L(z0) ≥ 1.25 μ(z0).  Worst point: t ≈ 1.016, zf ≈ 0.49, y ≈ 0.07 (near z = 1, small t) — not a corner.
+B2 split test: (a) g-part  ½μ'c± + 2.295 μg ≤ 0.5455 sL  FAILS (+0.29 near z = 1, t ≈ 1.016: there R3 only gives
+  x0 L(1) > (t−1)/2, short of the 1.56(t−1) the g-part alone needs);  (b) q-part  ½μ' + 1.7μg + ½μq ≤ sL  holds (−0.093).
+  So near z = 1 the q-term's surplus must pay for the g-part: the proof of B2 has to combine them with a z-dependent
+  weight (q ~ 0.45/x dominates as x -> 0).  Not yet found.
