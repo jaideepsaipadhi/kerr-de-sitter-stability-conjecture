@@ -765,3 +765,20 @@ analogue exists.  So B1 stays on our route, repaired as follows.
      gauge 1-form.  To write; expected routine, following HV18 §7 and AHW §6.4.
 
 Order of work: (R1) determine N; redo the exact pointwise certificates at J = N; then (R3); then (R2); then (R4).
+
+## 76. Killing stabilisation depth on KdS: N' = 1 (EXACT) — input to the order of Khavkine's K1
+
+step63_killing_stabilisation.py (exact sympy rationals, coordinates (t, r, x = cos th, phi), Lam = 1/20, a = 3/5, M = 1):
+unknowns = Killing 1-jet (xi^a, w_ab = nabla_a xi_b) at p, 10-dimensional; conditions L_xi(nabla^j Riem)(p) = 0.
+   p = (3, 3/5):     j = 0: rank 6, kernel 4;   j ≤ 1: rank 8, kernel 2.
+   p = (7/2, -1/5):  same (step63b_point2.py).
+Kernel 2 = the true Killing algebra (d_t, d_phi); both give EXACT zero residual (sanity check).  Since the kernel already
+equals the dimension of the Killing algebra, further conditions cannot cut it, so the integrability conditions
+stabilise at depth N' = 1 (the kernel-4 stage = Killing fields + the 2-dim type-D isotropy boost/rotation of the Weyl tensor).
+(Bug caught on the way: sympy.nsimplify turned exact rationals into algebraic numbers; replaced by exact Rational.)
+CONSEQUENCE [inference from Khavkine Thm 9 / Prop 13 structure, TO CONFIRM against the paper]: the restricted flat
+connection lives on the rank-2 subbundle cut out by L_xi R = L_xi nabla R = 0; the deformed constraints for a
+perturbation h involve nabla(linearised Riem), i.e. 3 derivatives of h, and the curvature of the deformed connection 2–3.
+So ord K1 = N' + 2 = 3 (consistent with Kerr, where the AABKW complete invariants have order 3).
+=> Theorem B certificates must be run at jet order J = 3 (not {0, 1}).  Pointwise exact data (items 61, 64) already give
+   d_J = 0 for J ≤ 4–6 at the sampled (sigma, m), so the J = 3 certificate is expected to pass.
