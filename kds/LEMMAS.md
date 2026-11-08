@@ -869,3 +869,16 @@ realified rank (6600 × 3528 dense fmpq) died — memory.  NEEDED: a leaner exac
 (only an UPPER bound is needed): exhibit n_H − r exact left-null vectors of C_H — mod-P nullspace, CRT/rational
 reconstruction, verification v·C_H = 0 by sparse exact products (the assembly is a sparse dict, cheap).  rank C may stay
 mod P (lower bound).
+
+## 83. RIGOROUS d_4 ≤ 4 on full 4D jets (one point), K = 7 — step69_K7_lean.py, k7lean.log
+
+Exact rank of C_H via a row-scaled INTEGER realified fmpz_mat (5200 × 3528; peak 5.7 GB, 1135 s):
+   J = 4: n_L = 700, rank_P C = 1318, rank_Q C_H = 1124, rank_P G_L = 502   =>   d_4 ≤ 4  RIGOROUSLY.
+(Lam = 1/20, a = 3/5, point (3, 3/5).)  With item 82: d_3 ≤ 4, d_4 ≤ 4.
+DESCENT INPUT STILL OWED: V_4 (solution 4-jets mod gauge, dim ≤ 4) must be spanned by classes of STATIONARY, AXISYMMETRIC
+solutions, so that L_T = ∂_t and L_Φ = ∂_φ kill it (item 80).  Since dim V_4 ≤ 4, it suffices to exhibit 4 such solutions
+whose 3-jets are independent modulo gauge 3-jets.  Candidates: the four Λ-PD tangents.  δM, δa are explicit derivatives of
+the KdS metric (rational).  NUT and acceleration need the Λ-Plebański–Demiański metric (Griffiths–Podolský form),
+linearised at KdS.  Independence check is SMALL and exact: gauge 3-jets come from X-jets of degree ≤ 4 (280 × 350),
+so rank_Q[PD 3-jets; G_3] − rank_Q G_3 = 4 is a tiny exact computation.  (Alternative avoiding PD: exact containment
+∂_t π_4(S) ⊂ π_3(G) — needs an exact nullspace, heavier.)
