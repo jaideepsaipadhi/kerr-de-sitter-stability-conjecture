@@ -733,3 +733,35 @@ value ≥ −0.119 at t = 100, zf = 0.95 (joins the t -> inf corner, item 73, wh
   with Lh = ψ|L'| and ψ -> 1+δ, D/nD -> (1−ψ)/(1+ψ) = −δ/(2+δ)  (= −0.2593 at δ = 0.7; = −1/3 at δ = 1, matching item 53).
   Seam (ψ -> 0) is the A-independent rescaled layer problem, items 13–15 (leading order proved); numerically never the max.
 REMAINING: explicit O(A^{-1/2}) bounds for (i) the μ-term corrections in the bulk and (ii) the layer/bulk overlap.
+
+## 75. THEOREM B REDESIGN after the referee (REFEREE.md, items I.1–I.3)
+
+Literature check: GHZ 1908.09095 Thm 1 / Wald 1973 reduce "ψ0 = ψ4 = 0 ⇒ PD + gauge" to Wald's linearised type-D
+classification, cited without derivation; for Λ = 0 AHW needed AABKW completeness to make it rigorous.  No Λ > 0
+analogue exists.  So B1 stays on our route, repaired as follows.
+
+(R1) FORMAL INTEGRABILITY IS NOT NEEDED (answers I.2).  Khavkine 1805.03751: the KdS Killing operator is of regular
+     finite type, so it has a complete compatibility operator K1 of some finite order N: h is locally pure gauge iff
+     K1(h) = 0.  K1(h)(q) depends only on the N-jet of h at q modulo gauge N-jets.  So if d_N(q) = 0, i.e. every N-jet of
+     a true solution at q is a gauge N-jet (an upper bound, certified by truncation at K > N exactly as now), then
+     K1(h)(q) = K1(gauge)(q) = 0.  If d_N = 0 on an open dense set of q, then K1(h) ≡ 0 and h is locally pure gauge,
+     with no prolongation or propagation argument.  Item 58(b) is replaced by this; the closure claim there is withdrawn.
+     NEEDED: an explicit bound on N.  (For Kerr the AABKW invariants have order ≤ 3; Khavkine's construction gives N for
+     KdS from the Killing-operator prolongation; expected N ≤ 3, TO DETERMINE.)  Then the certificates must use J = N
+     (we have J ∈ {0, 1}; pointwise exact data already show d_J = 0 up to J = 4–6, items 61, 64).
+
+(R2) GEOMETRY UNIFORMITY (answers I.1).  d_N = n_L − rank C + rank C_H − rank G.  The UPPER bound on rank C_H comes from
+     explicit gauge rows (step56b), which are solutions for EVERY (Λ, a), so it holds identically.  The lower bounds on
+     rank C and rank G hold off the zero set of exact minors, which are polynomials in (Λ, a, r, x, σ, μ).  Requirement:
+     for each physical (Λ, a, σ, m) the minors do not vanish identically in (r, x).  That is a statement about a
+     subvariety of (Λ, a, σ, μ)-space, to be attacked with the same exact/mod-p machinery with (Λ, a) as extra variables
+     (degree bounds by Toeplitz deficiency, as in items 69–71).
+
+(R3) THE LINES σ = 0 AND m = 0 (answers I.3).  On each line the generic ranks differ (σ⁶μ⁶ factor), so each needs its own
+     minors and its own 1-parameter exceptional-polynomial certificate (in μ on σ = 0, in σ on m = 0), plus the PD sector
+     at σ = m = 0 (d = 4, item 64).
+
+(R4) ASSEMBLY GAPS (B.4, referee II): generalised modes with t^j terms, a top term c t^J ∂_M g at σ = 0, and the form of the
+     gauge 1-form.  To write; expected routine, following HV18 §7 and AHW §6.4.
+
+Order of work: (R1) determine N; redo the exact pointwise certificates at J = N; then (R3); then (R2); then (R4).
