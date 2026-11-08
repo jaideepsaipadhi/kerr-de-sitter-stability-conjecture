@@ -882,3 +882,20 @@ the KdS metric (rational).  NUT and acceleration need the Λ-Plebański–Demia�
 linearised at KdS.  Independence check is SMALL and exact: gauge 3-jets come from X-jets of degree ≤ 4 (280 × 350),
 so rank_Q[PD 3-jets; G_3] − rank_Q G_3 = 4 is a tiny exact computation.  (Alternative avoiding PD: exact containment
 ∂_t π_4(S) ⊂ π_3(G) — needs an exact nullspace, heavier.)
+
+## 84. DESCENT HYPOTHESIS (4D_4) PROVED at one point — step70_pd_exact.py, pd70.log
+
+Exact Carter/PD ↔ BL map: tau = (t − aφ)/Ξ, sig = −φ/(aΞ), p = a x, with m = M, n = 0, eps = 1 − Λa²/3, k = a², alpha = 0.
+ (0) the pulled-back PD background equals the BL KdS metric EXACTLY (sympy cancel).
+ The 5 tangents ∂g/∂(m, n, eps, k, alpha), pulled back (exact rational), 3-jets at (3, 3/5), Λ = 1/20, a = 3/5:
+ against the FULL 4D gauge 3-jets (280 generators × 350 jet unknowns, exact over Q(i)):
+     rank G_3 = 278 (matches the mod-P rank in item 82),  rank [G_3; PD] = 282  =>  PD rank mod gauge = 4  EXACTLY.
+ (A first attempt projecting gauge onto t,φ-independent jets gave rank 100 = everything: projection discards the t·X
+  terms' t-dependent parts and is far too generous; replaced by the full 4D gauge system.)
+CONSEQUENCE at this point:  V_3 has 4 independent stationary-axisymmetric classes and dim V_3 ≤ 4 (item 82), so
+ V_3 = span(PD); PD independent at J = 3 ⇒ independent at J = 4, and dim V_4 ≤ 4 (item 83) ⇒ V_4 = span(PD).
+ Hence (4D_4) holds, and by the descent lemma (item 80) every mode solution with vanishing Teukolsky scalars and
+ (σ, m) ≠ (0, 0) has 3-jet = gauge 3-jet at this point — for ALL (σ, m) at once.
+REMAINING for Theorem B's local step: (U) the same on an open dense set of points for EVERY subextremal geometry
+ (exceptional polynomial in (Λ, a, r, x)); (O) ord K1 = 3 confirmed against Khavkine; (P) origin (PD sector);
+ (R4) assembly of generalised modes.
