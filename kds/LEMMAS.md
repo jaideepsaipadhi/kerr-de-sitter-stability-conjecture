@@ -1336,3 +1336,6 @@ REDUCTION [P]: at fixed (t, z0, A, z), F is strictly DECREASING in B (L increase
  all monotone (preserved as B increases).  Hence it suffices to prove F ≤ 0 on the minimal-B boundary:
  B = max(5.5t − 1.25, B_R3, B_w), i.e. either B at the floor, or the point lies on the R3 boundary (handled by R2's
  multiplier side too), or on w = 10 (shared with the seam zone).  One variable eliminated; same holds for (Iq).
+A-monotonicity test for F on the floor slice B = 5.5t − 1.25 (step108_A_monotone.py, 2e4 (t, z0, z) lines, 200 A-values
+ each): decreasing in A on 93%, interior maximum on 7%, never increasing.  So no clean A-reduction; the worst A is
+ interior on a small set.  (d/dA of N/L has the sign of B − 6z, which changes only for z > B/6 ≈ 0.92t.)
