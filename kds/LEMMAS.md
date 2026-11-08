@@ -1129,3 +1129,32 @@ Setting: h a (complex) mode of the linearised Λ-vacuum equations on KdS with δ
 REMAINING for Theorem B: (i) σ = m = 0 (PD sector, items 41, 64; acceleration/NUT excluded by axis regularity);
   (ii) generalised modes (L_T + iσ)^k h = 0 by induction on k; (iii) symbolic check of c1 = −Ξa and of the three
   "identical" Killing components (lm̄, nm, nm̄) — cheap; (iv) referee pass on (1)–(5).
+
+## 97. HOSTILE REFEREE PASS ON ITEM 96 (in-house) — verdict: PASSES, with five repairs now written in
+R1 [gap -> fixed] Components nm, nm̄ of ζ's Killing equations are NOT "identical by symmetry" (prime does not map ξ to
+   itself).  Done by hand: sum = −2BCφ̄ + |φ|²(ðB + τB), and ðB needs ðρ' (a first derivative NOT fixed by the
+   type D equations).  Differentiating the reality relation φρ' = φ̄ρ̄' (legitimate: it holds to first order on an
+   open set) with ðφ̄ = −τ̄'φ̄, ðρ̄' = (ρ̄' − ρ')τ̄' gives ð(φρ') = φτρ', so ðB + τB = 2τB and the sum is 0.  lm̄, nm̄ are
+   the complex conjugates of lm, nm (ζ real).  All 10 components now verified by hand.
+R2 [gap -> fixed] Step (3) needs the LOCAL Killing algebra of KdS (a ≠ 0) to be span{∂t, ∂φ} on every open set.
+   Proof: a Killing field preserves Ψ2, hence r and a cos θ (Re/Im of the normalised φ); dr, dx independent, so it is
+   tangent to the 2-dim (t, φ)-orbits.  Isotropy at p fixes ∇r, ∇x and must preserve the principal null directions
+   (or swap them, impossible in the identity component); l = (timelike part in the orbit plane) + (∂r part), and a
+   boost of the orbit plane fixing ∇r, ∇x moves that timelike part, so isotropy is trivial.  dim = 2.
+R3 [gap -> fixed] Smoothness of the gauge vector ACROSS the horizons (HPV need ω smooth there).  The Kinnersley
+   tetrad is singular at Δ_r = 0, but ξ, ζ (and δξ, δζ) are boost-spin invariant natural constructions from the
+   (perturbed) Weyl spinor: K_AB ∝ Ψ2^{−1/3} o_(A ι_B) is fixed covariantly by Ψ_ABCD on type D, ξ ∝ ∇·K.  Computed in
+   a horizon-regular principal tetrad (a boost of Kinnersley) they are smooth wherever h is and Ψ2 ≠ 0.
+R4 [check done] c1 exactly: ζ = −Ξ(a² ∂t + a ∂φ) on KdS (two geometries: (Λ, a) = (1/20, 3/5) and (3/100, 4/5),
+   two points each; ζ_t = −Ξa², ζ_φ = −Ξa to all printed digits) — Carter's Killing-tensor field.  c1 = −Ξa ≠ 0 ⇔ a ≠ 0.
+R5 [stated] The commutators used in item 91 ([Þ,Þ'], [ð,ð'], [Þ,ð], [Þ,ð'] on a (0,0) scalar, with κ = σ = Ψ1 = Φ = 0)
+   are the standard GHP ones; their consequences were machine-checked on KdS (item 92).  Since the identities are then
+   used on PERTURBED metrics, the formulas must be the universal ones, not merely true on KdS: to make this airtight,
+   re-check items 91/93 on the accelerating NUT PD metric (item 95's code), a different type D family.
+Other objections considered and dismissed:
+ * "δξ might not commute with ∂t, ∂φ": every choice (null rotations fixed by δΨ1 = δΨ3 = 0; branch of Ψ2^{−1/3};
+   normalisation k) is pointwise and t, φ-equivariant.
+ * "J[h] might not be a mode": J is complex-linear (conjugate applied twice) and commutes with real Lie derivatives.
+ * "Theorem A gives only δψ0 = δψ4 = 0 for the Teukolsky BCs": item B.1 already supplies this for smooth modes.
+ * HPV's T-generalised modes: ∂t-frequency σ = Ωm ≠ 0 for m ≠ 0, covered by the σ ≠ 0 case.
+OPEN after the referee: R5 cross-check (cheap); σ = m = 0 sector; generalised-mode induction.
