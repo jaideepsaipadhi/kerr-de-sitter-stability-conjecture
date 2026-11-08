@@ -1194,3 +1194,13 @@ satisfies (L_T + iσ)^{k−1} Y = X1 (L_T = ∂t on the t-polynomial part, ∂t,
 σ = m = 0, k ≥ 2: the top coefficient is (δM, δa) + gauge by item 98.  OPEN (small): exclude L_T h = c_M ∂_M g + ...
 with (c_M, c_a) ≠ 0 (no linear-in-t growth of the mass/spin), as in HV18 for SdS; expected via the conserved
 charges (Komar integrals of ξ, ζ), which are t-independent.
+
+## 100. Item 99's open point: no linear-in-t growth of (δM, δa)
+Suppose L_T h = v with v = c_M ∂_M g + c_a ∂_a g + L_X g (stationary up to gauge), h = t v + w.
+Iyer–Wald: for any solution h and background Killing field K ∈ {ξ_R, ζ}, δH_K[h] = ∮_S (δQ_K − K·Θ(g; h)) is
+independent of the 2-sphere S in the exterior (homology between S_0 and S_t = flow of S_0 by ∂t).  On S_t the
+integrand is t·(integrand for v) + (t-independent terms, from w and from dt ⊗ v), so constancy in t forces
+δH_K[v] = 0 for K = ξ_R, ζ.  The pure-gauge part contributes 0 [standard for X stationary; for X linear in t the
+contribution is ∮ Q_{[K,X]}, a Komar integral of a stationary field — CHECK].  For KdS, δH = (δE, δJ) with E = M/Ξ²,
+J = aM/Ξ²; ∂(E, J)/∂(M, a) has determinant M/Ξ⁴ ≠ 0, so c_M = c_a = 0.  Then v = L_X g, and h − L_{tX} g is stationary,
+and the ladder closes.  [P modulo the one CHECK.]
