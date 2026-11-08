@@ -32,3 +32,16 @@ for W0 in (1,3,10,30):
     Tb=[0.5*mup*h,0.5*mu*Gp*psi,0.5*mu*h*h,-s*L*h,-s*Lp]
     D=sum(Tb); n=sum(np.abs(T) for T in Tb); m=(D/n)[msk]; i=np.argmax(m)
     print('bulk w>=',W0,'drop Gpsi\',q\': max',m[i],' frac pts',msk.mean())
+msk=w>=10
+G2=1.7*g; qq=0.45/(x*z)
+lhs=0.5*mu*(G2+qq)*(1/z+1/x)+0.85*mu*g*g+0.5*mu*(G2+qq)**2
+rhs=0.5455*s*L*g+s*L*q
+m=((lhs-rhs)/(lhs+rhs))[msk]; i=np.argmax(m)
+idx=np.where(msk)[0][i]
+print('(**) max normalised',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+hup=G2+q; hlo=1.7*(10/11)*g+q
+t1=np.where(mup>0,0.5*mup*hup,0.5*mup*hlo)
+lhs2=t1+0.85*mu*g*g+0.5*mu*hup**2
+rhs2=0.5455*s*L*g+s*L*q
+m=((lhs2-rhs2)/(np.abs(t1)+0.85*mu*g*g+0.5*mu*hup**2+rhs2))[msk]; i=np.argmax(m); idx=np.where(msk)[0][i]
+print('attempt2 max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))

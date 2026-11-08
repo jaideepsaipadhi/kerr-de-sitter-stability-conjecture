@@ -1296,3 +1296,9 @@ The seam zone w ≤ 10 (σ := s√κ ≤ 1.12) carries the remaining difficulty.
 Bulk attempt 1 (FAILED, recorded): bounding ½μ'h ≤ ½μh(1/z + 1/x) (dropping −1/(t−z)), ψ ≥ 10/11 in the sL-term,
   ψ < 1 elsewhere, q ≤ 0.45/(xz), g' ≤ g²: normalised margin +0.43 at zf ≈ 0.99, y ≈ 0.92, A/B ≈ 0.01, t ≈ 2e4.
   The −μ/(t−z) part of μ' (z0 near t) is essential; the bulk proof must keep μ' exact and split on its sign.
+Bulk attempt 2 (HOLDS numerically, margin −0.092 on all w ≥ 10 points): keep μ' exact and split on its sign:
+  (B2)  ½μ'·h± + 0.85 μ g² + ½μ(1.7g + q)²  ≤  0.5455·sLg + sLq     on {w = 8κs² ≥ 10},
+        h+ = 1.7g + q (μ' > 0),  h− = (17/11) g + q (μ' < 0),  0.5455 = 1.7·10/11 − 1.
+  (B2) implies (D) in the bulk (uses only ψ ∈ [10/11, 1), g' ≤ g², and the two dropped terms being ≤ 0).
+  (B2) has no cutoff function left: a rational inequality in (z, t, z0, A, B) plus the side condition
+  s² L(z0) ≥ 1.25 μ(z0).  Worst point: t ≈ 1.016, zf ≈ 0.49, y ≈ 0.07 (near z = 1, small t) — not a corner.
