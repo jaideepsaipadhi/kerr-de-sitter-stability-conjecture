@@ -1161,3 +1161,36 @@ OPEN after the referee: R5 cross-check (cheap); σ = m = 0 sector; generalised-m
 R5 DONE (step97_r5_pd_check.py, 4 s): all nine item-91 relations hold to 2e-42 on the accelerating NUT Λ-PD metric
    (m = 1, n = 1/10, α = 1/20), a type D family different from KdS (ξ genuinely complex there).  The commutator
    consequences are universal, not KdS coincidences.
+
+## 98. σ = m = 0 SECTOR BY HAND: stationary axisymmetric h is (δM, δa, δn, δα) + gauge, for every a ≠ 0
+h with L_∂t h = L_∂φ h = 0, δΨ0 = δΨ4 = 0, tetrad gauge of item 90.
+(a) J[h] = A'∂t + B'∂φ need not vanish.  Remove A' by a constant phase change of φ̃ (shifts Im δ(ξ/k) by θ·ξ_R ∝ ∂t)
+    and B' by subtracting B'/(coefficient) × the acceleration tangent (item 95: its Im δ(ξ/k) is a nonzero multiple
+    of ∂σ ∝ ∂φ).  Now reality holds to first order, so ξ̃, ζ̃ are first-order Killing fields (items 93, 96).
+(b) Carter structure to first order.  With R = Re φ̃, I = Im φ̃ (normalised):
+      ∇R = B l − A n,  ∇I = iD m − iC m̄,  g(∇R, ∇I) = 0,  g(∇R,∇R) = −2AB,  g(∇I,∇I) = −2CD.
+    ð(AB|φ|²) = φ³τρ'(φ̄ρ̄ − φρ) = 0 by reality (using ðA = −φρ̄τ, ðB = −φτρ', ð|φ|² = φτ(φ − φ̄)); with ξ- and
+    stationarity, d(AB|φ|²) ∝ dR, so  Δr := −2AB|φ|² = Δr(R);  likewise Δx := −2CD|φ|² = Δx(I).
+    ξ(R) = ξ(I) = ζ(R) = ζ(I) = 0, ∇R, ∇I are gradients (orthogonal distribution integrable), and
+      g(ξ,ξ) = 2AB − 2CD,  g(ξ,ζ) = 2I²AB + 2R²CD,  g(ζ,ζ) = 2I⁴AB − 2R⁴CD
+    are all functions of (R, I) through Δr(R), Δx(I), R, I: in coordinates (t, ψ, R, I) adapted to (ξ̃, ζ̃) the
+    perturbed metric is, to first order, EXACTLY Carter's separable ansatz with arbitrary Δr(R), Δx(I).
+(c) On Carter's ansatz the Λ-vacuum equations are LINEAR in (Δr, Δx) (Carter 1968; Plebański 1975):
+      Δr = −(Λ/3)R⁴ + εR² − 2mR + γ,   Δx = −(Λ/3)I⁴ − εI² + 2nI + γ.
+    So the linearisation has the same solution space: (δε, δm, δn, δγ); one combination is the joint scaling of
+    (R, I) left by the real normalisation of φ̃ (gauge).  3 = (δM, δa, δn).  With (a): + δα.  Total 4 = PD tangents,
+    plus a gauge vector built from the coordinate change and the rescalings of ξ, ζ (δξ, δζ are constant combinations
+    of ∂t, ∂φ, giving X linear in t, φ: e.g. t ↦ (1 − εc)t).
+(d) Axis regularity (item 41/B.3) kills δn and δα.  Result: h = c_M ∂_M g + c_a ∂_a g + L_X g, X polynomial (degree ≤ 1)
+    in t — the HV18/HPV σ = 0 form, at every subextremal geometry with a ≠ 0 (a = 0: HV18).
+Caveat [to check]: (b) uses reality of FIRST DERIVATIVES (differentiated reality relations); legitimate since the
+    relations hold to first order on the whole exterior.
+
+## 99. Generalised modes
+σ ≠ 0 or m ≠ 0: induction on k.  If (L_T + iσ)^k h = 0, then h_top = (L_T + iσ)^{k−1}h is a mode with vanishing
+Teukolsky scalars (B.1), so h_top = L_{X1} g by item 96, X1 a mode.  Y = t^{k−1}X1/(k−1)! (t-polynomial times mode)
+satisfies (L_T + iσ)^{k−1} Y = X1 (L_T = ∂t on the t-polynomial part, ∂t, ∂φ Killing), so h − L_Y g has order k − 1.
+⇒ every generalised mode with (σ, m) ≠ (0, 0) is pure gauge, gauge vector polynomial in t.
+σ = m = 0, k ≥ 2: the top coefficient is (δM, δa) + gauge by item 98.  OPEN (small): exclude L_T h = c_M ∂_M g + ...
+with (c_M, c_a) ≠ 0 (no linear-in-t growth of the mass/spin), as in HV18 for SdS; expected via the conserved
+charges (Komar integrals of ξ, ζ), which are t-independent.

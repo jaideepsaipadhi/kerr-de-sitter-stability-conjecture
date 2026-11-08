@@ -161,3 +161,16 @@ acceleration are excluded for smooth modes.  Globalisation by simple connectivit
 3–5. ~~A.2, A.9, A.10 numerical sign claims~~ — proved by hand (item 88).
 6. **B.2**: the two handed-off exact certificates (degree 29; origin multiplicity 21).
 7. **HPV match**: Theorem B against HV18's UEMS wording, and HPV25 itself once public.
+
+
+---
+## UPDATE 8 Nov (items 88–99): status after the Λ-Wald route
+* Theorem A: A.2, A.9 (m ≠ 0), A.10 proved by hand (item 88); c₁ identity fully symbolic (item 89).
+  Still open: R3 corner error bounds and the bounded R3 part.
+* Theorem B: the jet certificate / bad set (items 75–87) is SUPERSEDED.
+  - (σ, m) ≠ (0,0), a ≠ 0: every mode with vanishing Teukolsky scalars is globally pure gauge, explicit smooth gauge vector
+    (item 96; in-house referee item 97, five repairs written in).  Mechanism: linearised Goldberg–Sachs; the Killing-spinor
+    vector ξ and the Carter field ζ are first-order Killing fields; Im δξ is a background Killing field, hence 0 for modes.
+  - σ = m = 0: Carter structure to first order; field equations linear in (Δr, Δx); 4 = PD tangents; axis kills NUT,
+    acceleration (item 98).
+  - Generalised modes: induction (item 99); one small open point at σ = m = 0 (no linear-in-t mass/spin growth).
