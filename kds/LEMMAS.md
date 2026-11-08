@@ -1237,3 +1237,12 @@ Checked and accepted:
  * a ≠ 0 is used (I = a cos θ must be a coordinate); a = 0 is HV18.
  * 101: the identity is the standard covariance of Noether charges; no boundary terms since S is closed.
 OPEN: machine-check 98(c) (seconds).
+
+## 103. 98(c) MACHINE-CHECKED AND PROVED (step102_carter_linear.py, 3 s)
+Carter ansatz ds² = S(dR²/Δr + dI²/Δx) + (Δx(dt + R²dψ)² − Δr(dt − I²dψ)²)/S, S = R² + I², Δr(R), Δx(I) ARBITRARY.
+* Mixed Ricci R^a_b is affine-linear in (Δr, Δx) (second c-derivative under Δ -> cΔ vanishes identically).
+* The RR component gives  −S Δr'' + 2RΔr' − 2Δr − 2IΔx' + 2Δx − 2ΛS² = 0;  ∂_I² separates it:
+  −2Δr'' − 8ΛR² = const, so Δr = −(Λ/3)R⁴ + εR² + bR + c; the II component gives Δx = −(Λ/3)I⁴ + ε'I² + dI + e;
+  substituting back forces ε' = −ε, e = c.  Solution space = {(ε, m, n, γ)}: Δr = −(Λ/3)R⁴ + εR² − 2mR + γ,
+  Δx = −(Λ/3)I⁴ − εI² + 2nI + γ, and these solve ALL components (checked).
+Since the equations are linear, the linearised solutions are exactly (δε, δm, δn, δγ).  Item 98 has no external input left.
