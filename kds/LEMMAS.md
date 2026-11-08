@@ -1204,3 +1204,36 @@ integrand is t·(integrand for v) + (t-independent terms, from w and from dt ⊗
 contribution is ∮ Q_{[K,X]}, a Komar integral of a stationary field — CHECK].  For KdS, δH = (δE, δJ) with E = M/Ξ²,
 J = aM/Ξ²; ∂(E, J)/∂(M, a) has determinant M/Ξ⁴ ≠ 0, so c_M = c_a = 0.  Then v = L_X g, and h − L_{tX} g is stationary,
 and the ladder closes.  [P modulo the one CHECK.]
+
+## 101. THE CHECK (item 100) — RESOLVED: δH_K[L_X g] = 0 for EVERY smooth X, on any closed 2-surface
+Iyer–Wald, Λ-vacuum Lagrangian L, background Killing K (L_K g = 0), on-shell background.  With Θ(L_X g) = X·L + dQ_X,
+L_X Q_K = X·dQ_K + d(X·Q_K), dQ_K = Θ(L_K g) − K·L = −K·L, and K·dQ_X = L_K Q_X − d(K·Q_X):
+   δH_K[L_X g] = ∮ (δ_X Q_K − K·Θ(L_X g)),   δ_X Q_K = L_X Q_K − Q_{[X,K]}
+             = ∮ (X·dQ_K − K·X·L) − ∮ (Q_{[X,K]} + L_K Q_X)            (exact terms dropped, S closed)
+             = ∮ (K·X·L − K·X·L) − ∮ (Q_{[X,K]} + Q_{[K,X]})             (L_K Q_X = Q_{[K,X]}: Q is natural, L_K g = 0)
+             = 0.
+No decay or stationarity of X needed.  So item 100 is [P]: no linear-in-t growth of (δM, δa).
+
+## 102. HOSTILE REFEREE PASS ON ITEMS 98–100 (in-house) — verdict: PASSES; three repairs written in
+F1 [gap -> fixed] Item 98(b) said "with ξ- and stationarity, d(AB|φ|²) ∝ dR".  Precisely: ∇f = (Þ'f) l + (Þf) n once
+   ðf = ð'f = 0, and ∇f ∥ ∇R = Bl − An ⇔ AÞ'f + BÞf = 0 ⇔ ξ̃(f) = 0 (the m, m̄ terms drop).  ξ̃(f̃) = 0 to first order
+   because f̃ is a natural invariant of the perturbed geometry and ξ̃ is a first-order Killing field.  So
+   df̃ ∧ dR̃ = 0 to first order: f̃ = F(R̃).
+F2 [gap -> fixed] Adapted coordinates need [ξ̃, ζ̃] = 0 to first order.  [ξ̃, ζ̃] = ε([δξ, ζ] + [ξ, δζ]).  For stationary
+   axisymmetric h, L_ξ h = L_ζ h = 0, so L_{δξ} g = L_{δζ} g = 0: δξ, δζ are background Killing fields, hence commute
+   with ξ, ζ.  ✓.  Orthogonal transitivity: ∇R̃, ∇Ĩ are gradients orthogonal to ξ̃, ζ̃ (ξ̃(R̃) = 0 etc.). ✓
+F3 [gap -> fixed] Item 99 used BL time t in Y = t^{k−1}X1/(k−1)!; BL t is singular at the horizons.  Use the regular
+   time t* (T t* = 1, smooth across both horizons, as in HPV): Y = t*^{k−1}X1/(k−1)! is smooth, and (L_T + iσ)(t*^j X1)
+   = j t*^{j−1} X1 as before.  Same in item 100 (S_t := flow of S_0 by T; t* labels it).
+Checked and accepted:
+ * 98(a): the acceleration tangent has δΨ0 = δΨ4 = 0 (type D) and J ≠ 0 with a nonzero ∂φ part (PD ↔ BL:
+   ∂σ = −aΞ∂φ − Ξa²·(1/Ξ)∂t-type combination; ∂φ coefficient −aΞ ≠ 0); its ∂t part is absorbed by the phase of φ̃.
+ * 98(b): metric reconstruction g_RR = |φ|²/Δr, g_II = |φ|²/Δx, and the (ξ, ζ)-block from g(ξ,ξ) = (Δx − Δr)/|φ|²,
+   g(ξ,ζ) = −(I²Δr + R²Δx)/|φ|², g(ζ,ζ) = (R⁴Δx − I⁴Δr)/|φ|² (from AB = −Δr/(2|φ|²), CD = −Δx/(2|φ|²)): Carter's form.
+ * 98(c): linearity of the Λ-vacuum equations in (Δr, Δx) on Carter's ansatz (Plebański 1975) — cited, standard; it is
+   the one external input of the σ = m = 0 sector.  [Could be machine-checked in seconds: Ricci of the ansatz with
+   symbolic Δr(R), Δx(I).]
+ * 98(d): axis determinant −64 m p0⁴/c ≠ 0 (item 41) kills (δn, δα).
+ * a ≠ 0 is used (I = a cos θ must be a coordinate); a = 0 is HV18.
+ * 101: the identity is the standard covariance of Noether charges; no boundary terms since S is closed.
+OPEN: machine-check 98(c) (seconds).
