@@ -1258,3 +1258,21 @@ positive denominators.  The bounded part of R3 becomes an exact polynomial-posit
 on polynomials, exact rational arithmetic), and the corners become leading-coefficient sign questions.
 NEXT: (i) clear denominators, record the polynomials P_C, P_D and their degrees; (ii) corners: t -> ∞, A -> ∞, zf -> 0
 as Newton-polygon leading terms with explicit signs; (iii) bounded part by exact subdivision.
+
+## 105. R3 condition (C) PROVED BY HAND for the rational multiplier (all t, z0, A; B ≥ 5.5t − 1.25)
+Polynomial form (step105_polys.py): C has numerator degree 10 (212 terms), D degree 18 (1803 terms); denominators of
+known sign (−zL < 0 and a factor −[z0(…) + 8s²z0L(z0)] < 0).
+In R3, 2(z0−1)L(1)/(t−1) > 1, so p = ½ min(0.9, ·) = 0.45 exactly.
+Proof of (C): s h μ ≤ H.  All three factors of h are ≥ 0 and w/(1+w) < 1, 1 − u ≤ 1, so
+   s h μ ≤ s μ (1.7 g + 0.45/(x z)),   x = z − 1,  g = (A/z² + 3)/L.
+Divide by μ = z x (t − z) > 0, use μ'/μ = 1/z + 1/x − 1/(t − z):  it suffices that
+   1.7 s g + 0.45 s/(xz) ≤ 2 + s/z + s/x − s/(t − z).                                  (*)
+ (i)  g − 1/z = (6 − B/z)/L, so g ≤ 1/z when B ≥ 6z; otherwise (only for z > B/6 ≥ (5.5t − 1.25)/6) the excess is
+      e ≤ (6 − B/z)/(B − 3z) ≤ (0.5 + 1.25/t)/(2.5t − 1.25).
+ (ii) 0.7 s/z + 0.45 s/(xz) − s/x = (s/z)[0.7 − (z − 0.45)/(z − 1)] ≤ −0.3 s/z < 0.
+ (iii) s/(t − z) < 1 since z0 < t; and where e ≠ 0, s < t − z < (0.5t + 1.25)/6, so
+      1.7 s e ≤ 1.7 (0.5t + 1.25)(0.5 + 1.25/t) / (6(2.5t − 1.25)) ≤ 0.69 (max at t = 1, decreasing).
+ Hence LHS(*) − (2 + s/z + s/x − s/(t−z)) ≤ −0.3 s/z + 1 + 0.69 − 2 < 0.   ∎
+ [Numerical sanity: the crude inequality has normalised margin ≤ −0.083 on 4e5 random R3 points, step105_crudeC.py.]
+ Also holds in R1/R2 wherever p ≤ 0.45 is used.  The t -> ∞ / A/B -> ∞ C-corner of items 71/73 is thereby closed.
+REMAINING in R3: condition (D) (degree 18).
