@@ -1246,3 +1246,15 @@ Carter ansatz ds² = S(dR²/Δr + dI²/Δx) + (Δx(dt + R²dψ)² − Δr(dt −
   substituting back forces ε' = −ε, e = c.  Solution space = {(ε, m, n, γ)}: Δr = −(Λ/3)R⁴ + εR² − 2mR + γ,
   Δx = −(Λ/3)I⁴ − εI² + 2nI + γ, and these solve ALL components (checked).
 Since the equations are linear, the linearised solutions are exactly (δε, δm, δn, δγ).  Item 98 has no external input left.
+
+## 104. R3 made ALGEBRAIC: rational cutoff replaces e^{−βκs²} (step104_rational.py, step104_grid.py, ~10 s per run)
+Multiplier h = (1+δ) g · w/(1+w) + p(1−u)/(x z),  w = β κ s²,  δ = 0.7  (instead of (1 − e^{−βκs²})).
+Same 1200-case grid as item 71 (t ∈ [1.01, 1e5], zf ∈ [0.05, 0.95], B/floor ∈ {1, 10, 1e3}, A/B ∈ [0.01, 1e6]):
+   β = 1: 66 fails;  β = 2: 26;  β = 4: 0 (worst D −0.0090);  β = 8: 0 (worst C −0.0823, worst D −0.0178);
+   β = 16: 0 (D −0.0040);  β = 40: 33 fails.      Choose β = 8.
+Worst cases unchanged in location: C at (t, A/B) -> ∞ (item 73 corner), D at t large, zf = 0.05 (the zf -> 0 corner).
+CONSEQUENCE: h, h' are rational in (z; t, z0, A, B), so (C) and (D) are POLYNOMIAL inequalities after clearing the
+positive denominators.  The bounded part of R3 becomes an exact polynomial-positivity problem (Bernstein / interval
+on polynomials, exact rational arithmetic), and the corners become leading-coefficient sign questions.
+NEXT: (i) clear denominators, record the polynomials P_C, P_D and their degrees; (ii) corners: t -> ∞, A -> ∞, zf -> 0
+as Newton-polygon leading terms with explicit signs; (iii) bounded part by exact subdivision.
