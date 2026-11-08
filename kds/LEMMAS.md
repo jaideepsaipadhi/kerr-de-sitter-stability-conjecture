@@ -1293,3 +1293,6 @@ So take W0 = 10: in the bulk ψ ≥ 10/11 and the crude form
    ½μ'h + ½μ(1.7ψ g' + h²) ≤ sL(1.7ψ − 1)g + sLq,   with g' ≤ g² (L'' ≥ 0),
 is the target for a by-hand proof; the bulk lever is w ≥ 10 ⇔ s² L(z0) ≥ 1.25 μ(z0), with L(z) ≥ L(z0) (L' < 0).
 The seam zone w ≤ 10 (σ := s√κ ≤ 1.12) carries the remaining difficulty.
+Bulk attempt 1 (FAILED, recorded): bounding ½μ'h ≤ ½μh(1/z + 1/x) (dropping −1/(t−z)), ψ ≥ 10/11 in the sL-term,
+  ψ < 1 elsewhere, q ≤ 0.45/(xz), g' ≤ g²: normalised margin +0.43 at zf ≈ 0.99, y ≈ 0.92, A/B ≈ 0.01, t ≈ 2e4.
+  The −μ/(t−z) part of μ' (z0 near t) is essential; the bulk proof must keep μ' exact and split on its sign.
