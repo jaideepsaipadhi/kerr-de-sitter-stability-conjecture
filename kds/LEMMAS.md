@@ -899,3 +899,21 @@ CONSEQUENCE at this point:  V_3 has 4 independent stationary-axisymmetric classe
 REMAINING for Theorem B's local step: (U) the same on an open dense set of points for EVERY subextremal geometry
  (exceptional polynomial in (Λ, a, r, x)); (O) ord K1 = 3 confirmed against Khavkine; (P) origin (PD sector);
  (R4) assembly of generalised modes.
+
+## 85. UNIFORMITY MECHANISM: at K = 7 the certificate uses only OPEN conditions (step67 K=7, step71)
+
+step71 (K = 6, J = 3): exact nullity of C_H = 1042 vs gauge_high rank 1040: the 2 extra high solutions are supported in
+degree ≥ J+1 = 4 (support analysis s = 4: excess 2; s = 5, 6: excess 0) — truncation artifacts of K = 6 at J = 4, not
+top-degree symbol kernel (the 480-dim top kernel lies inside gauge_high).
+step67 at K = 7, structural bound d_J ≤ n_L − rank C + (n_H − rank X_high) − rank G_L, ALL three ranks mod-P lower bounds:
+   J = 3: 4,  J = 4: 4,  J = 5: 4   (J ≤ 2 loose, irrelevant).
+So with K = 7 every ingredient of the descent certificate (item 80) is an OPEN (Zariski) condition in (Λ, a, r, x):
+   d_4 ≤ 4 (three rank LOWER bounds),  PD independence mod gauge (rank lower bound, item 84),
+ while "gauge images are solutions" and "PD tangents are solutions" are identities in the parameters.
+ ⇒ the certificate holds on a Zariski-open dense U ⊂ (Λ, a, r, x) containing (1/20, 3/5, 3, 3/5).
+ANALYTICITY (mode equations elliptic in (r, x) in harmonic gauge between the horizons ⇒ K1(h) real-analytic on the
+ connected exterior): for a geometry (Λ, a), K1(h) vanishes on the open set U_(Λ,a) ∩ exterior ⇒ everywhere.
+ Note U_(Λ,a) ≠ ∅ as soon as the minor polynomials are not identically zero in (r, x) for that (Λ, a); unphysical
+ (r, x) also witness this (Zariski density), so physical points are not needed for the witness.
+REMAINING CRUX (U'): exclude the algebraic set B = {(Λ, a): the certificate minors vanish identically in (r, x)}
+ (dim ≤ 1) from the physical region.  Direct bivariate interpolation in (Λ, a) is too expensive (one K = 7 evaluation ≈ 7 min).
