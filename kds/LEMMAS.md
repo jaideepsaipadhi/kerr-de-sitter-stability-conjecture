@@ -930,3 +930,14 @@ STATUS of Theorem B's local step (modulo ord K1 = 3 [item 76, to confirm], origi
   analyticity, item 85), and at a = 0 / small |a| by Hintz–Vasy 2018 §7 (SdS UEMS + perturbation).
   B is not known to miss the physical region.  Routes: (i) Λ-AABKW (analytic, all parameters); (ii) a much smaller
   pointwise certificate whose minors can be computed symbolically in (Λ, a).
+
+## 87. Fast mod-P certificate and the bad set B (step52p_modp_modes.py, step72_fast_cert.py, step73_probe.py)
+
+mod-P port of the mode builder (nmod_mat): K = 7 descent certificate in 40 s (was ~450 s); reproduces d_4 ≤ 4 at the
+reference point.  Probe of the structural (open-condition) certificate d_4 ≤ 4:
+   a = 0 (SdS, Λ = 0.05):   d_4 ≤ 8  — FAILS, as predicted (extra spherical Killing fields): a = 0 ∈ B.
+   a = 0.001:               d_4 ≤ 4.
+   12 random subextremal geometries (Λ ∈ [0.008, 0.153], a ∈ [0.05, 1.02], points across the exterior): all d_4 ≤ 4.
+EVIDENCE: B ∩ physical region = {a = 0}, which is covered by Hintz–Vasy 2018 §7 (SdS UEMS) — and small |a| perturbatively.
+NOT A PROOF: B could contain other curves.  A proof needs either a Λ-AABKW theorem or a certificate small enough for
+symbolic minors in (Λ, a) (the current minors have size ~1300; degree in a likely ~10^3–10^4, too many evaluations).
