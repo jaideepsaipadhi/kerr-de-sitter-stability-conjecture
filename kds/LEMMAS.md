@@ -822,3 +822,23 @@ With the item-70 lemma: no integer m ≠ 0 has σ ≠ 0 exceptional at all three
 Lines m = 0 and σ = 0: item 78.  Together: at THIS geometry, B1 holds for every (σ, m) except the origin (PD sector),
 modulo (i)–(iii) and the line lifts, and modulo ord K1 = 3 (item 76).
 REMAINING for Theorem B: those exact lifts; geometry uniformity (item 75 R2); assembly (R4); confirming ord K1 = 3.
+
+## 80. KEY REDUCTION: (σ, m)-uniformity follows from ONE 4D jet statement; geometry uniformity becomes (Λ, a, r, x) only
+
+Float 4D jets (step44, all perturbations, δRic − Λh = 0, δψ0 = δψ4 = 0, real h), point r = 3, θ = 1:
+   K = 5: d = {0,0,0, 6*};   K = 6: d = {0,0,0, 4, 6*}   (* = top truncation level, artifact), for Λ = 0 and Λ = 0.05.
+   So honest d_3 = 4 = number of Λ-PD tangents (δM, δa, NUT, acceleration).
+LEMMA (Killing-field descent) [P, to write in full].  Suppose at q:
+   (4D_4)  every 4-jet at q of a local solution = (gauge 4-jet) + Σ c_i (4-jet of PD tangent i).
+ Let h be a mode, L_T h = −iσ h, L_Φ h = i m h.  T, Φ are Killing: L_T commutes with the linearised operators, maps
+ gauge to gauge (L_T δ*X = δ*[T, X]) and kills the PD tangents (stationary, axisymmetric).  The 3-jet of L_T h at q is
+ determined by the 4-jet of h at q.  Hence −iσ (3-jet of h) = 3-jet of L_T h ∈ gauge 3-jets; likewise i m (3-jet of h).
+ So for (σ, m) ≠ (0, 0) the 3-jet of every mode solution at q is a gauge 3-jet: d_3^mode = 0 for ALL (σ, m) ≠ 0 at once.
+ With ord K1 = 3 (item 76) and item 75 (R1): if (4D_4) holds on an open dense set of q, every non-origin mode with
+ vanishing Teukolsky scalars is locally pure gauge.
+CONSEQUENCE: items 65–70, 78, 79 (σ/m exceptional polynomials, resultants, lines) are SUPERSEDED for (σ, m) ≠ (0, 0).
+ Theorem B's local step reduces to: (4D_4) on an open dense set of points, for every subextremal geometry — a problem in
+ (Λ, a, r, x) only — plus the origin (PD sector, item 64) and the assembly (R4).
+NEXT: exact / mod-p 4D jet builder in coordinates (t, r, x = cos θ, φ) (metric rational); certify (4D_4) as
+ d_4 ≤ 4 (upper bound by truncation, K ≥ 7) + the four PD tangents' 4-jets independent mod gauge (explicit Λ-PD family);
+ then geometry uniformity via exceptional polynomials in (Λ, a, r, x).
