@@ -792,3 +792,18 @@ a/M ∈ [0.33, 1.07], points across (r_e, r_c) × (−1, 1), σ real / imaginary
 With item 75 (R1) + item 76 (ord K1 = 3): at each sampled (geometry, σ, m) and point, every solution's 3-jet is a gauge
 3-jet, so K1(h) vanishes there.  STILL OWED for a proof: uniformity (the good set must be open-dense in the point for
 EVERY geometry and EVERY (σ, m), including the lines σ = 0 and m = 0) — items 75 (R2), (R3); and confirming ord K1 = 3.
+
+## 78. The lines m = 0 and σ = 0 at jet order J = 3 (answers referee I.3, modulo exact lift) — step65_line_cert.py
+
+K = 6, all four Teukolsky conditions, Lam = 1/20, a = 3/5, points p1 = (3, 3/5), p2 = (7/2, −1/5).  Every rank bound is
+backed by a fixed minor in the exceptional polynomial E, INCLUDING the gauge-row minor behind the R_H upper bound (rank
+of the gauge rows can drop at special parameter values; previously treated as automatic).  Only J = 3 minors enter E.
+ - Line m = 0 (variable σ; interpolation nodes σ = 1, 2, 3 to avoid the σ = 0 shape change): generic d_3 ≤ 0 at both
+   points; deg E = 70, ord_0 = 32; gcd(E1, E2) mod P = c σ³² EXACTLY a monomial.
+ - Line σ = 0 (variable m; nodes m = 1, 2, 3): generic d_3 ≤ 0 at both points; deg E = 69, ord_0 = 35;
+   gcd(E1, E2) mod P = c m³⁵.
+So on each line the only parameter value that is exceptional at both points is the origin (σ, m) = (0, 0), the PD sector
+(exact d = 4, item 64).  (Generic J = 0 bound is 2: the known looseness of the gauge-row R_H bound at low J; irrelevant,
+since only J = ord K1 = 3 is needed.)
+OWED for exactness (as in item 67): exact degree and exact lowest order of E1 on each line (Toeplitz / CRT, as in items
+67–71), and then the same for every geometry (item 75 R2).
