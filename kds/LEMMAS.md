@@ -782,3 +782,13 @@ perturbation h involve nabla(linearised Riem), i.e. 3 derivatives of h, and the 
 So ord K1 = N' + 2 = 3 (consistent with Kerr, where the AABKW complete invariants have order 3).
 => Theorem B certificates must be run at jet order J = 3 (not {0, 1}).  Pointwise exact data (items 61, 64) already give
    d_J = 0 for J ≤ 4–6 at the sampled (sigma, m), so the J = 3 certificate is expected to pass.
+
+## 77. Pointwise exact certificate at jet order J = 3 = ord K1 (step64_sample_J3.py)
+
+K = 6 truncation (honest through J = 3; truncation only over-counts, so every reported d_J is a valid UPPER bound), all four
+Teukolsky conditions, exact Q(i): 21 random rational samples, Lam M^2 ∈ [0.042, 0.163] (max subextremal ≈ 0.177),
+a/M ∈ [0.33, 1.07], points across (r_e, r_c) × (−1, 1), σ real / imaginary / complex / ZERO, m ∈ [−4, 4]
+(including σ = 0 with |m| = 3, 4 — the sector referee I.3 flagged as unchecked):  d_0 = … = d_3 = 0 (and d_4 = 0) in ALL.
+With item 75 (R1) + item 76 (ord K1 = 3): at each sampled (geometry, σ, m) and point, every solution's 3-jet is a gauge
+3-jet, so K1(h) vanishes there.  STILL OWED for a proof: uniformity (the good set must be open-dense in the point for
+EVERY geometry and EVERY (σ, m), including the lines σ = 0 and m = 0) — items 75 (R2), (R3); and confirming ord K1 = 3.
