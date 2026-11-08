@@ -1276,3 +1276,14 @@ Divide by μ = z x (t − z) > 0, use μ'/μ = 1/z + 1/x − 1/(t − z):  it su
  [Numerical sanity: the crude inequality has normalised margin ≤ −0.083 on 4e5 random R3 points, step105_crudeC.py.]
  Also holds in R1/R2 wherever p ≤ 0.45 is used.  The t -> ∞ / A/B -> ∞ C-corner of items 71/73 is thereby closed.
 REMAINING in R3: condition (D) (degree 18).
+
+## 106. (D) diagnosis: the cutoff-derivative term Gψ' is load-bearing (step106_D_diag.py, 3e5 R3 points, ~5 s)
+Exact (D): max normalised margin −0.028 (t ≈ 2e4, zf ≈ 0.12, A/B ≈ 0.014, interior y ≈ 0.7).
+Dropping both negative terms ½μGψ' and ½μq': fails (NaN/0 normalisation at z = z0, positive elsewhere).
+Dropping only ½μGψ': fails, margin +0.9998 at the seam side (y -> 1, A/B large).
+So unlike (C), (D) cannot be proved by discarding signed terms: the seam layer (s² κ = O(1)) needs the exact
+balance −sL' ≈ s(A/z² + 3) against ½μGψ' ≈ −1.7 μ g · 8κs/(1+w)², i.e. the rescaled layer problem of items 13–15.
+PLAN for (D):  split by w = 8κs²:
+  seam zone w ≤ W0: rescale s = σ/√κ; to leading order D becomes the A-independent layer inequality (items 13–15),
+     plus explicit remainders bounded by powers of s/x0 and 1/(κ x0²);
+  bulk zone w ≥ W0: ψ ≥ W0/(1+W0), and the crude-bounding strategy of item 105 should work (test next, choosing W0).
