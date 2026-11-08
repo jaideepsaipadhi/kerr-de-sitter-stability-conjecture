@@ -1318,3 +1318,9 @@ Sub-lemma Q [P]: ½μ(q² + q') ≤ −0.12375 v(t−z)/(xz) − 0.225(t−z)/x0
 Also ½μ'q = 0.225 v(t−z)(1/x + 1/z) − 0.225v exactly (μ'/μ = 1/x + 1/z − 1/(t−z), μq = 0.45v(t−z)).
 Remaining for B3: the g-terms  ½μ'·c±g + 2.295μg² + 1.7μgq  against  0.5455 sLg + (sLq − q-terms), using the bulk
    lower bound s ≥ √(1.25/κ) together with L(z) ≥ L(z0) (so sL ≥ max(sL0, √(1.25 μ0 L0))).  Case split on z vs z0.
+B3 SPLIT (both hold numerically on {w ≥ 10}; with Sub-lemma Q they imply B3, hence bulk (D)):
+  (Iq)  (t−z)(0.225(2z−1) − 0.12375) + 0.765 μg  ≤  0.45 sL                         margin −0.036
+  (Ig)  ½μ'c± + 2.295 μg  ≤  0.5455 sL + (0.225v + 0.225(t−z)/x0)/g                 margin −0.106
+  (Iq) is divided by v/(xz); (Ig) by g.  Both are now inequalities between explicit rational functions, no cutoff.
+  Tightest regime of (Iq): zf small (z0 = ζt, ζ ≲ 0.12), A small, z near z0: needs s ≳ 0.49 z0 against the bulk bound
+  s ≥ √(1.25/κ) ≈ 0.48 z0 there — a 2% margin; the hand proof must use g ≈ 3/B (not g ≤ 1/z) in that regime.

@@ -60,3 +60,9 @@ for W0 in (1,3,10):
     r3=cW*s*L*g+s*L*q
     m=((l3-r3)/(np.abs(t1)+0.85*mu*g*g+0.5*mu*hup**2+np.abs(0.5*mu*qp)+r3))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
     print('B3 W0',W0,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+mk=w>=10; v=1-u
+Iq_l=(t-z)*(0.225*(z+x)-0.12375)+0.765*mu*g; Iq_r=0.45*s*L
+Ig_l=0.5*mup*cpm+2.295*mu*g; Ig_r=0.5455*s*L+(0.225*v+0.225*(t-z)/x0)/g
+for nm,l_,r_ in (('Iq',Iq_l,Iq_r),('Ig',Ig_l,Ig_r)):
+    m=((l_-r_)/(np.abs(l_)+np.abs(r_)))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+    print(nm,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
