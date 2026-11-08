@@ -1158,3 +1158,6 @@ Other objections considered and dismissed:
  * "Theorem A gives only δψ0 = δψ4 = 0 for the Teukolsky BCs": item B.1 already supplies this for smooth modes.
  * HPV's T-generalised modes: ∂t-frequency σ = Ωm ≠ 0 for m ≠ 0, covered by the σ ≠ 0 case.
 OPEN after the referee: R5 cross-check (cheap); σ = m = 0 sector; generalised-mode induction.
+R5 DONE (step97_r5_pd_check.py, 4 s): all nine item-91 relations hold to 2e-42 on the accelerating NUT Λ-PD metric
+   (m = 1, n = 1/10, α = 1/20), a type D family different from KdS (ξ genuinely complex there).  The commutator
+   consequences are universal, not KdS coincidences.
