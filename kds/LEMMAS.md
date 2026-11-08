@@ -857,3 +857,15 @@ FIX (next): lower-bound dim(S ∩ ker π_J) by EXACT elements — compute the mo
   reconstruct (CRT over a few primes), and verify v·C = 0 EXACTLY over Q(i) (a cheap matrix–vector product with the exact
   coefficient matrices).  That makes the upper bound tight and rigorous.  Then K = 7 for J = 4, then the descent check
   (item 80, as an exact containment), then geometry uniformity.
+
+## 82. RIGOROUS d_3 ≤ 4 on full 4D jets (one point) — step68_4d_exact.py, ex4d.log
+
+d_J ≤ n_L − rank C + rank C_H − rank G_L, with rank C a lower bound (any) and rank C_H EXACT over Q(i) (upper bound is
+what matters), rank G_L a mod-P lower bound.  K = 6, Lam = 1/20, a = 3/5, point (3, 3/5), exact 4D assembly 2100 × 980:
+   n_L = 350, rank_Q C = 776, rank_Q C_H = 708, rank_P G_L = 278   =>   d_3 ≤ 4   RIGOROUSLY.   (388 s)
+Combined with the PD tangents (4 independent classes, float item 40 / step44) this is d_3 = 4.
+K = 7 (needed for honest J = 4, the descent lemma's input): exact 4D assembly 3300 × 1764 done (475 s), but the exact
+realified rank (6600 × 3528 dense fmpq) died — memory.  NEEDED: a leaner exact certificate for rank C_H ≤ r
+(only an UPPER bound is needed): exhibit n_H − r exact left-null vectors of C_H — mod-P nullspace, CRT/rational
+reconstruction, verification v·C_H = 0 by sparse exact products (the assembly is a sparse dict, cheap).  rank C may stay
+mod P (lower bound).
