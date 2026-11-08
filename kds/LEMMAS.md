@@ -1306,3 +1306,15 @@ B2 split test: (a) g-part  ½μ'c± + 2.295 μg ≤ 0.5455 sL  FAILS (+0.29 near
   x0 L(1) > (t−1)/2, short of the 1.56(t−1) the g-part alone needs);  (b) q-part  ½μ' + 1.7μg + ½μq ≤ sL  holds (−0.093).
   So near z = 1 the q-term's surplus must pay for the g-part: the proof of B2 has to combine them with a z-dependent
   weight (q ~ 0.45/x dominates as x -> 0).  Not yet found.
+
+## 107. Bulk (D) refined: keep q' (it is cutoff-free) — B3 holds with margin −0.111; first sub-lemma proved
+Why B2 was marginal near z = 1: at x -> 0 the 1/x terms are ½μ'q + ½μq² ≈ (0.225 + 0.10125)(t−1)/x, which needs
+x0L(1) ≥ 0.725(t−1), more than R3's 0.5(t−1).  The dropped ½μq' ≈ −0.225(t−1)/x cancels the first: with it the
+requirement is x0L(1) ≥ 0.225(t−1), which R3 gives with room.
+B3 := B2 + ½μq' on the LHS:  numerically max normalised −0.111 on {w ≥ 10} (worst t ≈ 620, zf ≈ 0.71, y ≈ 0.66: interior).
+Sub-lemma Q [P]: ½μ(q² + q') ≤ −0.12375 v(t−z)/(xz) − 0.225(t−z)/x0  (v = 1 − u ∈ [0, 1]).
+   Proof: q = 0.45v/(xz), q' = 0.45[−1/(x0 xz) − v(2z−1)/(xz)²]; so ½μ(q² + q') = μv(0.2025v − 0.45(2z−1))/(2(xz)²)
+   − 0.225μ/(x0 xz), and 0.2025v − 0.45(2z−1) ≤ 0.2025 − 0.45 = −0.2475 (v ≤ 1, z ≥ 1); μ = xz(t−z).  ∎
+Also ½μ'q = 0.225 v(t−z)(1/x + 1/z) − 0.225v exactly (μ'/μ = 1/x + 1/z − 1/(t−z), μq = 0.45v(t−z)).
+Remaining for B3: the g-terms  ½μ'·c±g + 2.295μg² + 1.7μgq  against  0.5455 sLg + (sLq − q-terms), using the bulk
+   lower bound s ≥ √(1.25/κ) together with L(z) ≥ L(z0) (so sL ≥ max(sL0, √(1.25 μ0 L0))).  Case split on z vs z0.

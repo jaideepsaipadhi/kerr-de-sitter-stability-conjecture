@@ -51,3 +51,12 @@ b_l=0.5*mup+1.7*mu*g+0.5*mu*q; b_r=s*L
 for nm,l_,r_ in (('(a)',a_l,a_r),('(b)',b_l,b_r)):
     m=((l_-r_)/(np.abs(l_)+r_))[msk]; i=np.argmax(m); idx=np.where(msk)[0][i]
     print(nm,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+for W0 in (1,3,10):
+    mk=w>=W0
+    hlo2=1.7*(W0/(1+W0))*g+q
+    t1=np.where(mup>0,0.5*mup*hup,0.5*mup*hlo2)
+    cW=1.7*W0/(1+W0)-1
+    l3=t1+0.85*mu*g*g+0.5*mu*hup**2+0.5*mu*qp
+    r3=cW*s*L*g+s*L*q
+    m=((l3-r3)/(np.abs(t1)+0.85*mu*g*g+0.5*mu*hup**2+np.abs(0.5*mu*qp)+r3))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+    print('B3 W0',W0,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
