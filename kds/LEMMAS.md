@@ -1025,3 +1025,13 @@ Commutators applied to Ψ2 (weight (0,0)) [derived by hand; to be machine-checke
 => At first order 3 complex first-derivative quantities are free.  Closure (finite type) must come from the second-order
    prolongation: the commutators applied to ρ, τ, ρ', τ' themselves.  That is the next computation; it is where
    Debever–Kamran–McLenaghan / Kinnersley obtain the relations Ψ2 ∝ ρ³-type (Kerr: Ψ2 = Mρ³ in the Kinnersley gauge).
+
+## 92. Item 91 MACHINE-CHECKED on KdS (step92_ghp_check.py, ~20 s)
+Exact KdS metric (Λ = 1/20, a = 3/5, M = 1), Kinnersley-type tetrad (l·n = 1, m·m̄ = −1, signature +−−−), spin
+coefficients from Christoffels, GHP derivatives by 40-digit numerical differentiation at (r, θ) = (3, 0.7).
+κ, σ, κ', σ' vanish (~1e-125).  All nine first-order relations of item 91 hold to ≤ 5e-42:
+  Þρ = ρ², ðρ = (ρ−ρ̄)τ, Þτ = (τ−τ̄')ρ, ðτ = τ², Þ'ρ' = ρ'², Þρ' − Þ'ρ = ττ̄ − τ'τ̄', ðτ' − ð'τ = ρρ̄' − ρ̄ρ',
+  Þτ' = ð'ρ, Þ'τ = ðρ'.
+Convention fixed by the check (the first attempt failed exactly the primed relations):
+  Þ = D − pε − qε̄,  ð = δ − pβ − qᾱ,  Þ' = Δ − pγ − qγ̄,  ð' = δ̄ − pα − qβ̄,  ρ' = −μ, τ' = −π.
+The script is a reusable numeric oracle for every GHP identity needed in the second-order prolongation.
