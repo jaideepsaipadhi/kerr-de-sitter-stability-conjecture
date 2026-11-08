@@ -1008,3 +1008,20 @@ Step 3 [P once step 2 holds]: for KdS, τ and Im ρ are ∝ a·cos θ (ρ = −1
   ⇒ B ∩ {a ≠ 0} = ∅ for EVERY geometry, by hand.  Also retires the jet certificate, the descent lemma and ord K1 = 3.
 Risk: step 2 requires the integrability conditions of the closed system to hold identically (formal integrability) at
   the background, so the linearised count equals the nonlinear one; check = a few GHP identities with Λ.
+
+## 91. Step 2 of item 90, first order: the type D Λ-vacuum GHP system is NOT closed at first order
+Unknowns U = (ρ, ρ', τ, τ', Ψ2) (+ conjugates), κ = σ = κ' = σ' = 0, Φ = 0, GHP Λ = R/24.
+Given directly (Ricci identities + Bianchi):
+  Þρ = ρ²,  ðρ = (ρ − ρ̄)τ,  Þτ = (τ − τ̄')ρ,  ðτ = τ²   (and primes: Þ'ρ' = ρ'², ð'ρ' = (ρ' − ρ̄')τ', Þ'τ' = (τ' − τ̄)ρ', ð'τ' = τ'²),
+  (f)  Þ'ρ − ð'τ = ρρ̄' − ττ̄ − Ψ2 − 2Λ,   (f') Þρ' − ðτ' = ρ'ρ̄ − τ'τ̄' − Ψ2 − 2Λ,
+  ÞΨ2 = 3ρΨ2, ðΨ2 = 3τΨ2, Þ'Ψ2 = 3ρ'Ψ2, ð'Ψ2 = 3τ'Ψ2.
+Commutators applied to Ψ2 (weight (0,0)) [derived by hand; to be machine-checked on the KdS tetrad]:
+  [Þ, Þ']Ψ2:  Þρ' − Þ'ρ = ττ̄ − τ'τ̄'
+  [ð, ð']Ψ2:  ðτ' − ð'τ = ρρ̄' − ρ̄ρ'
+  [Þ, ð]Ψ2:   identity (consistent with the given Þτ, ðρ)
+  [Þ, ð']Ψ2:  Þτ' = ð'ρ;    prime:  Þ'τ = ðρ'.
+  (f) − (f') follows from the two commutator relations, so only 3 independent equations constrain the 4 quantities
+  (Þ'ρ, ð'τ, Þρ', ðτ'), and ð'ρ = Þτ', Þ'τ = ðρ' are unconstrained at this order.
+=> At first order 3 complex first-derivative quantities are free.  Closure (finite type) must come from the second-order
+   prolongation: the commutators applied to ρ, τ, ρ', τ' themselves.  That is the next computation; it is where
+   Debever–Kamran–McLenaghan / Kinnersley obtain the relations Ψ2 ∝ ρ³-type (Kerr: Ψ2 = Mρ³ in the Kinnersley gauge).
