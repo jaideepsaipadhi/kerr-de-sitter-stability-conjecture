@@ -842,3 +842,18 @@ CONSEQUENCE: items 65–70, 78, 79 (σ/m exceptional polynomials, resultants, li
 NEXT: exact / mod-p 4D jet builder in coordinates (t, r, x = cos θ, φ) (metric rational); certify (4D_4) as
  d_4 ≤ 4 (upper bound by truncation, K ≥ 7) + the four PD tangents' 4-jets independent mod gauge (explicit Λ-PD family);
  then geometry uniformity via exceptional polynomials in (Λ, a, r, x).
+
+## 81. 4D jet system assembled from the exact mode matrices (step67_4d_from_modes.py)
+
+Mode coefficient matrices (exact builds at 6 nodes, reduced mod P) -> full 4D jet system via σ <-> i∂_t, m <-> −i∂_φ on
+t^j φ^k (block-triangular), total-degree truncation (consistent since all operators have order ≤ 2).
+K = 6, Lam = 1/20, a = 3/5, point (3, 3/5): unknowns 2100, equations 980, gauge generators 1320.
+  Sanity: gauge images are solutions EXACTLY mod P (G·C = 0).
+  Direct mod-P counts (nullspace; heuristic only — P could in principle be unlucky): d = {0, 0, 0, 4, 6*}, matching the
+  independent float 4D code (step44) exactly.  So honest d_3 = 4 = PD.
+  Rigorous upper bound n_L − rank C + (n_H − rank X_high) − rank G_L is LOOSE: J = 3 gives 6, not 4 (the gauge-row
+  bound on rank C_H only sees generators of degree ≥ J+2 and misses other solutions supported in high degree).
+FIX (next): lower-bound dim(S ∩ ker π_J) by EXACT elements — compute the mod-P nullspace of C_H, rationally
+  reconstruct (CRT over a few primes), and verify v·C = 0 EXACTLY over Q(i) (a cheap matrix–vector product with the exact
+  coefficient matrices).  That makes the upper bound tight and rigorous.  Then K = 7 for J = 4, then the descent check
+  (item 80, as an exact containment), then geometry uniformity.
