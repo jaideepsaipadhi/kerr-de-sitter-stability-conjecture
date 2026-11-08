@@ -1058,3 +1058,22 @@ The script is a reusable numeric oracle for every GHP identity needed in the sec
 NEXT: (i) integrate the linearised reality relations with the constants (A, B, δk) — AHW's ODEs (A.25) with Λ terms;
    (ii) the second Killing field ζ = ∂_φ from the Killing tensor (needed for B); (iii) count: expected 4 = (δM, δa,
    NUT, acceleration) after gauge, giving B ∩ {a ≠ 0} = ∅.
+
+## 94. Step 2, structure of the count (route fixed; three lemmas to prove)
+Normalise φ so that ξ = ∇·K is real on the background (ξ = −Ξ∂_t; on KdS with the Kinnersley tetrad φρ = −1).
+Given a perturbation h with δΨ0 = δΨ4 = 0, in the gauge of item 90:
+ L1 [P, item 93(d)]  Im δ(ξ/k) = A ∂_t + B ∂_φ, constants A, B (any δk).
+ L2 [to prove]  Subtracting a suitable combination of PD tangents kills (A, B, δk-phase).  Expected: the acceleration
+    tangent has Im δξ ≠ 0 (the Killing-spinor vector of the accelerating PD metric is not real up to a constant —
+    classical: reality of ξ characterises the Kerr–NUT–(A)dS / Carter [Ã] subclass, Hughston–Sommers 1973,
+    Debever–Kamran–McLenaghan 1984), and one of (A, B) is fixed by the normalisation freedom of φ.  So after L2 the
+    perturbed ξ is real to first order.
+ L3 [to prove]  With ξ real, the first-order Killing tensor K_ab = (from K_AB K̄_A'B') gives the second Killing field
+    ζ = K·ξ; real (ξ, ζ) and the Killing tensor's eigenfunctions (r, cos θ) give Carter canonical coordinates for the
+    perturbed metric to first order (each step is a canonical algebraic/ODE construction, so it linearises).
+    In Carter form the Λ-vacuum equations force Δ_r, Δ_x to be quartics with linked coefficients; with Λ fixed and the
+    coordinate scalings removed, the variations are (δM, δa, δn): the three non-accelerating PD tangents.
+ COUNT: 3 (L3) + 1 (acceleration, L2) = 4.  Smooth at every exterior point with a ≠ 0 and sin θ cos θ ≠ 0, because
+    every step divides only by Ψ2, τ (∝ a sin θ) and Im ρ (∝ a cos θ).  ⇒ B ∩ {a ≠ 0} = ∅.
+CHEAP CHECK for L2 (next): compute Im δξ for the four exact PD tangents (step70) at one point; prediction: zero for
+    δM, δa, NUT; nonzero for acceleration.  If NUT also gives Im δξ ≠ 0, L2's bookkeeping changes but not the count.
