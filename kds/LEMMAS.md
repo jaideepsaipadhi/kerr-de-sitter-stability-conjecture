@@ -980,3 +980,31 @@ alpha = 1 + e2 (Vieta at Lam = 3):
    n1 - (lam C0 + 1 + t + 3(1-alpha) C0) = -2 (s^2 - 4) (r0^2 + r0r1 + r0r2 - r1r2) / ((r0 - r1)(r0 + r1 + 2 r2)),
    n2 + 3 = 4 - s^2.
 Both vanish at s = +-2.  The c1 identity is now fully proved.
+
+## 90. NEW ROUTE for the bad set B (replaces the jet certificate, items 80–87): Λ-Wald via linearised type D integration
+Step 1 [P]: LINEARISED GOLDBERG–SACHS WITH Λ.
+  Background: KdS, principal tetrad (l, n, m, m̄), GHP, κ = σ = κ' = σ' = 0, Ψ0 = Ψ1 = Ψ3 = Ψ4 = 0, Φ_ab = 0,
+  Ψ2 ≠ 0 everywhere in the exterior.  Perturbation h with δΨ0 = δΨ4 = 0 (gauge invariant: Stewart–Walker, since the
+  background values vanish; holds for modes by Theorem A, item B.1).
+  (a) Tetrad gauge.  To first order an infinitesimal null rotation about n with parameter d sends δΨ1 -> δΨ1 + 3dΨ2,
+      δΨ0 -> δΨ0 (the change is 4dΨ1 = 0 on the background); about l with parameter c, δΨ3 -> δΨ3 + 3c̄Ψ2, δΨ4 unchanged.
+      δΨ2 is unchanged by both.  Since Ψ2 ≠ 0, choose d = −δΨ1/(3Ψ2), c̄ = −δΨ3/(3Ψ2): now δΨ0 = δΨ1 = δΨ3 = δΨ4 = 0.
+      (Pointwise algebraic, smooth in the data; c, d inherit the mode dependence e^{−iσt+imφ}.)
+  (b) The vacuum-Λ Bianchi identities in GHP are those of vacuum (∇R = 0, Φ = 0: Λ drops out).  Linearising
+         Þψ1 − ð'ψ0 = −τ'ψ0 + 4ρψ1 − 3κψ2      gives  0 = −3Ψ2 δκ,
+         Þ'ψ0 − ðψ1 = ρ'ψ0 − 4τψ1 + 3σψ2       gives  0 =  3Ψ2 δσ,
+      and their primes give δκ' = δσ' = 0.  Hence in this tetrad gauge the perturbed spacetime is type D to first
+      order with both principal null directions geodesic and shear-free: h solves the LINEARISED type D Λ-vacuum
+      GHP system for (ρ, ρ', τ, τ', Ψ2) together with the linearised tetrad/commutator relations.
+Step 2 [OPEN, the real work]: FINITE TYPE.  In the type D Λ-vacuum GHP system all four directional derivatives of
+  (ρ, ρ', τ, τ', Ψ2) are determined algebraically by those quantities (Þρ = ρ², ðρ = (ρ−ρ̄)τ, Þτ = (τ − τ̄')ρ,
+  Bianchi Þψ2 = 3ρψ2 ... ; the remaining derivatives such as ð'ρ, Þ'ρ come from the Ricci identity with the Λ-term
+  and the commutators applied to Ψ2 — Debever–Kamran–McLenaghan, J. Math. Phys. 25 (1984), exhaustive integration
+  with Λ).  Claim to prove: on the GENERIC branch (τ ≢ 0, ρ ≢ ρ̄), the linearisation of this closed system has
+  solution space, modulo boost-spin and diffeomorphism gauge, of dimension 4 = tangents of PD (5 constants − scaling,
+  with Λ fixed), and these are δM, δa, NUT, acceleration.
+Step 3 [P once step 2 holds]: for KdS, τ and Im ρ are ∝ a·cos θ (ρ = −1/(r − i a cos θ) in Kinnersley normalisation,
+  τ ∝ i a sin θ/ρ²-type), so every exterior point with a ≠ 0, cos θ ≠ 0, sin θ ≠ 0 is on the generic branch.
+  ⇒ B ∩ {a ≠ 0} = ∅ for EVERY geometry, by hand.  Also retires the jet certificate, the descent lemma and ord K1 = 3.
+Risk: step 2 requires the integrability conditions of the closed system to hold identically (formal integrability) at
+  the background, so the linearised count equals the nonlinear one; check = a few GHP identities with Λ.
