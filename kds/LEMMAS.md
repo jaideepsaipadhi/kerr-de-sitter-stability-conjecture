@@ -807,3 +807,18 @@ So on each line the only parameter value that is exceptional at both points is t
 since only J = ord K1 = 3 is needed.)
 OWED for exactness (as in item 67): exact degree and exact lowest order of E1 on each line (Toeplitz / CRT, as in items
 67–71), and then the same for every geometry (item 75 R2).
+
+## 79. Generic (σ, m) certificate at jet order J = 3 (mod P, fixed geometry) — step66_biv_J3.py, biv3.log
+
+K = 6, J = 3 minors only (constraint, low-gauge, gauge-row R_H minor), Lam = 1/20, a = 3/5, three points
+(3, 3/5), (7/2, −1/5), (4, 1/3).  Matrices from 6 exact builds at nodes (σ, m) ∈ {(1,1),(2,1),(3,1),(1,2),(1,3),(2,2)}.
+  generic d_3 bound = 0 at all three points;  E_i: deg_σ 65, deg_μ 46 (80×80 grid, top rows/cols zero), E_i = σ¹⁹μ⁷H_i;
+  R_ij = Res_σ(H_i, H_j): degree 3486, ord_{μ=0} = 64 for all three pairs;
+  gcd(R12, R13, R23) mod P = c μ⁶⁴ (monomial).   [613 s total]
+With the item-70 lemma: no integer m ≠ 0 has σ ≠ 0 exceptional at all three points, PROVIDED the exact lifts:
+  (i) exact σ¹⁹ μ⁷ divisibility (Toeplitz deficiency at σ = 0 / μ = 0, as items 71, 60);
+  (ii) exact formal degrees (deg_σ E_i = 65; reversed Toeplitz at fixed μ0 + interpolation, as items 69, step58i);
+  (iii) exact ord_{μ=0} R_12 = 64 (origin multiplicity of H_i, as item 70/step59b).
+Lines m = 0 and σ = 0: item 78.  Together: at THIS geometry, B1 holds for every (σ, m) except the origin (PD sector),
+modulo (i)–(iii) and the line lifts, and modulo ord K1 = 3 (item 76).
+REMAINING for Theorem B: those exact lifts; geometry uniformity (item 75 R2); assembly (R4); confirming ord K1 = 3.
