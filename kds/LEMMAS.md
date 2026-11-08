@@ -1077,3 +1077,16 @@ Given a perturbation h with δΨ0 = δΨ4 = 0, in the gauge of item 90:
     every step divides only by Ψ2, τ (∝ a sin θ) and Im ρ (∝ a cos θ).  ⇒ B ∩ {a ≠ 0} = ∅.
 CHEAP CHECK for L2 (next): compute Im δξ for the four exact PD tangents (step70) at one point; prediction: zero for
     δM, δa, NUT; nonzero for acceleration.  If NUT also gives Im δξ ≠ 0, L2's bookkeeping changes but not the count.
+
+## 95. L2 VERIFIED: only acceleration makes ξ complex (step95_pd_xi.py, exact nonlinear Λ-PD, 9 s)
+Λ-PD in Griffiths–Podolský form (Λ = 1/20, a = 3/5, ε = 1 − Λa²/3, k = a², m = 1), PND-aligned tetrad (κ ~ 1e-42),
+Ψ2 from (f), φ = Ψ2^{-1/3}, ξ from item 93(c), at (r, p) = (3, 0.36):
+   n = 0,   α = 0:     ξ = (−0.5 − 0.866i) ∂τ                     (real up to a constant)
+   n = 1/10, α = 0:     ξ ∝ ∂τ                                      (real up to a constant)
+   n = 0,   α = 1/20:   ξ ∝ ∂τ + i(1/20)·(phase) ∂σ, |ξ^σ/ξ^τ| = α, relative phase −π/2   (complex)
+   n = 1/10, α = 1/20:  same, |ξ^σ/ξ^τ| = α
+So ξ/k = ∂τ ∓ iα ∂σ: Im δ(ξ/k) = ∓δα ∂σ for the acceleration tangent, 0 for δm, δn (and δa, δε via the same family).
+L2 [P modulo write-up]: in item 94's L1, B (the ∂φ ∝ ∂σ coefficient) is killed by subtracting δα = ±B times the
+  acceleration tangent; A (the ∂t ∝ ∂τ coefficient) is the phase of δk, since ξ/k ∝ ∂τ on the background.  After this
+  the perturbed ξ is real to first order.  Matches Hughston–Sommers: reality of ξ ⇔ no acceleration.
+Remaining for Theorem B's B-set: L3 (Carter canonical form for the real-ξ perturbation, to first order; count 3).
