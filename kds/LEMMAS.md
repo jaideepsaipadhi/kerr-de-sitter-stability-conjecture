@@ -1287,3 +1287,9 @@ PLAN for (D):  split by w = 8κs²:
   seam zone w ≤ W0: rescale s = σ/√κ; to leading order D becomes the A-independent layer inequality (items 13–15),
      plus explicit remainders bounded by powers of s/x0 and 1/(κ x0²);
   bulk zone w ≥ W0: ψ ≥ W0/(1+W0), and the crude-bounding strategy of item 105 should work (test next, choosing W0).
+Bulk test (same points): with w ≥ W0 and BOTH ½μGψ', ½μq' dropped:
+   W0 = 1: +0.39 (fails);  W0 = 3: +0.21 (fails);  W0 = 10: −0.058 (holds, 84% of points);  W0 = 30: −0.131.
+So take W0 = 10: in the bulk ψ ≥ 10/11 and the crude form
+   ½μ'h + ½μ(1.7ψ g' + h²) ≤ sL(1.7ψ − 1)g + sLq,   with g' ≤ g² (L'' ≥ 0),
+is the target for a by-hand proof; the bulk lever is w ≥ 10 ⇔ s² L(z0) ≥ 1.25 μ(z0), with L(z) ≥ L(z0) (L' < 0).
+The seam zone w ≤ 10 (σ := s√κ ≤ 1.12) carries the remaining difficulty.

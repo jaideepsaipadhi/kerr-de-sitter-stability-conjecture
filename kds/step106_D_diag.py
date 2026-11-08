@@ -27,3 +27,8 @@ Tc=[0.5*mup*h,0.5*mu*Gp*psi,0.5*mu*h*h,-s*L*h,-s*Lp]
 rep('D drop G psi\', q\'',sum(Tc),Tc)
 Tc2=[0.5*mup*h,0.5*mu*(Gp*psi+qp),0.5*mu*h*h,-s*L*h,-s*Lp]
 rep('D drop G psi\' only',sum(Tc2),Tc2)
+for W0 in (1,3,10,30):
+    msk=w>=W0
+    Tb=[0.5*mup*h,0.5*mu*Gp*psi,0.5*mu*h*h,-s*L*h,-s*Lp]
+    D=sum(Tb); n=sum(np.abs(T) for T in Tb); m=(D/n)[msk]; i=np.argmax(m)
+    print('bulk w>=',W0,'drop Gpsi\',q\': max',m[i],' frac pts',msk.mean())
