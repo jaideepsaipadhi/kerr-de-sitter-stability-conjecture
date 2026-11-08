@@ -1035,3 +1035,26 @@ coefficients from Christoffels, GHP derivatives by 40-digit numerical differenti
 Convention fixed by the check (the first attempt failed exactly the primed relations):
   Þ = D − pε − qε̄,  ð = δ − pβ − qᾱ,  Þ' = Δ − pγ − qγ̄,  ð' = δ̄ − pα − qβ̄,  ρ' = −μ, τ' = −π.
 The script is a reusable numeric oracle for every GHP identity needed in the second-order prolongation.
+
+## 93. Step 2 continued: Ψ2, tetrad derivative table, the Killing-spinor vector (all machine-checked on KdS)
+(a) (f) fixes Ψ2 = −M/(r − i a cos θ)³ (no Ξ factor) and Λ_GHP = Λ/6 (check: F = 1/c³ − Λ/3 to 15 digits).
+    So φ := Ψ2^{−1/3} ∝ r − i a cos θ.
+(b) GHP derivatives of the tetrad on type D Λ-vacuum (step93_tetrad_table.py; every entry matched numerically):
+      Þl = 0,            Þn = −τ'm − τ̄'m̄,   Þm = −τ̄'l,          Þm̄ = −τ'l,
+      Þ'l = −τ̄m − τm̄,   Þ'n = 0,            Þ'm = −τn,           Þ'm̄ = −τ̄n,
+      ðl = −ρ̄m,          ðn = −ρ'm,          ðm = 0,              ðm̄ = −ρ'l − ρ̄n,
+      ð'l = −ρm̄,         ð'n = −ρ̄'m̄,         ð'm = −ρ̄'l − ρn,     ð'm̄ = 0.
+(c) Killing-spinor vector: ξ with ξ·l = φρ, ξ·n = −φρ', ξ·m = φτ, ξ·m̄ = −φτ' equals −Ξ ∂_t on KdS
+    (step93_killing.py, the other 7 sign patterns fail).  All 10 Killing equations, written with (b), reduce to
+    identities or to the already-known relations Þτ' = ð'ρ, Þ'τ = ðρ', C1, C2.  So ξ is Killing on EVERY type D
+    Λ-vacuum, by algebra alone — but the Killing equations give NO new first-order relation.
+(d) Where closure comes from: ξ is complex in general; on KdS it is a complex constant k times a REAL Killing field.
+    Reality, ξ̄ = (k̄/k) ξ, is the algebraic closure:
+       k̄ φρ = k φ̄ρ̄,   k̄ φρ' = k φ̄ρ̄',   k̄ φτ = −k φ̄τ̄'   (fixes ρ̄, ρ̄', τ̄' in terms of ρ, ρ', τ, and the phase).
+    LINEARISED: the reality of ξ is NOT automatic for a perturbation.  Im δ(ξ/k) solves the linearised Killing
+    equation with zero background field, so it is a Killing field of the background: Im δ(ξ/k) = A ∂_t + B ∂_φ with
+    constants A, B.  This is the Λ-analogue of AHW 2207.12952 App. A, "Im Ā = Aξ + Bζ", and it is reached here
+    WITHOUT the AABKW completeness theorem: steps 1 (item 90) + (b)–(c) give it directly.
+NEXT: (i) integrate the linearised reality relations with the constants (A, B, δk) — AHW's ODEs (A.25) with Λ terms;
+   (ii) the second Killing field ζ = ∂_φ from the Killing tensor (needed for B); (iii) count: expected 4 = (δM, δa,
+   NUT, acceleration) after gauge, giving B ∩ {a ≠ 0} = ∅.
