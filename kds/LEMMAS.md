@@ -917,3 +917,16 @@ ANALYTICITY (mode equations elliptic in (r, x) in harmonic gauge between the hor
  (r, x) also witness this (Zariski density), so physical points are not needed for the witness.
 REMAINING CRUX (U'): exclude the algebraic set B = {(Λ, a): the certificate minors vanish identically in (r, x)}
  (dim ≤ 1) from the physical region.  Direct bivariate interpolation in (Λ, a) is too expensive (one K = 7 evaluation ≈ 7 min).
+
+## 86. Uniformity (U'): the analytic route needs a Λ-AABKW theorem — status of Theorem B
+
+AHW 2207.12952 App. A (Kerr): assuming AABKW completeness of {linearised Ricci, ϑΨ±2, I_ξ, I_ζ}, the gradients of I_ξ, I_ζ
+are fixed by a gauge-invariant Killing field Im Ā = Aξ + Bζ, giving ODEs (A.25) whose solutions (A.26) are exactly the PD
+tangents.  For Λ > 0 every step needs Λ source terms (linearised Bianchi identities, Killing-spinor identities), and the
+completeness input is a Λ-version of AABKW (complete local gauge invariants on KdS, for ALL parameters) — a paper-scale
+symbolic computation in spinor/GHP form, not available.  Our K = 7 jet certificate is a POINTWISE substitute for it.
+STATUS of Theorem B's local step (modulo ord K1 = 3 [item 76, to confirm], origin/PD sector, assembly R4):
+  proved at every (Λ, a) outside an algebraic set B of dimension ≤ 1 in the (Λ, a)-plane (Zariski-open certificate +
+  analyticity, item 85), and at a = 0 / small |a| by Hintz–Vasy 2018 §7 (SdS UEMS + perturbation).
+  B is not known to miss the physical region.  Routes: (i) Λ-AABKW (analytic, all parameters); (ii) a much smaller
+  pointwise certificate whose minors can be computed symbolically in (Λ, a).
