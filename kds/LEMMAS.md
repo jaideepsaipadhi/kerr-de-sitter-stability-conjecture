@@ -941,3 +941,27 @@ reference point.  Probe of the structural (open-condition) certificate d_4 ≤ 4
 EVIDENCE: B ∩ physical region = {a = 0}, which is covered by Hintz–Vasy 2018 §7 (SdS UEMS) — and small |a| perturbatively.
 NOT A PROOF: B could contain other curves.  A proof needs either a Λ-AABKW theorem or a certificate small enough for
 symbolic minors in (Λ, a) (the current minors have size ~1300; degree in a likely ~10^3–10^4, too many evaluations).
+
+## 88. A.2, A.9 (m != 0) and A.10 PROVED BY HAND — the window is an explicit interval
+Real omega, w = omega/m (m != 0), a > 0 wlog.  rho_j = r_j^2 + a^2, Omega_j = a/rho_j, D_j = |Delta'(r_j)|.
+Delta_r = -(Lam/3) prod (r - r_k) gives sign Delta'(r_j) = (-, +, -, +) for j = 0,1,2,3.  With P_j = rho_j/D_j:
+  Im e_1 = 2 Xi m f1(w),  f1 = P1(w - Omega1) + P3(w - Omega3)   (increasing, root w1 = (a/D1 + a/D3)/(P1 + P3)),
+  Im e_t = 2 Xi m f2(w),  f2 = -P2(w - Omega2) + P3(w - Omega3).
+Residue identities ((r^2+a^2)/Delta and 1/Delta have zero residue at infinity):
+  P1 + P3 = P0 + P2,   1/D1 + 1/D3 = 1/D0 + 1/D2.
+Hence slope(f2) = P3 - P2 = P0 - P1 and root w2 = a(1/D1 - 1/D0)/(P1 - P0) = item 46's "lo".
+(i) P1 > P0: D0/D1 = f(r0)/f(r1) > 1 with f(x) = (x - r3)(r2 - x) decreasing on [r0, r1] (item 46), and rho1 > rho0.
+    So f2 is strictly decreasing, and w2 > 0.
+(ii) w2 < w1: cross-multiplying, with x_j = 1/D_j, the difference is
+    x0x1(rho1-rho0) + x1x3(rho1-rho3) + x0x3(rho3-rho0)   (a^2 cancels: rho_i - rho_j = r_i^2 - r_j^2),
+    and D0 D1 D3 times it is exactly (sympy factor, no Vieta needed)
+       2 (r0 - r1)(r0 - r3)(r1 - r3)(r0 r3 - r1 r2)  > 0,
+    signs (-)(+)(+)(-).  [With r3 = -(r0+r1+r2): -2(r0-r1)(r0+r1)(r0+r2)(r0+2r1+r2)(2r0+r1+r2).]
+Consequences (all [P]):
+  * Sign agreement {Im e_1 . Im e_t > 0} is EXACTLY the open interval (w2, w1) (the factor m^2 > 0 drops out).
+    Outside it the Wronskian identity kills the mode.  This is A.2, with no numerics.
+  * w2 > 0, so omega = 0 is outside the window for every m != 0: A.9's numerical claim is proved.
+  * At w = w2 only Im e_t vanishes (f1(w2) < 0); at w = w1 only Im e_1 vanishes (f2(w1) < 0).  A.10's "exactly one"
+    is proved; item 44's two endpoint arguments then close the endpoints.
+  * m = 0, omega real != 0: Im e_1 ∝ omega (P1 + P3), Im e_t ∝ omega (P0 - P1): opposite signs, Wronskian kills it.
+  * a = 0: w1 = w2 = 0, empty window.

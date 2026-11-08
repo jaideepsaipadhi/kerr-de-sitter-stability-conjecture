@@ -37,12 +37,12 @@ t = (r₁−r₃)(r₂−r₀)/((r₁−r₀)(r₂−r₃)) (item 26).  κ_j = i
 Future-regular boundary conditions (item 43): R ~ (r−r₁)^{−κ₁−s} at r_e, R ~ (r−r₂)^{+κ₂} at r_c (no Δ^{−s}),
 matching Casals–Teixeira da Costa (CTdC).  Exponents at infinity {1+2s, 1+s−2κ₃} (item 25).
 
-### A.2 Outside the window [P modulo one numerical sign check]
+### A.2 Outside the window [P, item 88]
 For real ω the dual equation is real and W[R, R̄] is conserved; W(1) = W(t) gives
 Im e₁ |c₁|² = t Im e_t |c_t|², e_j = 2(κ_j + κ₃) (item 34).  Where Im e₁, Im e_t have opposite signs, c₁ = c_t = 0 and
-there is no mode.  **[N]** The signs agree exactly on the CTdC window and differ everywhere outside it (249,288
-samples, rerun on the corrected parameter region in item 45).  *A proof that the sign-disagreement set is exactly the
-complement of the window is not written.*
+there is no mode.  **[P, item 88]** Im e₁ = 2Ξm f₁(ω/m), Im e_t = 2Ξm f₂(ω/m) with f₁ increasing and f₂ decreasing
+(residue identities P₁+P₃ = P₀+P₂ and 1/D₁+1/D₃ = 1/D₀+1/D₂), roots 0 < w₂ < w₁; the gap w₁ − w₂ has sign of
+2(r₀−r₁)(r₀−r₃)(r₁−r₃)(r₀r₃−r₁r₂) > 0.  So the sign-agreement set is exactly the window (w₂, w₁).
 
 ### A.3 The transform [P]
 Inside the window, y ↦ ỹ = c · I₁^{μ+1}[y] (Riemann–Liouville/Pochhammer integral based at z = 1, μ = A − 2 with
@@ -97,14 +97,14 @@ u = x/x₀, p = ½ min(0.9, 2x₀L(1)/(t−1)).
   `cert/r3core.py` used the old multiplier and are void).
 
 ### A.9 σ = 0 [P, items 35, 43]
-m ≠ 0: ω = 0 lies outside the window ([N] on 243 geometries; *a proof is not written*), so A.2 applies.
+m ≠ 0: ω = 0 lies outside the window since w₂ > 0 [P, item 88], so A.2 applies.
 m = 0: s = −2 energy identity with V = −2Λr² − 2(1−α) − λ < 0 after the Teukolsky–Starobinsky map Δ²∂⁴; s = +2 via
 Δ²R₊₂; the cubic kernel is excluded by a 4×4 determinant [λ² + 6(1−α)λ + 8 − 4α + 8α²]² > 0 (item 43 gives the
 corrected boundary conditions).
 
-### A.10 Window endpoints [P + N, item 44]
-Im e₁, Im e_t are affine in ω, so each vanishes once.  **[N]** At endpoints exactly one vanishes (994 + 5069 samples).
-Each case closes by the Wronskian plus injectivity.  *The "exactly one" claim is numerical.*
+### A.10 Window endpoints [P, items 44, 88]
+Im e₁, Im e_t are affine in ω and vanish at the distinct points w₁ ≠ w₂ (item 88), so exactly one vanishes at each
+endpoint.  Each case closes by the Wronskian plus injectivity.
 
 ### A.11 Upper half-plane [P, argument, item 36]
 QNMs form a discrete set depending continuously on (Λ, a) (Petersen–Vasy JEMS 2024, full subextremal Fredholm theory),
@@ -158,8 +158,6 @@ acceleration are excluded for smooth modes.  Globalisation by simple connectivit
 
 1. **A.8 R3 corners**: explicit error bounds and matching (the genuine remaining analysis).
 2. **A.8 R3 bounded part**: interval certification with the repaired multiplier.
-3. **A.2**: sign-disagreement set = complement of the window (numerical only).
-4. **A.9**: ω = 0 is outside the window for m ≠ 0 (numerical only).
-5. **A.10**: exactly one of Im e₁, Im e_t vanishes at each endpoint (numerical only).
+3–5. ~~A.2, A.9, A.10 numerical sign claims~~ — proved by hand (item 88).
 6. **B.2**: the two handed-off exact certificates (degree 29; origin multiplicity 21).
 7. **HPV match**: Theorem B against HV18's UEMS wording, and HPV25 itself once public.
