@@ -965,3 +965,18 @@ Consequences (all [P]):
     is proved; item 44's two endpoint arguments then close the endpoints.
   * m = 0, omega real != 0: Im e_1 ∝ omega (P1 + P3), Im e_t ∝ omega (P0 - P1): opposite signs, Wronskian kills it.
   * a = 0: w1 = w2 = 0, empty window.
+
+## 89. c1 IDENTITY (n1 half) PROVED SYMBOLICALLY in 7 s — step89_c1_kappa.py
+Item 31's script never finished the n1 half (sympy blow-up).  Rewritten in the kappa variables:
+  * scale to Lam = 3 (r -> c r, a -> c a, omega -> omega/c, Lam -> Lam/c^2 leaves kappa_j, t, Lam C0 r^2, lam invariant);
+  * K(r3) = -i D1 kappa3 / Xi gives N0/D1^2 = -kappa3^2 - s kappa3 and N1 in closed form; the only other omega is
+    W = i Xi omega;
+  * the residue identities sum rho_j/Delta'_j = sum 1/Delta'_j = sum r_j^2 rho_j/Delta'_j = sum r_j^2/Delta'_j = 0 and
+    sum r_j rho_j/Delta'_j = -3/Lam give the exact linear relations
+       sum kappa_j = 0,   sum r_j^2 kappa_j = 0,   sum r_j kappa_j = -W,
+    so (kappa_0, kappa_1) are free, and a, m, omega disappear.
+Result, as an identity of rational functions in (r0, r1, r2, kappa0, kappa1, lam, s), with r3 = -(r0+r1+r2) and
+alpha = 1 + e2 (Vieta at Lam = 3):
+   n1 - (lam C0 + 1 + t + 3(1-alpha) C0) = -2 (s^2 - 4) (r0^2 + r0r1 + r0r2 - r1r2) / ((r0 - r1)(r0 + r1 + 2 r2)),
+   n2 + 3 = 4 - s^2.
+Both vanish at s = +-2.  The c1 identity is now fully proved.

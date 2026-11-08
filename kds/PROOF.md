@@ -53,7 +53,7 @@ every factor is finite and nonzero, since ρ is non-real and k+1−e₁ is non-r
 ### A.4 Exact form of the dual potential [P, item 31 symbolic]
 At every finite m, for s = ±2:  L(z) = A/z + B − 3z with
  A = t(X₀² − (X₁+X_t)²) = 2t u₃(X₀+X₁+X_t) > 0 in the window (items 5, 22),
- B = λC₀ + c₁,  C₀ = 3/(Λ(r₁−r₀)(r₂−r₃)) (item 26),  c₁ = 1 + t + 3(1−α)C₀ (item 31: the numerators of
+ B = λC₀ + c₁,  C₀ = 3/(Λ(r₁−r₀)(r₂−r₃)) (item 26),  c₁ = 1 + t + 3(1−α)C₀ (item 89, both halves exact; item 31: the numerators of
  n₁ − (λC₀ + c₁) and n₂ + 3 are divisible by s² − 4 as polynomials, after Vieta elimination).
 **Sharp bound [P]** (items 26, 29, 72): with Vieta (Σr_i = 0, e₂ = −3(1−α)/Λ),
  2(1−α)C₀ − (2t−1) ∝ 3(r₀+r₁)² ≥ 0, so c₁ ≥ 4t − 1/2, and C₀ > (2t−1)/(3(1−α)) (strictly, from the positive
