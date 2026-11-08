@@ -66,3 +66,16 @@ Ig_l=0.5*mup*cpm+2.295*mu*g; Ig_r=0.5455*s*L+(0.225*v+0.225*(t-z)/x0)/g
 for nm,l_,r_ in (('Iq',Iq_l,Iq_r),('Ig',Ig_l,Ig_r)):
     m=((l_-r_)/(np.abs(l_)+np.abs(r_)))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
     print(nm,'max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+N=A/z**2+3
+l=0.85*(t-z)*(2*z-1)+2.295*z*x*(t-z)*N/L; r=0.5455*s*L+0.225*(t-z)*L/(x0*N)
+m=((l-r)/(l+r))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+print('Ig-crude max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+l=np.where(mup>0,0.85*mup,0.7727*mup)+2.295*z*x*(t-z)*N/L; r=0.5455*s*L+0.225*(t-z)*L/(x0*N)
+m=((l-r)/(np.abs(l)+r))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+print('Ig (exact mu\') max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+l=np.maximum(mup,0)*0.85+2.295*z*x*(t-z)*N/L
+m=((l-r)/(np.abs(l)+r))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+print('Ig (drop mu\'<0) max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+r2=0.5455*s*L
+m=((l-r2)/(np.abs(l)+r2))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
+print('Ig (drop mu\'<0 and slack) max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))

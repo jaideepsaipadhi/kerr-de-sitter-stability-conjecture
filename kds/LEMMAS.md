@@ -1324,3 +1324,15 @@ B3 SPLIT (both hold numerically on {w ≥ 10}; with Sub-lemma Q they imply B3, h
   (Iq) is divided by v/(xz); (Ig) by g.  Both are now inequalities between explicit rational functions, no cutoff.
   Tightest regime of (Iq): zf small (z0 = ζt, ζ ≲ 0.12), A small, z near z0: needs s ≳ 0.49 z0 against the bulk bound
   s ≥ √(1.25/κ) ≈ 0.48 z0 there — a 2% margin; the hand proof must use g ≈ 3/B (not g ≤ 1/z) in that regime.
+
+## 108. (Ig): which terms are load-bearing, and a monotonicity reduction
+(Ig) with g·L = N := A/z² + 3:   F := ½c±μ' + 2.295 μN/L − 0.5455 sL − 0.225(t−z)L/(x0N) ≤ 0.
+ * Exact μ' (both signs, c+ = 1.7, c− = 17/11): holds, margin −0.103.
+ * Dropping the μ' < 0 part: FAILS (+0.17, zf ≈ 0.99: z0 near t, where μ' < 0 pays).
+ * Also dropping the slack 0.225(t−z)L/(x0N): FAILS (+0.29, z near 1, t ≈ 1.016).
+ * μ' ≤ (t−z)(2z−1): FAILS (+0.43).  So the proof must keep μ' exact and the slack term.
+REDUCTION [P]: at fixed (t, z0, A, z), F is strictly DECREASING in B (L increases with B; μN/L decreases; sL and
+ (t−z)L/(x0N) increase), and the constraints (B ≥ 5.5t − 1.25; R3: 2x0L(1) > t−1; bulk w = 8L(z0)s²/μ(z0) ≥ 10) are
+ all monotone (preserved as B increases).  Hence it suffices to prove F ≤ 0 on the minimal-B boundary:
+ B = max(5.5t − 1.25, B_R3, B_w), i.e. either B at the floor, or the point lies on the R3 boundary (handled by R2's
+ multiplier side too), or on w = 10 (shared with the seam zone).  One variable eliminated; same holds for (Iq).
