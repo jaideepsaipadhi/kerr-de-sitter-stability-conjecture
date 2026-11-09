@@ -1479,3 +1479,16 @@ Remaining surfaces: floor (finish), bulk w = 10, R3 boundaries; then the seam zo
   always at an END (floor or A = 0, both certified); a PROOF of that would remove this surface entirely.
 * R3 boundary surfaces: pp = 1 (chart B = floor/p) and c2 = 0 — running (c2: 20 cells closed in 41 s, 4 cells hit the
   depth cap and need another chart).
+
+## 116. Bulk surface w = 10: reduced to a ONE-variable no-interior-maximum statement [P reduction + N]
+On w = 10 at fixed (t, z0, z): A = z0(L0* − B + 3z0), L0* = 1.25 μ0/s², so L = L1 − κB (κ = s/z, L1 = (z0/z)(L0* + 3z0) − 3z)
+and g = g0 − C u with u = 1/L, g0 = (1 + 1/κ)/z, C = (L1/κ − 6z)/z.  Writing B3 = 2.295μg² + G1 g + G0 with
+G1 = ½μ'c± + 1.7μq − 0.5455 sL, G0 = ½μ'q + ½μq² + ½μq' − sLq, one gets EXACTLY
+   B3 = f(u) := a2 u² + a1 u + a0 − |E|/u,
+   a2 = 2.295μC²,  a1 = −C(4.59μg0 + G1c),  a0 = 2.295μg0² + G1c g0 + 0.5455 sC + G0c,  |E| = s(0.5455 g0 + q),
+with G1c = ½μ'c± + 1.7μq, G0c = ½μ'q + ½μq² + ½μq' (u-free).  The feasible B-set on the surface is an interval
+[floor, min(B_A=0, B_pp, B_c2)] (pp, c2, A decrease in B along the surface), i.e. an interval of u.
+Numerics (cert2/bulk_end_check.py, 6978 lines): max over the interval ALWAYS at an end (0 interior), f convex on 99.3%.
+The ends lie on the floor, A = 0 (both certified, items 114–115), or on an R3 surface (in progress).
+REMAINING for this surface: prove f has no interior maximum, i.e. f'(u) ≠ 0 wherever f''(u) = 2a2 − 2|E|/u³ ≤ 0 —
+  a polynomial statement 2a2u³ + a1u² + |E| > 0 on {u ≤ (|E|/a2)^{1/3}} ∩ interval, low degree in u.

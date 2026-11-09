@@ -16,14 +16,14 @@ print('den signs',sg)
 sub={v:sp.Rational(str(lo[i]))+(sp.Rational(str(hi[i]))-sp.Rational(str(lo[i])))*v for i,v in enumerate(V)}
 BB={}
 for k,(P,dn) in res.items():
-    if k=='floor' and P.is_zero: continue
+    if P.is_zero: continue
     Q=sp.Poly(sp.expand(P.as_expr().subs(sub,simultaneous=True)*sg[k]),*V)   # now: quantity has the sign of Q
     BB[k]=to_bern(Q,V)
 def rule(b):
     # constraints Q >= 0 required (pp strictly); violated if max < 0
     for k in ('bulk','c2','floor','Apos'):
         if k in b and mx(b[k])<0: return True
-    if mx(b['pp'])<=0: return True
+    if 'pp' in b and mx(b['pp'])<=0: return True
     # F <= 0  <=>  Q_F <= 0
     return (mx(b['mup'])<=0 or mx(b['pos'])<=0) and (mn(b['mup'])>=0 or mx(b['neg'])<=0)
 r,deep=bb(BB,rule,4,maxdep=44)
