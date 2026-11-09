@@ -20,8 +20,10 @@ class I:
     def __mul__(s,o):
         o=o if isinstance(o,I) else I.c(o)
         p=np.stack([s.lo*o.lo,s.lo*o.hi,s.hi*o.lo,s.hi*o.hi])
-        p=np.where(np.isnan(p),0.0,p)
-        return I(_dn(p.min(0)),_up(p.max(0)))
+        bad=np.isnan(p).any(0)
+        lo=np.where(bad,-INF,_dn(np.nanmin(np.where(np.isnan(p),INF,p),0)))
+        hi=np.where(bad,INF,_up(np.nanmax(np.where(np.isnan(p),-INF,p),0)))
+        return I(lo,hi)
     __rmul__=__mul__
     def inv(s):
         bad=(s.lo<=0)&(s.hi>=0)

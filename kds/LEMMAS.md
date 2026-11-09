@@ -1420,3 +1420,11 @@ enclosure (Taylor models).
     The reduction makes the certificate feasible: one unit cell per run, well under a minute.
 REMAINING to finish (D)-bulk: tile C2 over t ∈ (1, T∞], zf, y ∈ (0,1), B/floor ∈ [1, ∞) (edges by limit problems);
     C1 (corner, 3-D); C3 (R3 boundary surfaces); the floor-slice A_min claim.  Then the seam zone.
+(e) SOUNDNESS FIX in cert2/iv.py: inf·0 inside a product used to be replaced by 0 (unsound when an inverse straddles 0);
+    now any NaN in the four products gives (−∞, ∞).  The (d) cell re-certifies after the fix (3.05e5 boxes, 20 s).
+    Probes (A = 0 surface, B/floor ∈ [1,10], zf, y ∈ [0.05,0.95] unless stated):
+      t ∈ [1.01,1.1]: certified, 2.1e3 boxes, 0.4 s;     zf ∈ [0.005,0.05]: certified 3.3e3, 0.3 s;
+      y ∈ [0.005,0.05]: certified 5.7e3, 0.4 s;          y ∈ [0.95,0.995]: certified 5.7e3, 0.6 s;
+      t ∈ [5,10]: NOT certified in 45 s (5.0e5 closed, 2.3e5 open);  t ∈ [100,150]: not certified in 45 s.
+    So the small-t cells and the zf, y edges are cheap; LARGE t is the cost — the enclosure must use t-scaled variables
+    (z = tζ etc., the item 73 outer variables) and the t -> ∞ limit has to be certified as its own (compact) problem.
