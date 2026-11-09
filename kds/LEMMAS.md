@@ -1387,3 +1387,13 @@ UPDATE: at the stationary point F'(L) = 0 forces b < a/L², i.e. L_crit < √(a/
     (the unsplit bulk inequality), which is a function of the single variable L at fixed (t, z0, z).
   - (J1q) stationary point of (Iq) infeasible: −0.26.
 PLAN: certify B3 over (T = 1/t, zf, y, λ) with λ compactifying L ∈ [L_min, ∞) — 4-D, short expression; then the seam.
+
+## 111. B3 certificate attempts (cert2/b3cert.py naive intervals; cert2/di.py + b3mv.py mean-value form)
+Box t ∈ [2,3], zf ∈ [0.02,0.98], y ∈ [0.02,0.98], B/floor ∈ [1,3], (B−3z)/L ∈ [1e-3,1]: naive intervals 2.1e6 closed /
+3.7e6 open in 22 s.  Mean-value form (forward AD over intervals), smaller box t ∈ [2,3], zf ∈ [0.2,0.8], y ∈ [0.1,0.9],
+B/floor ∈ [1,3], λ ∈ [0.1,1]: 5.4e5 closed / 6.1e5 open in 56 s.  Diagnostic (cert2/diag2.py): after 18 bisections,
+1.3e5 open boxes, 8.9e4 with centres in the domain, ZERO with F > 0 at the centre: no counterexample, the boxes are just
+too wide for the 5–10 % margin.  Open boxes are spread over all five variables (no single bad corner).
+Conclusion: a 5-variable branch-and-bound at this margin needs ~1e6–1e7 boxes per unit cell — tens of minutes in total.
+Not compatible with the 1-minute rule without first removing variables analytically (B, then L) or a tighter
+enclosure (Taylor models).
