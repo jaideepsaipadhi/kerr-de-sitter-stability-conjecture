@@ -1749,3 +1749,24 @@ The four-variable polynomial certificate (item 127d) remains the route.
     valid. cert3/win_build.py sets this up in (r₀, r₂, τ), but the sympy `together` build exceeds the 1-minute
     budget. The next step is a Poly-composition build (as step105) and then 3D Bernstein. Alternatively, prove
     monotonicity in w (item 129) and use (b).
+
+## Item 131 — Full-window L(z₀) > 0: fast exact pipeline built; remaining obstruction is boundary blow-ups
+(a) [P] A better variable: b = a². Then λ = −b/e₄, α = −b²/e₄, Ξ = 1 − b²/e₄, and the window ends
+    y₂ = (Π̂₀ − Π̂₁)/(ρ₁Π̂₀ − ρ₀Π̂₁), y₁ = (Π̂₃ + Π̂₁)/(ρ₁Π̂₃ + ρ₃Π̂₁) (with Π̂_j = |Π_k≠j (r_j − r_k)|) no longer
+    involve λ. The constraint becomes MONIC: b² − e₂b + e₄ = 0, with a² = (e₂ + s)/2 and s = √(e₂² − 4e₄). There is
+    no parity bookkeeping, and the sign test is F₁ > 0 and P := F₁²(e₂² − 4e₄) − Y² > 0, with Y = −(2F₀ + F₁e₂).
+(b) [tool] python-flint (fmpz_mpoly with gcd-reduced fractions) builds λQ₂, λH₂, λH₁ in 0.2 s (cert3/win_flint.py,
+    win_red3.py), where the sympy build exceeded a minute. Degrees after reduction: P is (76, 78, τ¹²) for H₂ and H₁,
+    and (66, 68, τ⁸) for Q₂. Flint factorisation (win_fac.py) splits off sign-definite small factors and leaves
+    cores of degree ≤ (34, 36, τ⁸) for P and (38, 38, τ⁶) for F₁.
+(c) [N] Sign survey (3000 random points per inequality): F₁ > 0, Y > 0, and P > 0 everywhere, except one H₂ point
+    where P ≈ −3.5·10¹⁰⁹ against terms of size ~10¹²⁶. This is floating-point cancellation: H₂/C₀ = 58 there by direct
+    evaluation.
+(d) [obstruction] The cores vanish on boundary pieces of [0,1]³ (r₀, v = 1/r₂, τ):
+    (i) the whole edge {v = 0, τ = 1}, i.e. Λ → 0 at the window top (z₀ → 1);
+    (ii) the corner {r₀ = 1, v = 1, τ = 0}, i.e. extremal + Nariai at the window bottom.
+    So exact Bernstein B&B does not close without blow-ups. One blow-up chart pair at edge (i) (τ = 1 − ν, v = μν and
+    the swap; ν² factored) is not yet enough: it still runs deep, presumably at corner (ii) or a residual zero of the
+    stripped polynomial.
+NEXT: locate the residual zeros of the charted polynomials, add the corner-(ii) blow-up (three-variable,
+weighted), and run per-chart B&B (each run < 1 min with flint-built inputs).
