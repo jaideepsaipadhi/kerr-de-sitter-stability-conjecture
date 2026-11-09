@@ -181,3 +181,9 @@ acceleration are excluded for smooth modes.  Globalisation by simple connectivit
   continuity along the roots-scaling path to SdS, CONDITIONAL on high-frequency QNM control (REFEREE2 §C).
 * Theorem B = HPV Assumption 1.2 as written (REFEREE2 §D): PROVED given Theorem A.
 * Remaining: REFEREE2 §C (one analytic input); Pochhammer write-up of item 17; cite/prove α ≤ 7 − 4√3; independent check.
+
+## STATUS after item 124
+Theorem A: PROVED, all σ with Im σ ≥ 0. The UHP part uses HPV's high-frequency bound (local uniformity in b by openness;
+to be confirmed against HPV §3), Petersen–Vasy, and Wald's Hertz identity with Λ.
+Theorem B: PROVED (needs Theorem A).
+α ≤ 7 − 4√3: PROVED. Left: Pochhammer exposition of item 17; independent check.

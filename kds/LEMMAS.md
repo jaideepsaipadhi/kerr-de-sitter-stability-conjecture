@@ -1629,3 +1629,20 @@ Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency ana
        show they are not regular at both horizons).
   (C4) Local uniformity of HPV's Thm 2.2 bound — state the openness argument precisely (their proof uses
        a threshold/subprincipal condition at the trapped set and at the horizons, all strict inequalities).
+
+## Item 124 — Closing REFEREE2 §C sub-lemmas (C2, C3) and the α bound
+* α bound PROVED: α = Λa²/3 < 7 − 4√3. Proof by scaling plus AM–GM/QM–AM on the three positive roots: |e4|/p2² ≤ 1/48, with
+  equality only when the roots are equal (extremal). Written in the paper as Lemma (rotation bound).
+* C3 BYPASSED: no Teukolsky–Starobinsky map is needed. The s = +2 mode Ψ is used directly as an ORG Hertz potential, and
+  h̃ = conj(S'†Ψ) has frequency −σ̄ (still in the UHP) with Ψ4[h̃] = ½ Þ'^4 Ψ̄.
+* Kernel lemma PROVED: for Im σ ≠ 0, a mode in ker Þ'^4 is a polynomial (degree ≤ 3, along n) times an n-invariant mode,
+  which goes as e^{−iσv}. It is therefore regular at r1 but on the irregular branch at r0. The two Frobenius exponents at r_j
+  differ by s + 2iK_j/Δ'_j, and Im K_j ≠ 0. So Ψ4[h̃] ≠ 0. This uses both horizons, so it is specific to Λ > 0.
+* C2 PROVED: S'† is GHP-covariant, so evaluate it in a tetrad that is smooth across each future horizon; a regular mode is
+  smooth there, so h̃ is smooth.
+* Gauge-fixing gap closed: a resonance of Υδ* with large |σ| gives a nonzero pure-gauge resonant state δ*ω of L_b
+  (L_b δ*ω = δ̃*Υδ*ω = 0), so it is excluded by HPV too.
+* Literature inputs: Wald's adjoint/ORG identity with Λ (used in Kerr–AdS by Dias–Santos; the identity is algebraic in Λ);
+  Petersen–Vasy Fredholm theory; HPV Thm 2.2/3.1.
+* C4: an openness argument is written; it still needs to be checked against HPV §3 (their proof is pointwise in b).
+* Theorem A in the UHP: PROVED modulo these literature inputs and C4. Paper §"The upper half plane".

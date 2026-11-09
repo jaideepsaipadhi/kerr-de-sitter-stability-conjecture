@@ -83,3 +83,5 @@ The counting argument along the path is PROVED given compactness (K); σ = 0 han
 high-frequency bound for L_b, plus three concrete sub-lemmas: (C2) horizon regularity of S†Φ, (C3) non-vanishing
 of the TS constant in Im σ ≥ 0 at large |σ| and the finitely many algebraically special frequencies, (C4) local
 uniformity of HPV Thm 2.2.  No Teukolsky trapping estimate is needed any more.
+
+## H. Item 124: C2 and C3 closed (C3 bypassed via ORG + kernel lemma); α bound proved; C4 = openness, to confirm against HPV §3.

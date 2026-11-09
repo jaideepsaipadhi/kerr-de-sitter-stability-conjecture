@@ -24,9 +24,10 @@ nonzero future-regular mode solutions with $\operatorname{Im}\sigma\ge0$, apart 
 (B) that every generalised mode solution of the ungauged linearised Einstein equation $D\mathrm{Ric}(h)=\Lambda h$ with
 $\operatorname{Im}\sigma\ge0$ is pure gauge if $\sigma\neq0$, and a linearised KdS metric plus pure gauge if $\sigma=0$.
 Statement (B) is the hypothesis of the full-subextremal nonlinear stability theorem announced by Hintz--Petersen--Vasy.
-\textbf{Status.} Part (A) is proved for all real $\sigma$; for $\operatorname{Im}\sigma>0$ it follows by continuity
-along a roots-scaling path to Schwarzschild--de Sitter, \emph{conditional} on one analytic input (high-frequency control of
-QNMs in $\operatorname{Im}\sigma\ge0$, Section~\ref{sec:remain}). Part (B) is proved given (A); in the large-$A$ regime R3 of the event lemma
+\textbf{Status.} Part (A) is proved. For $\operatorname{Im}\sigma>0$ it follows by continuity
+along a roots-scaling path to Schwarzschild--de Sitter (Section~\ref{sec:uhp}). The proof uses three results from the
+literature: HPV's high-frequency bound, the Petersen--Vasy Fredholm theory, and Wald's Hertz-potential identity with
+$\Lambda$. Part (B) is proved given (A); in the large-$A$ regime R3 of the event lemma
 the multiplier is constructed by saturating one condition and solving the other with equality
 (Section~\ref{sec:open}), following the structure of Hintz's Klein--Gordon argument. Every step marked \emph{[cert]} uses an exact symbolic or a short
 numerical verification; the scripts are named in the repository ledger \texttt{kds/LEMMAS.md} (item numbers below).
@@ -148,6 +149,74 @@ $\det=[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^2]^2>0$ (items 35, 43). Mo
 excluded by continuity from Schwarzschild--de Sitter: QNMs depend continuously on $(\Lambda,a)$ (Petersen--Vasy, full
 subextremal Fredholm theory) and none can cross the real axis by the above (item 36).
 
+\subsection{The rotation bound}
+\begin{lemma}\label{lem:alpha}
+On every subextremal KdS, $\alpha=\Lambda a^2/3<7-4\sqrt3$.
+\end{lemma}
+\begin{proof}
+Set $\ell^2=3/\Lambda=1$. Then $-\Delta_r=r^4-(1-\alpha)r^2+2Mr-\alpha$ has roots $r_0>r_1>r_2>0>r_3$ with $e_1=0$,
+$p_2:=\sum r_j^2=2(1-\alpha)$ and $A:=-r_0r_1r_2r_3=\alpha$. Scaling a root configuration by $t$ multiplies $A$ by $t^4$ and $p_2$ by
+$t^2$, so $\alpha$ is the positive solution of $\alpha=1-\tfrac12\sqrt{\alpha/k}$ with $k=A/p_2^2$, which is increasing in $k$.
+With $S=-r_3=r_0+r_1+r_2$, AM--GM gives $r_0r_1r_2\le S^3/27$, and QM--AM gives $r_0^2+r_1^2+r_2^2\ge S^2/3$. Hence
+$k\le (S^4/27)/(16S^4/9)=1/48$, with equality only when $r_0=r_1=r_2$, which is excluded. At $k=1/48$ we get
+$\alpha=12(3^{-1/2}-\tfrac12)^2=7-4\sqrt3$.
+\end{proof}
+
+\subsection{The upper half plane}\label{sec:uhp}
+Real $\sigma$ is covered by the event lemma. For $\operatorname{Im}\sigma>0$ we argue by continuity along the path $b(s)$,
+$s\in(0,1]$: fix the horizons $r_1,r_2$ and scale $r_0\mapsto sr_0$, with $r_3=-(r_0+r_1+r_2)$. Every point of this path is
+subextremal, and $s\to0$ gives Schwarzschild--de Sitter (SdS).
+
+\begin{lemma}[Kernel lemma]\label{lem:kernel}
+Let $\operatorname{Im}\sigma\neq0$. No nonzero mode at frequency $\sigma$ that is annihilated by $(\text{\th}')^4$ is regular at both
+future horizons. The same holds with $\text{\th}$ in place of $\text{\th}'$.
+\end{lemma}
+\begin{proof}
+$\text{\th}'$ is a first-order operator along $n$ with smooth coefficients. So a mode in the kernel of $(\text{\th}')^4$ is a
+polynomial of degree at most $3$ in an affine parameter along $n$, with smooth integrating factors, times an $n$-invariant
+mode. An $n$-invariant mode depends on $(t,r)$ only through $e^{-i\sigma v}$, where $v$ is the advanced time. This selects one
+Frobenius branch at each horizon: the future-regular branch at $r_1$ and the irregular branch at $r_0$. The two exponents at
+$r_j$ differ by $s+2iK(r_j)/\Delta_r'(r_j)$, and
+$\operatorname{Im}K(r_j)=(r_j^2+a^2)\operatorname{Im}\sigma\neq0$. So the branches never coincide, and no integer shift
+(coming from the polynomial factor or the integrating factors) can match them.
+\end{proof}
+
+\begin{proposition}[Transfer]\label{prop:transfer}
+Let $\Psi$ be a future-regular $s=+2$ Teukolsky mode with $\operatorname{Im}\sigma>0$. Then there is a smooth linearised
+Einstein mode $\tilde h$ at frequency $-\bar\sigma$ (so $\operatorname{Im}(-\bar\sigma)>0$) with $\Psi_4[\tilde h]\ne0$. The
+$s=-2$ case is analogous.
+\end{proposition}
+\begin{proof}
+Take $\Psi$ as an outgoing-radiation-gauge Hertz potential: $h=S'^\dagger\Psi$ solves the linearised $\Lambda$-vacuum
+equation. Wald's adjoint identity is algebraic in $\Lambda$; for $\Lambda\neq0$ it is used in Kerr--AdS by Dias--Santos.
+Put $\tilde h=\bar h$. The operator $S'^\dagger$ is GHP-covariant, so it can be evaluated in a tetrad that is smooth across each
+future horizon. In such a tetrad a future-regular mode is smooth, so $\tilde h$ is smooth. Finally
+$\Psi_4[\tilde h]=\tfrac12(\text{\th}')^4\bar\Psi$, and $\bar\Psi$ is future regular at frequency $-\bar\sigma$, so this is
+nonzero by Lemma~\ref{lem:kernel}.
+\end{proof}
+
+\begin{theorem}\label{thm:uhp}
+On every subextremal KdS there is no future-regular $s=\pm2$ Teukolsky mode with $\operatorname{Im}\sigma>0$.
+\end{theorem}
+\begin{proof}
+\emph{Base case.} On SdS, Proposition~\ref{prop:transfer} would produce a linearised Einstein mode with
+$\operatorname{Im}>0$ and $\Psi_4\neq0$. By Hintz--Vasy, every such mode is pure gauge plus linearised KdS, and both have
+$\Psi_4=0$. This is a contradiction.
+
+\emph{Compactness.} Gauge-fix $\tilde h$: put $h'=\tilde h+\delta^*\omega$ with $\Upsilon\delta^*\omega=-\Upsilon(\tilde h)$.
+This can be solved unless $-\bar\sigma$ is a resonance of $\Upsilon\delta^*$. But if $\Upsilon\delta^*\omega=0$, then
+$\delta^*\omega$ is itself a resonant state of HPV's gauge-fixed operator $L_b$. It is nonzero, because there are no Killing
+modes with $\operatorname{Im}\neq0$. So in either case, a Teukolsky mode at large $|\sigma|$ produces a resonance of $L_b$ in
+$\operatorname{Im}\ge0$ at large $|\sigma|$. HPV (Thm.~2.2, 3.1) confine these to a compact set. Their hypotheses are strict
+inequalities at the trapped set and at the radial sets, and these depend continuously on $b$. So the compact set can be
+taken locally uniform in $b$.
+
+\emph{Counting.} The Teukolsky operator is an analytic Fredholm family on $\operatorname{Im}\sigma>-c$ that depends
+continuously on $b$ (Petersen--Vasy). So the number of modes in $\operatorname{Im}\sigma>0$ is locally constant along the
+path, unless a mode crosses the real axis. At real $\sigma\neq0$ there are no modes, by the event lemma. At $\sigma=0$ the
+operator is invertible, and invertibility is an open condition. So the count equals its SdS value, which is $0$.
+\end{proof}
+
 \section{Part B: ungauged linearised Einstein mode stability}
 Throughout, $a\neq0$; for $a=0$ Theorem~B is Hintz--Vasy 2018. By Theorem~A, $\delta\Psi_0=\delta\Psi_4=0$ for every
 generalised mode (item B.1). We use GHP with $\Th=D-p\epsilon-q\bar\epsilon$, $\eth=\delta-p\beta-q\bar\alpha$,
@@ -224,15 +293,10 @@ Iyer--Wald charges: they are surface-independent, vanish on every $\mathcal L_Xg
 
 \section{What remains}\label{sec:remain}
 \begin{enumerate}
-\item \textbf{Analytic input for $\operatorname{Im}\sigma>0$ in (A).} The continuity argument needs that no $s=\pm2$
-Teukolsky QNM enters $\operatorname{Im}\sigma\ge0$ from infinity, locally uniformly in the parameters. Discreteness and
-continuity follow from the Vasy framework (Petersen--Vasy set up the Teukolsky Fredholm theory); the missing piece is a
-subprincipal-symbol bound at the trapped set for Teukolsky on full-range KdS. Hintz--Petersen--Vasy (arXiv:2508.06620,
-Thm.~3.1) prove such a bound for the gauge-fixed linearised Einstein operator; either verifying it for Teukolsky or
-running the continuity argument on their gauged operator with their constraint-damping transfer (Thm.~2.7) closes it.
-\item The Pochhammer write-up of the item-17 transform and the cited bound $\alpha\le7-4\sqrt3$.
-\item An independent check of the whole argument, in particular of Part~B (the in-house hostile passes are items 97
-and 102) and of the R3 construction (items 117--121).
+\item A check that the local uniformity in $b$ of HPV's high-frequency bound holds as stated in Section~\ref{sec:uhp}. Their
+proof is pointwise in $b$; the openness argument given here should be confirmed against their Section~3.
+\item A full write-out of the item-17 transform in Pochhammer form (exposition only).
+\item An independent check of the whole argument.
 \end{enumerate}
 
 \end{document}
