@@ -1521,3 +1521,23 @@ Numerics (step117_hintz_route.py; 365 random R3 parameter points, t up to 1e4, A
   d < 0 near z = 1 and exactly one sign change: 365/365;  phase 2 positive, (C) holds, seam holds: 365/365.
   (A first run with a finite-difference h_C' mislocated ẑ and showed spurious (C)-violations; with the exact h_C'
    and bisection for ẑ, 0 violations, exactly as the Wronskian argument predicts.)
+
+## 118. (P1) — the sign change of d — reduced to finitely many TWO-variable (t, z0) inequalities
+(a) [P] h_C = H/(sμ) = 2/s + μ'/μ = (log(μ/s²))', so the phase-1 function is simply F_C = μ/s².
+(b) [P, step118_P1.py] D̃F_C = N(z)/s⁴ with N of degree 6 in z.  In S = z0 − z ∈ (0, x0):
+     N = 6μ0² − 6μ0μ0'·S + c2 S² + c3 S³ + 0·S⁴ + 2(B + 4t − 15z0 + 4) S⁵ + 15 S⁶,
+     c2 = −4μ0(A/z0 + B)·… (exactly 4(z0−1)(z0−t)(A + Bz0) + R2(t, z0)),  c3 = 2[A(t+1−2z0) + Bμ0' + R3(t, z0)].
+     N(0) = 6μ0² > 0 (d > 0 at the seam).  (P1) ⇔ N has exactly one root in (0, x0).
+(c) [N] Möbius S = x0 v/(1+v) and Descartes: the 7 transformed coefficients T0..T6 show EXACTLY ONE sign change on
+     all 92,444 sampled R3 points (step118_P1_numerics.py; plain root-finding also gives exactly one root, 0 exceptions).
+     Pattern: T0, T1 > 0 always; T4, T5, T6 < 0 always; T2, T3 mostly < 0 (T2 > 0 on 3.8%, T3 > 0 on 0.06%).
+(d) [P] T0 = 6μ0² > 0;  T1 = 6z0(z0−t)x0²(3z0² + 2z0 − 4tz0 − t) > 0 (both factors negative: the last is convex in z0
+     and negative at z0 = 1, t).  For j = 2..6, T_j is AFFINE in (A, B) with both coefficients < 0 (by hand: e.g.
+     T4: 6x0³(−3t + 2z0 + 1), 6x0³(z0² + 2z0 − 2tz0 − t); T5: 2x0³(−5t + 2z0 + 3), −2x0³(2tz0 + 3t − 4z0 − 1); T6:
+     −2(t−1)x0³ twice; T3: 2x0³(−7t + 6z0 + 1), 2x0³(5z0² + 2z0 − 6tz0 − t); T2: 4(z0−t)x0³, 4z0(z0−t)x0³).
+     So each T_j attains its sup over the feasible (A, B)-region at a lower-left vertex of that region (floor, R3 c2, R3 pp
+     lines): two-variable functions of (t, z0).
+(e) Remaining: (i) T4, T5, T6 < 0 at those vertices — A = 0 alone is NOT enough (sign changes seen), the R3 lower bounds
+     on A are needed; (ii) "T3 ≥ 0 ⇒ T2 > 0" on the feasible region (the λ-combination with λ = 2(t−z0)/(7t−6z0−1)
+     kills A but is DECREASING in B, so it must be evaluated where T3 = 0 meets the region).  All are 2-D statements:
+     exact Bernstein in (T = 1/t, ζ) will be cheap.
