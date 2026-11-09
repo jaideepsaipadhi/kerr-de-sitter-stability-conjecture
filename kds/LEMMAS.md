@@ -1492,3 +1492,11 @@ Numerics (cert2/bulk_end_check.py, 6978 lines): max over the interval ALWAYS at 
 The ends lie on the floor, A = 0 (both certified, items 114–115), or on an R3 surface (in progress).
 REMAINING for this surface: prove f has no interior maximum, i.e. f'(u) ≠ 0 wherever f''(u) = 2a2 − 2|E|/u³ ≤ 0 —
   a polynomial statement 2a2u³ + a1u² + |E| > 0 on {u ≤ (|E|/a2)^{1/3}} ∩ interval, low degree in u.
+(116, cont.) THREE-VARIABLE FORM [P]: f'' = 2a2 − 2|E|/u³ changes sign once, at u_c = (|E|/a2)^{1/3}; f' is decreasing
+  on the concave part u ≤ u_c, so min f' there is ≥ f'(u_c) = 3a2u_c + a1.  Hence f has no interior maximum on the
+  feasible u-interval [u_lo, u_hi] (u_lo = 1/L(floor)) provided
+     (C*)  whenever |E| > a2 u_lo³ (concave part meets the interval):  a1 ≥ 0  or  27 a2² |E| + a1³ > 0,
+  a statement in (t, z0, z) only, independent of which of A = 0 / pp / c2 bounds the interval above.
+  Numerics (cert2/bulk_fu.py): f' > 0 on every concave part, 13913 lines, worst normalised 0.015; (C*) itself: only
+  779 of 1e5 sampled points have |E| > a2u_lo³; all satisfy (C*), worst normalised 0.0073 — thin margin.
+  Next: build (C*) symbolically in (T, ζ, y) and certify by exact Bernstein.
