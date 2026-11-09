@@ -1557,3 +1557,17 @@ exact integer Bernstein on four charts — two rectangles and the blow-up of the
 T = ζw (the corner is where the case gate Ac2 and the targets vanish together); factors u, w, 1 − u, 1 − w that are
 positive on the open box are divided out first.  8 runs (2 cases × 4 charts), all certified.
 Remaining for the route of item 117: (P2) f2 > 0 on [ẑ, z0] and the seam f2'(z0) > 0.
+
+## 120. (P2): reduced to the seam sign alone [P]; first two proof attempts fail [N]
+(a) [P] On phase 2, D̃f2 = 0 reads μf'' = −(μ' − 2sL)f' + 2sL'f.  At any zero of f' with f > 0, μf'' = 2sL'f < 0, so f'
+    can only cross 0 downward and never return.  f2'(ẑ) = F_C'(ẑ) = H(ẑ)/ŝ³ > 0 (Lemma H).  Hence
+       f2'(z0) > 0  ⇒  f2' > 0 on [ẑ, z0]  ⇒  f2 > 0 and increasing:  (P2) ⇔ the seam sign f2'(z0) > 0.
+(b) [P] Φ := μf' − 2sLf satisfies Φ' = 2Lf (from D̃f = 0), and Φ(z0) = μ0 f2'(z0).  So Φ(ẑ) ≥ 0 would suffice;
+    Φ(ẑ) = f̂ (Ĥ/ŝ − 2ŝL̂), i.e. J := H − 2s²L > 0 at ẑ.
+    [N] FALSE in general: J(ẑ) > 0 on only 3816 of 37019 sampled R3 points (step120_P2_phi.py).  The growth term
+    2∫Lf must be used.
+(c) [N] Barriers for the phase-2 Riccati h = f2'/f2 (a function k with D[k] ≤ 0, k ≤ h(ẑ) gives h ≥ k):
+    numerically h ≥ 5.8 g on phase 2 (g = −L'/L) in all 543 cases (step120_P2_explore.py), but none of k = g, 2g, 3g,
+    0.3h_C, 0.5h_C, 0.7h_C is a subsolution on all of phase 2 (each fails in ≥ 60 % of cases, near the seam).
+NEXT: a barrier adapted to the seam (k with the right behaviour as s -> 0 — e.g. matching the Frobenius data of the
+  phase-2 ODE at z0, where it is regular), or an integral argument using Φ' = 2Lf with a lower bound f ≥ f̂ e^{∫k}.
