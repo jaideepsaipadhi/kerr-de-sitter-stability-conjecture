@@ -1690,3 +1690,19 @@ with B allowed below the old floor (re-certify P1/P2 for the new parameter regio
 REMAINING (in order): certify L(z₀) > 0 using the crude λ (roots, window fraction, and m, including the m⁻² expansion
 for large m); re-certify P1 on {L(z₀) ≥ 0}; a sharper P2 criterion and its certificate; the cosmological lemma, with
 a proof for the explicit κ; then rewrite §§3–4 of the paper.
+
+## Item 127 — Toward "L(z₀) > 0" (the new input for the event side): structure proved, certificate not yet
+(a) [P] Notation: m > 0, w = σ/m in the window, and u_j := Im κ_j/(Ξm), i.e. u₀ = −P₀(w − Ω₀), u₁ = P₁(w − Ω₁),
+    u₂ = −P₂(w − Ω₂), u₃ = P₃(w − Ω₃). Then f₁ = u₁ + u₃ < 0, f₂ = u₂ + u₃ < 0, and Σu_j = 0. Consequences:
+       A = 4Ξ²m² t u₀u₃  (> 0, since u₀, u₃ > 0 on the window),     z₀ = t(f₁ + f₂)/(f₁ + t f₂).
+    (Identity: (u₀ + u₃)² − (f₁ + f₂)² = 4u₀u₃, from u₀ + u₃ = −(u₁ + u₂).)
+(b) [P] With the crude angular bound (item 126b), L(z₀) ≥ m²Q₂ + mQ₁ + Q₀ + 4C₀[m = 1], where
+       Q₂ = 4Ξ²u₀u₃(f₁ + t f₂)/(f₁ + f₂) + C₀(1 − 2Ξ²aw),   Q₁ = C₀(1 − 4αΞ − 4Ξ²aw),   Q₀ = −C₀(1 + 7α) + 1 + t − 3z₀.
+    So m enters only as an explicit quadratic. Large m reduces to Q₂ > 0.
+(c) [N] lz0c.py: after normalising by C₀, the minimum over the window is ≥ 0.39 for m = 1, 2, 3, 10, 1000 on a grid
+    in (r₀, 1/r₂) that includes the extremal (r₀ → 1), small-Λ (r₂ → ∞) and Nariai-type (r₂ → 1) corners. The limits
+    appear finite and positive. Also Q₂/C₀ ≥ 1 everywhere sampled.
+(d) [N, negative] Naive interval branch-and-bound (ivb.py) is hopeless: dependency blow-up needs boxes of width ~1e-4
+    in three variables. A certificate needs a polynomial formulation (scale Λ = 3, roots as variables, the constraint
+    e₂ + e₄ + 1 = 0, w as a fourth variable) with exact Bernstein, as in items 119/121, plus limit analysis at the
+    corners. To do.
