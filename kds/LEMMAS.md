@@ -1571,3 +1571,25 @@ Remaining for the route of item 117: (P2) f2 > 0 on [ẑ, z0] and the seam f2'(z
     0.3h_C, 0.5h_C, 0.7h_C is a subsolution on all of phase 2 (each fails in ≥ 60 % of cases, near the seam).
 NEXT: a barrier adapted to the seam (k with the right behaviour as s -> 0 — e.g. matching the Frobenius data of the
   phase-2 ODE at z0, where it is regular), or an integral argument using Φ' = 2Lf with a lower bound f ≥ f̂ e^{∫k}.
+
+## 121. (P2) PROVED — the seam sign; hence the event lemma in R3 is PROVED (route of item 117)
+(a) [P] Bootstrap.  Suppose f2'(z0) ≤ 0; let z1 ∈ (ẑ, z0] be the first zero of f2' (f2'(ẑ) > 0).  On [ẑ, z1] f2 is
+    increasing, so f2 ≥ f̂ := f2(ẑ) > 0, and Φ = μf' − 2sLf has Φ' = 2Lf ≥ 2Lf̂.  Hence
+       −2s1L1f2(z1) = Φ(z1) ≥ Φ(ẑ) + 2f̂∫_ẑ^{z1} L = f̂(Ĥ/ŝ − 2ŝL̂ + 2∫_ẑ^{z1} L),
+    and since f2(z1) ≥ f̂, L1 > 0:  Ψ(z1) := Ĥ/ŝ − 2ŝL̂ + 2∫_ẑ^{z1} L + 2s1L1 ≤ 0.  But Ψ'(z1) = 2s1L'(z1) < 0, so
+    Ψ(z1) ≥ Ψ(z0) = Ĥ/ŝ − 2∫_ẑ^{z0} s|L'| dz  (by parts).  So it suffices that  Q(ẑ) := Ĥ/ŝ − 2∫_ẑ^{z0} s|L'| > 0.
+(b) [P] ∫_z^{z0} s|L'| = A(z0/z − 1 − log(z0/z)) + (3/2)s² ≤ s²(A/(2z²) + 3/2) (u − log(1+u) ≤ u²/2), so
+    Q(z) ≥ K(z)/s with K := H − s³|L'| = H − s³(A/z² + 3).
+(c) [P + cert] K > 0 at ẑ.  By (P1), N ≥ 0 exactly on S ∈ [0, Ŝ], so it suffices that K(S) ≤ 0 ⇒ N(S) < 0.
+    K is affine decreasing in A, so K ≤ 0 ⇔ A ≥ A_K(S) := z²(H − 3S³)/S³.  N is affine in A with A-coefficient
+    2S²[2x0(z0 − t) + S(t + 1 − 2z0)] < 0 on (0, x0) (affine in S, negative at both ends), and affine in B with
+    B-coefficient BC := S²[4z0x0(z0 − t) + 2μ0'S + 2S³] < 0 (certified).  Hence for K ≤ 0, A ≥ 0, B ≥ Bf:
+       N(S; A, B) ≤ N(S; max(A_K, 0), Bf) < 0     (certified, both cases A_K ≥ 0 and A_K ≤ 0).
+    NO R3 constraint is used.  Certificate: step121_build.py (4 polynomials in (T, ζ, σ = S/x0), degrees ≤ 7),
+    cert2/p2cert.py, cert2/run_P2_all.sh: 19 charts covering [0,1]³ — two T-slabs, the corner (T, ζ) -> (0, 0)
+    (ζ = Tw / T = ζw), and blow-ups of the degenerate edges (ζ, σ) -> (1, 0) and (T, σ) -> (0, 1); all 19 certified, ~1 min.
+    [N] margins: Q(ẑ) normalised ≥ 0.72 on 55k R3 points; the certified inequality itself is tight only on those edges.
+(d) CONCLUSION.  For every R3 parameter point the piecewise f (phase 1 F_C = μ/s² on (1, ẑ], phase 2 the solution of
+    D̃f = 0 on [ẑ, z0]) is C², positive, has f(1) = 0, satisfies (C) and (D) on (1, z0) and the seam condition
+    f'(z0) > 0.  This replaces the rational multiplier of items 104–116 and every certificate built for it.
+    THEOREM A's event lemma: R1, R2 by item 47; R3 by items 117–121.
