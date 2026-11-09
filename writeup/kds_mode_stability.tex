@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Th}{\text{\th}}
+\title{Mode stability of subextremal Kerr--de Sitter black holes\\[2pt]
+\large Teukolsky ($s=\pm2$) and ungauged linearised Einstein equations: the proof as it stands}
+\author{Jaideep Sai Padhi}
+\date{8 November 2026 --- working version}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For every subextremal Kerr--de Sitter (KdS) black hole we prove (A) that the spin $\pm2$ Teukolsky equation has no
+nonzero future-regular mode solutions with $\operatorname{Im}\sigma\ge0$, apart from the allowed stationary ones, and
+(B) that every generalised mode solution of the ungauged linearised Einstein equation $D\mathrm{Ric}(h)=\Lambda h$ with
+$\operatorname{Im}\sigma\ge0$ is pure gauge if $\sigma\neq0$, and a linearised KdS metric plus pure gauge if $\sigma=0$.
+Statement (B) is the hypothesis of the full-subextremal nonlinear stability theorem announced by Hintz--Petersen--Vasy.
+\textbf{Status.} Part (B) is proved, given (A). Part (A) is proved except for one explicit inequality,
+condition~(D) of the event lemma in the large-$A$ regime $\mathrm{R3}$ (Section~\ref{sec:open}), which is verified
+numerically with margin but is not yet proved. Every step marked \emph{[cert]} uses an exact symbolic or a short
+numerical verification; the scripts are named in the repository ledger \texttt{kds/LEMMAS.md} (item numbers below).
+\end{abstract}
+
+\tableofcontents
+
+\section{Setting and statements}
+KdS with parameters $(\Lambda,M,a)$, $\Lambda>0$, in Boyer--Lindquist coordinates has
+$\Delta_r=(r^2+a^2)(1-\Lambda r^2/3)-2Mr=-\tfrac\Lambda3\prod_{j=0}^3(r-r_j)$, $\alpha=\Lambda a^2/3$, $\Xi=1+\alpha$.
+\emph{Subextremal} means four distinct real roots $r_3<0<r_0<r_1=r_e<r_2=r_c$; then $\sum r_j=0$.
+Modes are $e^{-i\sigma t+im\varphi}$ times functions of $(r,\theta)$, smooth across both horizons in the regular time $t_*$.
+
+\begin{theorem}[A]\label{thmA}
+For every subextremal KdS the spin $s=\pm2$ Teukolsky equation has no nonzero future-regular mode with
+$\operatorname{Im}\sigma\ge0$, except those with $\sigma=0$ permitted below.
+\end{theorem}
+
+\begin{theorem}[B]\label{thmB}
+Let $h$ be a generalised mode, $(L_T+i\sigma)^k h=0$ with $\operatorname{Im}\sigma\ge0$, of $D\mathrm{Ric}(h)=\Lambda h$,
+smooth across both horizons. If $\sigma\neq0$ then $h=\mathcal L_Xg$ with $X$ smooth; if $\sigma=0$ then
+$h=c_M\partial_Mg+c_a\partial_ag+\mathcal L_Xg$ with $X$ polynomial in $t_*$.
+\end{theorem}
+
+\section{Part A: Teukolsky mode stability}
+\subsection{Heun form and the window}
+The M\"obius map $r_0,r_1,r_2,r_3\mapsto0,1,t,\infty$ puts the radial equation in Heun form with
+$\mu(z)=z(z-1)(t-z)$, $t=\frac{(r_1-r_3)(r_2-r_0)}{(r_1-r_0)(r_2-r_3)}>1$ (item 26). With
+$K(r)=\omega(r^2+a^2)-am$ and $\kappa_j=i\Xi K(r_j)/\Delta_r'(r_j)$, put $e_1=2(\kappa_1+\kappa_3)$, $e_t=2(\kappa_2+\kappa_3)$.
+For real $\omega$ the dual equation is real and the Wronskian identity gives
+$\operatorname{Im}e_1\,|c_1|^2=t\operatorname{Im}e_t\,|c_t|^2$ (item 34).
+
+\begin{proposition}[the window; item 88]\label{prop:window}
+Let $m\neq0$, $w=\omega/m$, $\rho_j=r_j^2+a^2$, $\Omega_j=a/\rho_j$, $D_j=|\Delta_r'(r_j)|$, $P_j=\rho_j/D_j$. Then
+$\operatorname{Im}e_1=2\Xi m f_1(w)$, $\operatorname{Im}e_t=2\Xi m f_2(w)$ with
+$f_1=P_1(w-\Omega_1)+P_3(w-\Omega_3)$ increasing and $f_2=-P_2(w-\Omega_2)+P_3(w-\Omega_3)$ decreasing; their roots
+satisfy $0<w_2<w_1$. Hence $\operatorname{Im}e_1\cdot\operatorname{Im}e_t>0$ exactly on the open window $(w_2,w_1)$.
+\end{proposition}
+\begin{proof}
+$\operatorname{sign}\Delta_r'(r_j)=(-,+,-,+)$. Since $\rho/\Delta_r$ and $1/\Delta_r$ have zero residue at infinity,
+$P_1+P_3=P_0+P_2$ and $D_1^{-1}+D_3^{-1}=D_0^{-1}+D_2^{-1}$. So the slope of $f_2$ is $P_0-P_1$, and $P_1>P_0$ because
+$D_0/D_1=f(r_0)/f(r_1)>1$ for the concave parabola $f(x)=(x-r_3)(r_2-x)$ with vertex $-(r_0+r_1)/2<r_0$, while
+$\rho_1>\rho_0$. This also gives $w_2=a(D_1^{-1}-D_0^{-1})/(P_1-P_0)>0$. Finally, cross-multiplying $w_2<w_1$, the
+$a^2$-terms cancel and $D_0D_1D_3$ times the difference factors as
+$2(r_0-r_1)(r_0-r_3)(r_1-r_3)(r_0r_3-r_1r_2)>0$.
+\end{proof}
+\begin{corollary}
+(i) Outside the window, and for $m=0$, $\omega\neq0$ real, there is no real-frequency mode. (ii) $\omega=0$ lies outside the
+window for $m\neq0$. (iii) At $w_2$ only $\operatorname{Im}e_t$ vanishes and at $w_1$ only $\operatorname{Im}e_1$; both
+endpoints are then closed by the Wronskian and the injectivity of the transform (item 44).
+\end{corollary}
+
+\subsection{Inside the window: transform, dual potential, event lemma}
+Inside the window the Riemann--Liouville transform $I_1^{\mu+1}$ maps a quasinormal mode injectively to a solution of a
+dual Heun equation with the correct boundary branches (items 17, 55). The dual potential is exactly
+$$L(z)=\frac Az+B-3z,\qquad A=t\big(X_0^2-(X_1+X_t)^2\big)>0,\qquad B=\lambda C_0+c_1,$$
+with $C_0=3/(\Lambda(r_1-r_0)(r_2-r_3))$ and $c_1=1+t+3(1-\alpha)C_0$.
+
+\begin{lemma}[the $c_1$ identity; item 89, \emph{cert}]
+With $\Lambda=3$ (by scaling) and the exact relations $\sum\kappa_j=0$, $\sum r_j^2\kappa_j=0$,
+$\sum r_j\kappa_j=-i\Xi\omega$ (residue identities), as rational functions
+$n_1-(\lambda C_0+c_1)=-2(s^2-4)\frac{r_0^2+r_0r_1+r_0r_2-r_1r_2}{(r_0-r_1)(r_0+r_1+2r_2)}$ and $n_2+3=4-s^2$.
+\end{lemma}
+The angular bound $\lambda\ge3/2$ on the window (item 46) and $C_0>(2t-1)/(3(1-\alpha))$ (item 72, exact form
+$C_0-\tfrac32\cdot\frac{2t-1}{3(1-\alpha)}=\frac{3(r_0+r_1)^2}{2\Lambda(r_1-r_0)(r_2-r_3)}$) give the floor
+$B\ge5.5t-1.25$.
+
+The two-current argument (items 8, 12, 17) reduces mode stability inside the window to the following.
+\begin{definition}[event lemma]
+For $t>1$, $z_0\in(1,t)$, $A>0$, $B\ge5.5t-1.25$, find $h$ on $(1,z_0)$ with $s=z_0-z$, $H=2\mu+s\mu'$ and
+$$\text{(C)}\ \ s\,h\,\mu\le H,\qquad \text{(D)}\ \ \tfrac12\big(\mu'h+\mu(h'+h^2)\big)\le s(Lh+L').$$
+\end{definition}
+Regimes R1 ($p\le1$) and R2 ($p>1$, $2(z_0-1)^2(A/z_0+3)<t-1$), with $p=2(z_0-1)L(1)/(t-1)$, are closed by the explicit ODE
+multiplier of item 47. In R3 we use the rational multiplier (item 104)
+$$h=1.7\,g\,\frac{w}{1+w}+\frac{0.45\,(1-u)}{xz},\quad g=-\frac{L'}{L},\ w=8\kappa s^2,\ \kappa=\frac{L(z_0)}{\mu(z_0)},\ x=z-1,\ u=\frac x{z_0-1}.$$
+
+\begin{proposition}[(C) in R3; item 105]
+(C) holds for all $t,z_0,A$ and $B\ge5.5t-1.25$.
+\end{proposition}
+\begin{proof}
+All three factors of $h$ are nonnegative, $w/(1+w)<1$, $1-u\le1$, so it suffices that
+$1.7sg+0.45s/(xz)\le2+s/z+s/x-s/(t-z)$ (divide by $\mu$). Now $g-1/z=(6-B/z)/L$, so $g\le1/z$ when $B\ge6z$ and otherwise
+the excess is at most $(0.5+1.25/t)/(2.5t-1.25)$; $0.7s/z+0.45s/(xz)-s/x\le-0.3s/z$; $s/(t-z)<1$; and where the excess is
+nonzero $1.7s\cdot\text{excess}\le0.69$. Summing, the difference is at most $-0.3s/z+1+0.69-2<0$.
+\end{proof}
+
+\subsection{The remaining open condition}\label{sec:open}
+\begin{quote}\textbf{Open (D) in R3.} Condition (D) for the rational multiplier on R3.\end{quote}
+Evidence and reductions (items 104--110): on a 1200-case grid and on $3\times10^5$ random R3 points the normalised margin is
+$\le-0.028$. Splitting by $w$: in the bulk $w\ge10$, (D) follows from the cutoff-free inequality
+$$\text{(B3)}\quad \tfrac12\mu'h_\pm+0.85\mu g^2+\tfrac12\mu(1.7g+q)^2+\tfrac12\mu q'\le0.5455\,sLg+sLq,$$
+which holds numerically with margin $-0.11$. For fixed $(t,z_0,A,z)$ the relevant expressions are decreasing in $B$ and
+all constraints are monotone in $B$, so $B$ may be put at the floor (item 108); then the identity $g=1/z-(B-6z)/(zL)$
+makes (B3) a function of the single variable $L\in[L_{\min},\infty)$ (item 109). In the seam zone $w\le10$ the
+cutoff derivative is load-bearing and the problem rescales to the layer problem of items 13--15. What is missing is a
+proof (by hand or by certificate) of (B3) in these reduced variables and of the seam zone.
+
+\subsection{$\sigma=0$ and the upper half plane}
+For $m=0$, $\sigma=0$: an energy identity with $V=-2\Lambda r^2-2(1-\alpha)-\lambda<0$ for $s=-2$, and for $s=+2$ the
+Teukolsky--Starobinsky map, whose kernel is excluded by
+$\det=[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^2]^2>0$ (items 35, 43). Modes with $\operatorname{Im}\sigma>0$ are
+excluded by continuity from Schwarzschild--de Sitter: QNMs depend continuously on $(\Lambda,a)$ (Petersen--Vasy, full
+subextremal Fredholm theory) and none can cross the real axis by the above (item 36).
+
+\section{Part B: ungauged linearised Einstein mode stability}
+Throughout, $a\neq0$; for $a=0$ Theorem~B is Hintz--Vasy 2018. By Theorem~A, $\delta\Psi_0=\delta\Psi_4=0$ for every
+generalised mode (item B.1). We use GHP with $\Th=D-p\epsilon-q\bar\epsilon$, $\eth=\delta-p\beta-q\bar\alpha$,
+$\Th'=\Delta-p\gamma-q\bar\gamma$, $\eth'=\bar\delta-p\alpha-q\bar\beta$, $\rho'=-\mu$, $\tau'=-\pi$ (conventions fixed by
+machine checks on KdS, item 92). On KdS, $\Psi_2=-M/(r-ia\cos\theta)^3$; put $\phi=r-ia\cos\theta\propto\Psi_2^{-1/3}$.
+
+\subsection{Linearised Goldberg--Sachs}
+\begin{lemma}[item 90]
+Infinitesimal null rotations achieve $\delta\Psi_1=\delta\Psi_3=0$; then $\delta\kappa=\delta\sigma=\delta\kappa'=\delta\sigma'=0$.
+\end{lemma}
+\begin{proof}
+To first order a null rotation about $n$ with parameter $d$ shifts $\delta\Psi_1$ by $3d\Psi_2$ and fixes
+$\delta\Psi_0,\delta\Psi_2$; about $l$ similarly for $\delta\Psi_3$. As $\Psi_2\neq0$ the choice is algebraic. The
+vacuum-$\Lambda$ Bianchi identities have no $\Lambda$ terms; linearising
+$\Th\psi_1-\eth'\psi_0=-\tau'\psi_0+4\rho\psi_1-3\kappa\psi_2$ gives $\delta\kappa=0$, and
+$\Th'\psi_0-\eth\psi_1=\rho'\psi_0-4\tau\psi_1+3\sigma\psi_2$ gives $\delta\sigma=0$; primes give the rest.
+\end{proof}
+
+\subsection{The Killing-spinor field and reality}
+On a type D $\Lambda$-vacuum (with $\kappa=\sigma=\kappa'=\sigma'=0$) the GHP derivatives of the tetrad are as listed in
+item 93(b) and the following hold (item 91; machine-checked on KdS and on the accelerating NUT Plebański--Demiański metric,
+items 92, 97): $\Th\rho=\rho^2$, $\eth\rho=(\rho-\bar\rho)\tau$, $\Th\tau=(\tau-\bar\tau')\rho$, $\eth\tau=\tau^2$ and primes,
+$\Th\rho'-\Th'\rho=\tau\bar\tau-\tau'\bar\tau'$, $\eth\tau'-\eth'\tau=\rho\bar\rho'-\bar\rho\rho'$, $\Th\tau'=\eth'\rho$,
+$\Th'\tau=\eth\rho'$.
+\begin{lemma}[items 93, 96]
+With $A=\phi\rho$, $B=-\phi\rho'$, $C=\phi\tau$, $D=-\phi\tau'$, the field $\xi=Bl+An-Dm-C\bar m$ satisfies all ten
+Killing equations as an algebraic consequence of these identities. On KdS, $\xi=-\Xi\,\partial_t$.
+\end{lemma}
+Hence for a perturbation in the gauge above, $\mathcal L_\xi h+\mathcal L_{\delta\xi}g=0$ with $\delta\xi$ a local linear
+expression in $h$ commuting with $\mathcal L_{\partial_t},\mathcal L_{\partial_\varphi}$.
+\begin{lemma}[reality for modes; item 96]
+Let $J[h]=(\delta\xi[h]-\overline{\delta\xi[\bar h]})/(2i)$. Then $\mathcal L_{J[h]}g=0$, so $J[h]$ is a constant
+combination of $\partial_t,\partial_\varphi$ (the local Killing algebra of KdS with $a\neq0$ is two-dimensional,
+item 97 R2). For a mode with $(\sigma,m)\neq(0,0)$, $J[h]$ is a mode of the same type and so vanishes.
+\end{lemma}
+Consequently, to first order, $\phi\rho=\bar\phi\bar\rho$, $\phi\rho'=\bar\phi\bar\rho'$, $\phi\tau=-\bar\phi\bar\tau'$.
+
+\subsection{The second Killing field}
+Put $R=\operatorname{Re}\phi$, $I=\operatorname{Im}\phi$ (the Carter coordinates $r$, $a\cos\theta$). Reality gives
+$\Th R=-A$, $\Th'R=B$, $\eth R=\eth'R=0$, $\Th I=\Th'I=0$, $\eth I=iC$, $\eth'I=-iD$.
+\begin{lemma}[items 96, 97]
+$\zeta=I^2(Bl+An)+R^2(Dm+C\bar m)$ satisfies all ten Killing equations by algebra (the $ln$, $m\bar m$, $lm$, $nm$
+components are computed in item 96--97 and cancel by reality; the others are conjugates). On KdS
+$\zeta=-\Xi(a^2\partial_t+a\partial_\varphi)$.
+\end{lemma}
+
+\subsection{Conclusion for $(\sigma,m)\neq(0,0)$}
+From $\mathcal L_\xi h=-\mathcal L_{\delta\xi}g$ and $\mathcal L_\zeta h=-\mathcal L_{\delta\zeta}g$:
+if $\sigma\neq0$, $h=\mathcal L_Xg$ with $X=\delta\xi/(i\sigma\Xi)$; if $\sigma=0$, $m\neq0$, $h=\mathcal L_Xg$ with
+$X=-\delta\zeta/(im\Xi a)$. $X$ is smooth across the horizons because $\xi,\zeta,\delta\xi,\delta\zeta$ are boost-spin
+invariant natural constructions from the Weyl spinor (item 97 R3). HPV's modes with zero $T$-frequency and $m\neq0$
+have $\partial_t$-frequency $\Omega m\neq0$.
+
+\subsection{$\sigma=m=0$}
+\begin{proposition}[items 98, 102, 103]
+A stationary axisymmetric $h$ with $\delta\Psi_0=\delta\Psi_4=0$ is $c_M\partial_Mg+c_a\partial_ag+\mathcal L_Xg$.
+\end{proposition}
+\begin{proof}[Sketch]
+The constants in $J[h]$ are removed by a phase of $\phi$ and by the acceleration tangent, which is the only
+Plebański--Demiański tangent making $\xi$ complex (item 95, exact nonlinear check). Then $\xi$, $\zeta$ are first-order
+Killing fields, they commute, $\nabla R\perp\nabla I$, $\Delta_r:=-2AB|\phi|^2$ depends on $R$ only and
+$\Delta_x:=-2CD|\phi|^2$ on $I$ only, and in adapted coordinates the perturbed metric is Carter's ansatz to first order.
+On that ansatz the $\Lambda$-vacuum equations are linear in $(\Delta_r,\Delta_x)$, with solutions exactly
+$\Delta_r=-\tfrac\Lambda3R^4+\varepsilon R^2-2mR+\gamma$, $\Delta_x=-\tfrac\Lambda3I^4-\varepsilon I^2+2nI+\gamma$
+(item 103, \emph{cert}). Modulo the scaling, the variations are $\delta M,\delta a,\delta n$; with acceleration, four.
+Axis regularity (determinant $-64mp_0^4/c\neq0$) removes NUT and acceleration.
+\end{proof}
+
+\subsection{Generalised modes}
+For $(\sigma,m)\neq(0,0)$, induction on $k$: the top coefficient is a mode, hence $\mathcal L_{X_1}g$, and
+$Y=t_*^{k-1}X_1/(k-1)!$ lowers the order. For $\sigma=m=0$, linear growth of $(\delta M,\delta a)$ is excluded by the
+Iyer--Wald charges: they are surface-independent, vanish on every $\mathcal L_Xg$ by covariance of the Noether charge
+(item 101), and $\partial(E,J)/\partial(M,a)$ has determinant $M/\Xi^4\neq0$ for $E=M/\Xi^2$, $J=aM/\Xi^2$ (item 100).
+
+\section{What remains}
+\begin{enumerate}
+\item \textbf{(D) in R3} (Section~\ref{sec:open}): the only open mathematical item in Theorem~A, hence in both theorems.
+\item An independent check of Part~B (the in-house hostile passes are items 97 and 102).
+\end{enumerate}
+
+\end{document}
