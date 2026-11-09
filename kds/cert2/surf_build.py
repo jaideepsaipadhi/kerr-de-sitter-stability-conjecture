@@ -10,7 +10,7 @@ def build(A,B,name):
     for nm,c in (('pos',sp.Rational(17,10)),('neg',sp.Rational(17,11))):
         h=c*g+q; hu=sp.Rational(17,10)*g+q
         F=sp.Rational(1,2)*mup*h+sp.Rational(85,100)*mu*g**2+sp.Rational(1,2)*mu*hu**2+sp.Rational(1,2)*mu*qp-sp.Rational(5455,10000)*s*L*g-s*L*q
-        nu,dn=sp.fraction(sp.factor(sp.together(F)))
+        nu,dn=sp.fraction(sp.together(F)); dn=sp.factor(dn)
         res[nm]=(sp.Poly(sp.expand(nu),*V),sp.factor(dn))
     L0=A/z0+B-3*z0
     for nm,ex in (('floor',B-(sp.Rational(11,2)*t-sp.Rational(5,4))),('bulk',8*L0*s**2-10*mu0),
@@ -26,3 +26,13 @@ if __name__=='__main__':
     if which=='floorw':  # B = floor, A from w = 10/p  (p = omega in (0,1])
         x0=ze*(t-1); z0=1+x0; s=(1-y)*x0; mu0=z0*x0*(t-z0)
         build(z0*(10*mu0/(8*s**2*p)-floor+3*z0),floor,'floorw')
+    if which=='floorc2':  # B = floor, A from the R3 c2 parameter: 2x0^2(A/z0+3) = (t-1)/p, p in (0,1]
+        x0=ze*(t-1); z0=1+x0
+        build(z0*((t-1)/(2*x0**2*p)-3),floor,'floorc2')
+    x0=ze*(t-1); z0=1+x0; s=(1-y)*x0; mu0=z0*x0*(t-z0)
+    if which=='bulkB':   # w = 10, B = floor/p
+        Bv=floor/p; build(z0*(10*mu0/(8*s**2)-Bv+3*z0),Bv,'bulkB')
+    if which=='ppB':     # R3 pp boundary: 2x0(A+B-3) = t-1, B = floor/p
+        Bv=floor/p; build((t-1)/(2*x0)-Bv+3,Bv,'ppB')
+    if which=='c2B':     # R3 c2 boundary: 2x0^2(A/z0+3) = t-1, B = floor/p
+        Bv=floor/p; build(z0*((t-1)/(2*x0**2)-3),Bv,'c2B')

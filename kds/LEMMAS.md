@@ -1465,3 +1465,17 @@ Floor surface (B = floor, A free) — in progress (cert2/surf_build.py, surf_run
    degenerate corner, margin ~ −Kζ: needs the ζ factor divided out);
    chart A from w = 10/ω: stuck at (ζ, y, ω) -> 1 (floor degenerate).
 Remaining surfaces: floor (finish), bulk w = 10, R3 boundaries; then the seam zone.
+
+## 115. Floor surface CERTIFIED; generic composition builder; status of the other surfaces
+* FLOOR SURFACE (B = floor, all A) CERTIFIED: cert2/surf_driver.py with three charts (A = floor·p/(1−p); A from
+  w = 10/p; A from the R3 c2 parameter), each a superset of the feasible set.  46 dyadic (T, ζ, y)-cells, each with one
+  certifying chart, logged in cert2/cert_floor.log; cert2/check_tiling.py: the 46 cells are disjoint and have total
+  volume exactly 1 (exact rationals) — they tile the cube.  Total run time ≈ 3.5 min in four resumable < 1 min pieces.
+* gen_build.py / surf2.py: B3 numerator as a generic polynomial in (A, B, T, ζ, y) (2 s), surfaces by exact rational
+  substitution + homogenisation with sp.Poly arithmetic (< 1 s per surface) — replaces symbolic `together` (> 60 s).
+  Generic denominator −4000·T y ζ (T − 1)(…)²(…)² > 0, so B3 ≤ 0 ⇔ numerator ≤ 0.
+* Bulk surface w = 10 (chart B = floor/p): numerator degree (20, 11, 14, 6); first 45 s: no cell closed — the hardest
+  surface (B3's margin is smallest on the bulk boundary, and degree is high).  Item 112(c) numerics say its max over B is
+  always at an END (floor or A = 0, both certified); a PROOF of that would remove this surface entirely.
+* R3 boundary surfaces: pp = 1 (chart B = floor/p) and c2 = 0 — running (c2: 20 cells closed in 41 s, 4 cells hit the
+  depth cap and need another chart).
