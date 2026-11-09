@@ -1363,3 +1363,7 @@ UPDATE: at the stationary point F'(L) = 0 forces b < a/L², i.e. L_crit < √(a/
   set and  sup F = F(L_min).  Hence (Ig) on z < B/6 ⇐ (J1) √(a/b) < L_min  and  (J2) F(L_min) ≤ 0 (margin −0.057).
   (J1) reads 4.207 x(t − z)(B − 6z)/s < L_min², with L_min ≥ max(B − 3z, L from w = 10, L from R3).
   Both are explicit inequalities in (t, z0, z).  To prove next.
+(J1) needs only A ≥ 0 and the bulk condition (R3 inactive): margin −0.090 on 4e5 points (step109_J1.py); worst at
+  zf ≈ 0.009 (z0 ≪ t), y ≈ 0.52.  The crude form s·L_min > 4.207 x(t − z) (dropping d/L ≤ 1) FAILS (+0.23 near
+  z0 ≈ t, z ≈ 0.91 t, where d = B − 6z ≈ 0.1t ≪ L): the factor d must be kept.  Useful exact facts:
+  L ≥ B − 3z ≥ d;  L − L0 = A(1/z − 1/z0) + 3s ≥ 3s;  on the bulk boundary L0 = 1.25 μ0/s².
