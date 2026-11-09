@@ -1367,3 +1367,9 @@ UPDATE: at the stationary point F'(L) = 0 forces b < a/L², i.e. L_crit < √(a/
   zf ≈ 0.009 (z0 ≪ t), y ≈ 0.52.  The crude form s·L_min > 4.207 x(t − z) (dropping d/L ≤ 1) FAILS (+0.23 near
   z0 ≈ t, z ≈ 0.91 t, where d = B − 6z ≈ 0.1t ≪ L): the factor d must be kept.  Useful exact facts:
   L ≥ B − 3z ≥ d;  L − L0 = A(1/z − 1/z0) + 3s ≥ 3s;  on the bulk boundary L0 = 1.25 μ0/s².
+(J1) sharpened: since L ≥ B − 3z, L² ≥ (B − 3z)·L, so (J1) ⇐ (J1')
+     4.207 x(t − z)·d/(B − 3z)  ≤  s·L,   with  s·L ≥ max(s(B − 3z), 1.25 μ0/s)   (bulk; L ≥ L0).
+  (J1') with that max: holds, margin −0.072 (4e5 points; worst zf ≈ 0.32, y ≈ 0.59, t ≈ 6e4).
+  Replacing the max by the geometric mean √(1.25 μ0 (B − 3z)): FAILS (z0 -> t makes μ0 -> 0).  So the proof is a
+  two-case split in s: use s(B − 3z) when s ≥ 4.207 x(t−z)d/(B−3z)², and 1.25μ0/s otherwise; need: the two
+  thresholds never leave a gap (an inequality in (t, z0, z) after z = z0 − s, x = x0 − s).
