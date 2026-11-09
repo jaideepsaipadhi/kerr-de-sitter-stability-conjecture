@@ -192,3 +192,8 @@ Theorem B: PROVED (needs Theorem A).
 Theorems A and B are proved, with literature inputs L1–L6 listed in REFEREE3.md. Fixes in this pass: kernel-lemma
 ladder; per-m compactness; generic SdS base point; ω = mΩ_e threshold for s = +2; single-formula gauge vectors for
 T-modes.
+
+## STATUS (8 Nov, late) — SUPERSEDES the "FINAL" entries above
+FATAL GAP (REFEREE4.md): the angular bound λ ≥ 3/2 on the window is false near extremality (sign error in the
+certified operator). Theorem A for real σ in the window is therefore unproved there, and Theorem B and the
+upper-half-plane argument inherit the gap. Do not post the manuscript.
