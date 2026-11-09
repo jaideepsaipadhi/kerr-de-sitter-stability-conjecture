@@ -1713,3 +1713,16 @@ Shortcut tried: replace R by 1 and z₀ by t, use 2(1 − α)C₀ ≥ 2t − 1, 
 the window endpoints. [N] This FAILS (min −1.32 at r₀ → 1, w = w₁, m = 2). The loss is exactly the factor R → t at
 w → w₁, where z₀ → 1. So the R-dependence must be kept, and the endpoint reduction is lost because R depends on w.
 The four-variable polynomial certificate (item 127d) remains the route.
+
+## Item 129 — New reduction for L(z₀) > 0: monotonicity along the window (numerics) + one endpoint
+(a) [P] At the bottom of the window, w = w₂, we have f₂ = 0, z₀ = t and R = 1. So
+    L(z₀) = L(t) = 4Ξ²m²u₀u₃ + B − 3t, a two-parameter (geometry) quantity for each m. At the top, w = w₁, we have
+    f₁ = 0, z₀ = 1 and L(z₀) = L(1) = A + B − 3.
+(b) [N] mono.py, 5776 (geometry, m) curves (m = 1, 2, 3, 6; grids include r₀ → 1, r₂ → ∞, r₂ → 1): with B from the
+    crude λ, w ↦ L(z₀(w); w) is MONOTONE INCREASING on the window in every case. It is not concave. The minimum is
+    therefore at w = w₂, where L(z₀)/C₀ ≥ 2.31.
+(c) Consequence, if (b) is proved: L(z₀) > 0 reduces to the 2D statement at w₂, plus d/dw L(z₀) ≥ 0.
+    Note: z₀ is a Möbius function of w, so the window can be parametrised by z₀ ∈ [1, t] instead. Then w, and with it
+    every u_j, is a Möbius function of z₀, and L(z₀) is rational in z₀.
+    Decomposition: dL(z₀)/dw = ∂_wL(z₀; w) + L'(z₀)·z₀'(w). The second term is > 0 (L' < 0 and z₀' < 0, both [P]).
+    The first, ∂_wA/z₀ + ∂_wB, has no definite sign. A proof must balance the two terms.
