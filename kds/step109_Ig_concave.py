@@ -17,8 +17,8 @@ for _ in range(300000):
     Lmin=Amin/z+B-3*z
     F=lambda L: P+2.295*mu*(1/z-d/(z*L))-b*L-0.225*(t-z)/(x0*(1/z-d/(z*L)))
     Ls=d+np.sqrt(c*d/b)
-    if Ls>=Lmin:
-        v=(K-2*np.sqrt(b*c*d)-b*d)/(abs(K)+2*np.sqrt(b*c*d)+b*d); n1+=1
+    if np.sqrt(a/b)>=Lmin:
+        v=(K-np.sqrt(a*b)-2*np.sqrt(b*c*d)-b*d)/(abs(K)+np.sqrt(a*b)+2*np.sqrt(b*c*d)+b*d); n1+=1
         if v>worst1: worst1=v; a1=(t,(z0-1)/(t-1),(z-1)/x0)
     v2=F(Lmin)/(abs(P)+2.295*mu/z+b*Lmin+c*Lmin/(Lmin-d)); n2+=1
     if v2>worst2: worst2=v2; a2=(t,(z0-1)/(t-1),(z-1)/x0)

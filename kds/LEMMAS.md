@@ -1358,3 +1358,8 @@ Numerics (step109_Ig_concave.py, 3e5 (t, z0, z)):
      the −a/L term is needed at the interior max; next: keep it (F'(L) = a/L² − b − cd/(L − d)² = 0, a cubic-type
      equation; or bound a/L from below using L_crit ≤ d + √((cd + a)/b)).
 So (Ig) on 84% of the bulk is now a statement about explicit functions of (t, z0, z) only.
+UPDATE: at the stationary point F'(L) = 0 forces b < a/L², i.e. L_crit < √(a/b).  Numerically √(a/b) < L_min at ALL
+  227,437 sampled (t, z0, z) with z < B/6: the stationary point is never feasible, so F is decreasing on the feasible
+  set and  sup F = F(L_min).  Hence (Ig) on z < B/6 ⇐ (J1) √(a/b) < L_min  and  (J2) F(L_min) ≤ 0 (margin −0.057).
+  (J1) reads 4.207 x(t − z)(B − 6z)/s < L_min², with L_min ≥ max(B − 3z, L from w = 10, L from R3).
+  Both are explicit inequalities in (t, z0, z).  To prove next.
