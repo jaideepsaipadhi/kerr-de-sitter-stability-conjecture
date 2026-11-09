@@ -1451,3 +1451,17 @@ NEXT: re-parametrise the corner using the bulk variable (replace bt by w, or by 
   constraint excludes them — again a constraint whose polynomial vanishes at the corner, invisible to Bernstein.
   Pattern: every stuck corner so far is a point where a constraint and num vanish together; the fix each time is to
   blow up so the binding constraint becomes a box side.  Next: blow up (ζ, y) -> (1, 1) with 1 − ζ = σ(1 − y)².
+
+## 114. C2 CERTIFIED: B3 ≤ 0 on the whole A = 0 surface of the bulk, all t ∈ (1, ∞), B ≥ floor (exact, 5 s)
+cert2/run_C2_all.sh — exact integer Bernstein branch-and-bound, three charts covering the compact parameter box:
+   chart bt = floor/B  on T = 1/t ∈ [0.05, 1], all (ζ, y, bt):      certified, 349 boxes, 0.1 s
+   chart ω = 10/w      on T ∈ [0, 0.05], ζ ∈ [0, 0.9], all (y, ω):  certified, 6504 boxes, 4.7 s
+   chart bt            on T ∈ [0, 0.05], ζ ∈ [0.9, 1]:              certified, 8 boxes, 0.0 s
+ Rule per box: some constraint (R3 c2, R3 pp, bulk, floor) is certainly violated, or for each sign branch of μ' that
+ can occur, the B3 numerator has the certified sign.  Denominator signs fixed (factors of fixed sign / squares).
+ Each chart avoids the other chart's degenerate corner (bt-chart: T, bt -> 0, y -> 1; ω-chart: ζ, y -> 1).
+Floor surface (B = floor, A free) — in progress (cert2/surf_build.py, surf_run.py):
+   chart A = floor·p/(1−p): stuck at (y, p) -> (1, 1) (bulk degenerate) and at T -> 1, ζ -> 0 (the known zf -> 0
+   degenerate corner, margin ~ −Kζ: needs the ζ factor divided out);
+   chart A from w = 10/ω: stuck at (ζ, y, ω) -> 1 (floor degenerate).
+Remaining surfaces: floor (finish), bulk w = 10, R3 boundaries; then the seam zone.
