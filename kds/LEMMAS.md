@@ -1726,3 +1726,26 @@ The four-variable polynomial certificate (item 127d) remains the route.
     every u_j, is a Möbius function of z₀, and L(z₀) is rational in z₀.
     Decomposition: dL(z₀)/dw = ∂_wL(z₀; w) + L'(z₀)·z₀'(w). The second term is > 0 (L' < 0 and z₀' < 0, both [P]).
     The first, ∂_wA/z₀ + ∂_wB, has no definite sign. A proof must balance the two terms.
+
+## Item 130 — L(z₀) > 0 at the bottom of the window: PROVED (exact certificate). Full window: route set up.
+(a) [P] The sign problem with Λ. Take λ = Λ/3 and r₁ = 1 (scale), roots r₀ ∈ (0, 1) and r₂ ∈ (1, ∞) free, and λ the
+    unique positive root of g(λ) = λ²e₄ + λe₂ + 1. Then a² = −λe₄, α = λa², and every quantity is rational in
+    (r₀, r₂, λ, y), with y = w/a. For a numerator n(λ), pseudo-division gives e₄^k n = Qg + (F₁λ + F₀), so
+    sign n(λ*) = sign(e₄)^k · sign(F₁λ* + F₀). With λ* = (−e₂ − s)/(2e₄) and s = √(e₂² − 4e₄), the condition
+    becomes X < F₁s, where X = −F₁e₂ + 2e₄F₀. This is implied by [F₁ > 0 and F₁²(e₂² − 4e₄) − X² > 0], two
+    polynomial inequalities in (r₀, r₂).
+(b) [P, exact] At w = w₂ (so z₀ = t and R = 1), the three inequalities
+       Q₂ > 0,   H₂ := Q₂ + Q₁/2 + Q₀/4 > 0,   H₁ := Q₂ + Q₁ + Q₀ + 4C₀ > 0
+    each reduce (cert3/w2_build.py → w2_reduce.py → w2_poly.py → w2_bern.py) to the following. With r₂ = 1/v, F₁
+    and P := F₁²D − X² factor as a positive constant × linear/quadratic factors of known sign on (0,1)² (P has only
+    even powers; F₁ has (r₀v − 1)(r₀ − 1)⁵ > 0) × ONE core polynomial (total degree 20 for F₁, 30 for P). Every
+    Bernstein coefficient of every core polynomial on [0, 1]² is STRICTLY POSITIVE, with no subdivision needed.
+    Sign bookkeeping: k = 5 (odd) and e₄ < 0, and the denominator sign is −1. Both were checked numerically against
+    direct evaluation (w2_check.py).
+    Since Q₀ < 0 (Q₀ ≤ 1.5 − 3z₀ < 0, using C₀ ≥ t − ½), L(z₀)/m² = Q₂ + Q₁u + Q₀u² (u = 1/m) is concave in u. So
+    positivity for all m ≥ 2 follows from u = 0 (Q₂) and u = ½ (H₂), and m = 1 is H₁.
+    ⇒ L(z₀) > 0 at w = w₂ for EVERY m ≠ 0 and every subextremal KdS, with the crude angular bound. PROVED.
+(c) Full window, τ ∈ [0, 1] (w = w₂ + τ(w₁ − w₂)): the same three inequalities, with Q₀ < 0 and concavity in u still
+    valid. cert3/win_build.py sets this up in (r₀, r₂, τ), but the sympy `together` build exceeds the 1-minute
+    budget. The next step is a Poly-composition build (as step105) and then 3D Bernstein. Alternatively, prove
+    monotonicity in w (item 129) and use (b).
