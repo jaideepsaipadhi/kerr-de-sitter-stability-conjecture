@@ -174,3 +174,10 @@ acceleration are excluded for smooth modes.  Globalisation by simple connectivit
   - σ = m = 0: Carter structure to first order; field equations linear in (Δr, Δx); 4 = PD tangents; axis kills NUT,
     acceleration (item 98).
   - Generalised modes: induction (item 99); one small open point at σ = m = 0 (no linear-in-t mass/spin growth).
+
+---
+## FINAL STATUS after REFEREE2 (8 Nov, evening)
+* Theorem A: PROVED for real σ (all regimes R1–R3, σ = 0, endpoints, κ_{1,2} = 0 boundary cases). Im σ > 0:
+  continuity along the roots-scaling path to SdS, CONDITIONAL on high-frequency QNM control (REFEREE2 §C).
+* Theorem B = HPV Assumption 1.2 as written (REFEREE2 §D): PROVED given Theorem A.
+* Remaining: REFEREE2 §C (one analytic input); Pochhammer write-up of item 17; cite/prove α ≤ 7 − 4√3; independent check.

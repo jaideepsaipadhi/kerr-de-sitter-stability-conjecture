@@ -24,7 +24,9 @@ nonzero future-regular mode solutions with $\operatorname{Im}\sigma\ge0$, apart 
 (B) that every generalised mode solution of the ungauged linearised Einstein equation $D\mathrm{Ric}(h)=\Lambda h$ with
 $\operatorname{Im}\sigma\ge0$ is pure gauge if $\sigma\neq0$, and a linearised KdS metric plus pure gauge if $\sigma=0$.
 Statement (B) is the hypothesis of the full-subextremal nonlinear stability theorem announced by Hintz--Petersen--Vasy.
-\textbf{Status.} Both parts are proved. Part (B) is proved given (A); in the large-$A$ regime R3 of the event lemma
+\textbf{Status.} Part (A) is proved for all real $\sigma$; for $\operatorname{Im}\sigma>0$ it follows by continuity
+along a roots-scaling path to Schwarzschild--de Sitter, \emph{conditional} on one analytic input (high-frequency control of
+QNMs in $\operatorname{Im}\sigma\ge0$, Section~\ref{sec:remain}). Part (B) is proved given (A); in the large-$A$ regime R3 of the event lemma
 the multiplier is constructed by saturating one condition and solving the other with equality
 (Section~\ref{sec:open}), following the structure of Hintz's Klein--Gordon argument. Every step marked \emph{[cert]} uses an exact symbolic or a short
 numerical verification; the scripts are named in the repository ledger \texttt{kds/LEMMAS.md} (item numbers below).
@@ -220,8 +222,15 @@ $Y=t_*^{k-1}X_1/(k-1)!$ lowers the order. For $\sigma=m=0$, linear growth of $(\
 Iyer--Wald charges: they are surface-independent, vanish on every $\mathcal L_Xg$ by covariance of the Noether charge
 (item 101), and $\partial(E,J)/\partial(M,a)$ has determinant $M/\Xi^4\neq0$ for $E=M/\Xi^2$, $J=aM/\Xi^2$ (item 100).
 
-\section{What remains}
+\section{What remains}\label{sec:remain}
 \begin{enumerate}
+\item \textbf{Analytic input for $\operatorname{Im}\sigma>0$ in (A).} The continuity argument needs that no $s=\pm2$
+Teukolsky QNM enters $\operatorname{Im}\sigma\ge0$ from infinity, locally uniformly in the parameters. Discreteness and
+continuity follow from the Vasy framework (Petersen--Vasy set up the Teukolsky Fredholm theory); the missing piece is a
+subprincipal-symbol bound at the trapped set for Teukolsky on full-range KdS. Hintz--Petersen--Vasy (arXiv:2508.06620,
+Thm.~3.1) prove such a bound for the gauge-fixed linearised Einstein operator; either verifying it for Teukolsky or
+running the continuity argument on their gauged operator with their constraint-damping transfer (Thm.~2.7) closes it.
+\item The Pochhammer write-up of the item-17 transform and the cited bound $\alpha\le7-4\sqrt3$.
 \item An independent check of the whole argument, in particular of Part~B (the in-house hostile passes are items 97
 and 102) and of the R3 construction (items 117--121).
 \end{enumerate}
