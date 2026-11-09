@@ -1500,3 +1500,7 @@ REMAINING for this surface: prove f has no interior maximum, i.e. f'(u) ≠ 0 wh
   Numerics (cert2/bulk_fu.py): f' > 0 on every concave part, 13913 lines, worst normalised 0.015; (C*) itself: only
   779 of 1e5 sampled points have |E| > a2u_lo³; all satisfy (C*), worst normalised 0.0073 — thin margin.
   Next: build (C*) symbolically in (T, ζ, y) and certify by exact Bernstein.
+(116, cont.) Building (C*) symbolically FAILED within 60 s: sympy cancel/together times out; a no-cancellation
+  rational-polynomial builder (cert2/ratpoly.py, cstar_build.py) gives numerator degree (145, 57, 57) — far too large
+  for Bernstein.  The common factors (powers of T, ζ, y, 1 − y, 1 − T, z, z0, t − z0) must be cancelled by hand before
+  composing; or (C*) certified by intervals in (t, z0, z) with an explicit large-t limit.  Not done.
