@@ -24,9 +24,9 @@ nonzero future-regular mode solutions with $\operatorname{Im}\sigma\ge0$, apart 
 (B) that every generalised mode solution of the ungauged linearised Einstein equation $D\mathrm{Ric}(h)=\Lambda h$ with
 $\operatorname{Im}\sigma\ge0$ is pure gauge if $\sigma\neq0$, and a linearised KdS metric plus pure gauge if $\sigma=0$.
 Statement (B) is the hypothesis of the full-subextremal nonlinear stability theorem announced by Hintz--Petersen--Vasy.
-\textbf{Status.} Part (B) is proved, given (A). Part (A) is proved except for one explicit inequality,
-condition~(D) of the event lemma in the large-$A$ regime $\mathrm{R3}$ (Section~\ref{sec:open}), which is verified
-numerically with margin but is not yet proved. Every step marked \emph{[cert]} uses an exact symbolic or a short
+\textbf{Status.} Both parts are proved. Part (B) is proved given (A); in the large-$A$ regime R3 of the event lemma
+the multiplier is constructed by saturating one condition and solving the other with equality
+(Section~\ref{sec:open}), following the structure of Hintz's Klein--Gordon argument. Every step marked \emph{[cert]} uses an exact symbolic or a short
 numerical verification; the scripts are named in the repository ledger \texttt{kds/LEMMAS.md} (item numbers below).
 \end{abstract}
 
@@ -111,16 +111,33 @@ the excess is at most $(0.5+1.25/t)/(2.5t-1.25)$; $0.7s/z+0.45s/(xz)-s/x\le-0.3s
 nonzero $1.7s\cdot\text{excess}\le0.69$. Summing, the difference is at most $-0.3s/z+1+0.69-2<0$.
 \end{proof}
 
-\subsection{The remaining open condition}\label{sec:open}
-\begin{quote}\textbf{Open (D) in R3.} Condition (D) for the rational multiplier on R3.\end{quote}
-Evidence and reductions (items 104--110): on a 1200-case grid and on $3\times10^5$ random R3 points the normalised margin is
-$\le-0.028$. Splitting by $w$: in the bulk $w\ge10$, (D) follows from the cutoff-free inequality
-$$\text{(B3)}\quad \tfrac12\mu'h_\pm+0.85\mu g^2+\tfrac12\mu(1.7g+q)^2+\tfrac12\mu q'\le0.5455\,sLg+sLq,$$
-which holds numerically with margin $-0.11$. For fixed $(t,z_0,A,z)$ the relevant expressions are decreasing in $B$ and
-all constraints are monotone in $B$, so $B$ may be put at the floor (item 108); then the identity $g=1/z-(B-6z)/(zL)$
-makes (B3) a function of the single variable $L\in[L_{\min},\infty)$ (item 109). In the seam zone $w\le10$ the
-cutoff derivative is load-bearing and the problem rescales to the layer problem of items 13--15. What is missing is a
-proof (by hand or by certificate) of (B3) in these reduced variables and of the seam zone.
+\subsection{Regime R3: saturate (C), solve (D)}\label{sec:open}
+Write $h=f'/f$. Then (D) $\iff \widetilde Df:=(\mu f')'-2s(Lf)'\le0$ and (C) $\iff h\le h_C:=H/(s\mu)=2/s+\mu'/\mu$.
+\begin{proposition}[items 117--121]
+For every R3 parameter point there is a $C^2$ function $f>0$ on $(1,z_0]$ with $f(1)=0$, (C) and (D) on $(1,z_0)$, and
+$f'(z_0)>0$.
+\end{proposition}
+\begin{proof}
+\emph{Construction.} On $(1,\hat z]$ let $f=F_C=\mu/s^2$, so (C) holds with equality; on $[\hat z,z_0]$ let $f$ solve
+$\widetilde Df=0$ with matching data, so (D) holds with equality. Here $\hat z$ is the unique zero of
+$d:=\widetilde DF_C/(2F_C)=N(S)/(2F_Cs^4)$, $S=z_0-z$.
+
+\emph{(P1): $d$ has exactly one sign change.} $N$ is a sextic in $S$ with $N(0)=6\mu_0^2>0$ and vanishing $S^4$
+coefficient. After $S=x_0v/(1+v)$ its seven coefficients $T_0,\dots,T_6$ satisfy $T_0,T_1>0$; $T_2,\dots,T_6$ are affine
+in $(A,B)$ with negative coefficients; the feasible $(A,B)$-set is the quadrant $\{A\ge\max(0,A_{c2}),B\ge5.5t-1.25\}$;
+and on it $T_4,T_5,T_6<0$ and $T_3\ge0\Rightarrow T_2>0$ (two-variable statements, exact Bernstein certificate).
+Descartes' rule gives exactly one root.
+
+\emph{(C) on the second piece.} With $p=\mu\exp(-\int2sL/\mu)$, the Wronskian $W=p(F_Cf'-F_C'f)$ satisfies
+$W'=-(p/\mu)f\,\widetilde DF_C\le0$ and $W(\hat z)=0$, so $f'/f\le h_C$.
+
+\emph{(P2): positivity and the seam.} At a zero of $f'$ with $f>0$, $\mu f''=2sL'f<0$, so $f'(z_0)>0$ implies $f'>0$ and
+$f>0$ throughout. With $\Phi=\mu f'-2sLf$, $\Phi'=2Lf$; a first zero of $f'$ would force
+$\Psi(z_1)\le0$ for a function $\Psi$ with $\Psi'<0$ and $\Psi(z_0)=\hat H/\hat s-2\int_{\hat z}^{z_0}s|L'|$, and
+$\int_z^{z_0}s|L'|\le s^2(A/(2z^2)+3/2)$ reduces $\Psi(z_0)>0$ to $K(\hat z)>0$, $K=H-s^3|L'|$. Since $K$ and $N$ are
+affine decreasing in $A$ (and $N$ in $B$), $K\le0\Rightarrow N(S;\max(A_K,0),5.5t-1.25)<0$, a three-variable statement
+certified exactly; as $N\ge0$ on $[0,\hat S]$, $K(\hat z)>0$.
+\end{proof}
 
 \subsection{$\sigma=0$ and the upper half plane}
 For $m=0$, $\sigma=0$: an energy identity with $V=-2\Lambda r^2-2(1-\alpha)-\lambda<0$ for $s=-2$, and for $s=+2$ the
@@ -205,8 +222,8 @@ Iyer--Wald charges: they are surface-independent, vanish on every $\mathcal L_Xg
 
 \section{What remains}
 \begin{enumerate}
-\item \textbf{(D) in R3} (Section~\ref{sec:open}): the only open mathematical item in Theorem~A, hence in both theorems.
-\item An independent check of Part~B (the in-house hostile passes are items 97 and 102).
+\item An independent check of the whole argument, in particular of Part~B (the in-house hostile passes are items 97
+and 102) and of the R3 construction (items 117--121).
 \end{enumerate}
 
 \end{document}
