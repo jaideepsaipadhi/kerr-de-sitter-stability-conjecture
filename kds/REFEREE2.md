@@ -76,3 +76,10 @@ Theorem A: PROVED for all real σ (every regime of the event lemma, σ = 0, endp
 Theorem B (= HPV Assumption 1.2): PROVED given Theorem A, for every subextremal KdS (a ≠ 0; a = 0 is HV18).
 So the final result is complete modulo ONE literature-level input: high-frequency control of s = ±2 Teukolsky QNMs in
 Im σ ≥ 0 on full-range KdS (or the gauged-Einstein version of the continuity argument).  Plus independent checking.
+
+## G. Update (item 123): the §C gap reduced
+The counting argument along the path is PROVED given compactness (K); σ = 0 handled by openness of invertibility.
+(K) and the SdS base case are reduced, via Teukolsky–Starobinsky + Wald reconstruction + gauge fixing, to HPV's
+high-frequency bound for L_b, plus three concrete sub-lemmas: (C2) horizon regularity of S†Φ, (C3) non-vanishing
+of the TS constant in Im σ ≥ 0 at large |σ| and the finitely many algebraically special frequencies, (C4) local
+uniformity of HPV Thm 2.2.  No Teukolsky trapping estimate is needed any more.

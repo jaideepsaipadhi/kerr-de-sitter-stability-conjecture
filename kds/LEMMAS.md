@@ -1593,3 +1593,39 @@ NEXT: a barrier adapted to the seam (k with the right behaviour as s -> 0 — e.
     D̃f = 0 on [ẑ, z0]) is C², positive, has f(1) = 0, satisfies (C) and (D) on (1, z0) and the seam condition
     f'(z0) > 0.  This replaces the rational multiplier of items 104–116 and every certificate built for it.
     THEOREM A's event lemma: R1, R2 by item 47; R3 by items 117–121.
+
+## Item 123 — Attack on REFEREE2 §C (Im σ > 0 in Theorem A): reduction of the high-frequency input
+Goal: N(b) := #(s = +2 Teukolsky QNMs with Im σ > 0, with multiplicity) is 0 on every subextremal KdS b.
+Path: roots scaling b(s), s ∈ (0,1], to SdS (REFEREE2 §B).
+
+Step 1 (counting, given compactness). Petersen–Vasy give an analytic Fredholm family P_b(σ) on Im σ > −c, continuous in b.
+If (K) the QNMs in Im σ ≥ 0 lie in a compact set K_U for b in a neighbourhood U, uniformly, then by Gohberg–Sigal N(b)
+is locally constant unless a QNM crosses Im σ = 0.  Crossing at σ ≠ 0 real: excluded by Theorem A (real σ, PROVED).
+Crossing at σ = 0: Theorem A at σ = 0 gives P_b(0) invertible; invertibility is open in (b, σ), so a disc around 0 is
+QNM-free for b near b0.  Hence N is constant along the path. PROVED given (K) and the base case.
+
+Step 2 (compactness (K) from HPV, the new idea).  Let Ψ be an s = +2 QNM, Im σ ≥ 0, σ ≠ 0.
+  (a) Teukolsky–Starobinsky: the 4th-order TS map sends it to an s = −2 QNM at the same σ, nonzero unless the TS
+      constant D_b(σ, m, λ) vanishes (algebraically special frequency).
+  (b) Wald's adjoint method (valid on any type-D Λ-vacuum: S E = O T holds with Λ) builds h = S†Φ from the −2 mode Φ:
+      a linearised Einstein mode at frequency σ with Ψ0[h] = (TS map)(Φ) ≠ 0 off the algebraically special set.
+  (c) Gauge-fix h: h' = h + δ*ω, ω solving HPV's gauge-propagation equation at σ (solvable off that operator's QNMs,
+      which lie in a compact set: principally scalar wave operator on 1-forms, standard estimates, used in HPV Thm 4.1).
+      h' is a QNM of HPV's L_b with nonzero (gauge-invariant) Ψ0.
+  (d) HPV Thm 2.2/3.1: QNMs of L_b in Im σ ≥ 0 lie in a compact set; their trapping hypothesis is an open condition,
+      so the bound is locally uniform in b.
+  So every UHP Teukolsky QNM with large |σ| is an L_b QNM, contradiction for |σ| large: (K) holds,
+  CONDITIONAL on the sub-lemmas below.
+
+Step 3 (base case).  SdS: a UHP Teukolsky QNM gives, by 2(a)–(b), a linearised Einstein mode with Ψ0 ≠ 0, contradicting
+HV18 (every such mode is pure gauge + linearised KdS, all of which have Ψ0 = 0).  Same sub-lemmas.
+
+Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency analysis"):
+  (C2) Regularity: S†Φ is smooth across both future horizons when Φ is a future-regular mode (check the
+       Hartle–Hawking/regular-tetrad boost weights of S†; in Kerr this is the DHR computation; KdS has two horizons
+       of the same type, so the check is the same at each).
+  (C3) Algebraically special frequencies: D_b(σ, m, λ) ≠ 0 for Im σ ≥ 0, |σ| large (locally uniformly in b), and the
+       finitely many remaining special frequencies treated directly (explicit algebraically special solutions;
+       show they are not regular at both horizons).
+  (C4) Local uniformity of HPV's Thm 2.2 bound — state the openness argument precisely (their proof uses
+       a threshold/subprincipal condition at the trapped set and at the horizons, all strict inequalities).
