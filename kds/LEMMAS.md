@@ -1443,3 +1443,11 @@ REMAINING to finish (D)-bulk: tile C2 over t ∈ (1, T∞], zf, y ∈ (0,1), B/f
   Bernstein cannot see this because the bulk polynomial also vanishes at the corner.
 NEXT: re-parametrise the corner using the bulk variable (replace bt by w, or by b/(c²ε)) so the constraint becomes a
   box side; then Bernstein closes it.  Same treatment will be needed at the other degenerate corners.
+(113, cont.) Re-parametrised with ω = 10/w ∈ (0,1] (bulk constraint = box side; cert2/a0w.py, a0w_run.py, bern_core.py):
+  the (T, bt -> 0, y -> 1) corner is gone.  New stuck corner: ζ -> 1, y -> 1 (z0 -> t, z -> z0), all T, ω.
+  Blow-up ζ = 1 − aε, y = 1 − cε: num = 150a·[T a²(150ω + 375) + acω(1091 − 791T) + 1360c²ω²(1 − T)]·ε³ + …  (> 0), but
+  on the face ζ = 1 itself num ≈ −832320 c⁵ ω³ (1 − T)² ε⁵ < 0, so num < 0 where 1 − ζ ≲ (1 − y)³.
+  Checked: those points have B ≈ 3z0 + 10μ0/(8s²) < floor (e.g. t = 7/6: B = 3.50 vs floor 5.17), i.e. the FLOOR
+  constraint excludes them — again a constraint whose polynomial vanishes at the corner, invisible to Bernstein.
+  Pattern: every stuck corner so far is a point where a constraint and num vanish together; the fix each time is to
+  blow up so the binding constraint becomes a box side.  Next: blow up (ζ, y) -> (1, 1) with 1 − ζ = σ(1 − y)².
