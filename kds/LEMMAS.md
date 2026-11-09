@@ -1415,3 +1415,8 @@ enclosure (Taylor models).
        C2 the A = 0 surface: 4 variables (t, z0, z, B) but a SHORT expression (g = 3/L, L = B − 3z);
        C3 the R3 boundary surfaces (not yet examined);
        plus a proof that on the floor slice the max is at A_min (2 exceptional lines to look at).
+(d) FIRST CELL CERTIFIED: C2 (A = 0 surface) on t ∈ [2,3], zf ∈ [0.05,0.95], y ∈ [0.05,0.95], B/floor ∈ [1,10]:
+    certified, 3.05e5 boxes, 16 s (cert2/b3mv.py with λ ≡ 1; mean-value form, outward-rounded intervals).
+    The reduction makes the certificate feasible: one unit cell per run, well under a minute.
+REMAINING to finish (D)-bulk: tile C2 over t ∈ (1, T∞], zf, y ∈ (0,1), B/floor ∈ [1, ∞) (edges by limit problems);
+    C1 (corner, 3-D); C3 (R3 boundary surfaces); the floor-slice A_min claim.  Then the seam zone.

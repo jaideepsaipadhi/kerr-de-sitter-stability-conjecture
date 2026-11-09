@@ -41,14 +41,14 @@ def evalbox(boxes):
         out_F_hi[m]=np.minimum(F.v.hi,mv)
         outside[m]=(w.v.hi<10)|(pp.v.hi<=1)|(c2.v.hi<0)
     return out_F_hi,outside
-def run(lo,hi,tmax=50,cap=2_000_000):
+def run(lo,hi,tmax=45,cap=2_000_000):
     t0=time.time(); lo=np.array(lo,float); hi=np.array(hi,float)
     boxes=np.concatenate([lo,hi])[None,:]; done=0
     while len(boxes) and time.time()-t0<tmax:
         Fh,out=evalbox(boxes); ok=(Fh<0)|out
         done+=int(ok.sum()); rest=boxes[~ok]
         if len(rest)==0: boxes=rest; break
-        W=(rest[:,5:]-rest[:,:5])/(hi-lo); k=np.argmax(W,axis=1); ix=np.arange(len(rest))
+        W=(rest[:,5:]-rest[:,:5])/np.where(hi>lo,hi-lo,np.inf); k=np.argmax(W,axis=1); ix=np.arange(len(rest))
         mid=(rest[ix,k]+rest[ix,5+k])/2; a=rest.copy(); b=rest.copy(); a[ix,5+k]=mid; b[ix,k]=mid
         boxes=np.vstack([a,b])
         if len(boxes)>cap: break
