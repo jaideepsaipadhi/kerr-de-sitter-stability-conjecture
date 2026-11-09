@@ -46,3 +46,18 @@ P4. The angular two-level bound (interval certificate C2).
 No step is known to be false after the fixes above. Every gap found in this pass was closed in the text. The argument
 depends on L1–L6, which are standard but have not been re-derived. VERDICT: PASSES the in-house end-to-end referee
 with these dependencies stated. It has not been checked by an independent human expert.
+
+## Addendum (gaps closed for an unconditional statement)
+* F1–F3 for Teukolsky: Lemma 6.1 (regular frame) makes Teukolsky a stationary principally scalar operator with
+  smooth coefficients on a line bundle over M. HV18 Thm 5.4, whose Fredholm part does not use trapping, together with
+  §5.1.2 (uniformity) and Prop. 5.11 (continuity of QNMs) then apply verbatim. The dynamics hypotheses come from
+  PV25/PV24.
+* HPV uniformity: HV18 §5.1.2 states that the hypotheses, and hence the high-energy estimates (5.7)/(5.8), hold
+  uniformly for w near w0. HPV Rem. 2.12 and Thm 3.1 verify the hypotheses for L_b.
+* Kernel lemma: the weight exponents are integers, which gives the ladder {mΩ₂ + iNκ₂♯ : N ≥ 1}.
+* SdS base case: explicit and exact. (Þ')⁴(r⁴R) = Δ²(D†)⁴Δ²R/(16r⁴) and D⁴Δ²(D†)⁴Δ²R = [(λ+4)(λ+6)]² + 144M²σ² (times R);
+  Λ drops out (step126/127). The failure set is countable in ΛM².
+* Collars (HPV's M extends past the horizons): Lemma 7.1 proves vanishing of δΨ₀,₄ in the collars by the
+  domain-of-dependence energy argument. The σ = m = 0 gauge vector is glued across the horizons by a pointwise
+  injectivity argument, giving a smooth X on all of M.
+* ORG formula: Λ-free, since only Þ'-derivatives and Þ'ρ' = ρ'² enter and no commutators.

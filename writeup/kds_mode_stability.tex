@@ -592,18 +592,49 @@ The two identities used are exact symbolic identities (Appendix~\ref{app:cert}, 
 \section{The upper half plane}\label{sec:uhp}
 
 \subsection{Fredholm theory}
-Fix $m\in\Z$. On the subspace $\ker(\partial_{\varphi_*}-im)$, the spectral family $P_b(\sigma)$ of the Teukolsky
-operator of spin $s$ at parameters $b=(\Lambda,M,a)$ has the following properties. They follow from Vasy's framework
-\cite{Vas13} with the dynamical input of Petersen--Vasy \cite{PV25,PV24}. As noted in \cite[\S2.3]{HPV25}, a
-nonvanishing subprincipal part only shifts threshold regularities, and the Teukolsky operator in a horizon-regular
-frame is a principally scalar wave operator on a line bundle.
+\begin{lemma}[Regular frame]\label{lem:regframe}
+Let $\chi\in C^\infty(\R)$ equal $1$ near $r_1$ and $0$ near $r_2$, and put $b(r)=\chi(r)+(1-\chi(r))/\Delta_r$ on
+$(r_1,r_2)$. Let $(l_K,n_K,m_K)$ be the Kinnersley tetrad. Then
+\[
+l=b\,\Delta_r\,l_K,\qquad n=(b\,\Delta_r)^{-1}n_K,\qquad m=m_K
+\]
+extends to a stationary null tetrad that is smooth on $M=[r_1-\delta,r_2+\delta]\times S^2$, away from the usual phase
+ambiguity of $m$ on the axis. In this tetrad, the GHP Teukolsky operator of spin $s=\pm2$ is a stationary second-order
+operator with smooth coefficients on sections of a complex line bundle over $M$, with principal symbol
+$\frac12G(\zeta,\zeta)$, where $G$ is the dual metric. Its outgoing modes are exactly the modes of
+Lemma~\ref{lem:bc}.
+\end{lemma}
+
+\begin{proof}
+Near $r_1$, in ingoing coordinates $(v,r,\tilde\varphi)$,
+\[
+\Delta_rl_K=2\Xi(r^2+a^2)\partial_v+2\Xi a\partial_{\tilde\varphi}+\Delta_r\partial_r,\qquad \Delta_r^{-1}n_K=-\partial_r/(2\varrho^2).
+\]
+Both are smooth and nonvanishing. Near $r_2$, in outgoing coordinates, $l_K=\partial_r+(\text{angular})$ and $n_K$ are
+already smooth. The factor $b\Delta_r$ is smooth and positive on $(r_1,r_2)$, and equals $\Delta_r$ near $r_1$ and $1$
+near $r_2$. The GHP operator is covariant, so its coefficients in this tetrad (spin coefficients and directional
+derivatives) are smooth. Its principal part is $\Th\Th'-\eth\eth'$, whose symbol is
+$\zeta(l)\zeta(n)-\zeta(m)\zeta(\bar m)=\frac12G(\zeta,\zeta)$. The last statement is the definition of outgoing
+modes, together with Lemma~\ref{lem:bc}.
+\end{proof}
+
+Fix $m\in\Z$, and let $P_b(\sigma)$ be the spectral family of this operator on $\ker(\partial_{\varphi_*}-im)$, at
+parameters $b=(\Lambda,M,a)$. The dynamical hypotheses of \cite[\S5.1]{HV18} concern only the principal symbol $G$
+(radial sets at the horizons, and the global null-bicharacteristic flow). They were verified in the full
+subextremal range by Petersen--Vasy \cite{PV25,PV24}; see \cite[Remark~2.12]{HPV25}. The subprincipal part enters
+only through the threshold regularity at the radial sets. The trapping hypothesis of \cite[\S5.1]{HV18} is needed
+only for high-energy estimates near the real axis, not for the Fredholm property \cite[Theorem~5.4 and the remark
+in its proof]{HV18}. We therefore have:
 \begin{enumerate}[label=(F\arabic*)]
-\item $P_b(\sigma)$ is an analytic family of Fredholm operators of index $0$ on $\Im\sigma>-c$, depending
-continuously on $b$. Its non-invertibility set is discrete, and it is the set of quasinormal mode (QNM) frequencies.
-\item There is $C_0$, locally uniform in $b$, such that every QNM with $\Im\sigma\ge0$ has $\Im\sigma\le C_0$. This
-follows from a spacetime energy estimate \cite[\S6, item~(3)]{Hin26}.
-\item The set $\{(b,\sigma):P_b(\sigma)\text{ is not invertible}\}$ is closed. If $P_{b_0}(\sigma_0)$ is not
-invertible, then for $b$ near $b_0$ there is a QNM near $\sigma_0$ \cite[\S5]{HV18}.
+\item $P_b(\sigma)$ is a holomorphic family of Fredholm operators of index $0$ on $\Im\sigma>-c$
+\cite[Theorem~5.4]{HV18}. Its non-invertibility set is discrete, and it is the set of quasinormal mode (QNM)
+frequencies.
+\item There is $C_0$, uniform for $b$ near $b_0$, such that $P_b(\sigma)$ is invertible for $\Im\sigma>C_0$. This
+follows from the global energy estimate on growing function spaces, which uses only hyperbolicity and holds
+uniformly in $b$ \cite[\S5.1.2]{HV18}.
+\item The non-invertibility set is closed in $(b,\sigma)$, and QNMs move continuously, with constant total rank in
+small discs \cite[Proposition~5.11]{HV18}. That proof uses only the Fredholm estimates \cite[(5.26)]{HV18} on a
+precompact set of $\sigma$, which hold uniformly in $b$.
 \end{enumerate}
 What is \emph{not} available for Teukolsky in the full subextremal range is the high-energy estimate bounding
 $|\Re\sigma|$. We obtain it sector by sector from the gauge-fixed Einstein operator, for which it is proved in
@@ -635,35 +666,41 @@ conjugate $\tilde h:=\overline{h_\Psi}$ satisfies $\Psi_4[\tilde h]=\frac12(\Th'
 The first claim is Wald's argument combined with \eqref{eq:adjoint}. For the second: $h_\Psi$ has components only
 along $l\otimes l$, $l\otimes m$ and $m\otimes m$. By GHP type counting, $\delta\Psi_4$ involves only the components
 $h_{nn}$, $h_{n\bar m}$ and $h_{\bar m\bar m}$. Hence $\Psi_4[h_\Psi]=0$, and $\Psi_4[\tilde h]$ comes from
-$\tilde h_{\bar m\bar m}$ alone. Its evaluation uses only $\Th'\rho'=\rho'^2$ and contains no $\Lambda$-term
-\cite{Wal78,KSFK03}.
+$\tilde h_{\bar m\bar m}$ alone. It involves only $\Th'$-derivatives and the
+coefficients $\rho',\bar\rho'$, and its evaluation uses only the Ricci identities $\Th'\rho'=\rho'^2$ and
+$\Th'\bar\rho'=\bar\rho'^2$. In particular, no commutator enters, so the $\Lambda$-terms of the GHP commutators play
+no role. The algebra is therefore literally that of the Kerr case \cite{Wal78,KSFK03}.
 \end{proof}
 
 \subsection{The kernel lemma}
 Let $\kappa_2^\sharp=|\Delta_r'(r_2)|/(2\Xi\rho_2)$ be the normalized surface gravity of the cosmological horizon,
 and define the \emph{cosmological ladder}
 \[
-\mathcal Z_m=\big\{m\Omega_2+iN\kappa_2^\sharp:\ N\in\tfrac14\Z\big\}.
+\mathcal Z_m=\big\{m\Omega_2+iN\kappa_2^\sharp:\ N\in\{1,2,3,\dots\}\big\}.
 \]
 
 \begin{lemma}[Kernel lemma]\label{lem:kernel}
-Let $\Im\sigma\ne0$ and $\sigma\notin\mathcal Z_m$. If $F=e^{-i\sigma t_*+im\varphi_*}v$ is a mode of GHP type
-$(0,4)$, regular at the future cosmological horizon, with $(\Th')^4F=0$, then $F=0$.
+Let $\Im\sigma>0$ and $\sigma\notin\mathcal Z_m$. If $F=e^{-i\sigma t_*+im\varphi_*}v$ is a mode of GHP type
+$(0,4)$ or $(4,0)$, regular at the future cosmological horizon, with $(\Th')^4F=0$, then $F=0$.
 \end{lemma}
 
 \begin{proof}
-The operator $\Th'$ differentiates only along $n$, which has no $\partial_\theta$-component. So for each fixed
-$\theta$, $(\Th')^4F=0$ is a fourth-order linear ODE in $r$, a composition of four first-order operators with a
-regular singular point at $r_2$. The $n$-invariant functions are those of the advanced time $v=t+r_*$, and of
-$\varphi+\int a/\Delta_r$. The integrating factors coming from the weights $p\gamma+q\bar\gamma$ are real powers of $\Delta_r$, with exponents in
-$\frac14\Z$, times analytic functions. Hence every local solution near $r_2$ is a finite sum of terms
-$(r_2-r)^{\beta}\log^j(r_2-r)$ times analytic functions, with $\beta\in-\kappa_2+\frac14\Z$.
+In the tetrad of Lemma~\ref{lem:regframe}, $\Th'$ differentiates only along $n$, which has no
+$\partial_\theta$-component. So for each fixed $\theta$, $(\Th')^4F=0$ is a fourth-order linear ODE in $r$, the
+composition of four first-order operators
+\[
+n(\cdot)-(p_i+q_i)\gamma,\qquad p_i+q_i\in\{4,2,0,-2\}.
+\]
+On modes, $n=-(\Delta_r/2\varrho^2)\big(\partial_r+iK/\Delta_r\big)$ in the Kinnersley normalization, and
+$\gamma=\mu+\Delta_r'/(4\varrho^2)$ with $\mu$ vanishing like $\Delta_r$. Hence each first-order
+factor has kernel spanned by $\exp(-i\int K/\Delta_r)$ times $\Delta_r^{k}$ times an analytic function, with
+$k\in\frac12(p_i+q_i)+\Z\subset\Z$. Every local solution near $r_2$ is therefore a finite sum of terms
+$(r_2-r)^{-\kappa_2+k}\log^j(r_2-r)$ times analytic functions, with $k\in\Z$.
 
-On the other hand, regularity at the future cosmological horizon means smoothness in the retarded time. By
-Lemma~\ref{lem:bc} this is the branch $(r_2-r)^{\kappa_2}C^\infty$. Since the spin weights contribute only real exponents in $\frac14\Z$, the two descriptions are compatible for
-$F\ne0$ only if $2\kappa_2\in\frac14\Z$. By the definition of $\kappa_2$, this means exactly $\sigma\in\mathcal Z_m$.
-The arguments below only use that $\mathcal Z_m$ is a discrete subset of the line $\{\Re\sigma=m\Omega_2\}$. Finally, $F$ vanishes identically once it
-vanishes near $r_2$, by uniqueness for the ODE.
+Regularity at the future cosmological horizon is the branch $(r_2-r)^{\kappa_2}C^\infty$ (Lemma~\ref{lem:bc}). So a
+nonzero $F$ requires $2\kappa_2\in\Z$. For $\Im\sigma>0$ we have
+$\Re(2\kappa_2)=2\Xi\rho_2\Im\sigma/|\Delta_r'(r_2)|>0$ and $\Im(2\kappa_2)=2\Xi(\rho_2\Re\sigma-am)/\Delta_r'(r_2)$.
+Hence $\Re\sigma=m\Omega_2$ and $\Im\sigma=N\kappa_2^\sharp$ with $N=2\kappa_2\in\{1,2,3,\dots\}$. Finally, $F$ vanishes identically once it vanishes near $r_2$, by uniqueness for the ODE.
 \end{proof}
 
 \begin{proposition}[Transfer]\label{prop:transfer}
@@ -691,9 +728,11 @@ $b\in U$, every Teukolsky QNM of spin $\pm2$ in the sector $m$ with $\Im\sigma\g
 
 \begin{proof}
 Let $L_b$ be the linearized gauge-fixed Einstein operator of \cite[(23)]{HPV25}, with the constraint damping fixed at
-$b_0$. By \cite[Remark~2.12, Theorem~2.13]{HPV25}, the operators $L_b$, $b\in U$, form a continuous family that
-satisfies the hypotheses of \cite[\S5.1.2]{HV18} uniformly. The high-energy estimates are therefore uniform, and
-there is $R_0$ such that every QNM of $L_b$ with $\Im\ge0$ has $|\sigma_T|\le R_0$ for all $b\in U$. Here $\sigma_T$
+$b_0$. By \cite[Remark~2.12 and \S2.5]{HPV25}, the operators $L_b$, $b\in U$, form a continuous family of stationary,
+principally scalar operators satisfying the assumptions of \cite[\S5.1]{HV18}, including the trapping condition
+(by \cite[Theorem~3.1]{HPV25}). By \cite[\S5.1.2]{HV18}, these assumptions then hold uniformly near $b_0$, and the
+high-energy estimates \cite[(5.7), (5.8)]{HV18} hold with constants uniform in $b\in U$. In particular there is $R_0$
+such that every QNM of $L_b$ with $\Im\ge0$ has $|\sigma_T|\le R_0$ for all $b\in U$. Here $\sigma_T$
 is the $T$-frequency, which differs from the $\partial_t$-frequency by $m'\Omega_T$ on the sector $m'$.
 
 Let $\Psi$ be a QNM in the sector $m$ with $\Im\sigma\ge0$. If $\Im\sigma=0$ there is nothing to prove, by
@@ -718,24 +757,33 @@ $R_m=\max(R_0+|m|\Omega_T,\ |m|\Omega_1+C_0,\ |m|\Omega_2+C_0)$.
 
 \subsection{The base case}
 \begin{lemma}[Schwarzschild--de Sitter]\label{lem:sds}
-There is a dense set of SdS parameters with $\Lambda M^2<1/9$ at which there are no Teukolsky QNMs of spin $\pm2$ with
+For all but countably many values of $\Lambda M^2\in(0,1/9)$, SdS has no Teukolsky QNMs of spin $\pm2$ with
 $\Im\sigma>0$.
 \end{lemma}
 
 \begin{proof}
-Let $a=0$ and $\Im\sigma>0$. Suppose first that $\sigma$ is off the ladder. Then Proposition~\ref{prop:transfer} produces a
-linearized Einstein mode with $\Im>0$ and $\Psi_4\ne0$. By \cite[\S7]{HV18}, every such mode on SdS is pure gauge,
-and pure gauge modes have $\Psi_4=0$. This is a contradiction.
+Let $a=0$. The angular operator then does not depend on $\sigma$ or $\Lambda$, so modes separate into spin-weighted
+spherical harmonics for every $\sigma\in\C$, with a discrete real spectrum $\{\lambda_\ell\}$ independent of $\Lambda$. Two
+exact computations hold on separated modes, in the Kinnersley tetrad with $D^\dagger=\partial_r+i\sigma r^2/\Delta_r$
+and $D=\partial_r-i\sigma r^2/\Delta_r$ (Appendix~\ref{app:cert}, item~C8):
+\begin{equation}\label{eq:sdsTS}
+(\Th')^4(r^4R)=\frac{1}{16r^4}\,\Delta_r^2(D^\dagger)^4\Delta_r^2R,\qquad
+D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
+\end{equation}
+where $\mathcal C_\ell(\sigma)=[(\lambda_\ell+4)(\lambda_\ell+6)]^2+144M^2\sigma^2$, the second identity holds for every solution
+$R$ of the $s=+2$ radial equation, and $\Lambda$ drops out. Since $P\propto r^4$ at $a=0$, the first identity shows
+that $(\Th')^4(P\Psi)$ vanishes only if $\Delta_r^2(D^\dagger)^4\Delta_r^2R=0$, hence only if $\mathcal C_\ell(\sigma)=0$, that is,
+$\sigma=\sigma_\ell:=i(\lambda_\ell+4)(\lambda_\ell+6)/(12M)$.
 
-At $a=0$ the ladder is $\{iN\kappa_2^\sharp\}$ for every $m$, and the angular operator does not depend on $\sigma$.
-So modes separate into spin-weighted spherical harmonics for every $\sigma\in\C$. On a separated solution, $(\Th')^4$
-acts as the radial Teukolsky--Starobinsky operator. By the Teukolsky--Starobinsky identities \cite{Cha83,STU98}, it
-annihilates a solution only if $\mathcal C_\ell(\sigma)=0$. Here $\mathcal C_\ell$ is a polynomial in $\sigma$,
-continuous in $\Lambda M^2$, whose Schwarzschild limit has only the zeros
-$\pm i(\ell-1)\ell(\ell+1)(\ell+2)/(12M)\ne0$. Since $\kappa_2^\sharp\to0$ as $\Lambda\to0$, for each $(\ell,N)$
-the coincidence $iN\kappa_2^\sharp\in\mathcal C_\ell^{-1}(0)$ holds only on a closed nowhere dense set of
-$\Lambda M^2$. Off the countable union of these sets, Lemma~\ref{lem:kernel} can be replaced by this nonvanishing,
-and the argument of the first paragraph applies.
+By Lemma~\ref{lem:kernel} (with $\Omega_2=0$), this can happen for a mode regular at both horizons only if
+$\sigma_\ell=iN\kappa_2^\sharp$ for some integer $N\ge1$, that is, only if $M\kappa_2^\sharp\in\{(\lambda_\ell+4)(\lambda_\ell+6)/(12N)\}$.
+The right-hand side is a countable set independent of $\Lambda$. On the other hand, $M\kappa_2^\sharp$ is a nonconstant real-analytic function of
+$\Lambda M^2\in(0,1/9)$, so this happens only for countably many values of $\Lambda M^2$.
+
+Off this set, Lemma~\ref{lem:recon} and the argument of Proposition~\ref{prop:transfer} produce, from a QNM with
+$\Im\sigma>0$, a linearized Einstein mode with $\Im>0$ and $\Psi_4\ne0$. By \cite[\S7]{HV18}, every such mode on SdS
+is pure gauge, and pure gauge modes have $\Psi_4=0$. This is a contradiction. The case $s=-2$ is the same, using the
+ingoing gauge, $\Th^4$, and the event horizon.
 \end{proof}
 
 \subsection{Conclusion}
@@ -762,10 +810,29 @@ Throughout this section $a\ne0$, and $\Omega_T=a/(r_2^2+a^2)$, so that $T=\parti
 Boyer--Lindquist coordinates. Let $h$ be as in Theorem~\ref{thm:B}. Its Fourier components in $\varphi_*$ are
 generalized $(\partial_t,\partial_\varphi)$-modes of type $(\sigma+m\Omega_T,m)$, whose imaginary part is $\Im\sigma\ge0$. The linearized
 Teukolsky scalars $\delta\Psi_0$ and $\delta\Psi_4$ are gauge and tetrad invariant on type D, and they are outgoing
-generalized Teukolsky modes. By Theorem~\ref{thm:A}, applied to each Fourier component of $h$ and of $\bar h$, we get
+generalized Teukolsky modes. By Theorem~\ref{thm:A}, applied to each Fourier component of $h$ and of $\bar h$, the scalars $\delta\Psi_0$ and
+$\delta\Psi_4$ vanish on the exterior $r_1<r<r_2$. The next lemma extends this to all of $M$:
 \[
-\delta\Psi_0=\delta\Psi_4=0.
+\delta\Psi_0=\delta\Psi_4=0\quad\text{on }M.
 \]
+
+\begin{lemma}[Collars]\label{lem:collar}
+Let $w$ be a smooth generalized mode on $M$ of a stationary, principally scalar operator with smooth coefficients
+and principal symbol $\frac12G$, for instance the Teukolsky operator of Lemma~\ref{lem:regframe}. If $w=0$ on
+$r_1<r<r_2$, then $w=0$ on $M$.
+\end{lemma}
+
+\begin{proof}
+Consider the collar $r_1-\delta<r<r_1$. There $dr$ is timelike, and $r$ decreases towards the future. Let $p$ lie in
+the collar. Every past-directed causal curve from $p$ has strictly increasing $r$. The set
+$D_p=J^-(p)\cap\{r\le r_1\}$ is compact, since in ingoing coordinates the past cone of $p$ meets the event horizon
+in a compact set. Its boundary consists of a compact piece of the event horizon and a piece of the past light cone
+of $p$. Since $w$ is smooth and vanishes for $r>r_1$, it vanishes to infinite order on the horizon. The standard
+energy estimate on $D_p$ involves fluxes through a null boundary that are tangential and hence vanish, and fluxes
+through the cone of $p$ that are nonnegative \cite[\S23.2]{Hor85}. It gives $w=0$ near $p$. The collar
+$r_2<r<r_2+\delta$ is treated in the same way, with time reversed relative to $r$ and the cosmological horizon in
+place of the event horizon.
+\end{proof}
 
 \subsection{Linearized Goldberg--Sachs}
 \begin{lemma}\label{lem:GS}
@@ -933,14 +1000,39 @@ $(\delta\mathfrak n,\delta\alpha_{\mathrm{acc}})$ with determinant $-64Mp_0^4/c\
 vector $X$ is the generator of the change from the background to the perturbed adapted coordinates, together with
 the rescalings of $\xi$ and $\zeta$.
 
-\emph{Step 5: smoothness of $X$.} Build the adapted coordinates in the regular form, using the advanced time
-$\tilde v$ near the event horizon and the retarded time $\tilde u$ near the cosmological horizon, both defined
-from $(\tilde\xi,\tilde\zeta,\tilde R,\tilde I)$ and the principal null directions of the perturbed metric, exactly
-as $t_*$ is built from Boyer--Lindquist coordinates. These are natural constructions from the perturbed geometry,
-and they are smooth across the respective future horizons. Comparing them with the corresponding background
-coordinates yields $X=c\,t_*\partial_{t_*}+X_0$ with $X_0$ stationary, axisymmetric and smooth. Here $\partial_Mg$ and
-$\partial_ag$ denote the parameter derivatives of the KdS family in the regular coordinates $(t_*,r,\theta,\varphi_*)$,
-as in \cite{HPV25}.
+\emph{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg$ and $\partial_ag$ denote the parameter derivatives
+of the KdS family in the regular coordinates $(t_*,r,\theta,\varphi_*)$, as in \cite{HPV25}.
+
+The parameters $c_M,c_a$ are determined by local invariants, for example $\delta(\Psi_2\phi^3)$, which is smooth on $M$
+and locally constant on each of the three regions $M\setminus\{r=r_1,r_2\}$. Hence they are the same on all three
+regions. By Lemma~\ref{lem:collar}, Steps 1--4 apply verbatim on each of the three regions, where
+$\Psi_2\ne0$ and $\Delta_R\ne0$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$, and $k=\cL_{X^{(i)}}g$ on
+the $i$-th region with $X^{(i)}$ smooth there.
+
+We now glue these. Write $X=X^r\partial_r+X^\theta\partial_\theta+Y$ with $Y=Y^t\partial_{t_*}+Y^\varphi\partial_{\varphi_*}$.
+\begin{itemize}
+\item \emph{The $(r,\theta)$-components.} Since $R=\Re\phi$ and $I=\Im\phi$ are natural functions,
+$X(R)=\delta R[k]$ and $X(I)=\delta I[k]$. These are local linear expressions in $k$, smooth on $M$. Hence
+$X^r$ and $X^\theta$ are given by one formula on all three regions, and they are smooth on $M$.
+\item \emph{The remaining components.} Let $k_1=k-\cL_{X^r\partial_r+X^\theta\partial_\theta}g$, which is smooth on $M$. On
+each region, $Y^\bullet=c^\bullet t_*+f^\bullet(r,\theta)$ with constants $c^\bullet$. Since $\partial_{t_*},\partial_{\varphi_*}$ are
+Killing,
+\[
+k_1=\cL_Yg=2\,dY^t\odot K_t^\flat+2\,dY^\varphi\odot K_\varphi^\flat,\qquad K_t=\partial_{t_*},\ K_\varphi=\partial_{\varphi_*}.
+\]
+\emph{Claim:} at every point off the axis, the linear map $(dY^t,dY^\varphi)\mapsto\cL_Yg$, restricted to pairs of
+covectors annihilating $\partial_{\varphi_*}$, is injective. Indeed, $K_t^\flat,K_\varphi^\flat$ are linearly independent, and
+$\alpha\odot K_t^\flat+\beta\odot K_\varphi^\flat=0$ forces $\alpha=yK_\varphi^\flat$ and $\beta=-yK_t^\flat$. Then
+$\alpha(\partial_{\varphi_*})=y\,g_{\varphi\varphi}=0$ gives $y=0$.
+
+Hence, off the axis, $(dY^t,dY^\varphi)$, and with it $(c^\bullet,df^\bullet)$, is given by one smooth formula in $k_1$, the same on
+all three regions. Integrating, $Y$ is smooth on $M$ minus the axis, up to additive constants, which are Killing. Near the
+axis, $Y$ is smooth on each region. It extends smoothly across the codimension-three set where the axis meets the
+horizons by Killing transport: $(Y,\nabla Y)$ satisfies a linear ODE with coefficients smooth in $(g,k_1)$ along
+any curve.
+\end{itemize}
+So $X$ is smooth on $M$. Then $k-\cL_Xg$ is smooth on $M$ and vanishes on each of the three regions, hence on $M$.
+The same argument applies to the $t_*$-linear parts that arise in the generalized-mode induction below.
 \end{proof}
 
 \subsection{Generalized modes and proof of Theorem~\ref{thm:B}}
@@ -966,7 +1058,7 @@ proceeds.
 \end{proof}
 
 \appendix
-\section{Computer-assisted steps}\label{app:cert}
+\section{Computer-assisted steps}\label{app:cert}\sloppy
 All computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$, except item~C2, which uses rigorous interval
 arithmetic. The code is in the repository accompanying this paper; the script names are given in brackets.
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
@@ -991,6 +1083,11 @@ and the constants are absorbed by the relation between the spin $\pm2$ angular e
 derived by hand; the derivations do not depend on them.
 \item \emph{Carter ansatz} [\texttt{step102\_carter\_linear.py}]. The Ricci tensor of the ansatz with symbolic
 $\Delta_R(R)$ and $\Delta_I(I)$, and the solution of the resulting linear equations.
+\item \emph{Schwarzschild--de Sitter Teukolsky--Starobinsky identities}
+[\texttt{step126\_sds\_ts.py}, \texttt{step127\_thorn\_ts.py}]. These are the two identities \eqref{eq:sdsTS}. The
+first is an operator identity. The second is checked by reducing modulo the radial equation; the remainder
+coefficient of $R'$ vanishes identically, and the coefficient of $R$ is the constant $\mathcal C_\ell$. That this
+coefficient is independent of $r$ is also a consistency check on the radial potential used.
 \end{enumerate}
 The Bernstein enclosure routine was tested against random polynomials and random subdivisions
 [\texttt{cert2/test\_bern.py}].
@@ -1011,6 +1108,7 @@ The code for the computer-assisted steps is available from the author on request
 \bibitem{Cha83} S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford University Press, 1983.
 \bibitem{GHP73} R.~Geroch, A.~Held and R.~Penrose, A space-time calculus based on pairs of null directions,
 \emph{J. Math. Phys.} \textbf{14} (1973), 874--881.
+\bibitem{Hor85} L.~H\"ormander, \emph{The Analysis of Linear Partial Differential Operators III}, Springer, 1985.
 \bibitem{Hin26} P.~Hintz, Mode stability for the Klein--Gordon equation on subextremal Kerr--de Sitter spacetimes,
 arXiv:2608.25868 (2026).
 \bibitem{HPV25} P.~Hintz, O.~Petersen and A.~Vasy, Conditional non-linear stability of Kerr--de Sitter spacetimes in
