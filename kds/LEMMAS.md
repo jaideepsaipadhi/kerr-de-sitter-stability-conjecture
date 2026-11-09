@@ -1541,3 +1541,19 @@ Numerics (step117_hintz_route.py; 365 random R3 parameter points, t up to 1e4, A
      on A are needed; (ii) "T3 ≥ 0 ⇒ T2 > 0" on the feasible region (the λ-combination with λ = 2(t−z0)/(7t−6z0−1)
      kills A but is DECREASING in B, so it must be evaluated where T3 = 0 meets the region).  All are 2-D statements:
      exact Bernstein in (T = 1/t, ζ) will be cheap.
+
+## 119. (P1) PROVED (hand reductions + exact 2-D certificate, cert2/run_P1_all.sh, 8/8 certified, < 1 s)
+Feasible (A, B) in R3 at fixed (t, z0): B ≥ Bf = 5.5t − 1.25, A ≥ a0 := max(0, Ac2), Ac2 = z0((t−1)/(2x0²) − 3), and the
+pp line A + B ≥ P := 3 + (t−1)/(2x0).  Certified: a0 ≥ P − Bf (G0), so pp is REDUNDANT and the feasible set is the
+quadrant {A ≥ a0, B ≥ Bf}.  Since T2..T6 are affine with negative A- and B-coefficients (item 118(d)):
+  * T4, T5, T6 < 0 on the quadrant ⇔ at its corner (a0, Bf): certified (al4, al5, al6 < 0), both cases a0 = 0 / a0 = Ac2;
+  * {T3 ≥ 0} ∩ quadrant is a triangle with vertices (a0,Bf), (a0 + α3/|β3|, Bf), (a0, Bf + α3/|γ3|); T2 > 0 there ⇔
+    α2 > 0, α2|β3| − |β2|α3 > 0, α2|γ3| − |γ2|α3 > 0 whenever α3 ≥ 0: certified (al2, v2, v3).
+  Hence the Möbius-transformed coefficients of N have exactly one sign change: (+, +, ±, ·, −, −, −) with
+  T3 ≥ 0 ⇒ T2 > 0.  By Descartes, N has exactly one root on (0, x0); with N(0) = 6μ0² > 0 and the sign at S = x0
+  forced by the single root, d < 0 near z = 1 and d > 0 near z0 with exactly one sign change.  ∎ (P1)
+Certificate: step119_build.py builds the 17 two-variable polynomials in (T = 1/t, ζ) (degrees ≤ 11); p1chart.py runs
+exact integer Bernstein on four charts — two rectangles and the blow-up of the corner (T, ζ) -> (0, 0) by ζ = Tw and
+T = ζw (the corner is where the case gate Ac2 and the targets vanish together); factors u, w, 1 − u, 1 − w that are
+positive on the open box are divided out first.  8 runs (2 cases × 4 charts), all certified.
+Remaining for the route of item 117: (P2) f2 > 0 on [ẑ, z0] and the seam f2'(z0) > 0.
