@@ -1343,3 +1343,18 @@ A-monotonicity test for F on the floor slice B = 5.5t − 1.25 (step108_A_monoto
   normalised +0.21 at t ≈ 35, zf ≈ 0.73, A/B ≈ 0.09.  For small A/B, g ≈ (A/z² + 3)/B ≪ 1/z, so g ≤ 1/z throws away
   the main gain; the proof must work in the two regimes A ≪ Bz (g ≈ N/B, L ≈ B) and A ≫ Bz (g ≈ 1/z, L ≈ A/z)
   separately, with the crossover A ~ Bz handled explicitly.
+
+## 109. (Ig) on z < B/6 reduced to a 3-variable problem by an EXACT identity + concavity [P]
+Identity: N = A/z² + 3 = (L − B + 6z)/z, so  g = N/L = 1/z − d/(zL),  d := B − 6z  (> 0 for z < B/6).
+At fixed (t, z0, z) (B at the floor by item 108), A ↔ L is affine, and
+   F(L) = K − a/L − bL − c·d/(L − d),   with  K = ½c±μ' + 2.295 μ/z − c,  a = 2.295 μ d/z,  b = 0.5455 s,
+                                              c = 0.225 z(t − z)/x0      (all ≥ 0 except K).
+Each of −a/L, −bL, −cd/(L − d) is concave on L > d, so F is CONCAVE in L, and F -> −∞ as L -> ∞.  The constraints
+(A ≥ 0, both R3 inequalities, bulk w ≥ 10) are each L ≥ (explicit bound) since L(1), L0 are affine increasing in A.
+Hence  sup F = max(F(L_min), F(L_crit)) with L_crit the unique stationary point if L_crit > L_min.
+Numerics (step109_Ig_concave.py, 3e5 (t, z0, z)):
+   boundary F(L_min) ≤ 0: holds, worst −0.057 (2.3e5 points);
+   interior with −a/L dropped (L* = d + √(cd/b), bound K − 2√(bcd) − bd): FAILS +0.18 at zf ≈ 0.02, t ≈ 5e4 —
+     the −a/L term is needed at the interior max; next: keep it (F'(L) = a/L² − b − cd/(L − d)² = 0, a cubic-type
+     equation; or bound a/L from below using L_crit ≤ d + √((cd + a)/b)).
+So (Ig) on 84% of the bulk is now a statement about explicit functions of (t, z0, z) only.
