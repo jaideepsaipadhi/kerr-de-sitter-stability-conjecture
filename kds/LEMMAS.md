@@ -1504,3 +1504,20 @@ REMAINING for this surface: prove f has no interior maximum, i.e. f'(u) ≠ 0 wh
   rational-polynomial builder (cert2/ratpoly.py, cstar_build.py) gives numerator degree (145, 57, 57) — far too large
   for Bernstein.  The common factors (powers of T, ζ, y, 1 − y, 1 − T, z, z0, t − z0) must be cancelled by hand before
   composing; or (C*) certified by intervals in (t, z0, z) with an explicit large-t limit.  Not done.
+
+## 117. ROUTE AROUND (D): saturate (C), then solve (D) with equality (Hintz 2608.25868 §4.3.3 structure)
+In f-language (h = f'/f), (D) ⇔ D̃f := (μf')' − 2s(Lf)' ≤ 0, and (C) ⇔ h ≤ h_C := H/(sμ).
+Construction (no ad hoc multiplier, no certificate of (D)):
+  Phase 1: f = F_C := exp∫h_C on (1, ẑ] — (C) holds with EQUALITY; (D) ⇔ d(z) := D[h_C] ≤ 0.  F_C ~ (z−1) at z = 1,
+           so f(1) = 0 automatically.
+  Phase 2: on [ẑ, z0], f2 solves D̃f2 = 0 — (D) holds with EQUALITY — with (f2, f2') = (F_C, F_C') at ẑ; since
+           d(ẑ) = 0 the second derivatives match (f is C²).
+  (C) on phase 2 [P, Wronskian]: with p = μ exp(−∫2sL/μ) > 0, D̃f = (μ/p)(pf')' − 2sL'f, so W = p(F_C f2' − F_C' f2)
+           has W' = −(p/μ) f2 D̃F_C ≤ 0 wherever d ≥ 0 and f2 > 0; W(ẑ) = 0 ⇒ f2'/f2 ≤ h_C on [ẑ, z0).
+  What must be PROVED instead of (D):
+    (P1) d has exactly one sign change on (1, z0), from − to +  (an explicit rational function of z);
+    (P2) f2 > 0 on [ẑ, z0] and the seam condition f2'(z0) > 0  (comparison with a second explicit function).
+Numerics (step117_hintz_route.py; 365 random R3 parameter points, t up to 1e4, A/B up to 1e5, B up to 100×floor):
+  d < 0 near z = 1 and exactly one sign change: 365/365;  phase 2 positive, (C) holds, seam holds: 365/365.
+  (A first run with a finite-difference h_C' mislocated ẑ and showed spurious (C)-violations; with the exact h_C'
+   and bisection for ẑ, 0 violations, exactly as the Wronskian argument predicts.)
