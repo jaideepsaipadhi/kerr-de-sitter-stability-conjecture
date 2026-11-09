@@ -1665,3 +1665,28 @@ B < 5.5t − 1.25 and even L(t) < 0.
 TODO for a proof: (i) a certified angular eigenvalue enclosure on the window (replacing step47); (ii) the event lemma
 with B allowed below the old floor (re-certify P1/P2 for the new parameter region, or with the q̃ correction);
 (iii) the cosmological lemma for q̃; (iv) large m (sample m ≥ 4, and the m → ∞ asymptotics).
+
+## Item 126 — Reorganising the window argument around L(z₀) > 0 (one piece proved, the rest numerics)
+(a) [P] The bend is needed only on the cosmological side. Keep q linear on [1, z₀]. On [z₀, t] use
+    q̃ = (z − z₀)(q₁ + κ(t − z)), κ ≥ 0, which keeps q̃(z₀) = 0 and q̃(t) = q(t). The dual equation is unchanged if
+    L̃ = L + κ(z − z₀)²(2q₁ + κ(t − z))/(z(z − 1)). The seam needs no matching: the event side gives Re(u'ū)(z₀) ≥ 0,
+    and the cosmological side (f₊ = 1) gives Re(u'ū)(z₀) ≤ −(κ/q₁)|u(z₀)|² + (boundary term at t)/(μ₀q₁).
+    So the argument closes as before, and for κ > 0 it even forces u(z₀) = 0.
+    Cosmological conditions: C₊ = −gH + 2κμ(z − z₀) ≤ 0 (g = q₁ + κ(t − z), H as in Lemma H),
+    D₊ = q̃L̃' − κμ' ≤ 0, and L̃(t) = L(t) + 2κq₁(t − z₀)²/(t(t − 1)) > 0.
+    [N] 2230/2230 physical cases (m ≤ 5) pass, with κ = 1.2κ₀ and κ₀ = −L(t)t(t − 1)/(2q₁(t − z₀)²).
+(b) [P] A rigorous angular lower bound, from the exact identity of step128. Drop the nonnegative terms
+    (K_α, the α(m ± s)² endpoint terms, ξ²(1 − x²), αm², 2αx²) and bound the rest pointwise:
+       λ ≥ ℓ₀(ℓ₀ + 1) − 4 − 4α − 4α|m|(1 + α) − 2(1 + α)²|ξ|(|m| + 2),   ℓ₀ = max(|m|, 2).
+    This is crude but correct: −5.8 against the true −4.1 at the worst case.
+(c) [N] With B computed from this crude bound, L(z₀) = A/z₀ + B − 3z₀ > 0 on 2018 physical samples, m ≤ 11, with
+    relative margin ≥ 0.32. The minimum is at the bottom of the window (z₀ → t). With the true λ the margin is
+    ≥ 0.33.
+(d) [N] Event lemma on {t > 1, z₀ ∈ (1, t), A > 0, L(z₀) > 0}, B free (no floor):
+    P1 (exactly one sign change of N): 181,900/181,900 random cases.
+    Seam: the old sufficient test K(ẑ) > 0 fails in 0.4% of cases, but the true seam (phase-2 ODE) holds in all 1408 of
+    those. So P2 needs a sharper sufficient criterion on the new region.
+    R1 and R2 need only L > 0 on [1, z₀], which follows from L(z₀) > 0 and L' < 0.
+REMAINING (in order): certify L(z₀) > 0 using the crude λ (roots, window fraction, and m, including the m⁻² expansion
+for large m); re-certify P1 on {L(z₀) ≥ 0}; a sharper P2 criterion and its certificate; the cosmological lemma, with
+a proof for the explicit κ; then rewrite §§3–4 of the paper.
