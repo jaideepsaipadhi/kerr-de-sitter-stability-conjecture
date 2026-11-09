@@ -1428,3 +1428,18 @@ REMAINING to finish (D)-bulk: tile C2 over t ∈ (1, T∞], zf, y ∈ (0,1), B/f
       t ∈ [5,10]: NOT certified in 45 s (5.0e5 closed, 2.3e5 open);  t ∈ [100,150]: not certified in 45 s.
     So the small-t cells and the zf, y edges are cheap; LARGE t is the cost — the enclosure must use t-scaled variables
     (z = tζ etc., the item 73 outer variables) and the t -> ∞ limit has to be certified as its own (compact) problem.
+
+## 113. A = 0 surface on a COMPACT domain: exact Bernstein branch-and-bound (cert2/a0_scaled.py, a0_bern.py)
+* t·B3 on A = 0 is, after T = 1/t, bt = floor/B, an explicit rational function of (T, ζ, y, bt) ∈ [0,1]⁴ whose
+  denominator has a fixed sign (−) — so B3 ≤ 0 ⇔ num ≥ 0, num a polynomial of degree (4,5,5,3), 168 terms, for each
+  sign branch of μ'.  The constraints (R3 c2, R3 pp, bulk w ≥ 10, and μ' for the branch) are polynomials too.
+  This covers t ∈ (1, ∞) and B ∈ [floor, ∞) at once.  Exact integer Bernstein coefficients, de Casteljau splits.
+* Run (48 s): 4.7e4 boxes closed; does not finish.  All stuck boxes sit at one corner: T -> 0, bt -> 0, y -> 1
+  (t -> ∞, B -> ∞, z -> z0) — num vanishes on the edges {T = bt = 0} and {bt = 0, y = 1}.
+* Blow-up at that corner (corner.py): T = aε, bt = bε, 1 − y = cε gives num = ε²·(−264 b ζ)(1650a(ζ − 1)
+  − 10200 bζ³ + 6800 bζ² − 12001 cζ²) + O(ε³).  The b² term has the WRONG sign for ζ < 2/3, so the polynomial alone is
+  not ≥ 0 there; it is the bulk constraint that saves it: at the corner w ≈ 44c²ε/(b(1 − ζ)), so w ≥ 10 forces
+  b ≤ 4.4 c²ε/(1 − ζ) = O(ε), the b² term drops, and the leading form is −264bζ(1650a(ζ−1) − 12001cζ²) > 0.
+  Bernstein cannot see this because the bulk polynomial also vanishes at the corner.
+NEXT: re-parametrise the corner using the bulk variable (replace bt by w, or by b/(c²ε)) so the constraint becomes a
+  box side; then Bernstein closes it.  Same treatment will be needed at the other degenerate corners.
