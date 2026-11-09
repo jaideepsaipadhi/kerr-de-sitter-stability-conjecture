@@ -79,3 +79,7 @@ print('Ig (drop mu\'<0) max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[i
 r2=0.5455*s*L
 m=((l-r2)/(np.abs(l)+r2))[mk]; i=np.argmax(m); idx=np.where(mk)[0][i]
 print('Ig (drop mu\'<0 and slack) max',m[i],'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))
+reg=mk&(z<=B/6)
+lG=(t-z)*(3.995*z-3.145-0.225*z/x0)-0.7727*z*x; rG=0.5455*s*L
+m=((lG-rG)/(np.abs(lG)+rG))[reg]; i=np.argmax(m); idx=np.where(reg)[0][i]
+print('G1 max',m[i],'frac',reg.mean(),'t,zf,A/B,y',t[idx],(z0[idx]-1)/(t[idx]-1),A[idx]/B[idx],(z[idx]-1)/(z0[idx]-1))

@@ -1339,3 +1339,7 @@ REDUCTION [P]: at fixed (t, z0, A, z), F is strictly DECREASING in B (L increase
 A-monotonicity test for F on the floor slice B = 5.5t − 1.25 (step108_A_monotone.py, 2e4 (t, z0, z) lines, 200 A-values
  each): decreasing in A on 93%, interior maximum on 7%, never increasing.  So no clean A-reduction; the worst A is
  interior on a small set.  (d/dA of N/L has the sign of B − 6z, which changes only for z > B/6 ≈ 0.92t.)
+(Ig) attempt G1 (FAILED): on z ≤ B/6 use g ≤ 1/z in 2.295μg and in the slack, and ½c±μ' ≤ 0.85(t−z)(2z−1) − 0.7727zx:
+  normalised +0.21 at t ≈ 35, zf ≈ 0.73, A/B ≈ 0.09.  For small A/B, g ≈ (A/z² + 3)/B ≪ 1/z, so g ≤ 1/z throws away
+  the main gain; the proof must work in the two regimes A ≪ Bz (g ≈ N/B, L ≈ B) and A ≫ Bz (g ≈ 1/z, L ≈ A/z)
+  separately, with the crossover A ~ Bz handled explicitly.
