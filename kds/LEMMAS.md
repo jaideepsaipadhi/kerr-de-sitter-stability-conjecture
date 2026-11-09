@@ -1373,3 +1373,17 @@ UPDATE: at the stationary point F'(L) = 0 forces b < a/L², i.e. L_crit < √(a/
   Replacing the max by the geometric mean √(1.25 μ0 (B − 3z)): FAILS (z0 -> t makes μ0 -> 0).  So the proof is a
   two-case split in s: use s(B − 3z) when s ≥ 4.207 x(t−z)d/(B−3z)², and 1.25μ0/s otherwise; need: the two
   thresholds never leave a gap (an inequality in (t, z0, z) after z = z0 − s, x = x0 − s).
+
+## 110. Certificate route for (D): feasibility findings (8 Nov, evening)
+* Naive 5-D interval branch-and-bound on the full (D) (cert2/iv.py, cert2/dcert.py; outward-rounded numpy intervals):
+  on the small box t ∈ [2,3], zf ∈ [0.2,0.8], y ∈ [0.02,0.98], A/B ∈ [0.5,50], B/floor ∈ [1,3]: 5.7e5 boxes closed,
+  3.3e6 open after 12 s.  Dependency blow-up; NOT viable under the 1-minute rule.  Symbolic expansion of P_D in compact
+  variables also times out (> 60 s).
+* Reduced pieces (no cutoff, B at floor, one L-variable):
+  - (Ig) boundary F(L_min) ≤ 0 with L_min from A ≥ 0 and the bulk only (superset of R3): holds, −0.072, BOTH strips.
+    For z ≥ B/6 (d < 0) F is CONVEX in L and -> −∞, so sup = F(L_min) there too [P].
+  - (Iq) boundary: FAILS (+0.067 at t ≈ 7, zf ≈ 0.9993, y ≈ 0.978, A = 0) even with the R3 constraints — but the full
+    (D) holds there (−0.17).  So the (Iq)/(Ig) split loses too much in that corner; the certificate must target B3
+    (the unsplit bulk inequality), which is a function of the single variable L at fixed (t, z0, z).
+  - (J1q) stationary point of (Iq) infeasible: −0.26.
+PLAN: certify B3 over (T = 1/t, zf, y, λ) with λ compactifying L ∈ [L_min, ∞) — 4-D, short expression; then the seam.
