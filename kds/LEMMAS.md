@@ -1706,3 +1706,10 @@ a proof for the explicit κ; then rewrite §§3–4 of the paper.
     in three variables. A certificate needs a polynomial formulation (scale Λ = 3, roots as variables, the constraint
     e₂ + e₄ + 1 = 0, w as a fourth variable) with exact Bernstein, as in items 119/121, plus limit analysis at the
     corners. To do.
+
+## Item 128 — An attempted shortcut for L(z₀) > 0 (fails; recorded so it is not retried)
+Exact form: L(z₀) = 4Ξ²m² u₀u₃ R + B − 3t/R, with R := (f₁ + t f₂)/(f₁ + f₂) ∈ [1, t] and z₀ = t/R.
+Shortcut tried: replace R by 1 and z₀ by t, use 2(1 − α)C₀ ≥ 2t − 1, and use concavity of u₀u₃ in w to reduce to
+the window endpoints. [N] This FAILS (min −1.32 at r₀ → 1, w = w₁, m = 2). The loss is exactly the factor R → t at
+w → w₁, where z₀ → 1. So the R-dependence must be kept, and the endpoint reduction is lost because R depends on w.
+The four-variable polynomial certificate (item 127d) remains the route.
