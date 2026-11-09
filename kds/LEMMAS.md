@@ -1646,3 +1646,22 @@ Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency ana
   Petersen–Vasy Fredholm theory; HPV Thm 2.2/3.1.
 * C4: an openness argument is written; it still needs to be checked against HPV §3 (their proof is pointwise in b).
 * Theorem A in the UHP: PROVED modulo these literature inputs and C4. Paper §"The upper half plane".
+
+## Item 125 — Near-extremal window: a repaired two-current scheme (NUMERICS; route identified, nothing proved yet)
+Context: REFEREE4. The true spheroidal eigenvalue gives λ ≈ −4 at the top of the window near extremality, so
+B < 5.5t − 1.25 and even L(t) < 0.
+(a) [P] Obstruction. With f₊(t) = 0, the leading behaviour f ~ (t − z)^p forces p ≤ 2(t − z₀)L(t)/(t(t − 1)) < 0
+    when L(t) < 0. With f₊(t) > 0, the boundary term L(t)q(t)f₊(t)|B_t|² carries the wrong sign. So for linear q,
+    Hintz's scheme cannot work when L(t) < 0.
+(b) [Idea] The splitting μW = q² − Lμ is not unique: only q(1) and q(t) are fixed by the exponents. Take
+    q̃ = q₁(z − z₀) + κ(z − 1)(t − z). Then L̃ = L + κ(2q₁(z − z₀) + κ(z − 1)(t − z))/z, and
+    L̃(t) = L(t) + 2κq(t)/t. Choose κ = max(0, 1.5κ₀), with κ₀ = −tL(t)/(2q(t)).
+    Cosmological side: f₊ = 1, with C₊ = μ'q̃ − 2μq̃' ≤ 0, D₊ = q̃L̃' − κμ' ≤ 0 and L̃(t) > 0.
+    Event side: saturate (C), then solve D f = 0. (C) on phase 2 follows from the same Wronskian argument, given
+    one sign change of D(F_C) and q̃' > 0.
+(c) [N] nearext/sweep.py: 1137 random cases (r₀ ∈ (0, 0.997), r₂ ∈ (1.3, 300), window fraction 0.02–0.999,
+    m = 1–3, true eigenvalues from the Galerkin code): all pass. The one apparent failure is in R1, which is already
+    proved. Floating point only.
+TODO for a proof: (i) a certified angular eigenvalue enclosure on the window (replacing step47); (ii) the event lemma
+with B allowed below the old floor (re-certify P1/P2 for the new parameter region, or with the q̃ correction);
+(iii) the cosmological lemma for q̃; (iv) large m (sample m ≥ 4, and the m → ∞ asymptotics).
