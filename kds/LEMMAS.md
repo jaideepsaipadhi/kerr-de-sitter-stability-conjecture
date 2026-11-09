@@ -1397,3 +1397,21 @@ too wide for the 5–10 % margin.  Open boxes are spread over all five variables
 Conclusion: a 5-variable branch-and-bound at this margin needs ~1e6–1e7 boxes per unit cell — tens of minutes in total.
 Not compatible with the 1-minute rule without first removing variables analytically (B, then L) or a tighter
 enclosure (Taylor models).
+
+## 112. Option 1: removing B from B3 — convexity in g [P] and where the worst cases live
+(a) B3 is NOT monotone in B at fixed (t, z0, z, A) (20k lines: 17298 decreasing, 58 increasing, 439 mixed/261 interior
+    max) — the μ' < 0 term and −0.5455 sLg pull the other way.  So item 108's reduction does not transfer to B3.
+(b) KEY [P]: at fixed (t, z0, z), B3 depends on (A, B) ONLY through L and g.  At fixed L, moving along A = z(L − B + 3z)
+    changes g = 1/z − (B − 6z)/(zL) AFFINELY in B, and B3 = 2.295 μ g² + (affine in g) + const (μ' sign fixed by z):
+    B3 is CONVEX in B along each L-level set.  The constraints along the level set are: bulk (L0 increasing in B) gives
+    B ≥ B_w; floor B ≥ 5.5t − 1.25; A ≥ 0 gives B ≤ L + 3z; R3 (L(1), A/z0 decreasing in B) give B ≤ B_R3.  So the
+    feasible B-set is an interval and the max of B3 is at an END: on the floor, on the bulk boundary w = 10, on A = 0,
+    or on an R3 boundary.  (This is the analogue of item 108, now valid for B3.)
+(c) Numerics on those surfaces (step112_surfaces.py):
+    floor B = 5.5t − 1.25, vary A: max at A = A_min in 19932/19934 lines (2 interior);
+    bulk surface w = 10, vary B: max at an END in 4945/4945 (127 at floor, 4818 at A = 0);
+    A = 0 surface, vary B: max at the floor in 10227, interior in 316, top in 1.
+    => the certificates needed are:  C1 the corner (floor, A_min): 3 variables (t, z0, z);
+       C2 the A = 0 surface: 4 variables (t, z0, z, B) but a SHORT expression (g = 3/L, L = B − 3z);
+       C3 the R3 boundary surfaces (not yet examined);
+       plus a proof that on the floor slice the max is at A_min (2 exceptional lines to look at).
