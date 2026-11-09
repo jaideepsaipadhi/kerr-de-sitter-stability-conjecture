@@ -187,3 +187,8 @@ Theorem A: PROVED, all σ with Im σ ≥ 0. The UHP part uses HPV's high-frequen
 to be confirmed against HPV §3), Petersen–Vasy, and Wald's Hertz identity with Λ.
 Theorem B: PROVED (needs Theorem A).
 α ≤ 7 − 4√3: PROVED. Left: Pochhammer exposition of item 17; independent check.
+
+## FINAL (8 Nov, night): manuscript writeup/kds_mode_stability.tex; third referee pass REFEREE3.md
+Theorems A and B are proved, with literature inputs L1–L6 listed in REFEREE3.md. Fixes in this pass: kernel-lemma
+ladder; per-m compactness; generic SdS base point; ω = mΩ_e threshold for s = +2; single-formula gauge vectors for
+T-modes.
