@@ -3,9 +3,9 @@ t0=time.time()
 src=open('win_flint.py').read()
 exec(src.split("print('R z0'")[0])
 Xi=1-F(b*b,e4); al=F(-b*b,e4); lamv=F(-b,e4); K=F(one,(r1-r0)*(r2-r3))
-LQ2=1*Xi*Xi*F(b)*U[0]*U[3]*R/lamv + K*(1-2*Xi*Xi*F(b)*y)
+LQ2=2*Xi*Xi*F(b)*U[0]*U[3]*R/lamv + K*(1-2*Xi*Xi*F(b)*y)
 LQ1=K*(1-4*al*Xi-4*Xi*Xi*F(b)*y)
-LQ0=-K*(1+7*al)+lamv*(1+t-3*z0)
+LQ0=-K*(1+7*al)+lamv*(1+t-4*z0)
 ex={'Q2':LQ2,'H2':LQ2+LQ1*F(1,2*one)+LQ0*F(1,4*one),'H1':LQ2+LQ1+LQ0+4*K}
 def bcoeffs(p):
     d={}

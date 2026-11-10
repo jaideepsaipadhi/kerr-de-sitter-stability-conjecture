@@ -1725,3 +1725,21 @@ Write B = 3z0 − A/z0 + β, where β = L(z0) > 0 (item 133). The R3 constraints
     (L > 0, s > 0), but it is an integral, not a closed form.
   - NEXT: an explicit lower bound for f2 on [ẑ, z1]. Integrand (Ĥ/ŝ − 2ŝL̂ + 2sL)/μ, with sL decreasing; certify the
     resulting closed-form inequality in (t, z0, S, A) on the margin set.
+
+## Item 138 — Margin L(z0) ≥ A/(2z0) + z0 PROVED; P2 reduced to an explicit comparison criterion
+* PROVED (cert3/margin_red.py, LQ2 coefficient 2 and LQ0 term λ̃(1+t−4z0); fullcert_m.py: all six signs +1).
+  The expression is (Λ/3)·[L(z0) − A/(2z0) − z0] in the m-quadratic form; λ̃ = −b/e4 = Λ/3 > 0.
+  So on the whole window, for all m ≥ 1:  β := L(z0) ≥ A/(2z0) + z0.
+* P2 via the Riccati variable w = μ f2'/f2. It satisfies μw' = −w² + 2sLw − 2μs|L'|, with w(ẑ) = ŵ := Ĥ/ŝ > 0, and
+  f2'(z0) > 0 ⇔ w(z0) > 0. Because w crosses 0 only downward, it suffices that w > 0 on [ẑ, z0].
+  Rigorous comparison chain:
+  (i)   Upper bound. μw' ≤ −w² + 2sLw, so w ≤ U_B (Bernoulli: 1/U_B solves μy' = 1 − 2sLy, y(ẑ) = 1/ŵ). Also
+        w ≤ max(ŵ, 2ŝL̂), because sL is decreasing and w decreases wherever w > 2sL. Set M := min(U_B, max(ŵ, 2ŝL̂)).
+  (ii)  Chord. For 0 ≤ w ≤ M, −w² ≥ −Mw, so while w ≥ 0: μw' ≥ (2sL − M)w − 2μs|L'|.
+  (iii) Linear comparison. w ≥ v, where v' = ((2sL − M)/μ)v − 2s|L'| and v(ẑ) = ŵ. This has the explicit solution
+        v = e^{I}(ŵ − ∫ 2s|L'| e^{−I}), with I = ∫_ẑ (2sL − M)/μ.
+  CRITERION (P2*): min over [ẑ, z0] of v > 0.
+* [N] (P2*) holds on 3000/3000 random R3 points with β ≥ A/(2z0) + z0 (step138i.py 0.5 1). Without the +z0 term it
+  fails on 4 of 3000, and with only the constant M it fails on 82.
+* REMAINING for P2: certify (P2*) over the 4-parameter family (t, z0, A, β). It is a nested-integral inequality, so it
+  needs validated quadrature with exact bounds on the integrands (rational functions plus the logs from ∫1/μ).
