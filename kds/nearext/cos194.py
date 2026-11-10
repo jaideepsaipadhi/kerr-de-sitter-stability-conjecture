@@ -7,4 +7,4 @@ while time.time()-t0<45:
     except Exception: continue
     n+=1; Lt=A/t+B-3*t
     if Lt<0: G.append(((z0-1)/(t-1), m, t))
-G=np.array(G); print(n,len(G),'max zf on gate',G[:,0].max())
+G=np.array(G); print("all"); print(n,len(G),'max zf on gate',G[:,0].max())

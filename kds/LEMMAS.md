@@ -2250,3 +2250,13 @@ In window terms, zf ≤ 1/2 ⇔ q1v ≤ −qtv ⇔ Im e1 ≤ t·Im(−et)  (e1 =
 [N] cos194.py: 268158 physical points, 648 on the gate, max zf on the gate = 0.356 (margin 0.14 below 1/2).
 REMAINING for S_μ: certify "L(t) < 0 ⇒ zf ≤ 1/2". Equivalently, zf > 1/2 ⇒ L(t) ≥ 0, which is a statement with no b
 and no bend.
+
+## 177. (S_μ) target "zf > 1/2 ⇒ L(t) ≥ 0": genuinely gate-linked; healthy margin
+[N] zf is m-independent (κ ∝ m cancels in z0), and zf > 1/2 on 32% of the window (max 0.99998). So S_μ cannot be
+proved without the gate.
+[N] On zf > 1/2, normalized L(t)/(A/t + |B| + 3t) ≥ 0.217 (77135 points, m ≤ 80). The worst case is m = 2. For
+zf > 0.45 the bound is 0.172, and for zf > 0.4 it is 0.074.
+PLAN: the same machinery as the margin certificate (cert3/margin_red.py: variables r0, r2, b = a², τ; b reduced mod
+b² − e2b + e4; L(t) as LQ2·m² + LQ1·m + LQ0 with the crude λ). Add the constraint 2(z0 − 1) ≥ (t − 1) as a polynomial
+sign on the box (clear the denominators of z0 = t/R), and certify LQ(t) ≥ 0 on boxes where the constraint can hold.
+Margin 0.2 means the subdivision depth should be similar to fullcert_m.
