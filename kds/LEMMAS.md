@@ -2068,3 +2068,15 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   region z0 ≈ 1, z² > t; (ii) D̃ ≤ 0, where the correction term in L̃' competes with L' = −A/z² − 3 and with κμ'
   (μ' < 0 near t). Both are certificate targets in the window variables (q1 is explicit there:
   q1 = −(t−1)Im(e1)/(2(z0−1))).
+
+## Item 159 — Cosmological bend: abstract reductions fail; physics is needed in D̃
+* [P] At z → z0, q̃ → 0, so D̃(z0) = −κμ'(z0). Hence the bend needs μ'(z0) ≥ 0: z0 must lie left of the maximum of μ.
+  [N] Physically μ'(z0)/(z0t) ≥ 0.687 at every point needing a bend (these have zf ≤ 0.35; nearext/cos176.py).
+* [N] Physical ratios at the bend-needing points (κ = minimal bend):
+  κ(t−z0)/q1 ≤ 0.60;  κt(t−1)/(q1(t−z0)(A/t²+3)) ≤ 0.18;  At/(q1z0)² ≥ 10⁻³;  −L(t)/t up to 500.
+* [N, NEGATIVE] On the abstract set with ALL these constraints imposed, C̃ ≤ 0 always holds but D̃ ≤ 0 fails on
+  8–15% of samples (step175/177/178.py). The failures have large q1 against small A and t ≫ z0. So D̃ needs a
+  physical relation that these scalar ratios miss.
+* [P] Useful identity for the next step: A = t(X0² − Y²) and q1 = tY/z0 with Y = X1 + Xt (the residue of q² − P4 at
+  z = 0), so q1 and A are tied through X0. A certificate in the window variables (with κ = c·κ_min built in) is the
+  route. The bend is needed only for small zf, m ≥ 2, near-extremal.
