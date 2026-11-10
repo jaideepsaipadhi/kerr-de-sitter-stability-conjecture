@@ -1946,3 +1946,17 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   floating-point blow-up: the B* denominator vanishes inside (1, z0), which caused the divide warnings. Next: recheck
   them exactly. If they are genuine, restrict to the sub-interval where the denominator keeps its sign (P1 gives a
   single root, so only one branch is relevant).
+
+## Item 152 — (b): the 93 "failures" are endpoint roundoff; exact structure is a pair of single crossings
+* [P] As z → z0: s²B*(z) → −(3/2) z0(z0−t)(z0−1) and T* → z0(t−z0)(z0−1)/2 > 0 (symbolic limits). So T* > 0 near z0.
+  Every one of the 93 flagged points (and the new ones) sits at u = 1 − 10⁻⁶ or 1 − 10⁻⁴, i.e. at z0, where the
+  float evaluation cancels. Genuine failures among ~70k physical R3 points: 0 (nearext/b159.py).
+* [N] Shape (nearext/b161.py and the sign strips): B*(z) is monotone increasing on (1, z0) (36191/36191 points). T*
+  has a single − → + crossing at z_T, and z_T < ẑ. So
+     (b) ⇔ T*(ẑ) ≥ 0 ⇔ z_T ≤ ẑ ⇔ [ T*(z) < 0 ⇒ N(z; B_true) < 0 ] ⇐ [ T*(z) < 0 ⇒ N(z; B_crude) < 0 ]
+  (N is decreasing in B). Neither T* nor N(·; B_crude) involves the Galerkin eigenvalue.
+* A single multiplier N − κT* < 0 with κ ∝ s² is infeasible on most points (b160.py), so the gate must be handled by
+  covering: on each box of (x, v, τ, u = 1/m, w), with z = 1 + x0w, show either T* > 0 or N(·; B_crude) < 0 by the
+  fast Bernstein test. The two zero sets are separated (physical start ratio ≥ 1.13), so the subdivision terminates.
+  Complication: b = (e2 + √D)/2 enters both. Treat √D as an extra variable ς with ς² = D and box bounds, or reduce
+  b on each box via the (F1, P) sign rule.
