@@ -1987,3 +1987,21 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * Plan: (i) m ≥ 3: certify N(z_T; A_T(z_T), Blow_i) < 0 on the record set in window variables × z_T (exact; the
   near-z0 end is handled by the limits of item 152); (ii) m = 1, 2: fixed-m covering certificate (T* > 0 or N < 0 per
   box) in (x, v, τ, w).
+
+## Item 155 — (b) REPLACED by a weaker start condition (b') that needs no physics beyond the certified margin
+* [P] BARRIER k = min(ŵ, sL). sL is a strict subsolution on all of (1, z0) (item 149). The constant ŵ is a
+  subsolution wherever R(ŵ; z) = −ŵ² + 2sLŵ − 2μs|L'| > 0. A min of subsolutions is a subsolution (Dini). And
+  k(ẑ) = min(ŵ, ŝL̂) ≤ ŵ. So P2 holds provided
+     (b')  R(ŵ; z) > 0 for z ∈ [ẑ, z_s], where z_s is the point at which sL drops to ŵ.
+  If ŵ ≥ ŝL̂ (the old (b)), the segment is empty and (b') holds vacuously.
+* [P] Sufficient form. On the segment ŵ ≤ sL ≤ k+, so R(ŵ) > 0 ⇔ ŵ > k− = 2μs|L'|/k+. Since k+ ≥ sL, this follows from
+     ŵ·L(z) > 2μ(z)|L'(z)|   on [ẑ, z_s]     (which also forces D > 0 there).
+* [N] ABSTRACT, with only the certified margin ℓ ≥ A/(2z0) + 2t (no R3, no physics): (b') holds on every sample. That
+  includes all the old (b) failures: near-Nariai 536/536 (step168.py), global 109/109 (step168b.py), margin-only
+  105/105 (step168d.py). The sufficient form ŵL > 2μ|L'| also holds on all of them (step168f.py). Without the margin
+  (R3 only, or nothing) (b') fails, so the margin is the active input.
+* Status: (b') is a statement about abstract (t, z0, A, ℓ) with the root ẑ, with no b and no Galerkin λ. To close it:
+  parametrise by ŝ (B = B*(ŝ) from N(ŝ) = 0), impose the gate γ ≥ 0, take z on the segment, and certify
+  ŵL − 2μ|L'| > 0 by covering with the fast Bernstein test. Or find the hand proof: the bound
+  |L'|/L ≤ 2z0/(z(z+2s)) + 3/(2t) from the margin reduces the leading term to ẑ ≥ √2·ŝ, so the μ̂' term and the
+  segment bound s ≥ ŵ/L must close the rest.
