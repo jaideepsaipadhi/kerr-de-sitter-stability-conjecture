@@ -2296,3 +2296,16 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
   mpmath evaluation is needed, and the straightforward mpmath loop is too slow (> 60 s for 625 points). Next: restrict the
   cores to x = 1 symbolically (2-variable polynomials in v, τ) and decide the face question exactly (resultant of the
   G-core and the H2-P core on the face, plus sign checks on each arc).
+
+## 181. S_μ covering: everything certified except a corner neighbourhood
+* [P, exact grid] On the face x = 1 − 10⁻² and x = 1 − 10⁻⁴ (29×29 rational grid in (v, τ), exact fmpq evaluation with
+  the b₊ sign rule): zf ≥ 1/2 ⇒ Q2', H2', H1' > 0 at every point. There is no genuine failure on the near-extremal face.
+* New box rules (cheap, no P needed): F1 > 0 and Y < 0 ⇒ value > 0; F1 < 0 and Y > 0 ⇒ value < 0. This works since
+  value = (F1√D − Y)/2.
+* cert3/smu_cover7.py (resumable, polys persisted as dicts, largest-first order, atomic state writes):
+  open volume 1.1e-2 → 2.7e-9 over ~11 runs of < 1 min. The 23 remaining boxes all lie in
+  x ≥ 0.996, v ≤ 0.0015, τ ≥ 0.9985, i.e. a neighbourhood of the CORNER (r0, 1/r2, τ) = (1, 0, 1):
+  extremal, Λ → 0 (Kerr), top of the window.
+* REMAINING for S_μ: a corner lemma (blow up at (1, 0, 1), e.g. x = 1 − s·p, v = s·q, τ = 1 − s·r with
+  p + q + r = 1, and certify at s → 0 plus a Bernstein check on the blown-up chart). Everything else in the window is
+  certified.
