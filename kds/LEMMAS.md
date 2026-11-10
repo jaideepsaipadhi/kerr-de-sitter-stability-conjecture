@@ -2309,3 +2309,17 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
 * REMAINING for S_μ: a corner lemma (blow up at (1, 0, 1), e.g. x = 1 − s·p, v = s·q, τ = 1 − s·r with
   p + q + r = 1, and certify at s → 0 plus a Bernstein check on the blown-up chart). Everything else in the window is
   certified.
+
+## 182. (S_μ) PROVED (certificate): on the gate L(t) < 0, zf ≤ 1/2, hence μ'(z0) ≥ 0
+* Corner lemma, cert3/smu_corner.py: the corner cube [1−1/256, 1] × [0, 1/256] × [1−1/256, 1] in (x, v, τ) is covered
+  by three projective charts. A: x = 1−σ/N, v = σβ/N, τ = 1−σγ/N. B: v leading. C: 1−τ leading. N = 256 and
+  (σ, β, γ) ∈ [0,1]³. The cores are substituted exactly, powers of σ are removed, and each chart is covered with the
+  same box rules. Results: B closed (8 boxes), C closed (1 box), A closed after resumable runs (~80 boxes, max level 8).
+* On the σ = 0 face of chart A, the L-cores give F1 > 0, Y > 0 with the H2-P core changing sign (so L(t) < 0 does occur
+  at the extremal-Kerr corner). On that set G < 0 at every sampled face point. That is consistent: the gate lives at
+  zf < 1/2.
+* Main covering (smu_cover7): every box outside the corner cube is closed. The last 23 open boxes lie in
+  x ≥ 0.996 > 1−1/256, v ≤ 0.0015 < 1/256, τ ≥ 0.9985, i.e. inside the corner cube.
+* Ingredients: exact window polynomials validated against direct numerics (item 179); b₊ sign rules
+  (F1, Y, P); concavity in 1/m (LQ0' < 0) ⇒ checking Q2', H2' (m = 2) and H1' (m = 1) covers all m ≥ 1.
+=> S_μ holds on the whole window. Remaining for hyp:cos: S_C, S_α, S_β.
