@@ -1960,3 +1960,15 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   fast Bernstein test. The two zero sets are separated (physical start ratio ≥ 1.13), so the subdivision terminates.
   Complication: b = (e2 + √D)/2 enters both. Treat √D as an extra variable ς with ς² = D and box bounds, or reduce
   b on each box via the (F1, P) sign rule.
+
+## Item 153 — T* is affine in A, so (b) is an UPPER bound on A at ẑ
+* [P] T* = (n0 + A·nA)/den with den = 2z·(bracket of N_B) < 0 and nA = 2(t−z)s³(z−1) > 0. So T* is DECREASING in A,
+  and T*(z) ≥ 0 ⇔ A ≤ A_T(z) := z·Q(t,z0,z)/(2(t−z)s³(z−1)) (Q explicit, step: see the print in this item's
+  session). Hence (b) ⇔ A ≤ A_T(ẑ).
+  As z → z0, A_T → ∞ (s³ in the denominator), consistent with T* > 0 near z0.
+* [N] Physically: z_T := min{z : A_T(z) ≥ A} exists, and N(z_T; A, B_crude) < 0 (so z_T < ẑ) on 96887/96887 R3 points
+  (nearext/bmin163.py).
+* [N, NEGATIVE] What the abstract corner is missing is not a margin. With ℓ ≥ 0.6A/z0 + 2t the abstract failures stay at
+  about 1.6%. Physically ℓ ≥ 0.63A/z0 + 2t holds (min excess 0.13·A/z0; nariai164.py), and near Nariai ℓ/t ≥ 11. But
+  no simple bound of the form ℓ ≳ t/x0 holds globally. The separating information is a joint (A, ℓ, t, x0)
+  constraint, so (b) needs a certificate in the window variables, either the covering of item 152 or z_T-parametrised.
