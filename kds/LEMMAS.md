@@ -1814,3 +1814,21 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   θ = 0.9. Zone 1 alone: 2527/3000.
 * Status: generic P2 now rests on an explicit nested-integral criterion, which still has to be certified (validated
   quadrature). The corner still loses about 3% and needs the limit-problem analysis or a sharper tail.
+
+## Item 144 — P2: the θ·sL barrier family covers EVERY test point
+* [P] θ-BARRIER LEMMA. Let k = θ(z)·sL with θ piecewise C¹ (Dini sense at kinks) and θ(ẑ)·ŝL̂ ≤ ŵ. If
+     g := θ(2−θ)s²L² + θμL − (2−θ)μs|L'| − μθ' sL > 0   on (ẑ, z0),
+  then k is a strict subsolution of μw' = −w² + 2sLw − 2μs|L'|. Hence w > k ≥ 0 on [ẑ, z0). Near z0, g → θμ0L0 > 0
+  forces w(z0) > 0. So f2'(z0) > 0, which is P2.
+  (Derivation: (sL)' = −L − s|L'|; R(θsL) = θ(2−θ)s²L² − 2μs|L'|.)
+  For constant θ, g is a POLYNOMIAL in (t, z0, A, β, Ŝ, u) after clearing positive denominators. The start condition
+  is Ĥ ≥ θŝ²L̂.
+* [N] (step146b/c/f.py):
+  - constant θ ∈ [0.2, 1.95] (one θ per point): generic 2000/2000, corner 2952/3000;
+  - piecewise-linear θ (rise θ0 = ŵ/(ŝL̂) → θ1 on [0, u1], then linear down to θ2): ALL 55 remaining corner points pass
+    (55/55).
+  So, with the proved margin β ≥ A/(2z0) + 2z0, P2 holds on all 5000 test points via an explicit polynomial barrier.
+  The hard points have ŵ < ŝL̂: there θ must start below 1 and rise to about 1.1 by u ≈ 0.3.
+* REMAINING to make P2 a theorem: partition the parameter space into cells, fix θ per cell (θ constant on most cells),
+  and certify g > 0 by Bernstein, as with items 133–137. The variables (t, z0, A, β, Ŝ, u) are linked by N(Ŝ) = 0:
+  eliminate A or β via the affine dependence (item 139).
