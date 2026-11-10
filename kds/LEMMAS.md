@@ -2174,3 +2174,6 @@ To double-check against HV18 §10 when re-refereeing: whether the gauge equation
   Wald's step is also spelled out: E S'^† = T'^† O'^†.
 * To recheck at the re-referee: the claim that the Λ-terms do not enter (only Þ' and the Ricci identities Þ'ρ' = ρ'²
   are used). The value of c0 itself is irrelevant.
+
+## 170. Euler transform (referee issue 5) — rewritten
+The real RL integral is always divergent at one endpoint (Re ν = s−1, Re ρ₁ = −s). Replaced it with the Pochhammer loop γ_z around {1, z}. On powers the normalisation c(β) ∝ 1/(Γ(−β)Γ(−ν)Γ(β+ν+2)) is entire and nonzero for β = ρ₁+k in the window (ν ∉ Z, since κ₃ ∉ R). Threshold κ₁ = 0: the analytic part is killed by Pochhammer, so use a single loop around w = z (s = −2, or s = +2 with a₀ = a₁ = 0), and Pochhammer on the polar part otherwise. Boundary terms vanish because the contour is closed. Status: fixed in the paper.

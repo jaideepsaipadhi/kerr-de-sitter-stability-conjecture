@@ -310,22 +310,40 @@ $z=1$, defined on $(z-1)^{\beta}C^\omega$ by analytic continuation in $\beta$; o
 For $\beta=\rho_1+k$ we have $\beta+\nu+2=k+1-e_1$, and $e_1\in i\R$, so the denominator never sits at a pole of
 $\Gamma$.
 
-\emph{Generic case.} If $\rho_1\notin\{-2,-1\}$, every factor in \eqref{eq:RLpowers} is finite and nonzero: for
-$\Im\kappa_1\neq0$ the exponent $\rho_1$ is non-real, and for $\kappa_1=0$, $s=-2$ we have $\rho_1=2$. Put
-$\tilde y=I^{\nu+1}y$. Then $\tilde y\neq0$ and $\tilde y\in(z-1)^{\rho_1+\nu+1}C^\omega=(z-1)^{-e_1}C^\omega$.
+\emph{The contour.} The real integral $\int_1^z(z-w)^\nu y(w)\,dw$ need not converge: $\Re\nu=s-1$ and
+$\Re\rho_1=-s$, so one endpoint is always non-integrable for $s=\pm2$. We therefore use the Pochhammer double loop
+$\gamma_z=[1^+,z^+,1^-,z^-]$ around $w=1$ and $w=z$, inside a neighborhood of the segment $[1,z]$ on which $y$ is
+analytic (this is possible for $z\in(1,t]$ near $t$, since $y$ is analytic on $(1,t]$ and at $t$). Put
+\[
+\tilde y(z)=\oint_{\gamma_z}(z-w)^\nu y(w)\,dw .
+\]
+On powers, $\oint_{\gamma_z}(z-w)^\nu(w-1)^\beta dw=c(\beta)\,(z-1)^{\beta+\nu+1}$ with
+\[
+c(\beta)=\frac{(2\pi i)^2e^{i\pi(\beta+\nu)}}{\Gamma(-\beta)\Gamma(-\nu)\Gamma(\beta+\nu+2)}\cdot(\pm1),
+\]
+which is entire in $(\beta,\nu)$. It vanishes only if $\beta\in\Z_{\ge0}$, or $\nu\in\Z_{\ge0}$, or
+$\beta+\nu+2\in\Z_{\le0}$. When the real integral converges, $c(\beta)$ is a nonzero multiple of \eqref{eq:RLpowers}.
+In the window $\kappa_3\notin\R$, so $\nu\notin\Z$. For $\beta=\rho_1+k$ we have $\beta+\nu+2=k+1-e_1$ with
+$e_1\in i\R$, so the last condition fails for $k\ge0$.
 
-\emph{Threshold case} $\kappa_1=0$, $s=+2$, so $\rho_1=-2$. Write $y=(z-1)^{-2}(a_0+a_1(z-1))+y_{\mathrm{an}}$, with
-$y_{\mathrm{an}}$ analytic at $1$. If $(a_0,a_1)\ne0$, let $\tilde y$ be the Pochhammer-contour version of the
-transform. It annihilates analytic functions and maps $(z-1)^{-2},(z-1)^{-1}$ to nonzero multiples of
-$(z-1)^{\nu-1},(z-1)^{\nu}$; here $\nu\notin\Z$ because $\kappa_3\ne0$ when $\kappa_1=0$. If $a_0=a_1=0$, then
-$y$ is analytic at $1$, and we take $\tilde y=I^{\nu+1}y$, which is a convergent integral with nonzero factors in
-\eqref{eq:RLpowers}. In both cases $\tilde y\ne0$ and $\tilde y\in(z-1)^{\nu-1}C^\omega=(z-1)^{-e_1}C^\omega$.
+\emph{Generic case} $\kappa_1\ne0$. Then $\rho_1\notin\R$, so $c(\rho_1+k)\ne0$ for all $k\ge0$. Termwise integration
+of $y=(z-1)^{\rho_1}\sum_ka_k(z-1)^k$ gives $\tilde y=(z-1)^{-e_1}\sum_kc(\rho_1+k)a_k(z-1)^k$, which is nonzero.
 
-\emph{Analyticity at $z=t$.} Write $\tilde y(z)=(z-1)^{\nu+1}\int_0^1(1-\tau)^\nu y(1+(z-1)\tau)\,d\tau$, or the
-corresponding Pochhammer integral. Since $y$ is analytic near $(1,t]$ and the singular points $0,\infty$ lie away
-from the contour, $\tilde y$ is analytic near $z=t$. Finally, $\tilde y$ solves $\widetilde{\mathcal H}\tilde y=0$
-because the boundary terms vanish: in the convergent case by the vanishing of the integrand at $w=1$, and for the
-Pochhammer contour because it is closed.
+\emph{Threshold case} $\kappa_1=0$. Then $\rho_1=-s$ is an integer, and $c(\beta)$ vanishes on the analytic part
+($\beta\in\Z_{\ge0}$). For $s=-2$, $\rho_1=2$, so $y$ is analytic with leading power $(z-1)^2$. Use the
+Hankel-type contour from the side, i.e. $\tilde y=\Gamma(-\nu)^{-1}$-normalised $\int_1^z$, which converges at $w=1$;
+the divergence at $w=z$ ($\Re\nu=-3$) is removed by the loop around $w=z$ alone. On powers this gives
+$\Gamma(\beta+1)/\Gamma(\beta+\nu+2)$ up to a nonzero factor, and this is nonzero for $\beta=2+k$. For $s=+2$,
+$\rho_1=-2$: write $y=(z-1)^{-2}(a_0+a_1(z-1))+y_{\rm an}$. If $(a_0,a_1)\ne0$, the Pochhammer transform kills
+$y_{\rm an}$ and maps $(z-1)^{-2},(z-1)^{-1}$ to nonzero multiples of $(z-1)^{\nu-1},(z-1)^{\nu}$, since
+$c(-2),c(-1)\neq0$. If $a_0=a_1=0$, $y$ is analytic and we use the loop around $w=z$ alone, as for $s=-2$. In all cases
+$\tilde y\ne0$ and $\tilde y\in(z-1)^{-e_1}C^\omega$.
+
+\emph{Analyticity at $z=t$ and the equation.} The integrand is analytic on the contour and depends analytically on
+$z$, and the contour can be deformed locally as $z$ moves, so $\tilde y$ is analytic near $z=t$. The Euler
+transform intertwines the two Heun operators up to an exact derivative
+$\partial_w[(\cdots)(z-w)^{\nu}\cdots]$; this integrates to zero over a closed (Pochhammer) contour, and for a loop
+around $w=z$ alone the integrand returns to its starting value. So $\widetilde{\mathcal H}\tilde y=0$.
 \end{proof}
 
 \begin{proposition}[The real dual]\label{prop:dual}
