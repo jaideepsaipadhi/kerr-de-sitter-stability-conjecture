@@ -1647,142 +1647,17 @@ Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency ana
 * C4: an openness argument is written; it still needs to be checked against HPV §3 (their proof is pointwise in b).
 * Theorem A in the UHP: PROVED modulo these literature inputs and C4. Paper §"The upper half plane".
 
-## Item 125 — Near-extremal window: a repaired two-current scheme (NUMERICS; route identified, nothing proved yet)
-Context: REFEREE4. The true spheroidal eigenvalue gives λ ≈ −4 at the top of the window near extremality, so
-B < 5.5t − 1.25 and even L(t) < 0.
-(a) [P] Obstruction. With f₊(t) = 0, the leading behaviour f ~ (t − z)^p forces p ≤ 2(t − z₀)L(t)/(t(t − 1)) < 0
-    when L(t) < 0. With f₊(t) > 0, the boundary term L(t)q(t)f₊(t)|B_t|² carries the wrong sign. So for linear q,
-    Hintz's scheme cannot work when L(t) < 0.
-(b) [Idea] The splitting μW = q² − Lμ is not unique: only q(1) and q(t) are fixed by the exponents. Take
-    q̃ = q₁(z − z₀) + κ(z − 1)(t − z). Then L̃ = L + κ(2q₁(z − z₀) + κ(z − 1)(t − z))/z, and
-    L̃(t) = L(t) + 2κq(t)/t. Choose κ = max(0, 1.5κ₀), with κ₀ = −tL(t)/(2q(t)).
-    Cosmological side: f₊ = 1, with C₊ = μ'q̃ − 2μq̃' ≤ 0, D₊ = q̃L̃' − κμ' ≤ 0 and L̃(t) > 0.
-    Event side: saturate (C), then solve D f = 0. (C) on phase 2 follows from the same Wronskian argument, given
-    one sign change of D(F_C) and q̃' > 0.
-(c) [N] nearext/sweep.py: 1137 random cases (r₀ ∈ (0, 0.997), r₂ ∈ (1.3, 300), window fraction 0.02–0.999,
-    m = 1–3, true eigenvalues from the Galerkin code): all pass. The one apparent failure is in R1, which is already
-    proved. Floating point only.
-TODO for a proof: (i) a certified angular eigenvalue enclosure on the window (replacing step47); (ii) the event lemma
-with B allowed below the old floor (re-certify P1/P2 for the new parameter region, or with the q̃ correction);
-(iii) the cosmological lemma for q̃; (iv) large m (sample m ≥ 4, and the m → ∞ asymptotics).
-
-## Item 126 — Reorganising the window argument around L(z₀) > 0 (one piece proved, the rest numerics)
-(a) [P] The bend is needed only on the cosmological side. Keep q linear on [1, z₀]. On [z₀, t] use
-    q̃ = (z − z₀)(q₁ + κ(t − z)), κ ≥ 0, which keeps q̃(z₀) = 0 and q̃(t) = q(t). The dual equation is unchanged if
-    L̃ = L + κ(z − z₀)²(2q₁ + κ(t − z))/(z(z − 1)). The seam needs no matching: the event side gives Re(u'ū)(z₀) ≥ 0,
-    and the cosmological side (f₊ = 1) gives Re(u'ū)(z₀) ≤ −(κ/q₁)|u(z₀)|² + (boundary term at t)/(μ₀q₁).
-    So the argument closes as before, and for κ > 0 it even forces u(z₀) = 0.
-    Cosmological conditions: C₊ = −gH + 2κμ(z − z₀) ≤ 0 (g = q₁ + κ(t − z), H as in Lemma H),
-    D₊ = q̃L̃' − κμ' ≤ 0, and L̃(t) = L(t) + 2κq₁(t − z₀)²/(t(t − 1)) > 0.
-    [N] 2230/2230 physical cases (m ≤ 5) pass, with κ = 1.2κ₀ and κ₀ = −L(t)t(t − 1)/(2q₁(t − z₀)²).
-(b) [P] A rigorous angular lower bound, from the exact identity of step128. Drop the nonnegative terms
-    (K_α, the α(m ± s)² endpoint terms, ξ²(1 − x²), αm², 2αx²) and bound the rest pointwise:
-       λ ≥ ℓ₀(ℓ₀ + 1) − 4 − 4α − 4α|m|(1 + α) − 2(1 + α)²|ξ|(|m| + 2),   ℓ₀ = max(|m|, 2).
-    This is crude but correct: −5.8 against the true −4.1 at the worst case.
-(c) [N] With B computed from this crude bound, L(z₀) = A/z₀ + B − 3z₀ > 0 on 2018 physical samples, m ≤ 11, with
-    relative margin ≥ 0.32. The minimum is at the bottom of the window (z₀ → t). With the true λ the margin is
-    ≥ 0.33.
-(d) [N] Event lemma on {t > 1, z₀ ∈ (1, t), A > 0, L(z₀) > 0}, B free (no floor):
-    P1 (exactly one sign change of N): 181,900/181,900 random cases.
-    Seam: the old sufficient test K(ẑ) > 0 fails in 0.4% of cases, but the true seam (phase-2 ODE) holds in all 1408 of
-    those. So P2 needs a sharper sufficient criterion on the new region.
-    R1 and R2 need only L > 0 on [1, z₀], which follows from L(z₀) > 0 and L' < 0.
-REMAINING (in order): certify L(z₀) > 0 using the crude λ (roots, window fraction, and m, including the m⁻² expansion
-for large m); re-certify P1 on {L(z₀) ≥ 0}; a sharper P2 criterion and its certificate; the cosmological lemma, with
-a proof for the explicit κ; then rewrite §§3–4 of the paper.
-
-## Item 127 — Toward "L(z₀) > 0" (the new input for the event side): structure proved, certificate not yet
-(a) [P] Notation: m > 0, w = σ/m in the window, and u_j := Im κ_j/(Ξm), i.e. u₀ = −P₀(w − Ω₀), u₁ = P₁(w − Ω₁),
-    u₂ = −P₂(w − Ω₂), u₃ = P₃(w − Ω₃). Then f₁ = u₁ + u₃ < 0, f₂ = u₂ + u₃ < 0, and Σu_j = 0. Consequences:
-       A = 4Ξ²m² t u₀u₃  (> 0, since u₀, u₃ > 0 on the window),     z₀ = t(f₁ + f₂)/(f₁ + t f₂).
-    (Identity: (u₀ + u₃)² − (f₁ + f₂)² = 4u₀u₃, from u₀ + u₃ = −(u₁ + u₂).)
-(b) [P] With the crude angular bound (item 126b), L(z₀) ≥ m²Q₂ + mQ₁ + Q₀ + 4C₀[m = 1], where
-       Q₂ = 4Ξ²u₀u₃(f₁ + t f₂)/(f₁ + f₂) + C₀(1 − 2Ξ²aw),   Q₁ = C₀(1 − 4αΞ − 4Ξ²aw),   Q₀ = −C₀(1 + 7α) + 1 + t − 3z₀.
-    So m enters only as an explicit quadratic. Large m reduces to Q₂ > 0.
-(c) [N] lz0c.py: after normalising by C₀, the minimum over the window is ≥ 0.39 for m = 1, 2, 3, 10, 1000 on a grid
-    in (r₀, 1/r₂) that includes the extremal (r₀ → 1), small-Λ (r₂ → ∞) and Nariai-type (r₂ → 1) corners. The limits
-    appear finite and positive. Also Q₂/C₀ ≥ 1 everywhere sampled.
-(d) [N, negative] Naive interval branch-and-bound (ivb.py) is hopeless: dependency blow-up needs boxes of width ~1e-4
-    in three variables. A certificate needs a polynomial formulation (scale Λ = 3, roots as variables, the constraint
-    e₂ + e₄ + 1 = 0, w as a fourth variable) with exact Bernstein, as in items 119/121, plus limit analysis at the
-    corners. To do.
-
-## Item 128 — An attempted shortcut for L(z₀) > 0 (fails; recorded so it is not retried)
-Exact form: L(z₀) = 4Ξ²m² u₀u₃ R + B − 3t/R, with R := (f₁ + t f₂)/(f₁ + f₂) ∈ [1, t] and z₀ = t/R.
-Shortcut tried: replace R by 1 and z₀ by t, use 2(1 − α)C₀ ≥ 2t − 1, and use concavity of u₀u₃ in w to reduce to
-the window endpoints. [N] This FAILS (min −1.32 at r₀ → 1, w = w₁, m = 2). The loss is exactly the factor R → t at
-w → w₁, where z₀ → 1. So the R-dependence must be kept, and the endpoint reduction is lost because R depends on w.
-The four-variable polynomial certificate (item 127d) remains the route.
-
-## Item 129 — New reduction for L(z₀) > 0: monotonicity along the window (numerics) + one endpoint
-(a) [P] At the bottom of the window, w = w₂, we have f₂ = 0, z₀ = t and R = 1. So
-    L(z₀) = L(t) = 4Ξ²m²u₀u₃ + B − 3t, a two-parameter (geometry) quantity for each m. At the top, w = w₁, we have
-    f₁ = 0, z₀ = 1 and L(z₀) = L(1) = A + B − 3.
-(b) [N] mono.py, 5776 (geometry, m) curves (m = 1, 2, 3, 6; grids include r₀ → 1, r₂ → ∞, r₂ → 1): with B from the
-    crude λ, w ↦ L(z₀(w); w) is MONOTONE INCREASING on the window in every case. It is not concave. The minimum is
-    therefore at w = w₂, where L(z₀)/C₀ ≥ 2.31.
-(c) Consequence, if (b) is proved: L(z₀) > 0 reduces to the 2D statement at w₂, plus d/dw L(z₀) ≥ 0.
-    Note: z₀ is a Möbius function of w, so the window can be parametrised by z₀ ∈ [1, t] instead. Then w, and with it
-    every u_j, is a Möbius function of z₀, and L(z₀) is rational in z₀.
-    Decomposition: dL(z₀)/dw = ∂_wL(z₀; w) + L'(z₀)·z₀'(w). The second term is > 0 (L' < 0 and z₀' < 0, both [P]).
-    The first, ∂_wA/z₀ + ∂_wB, has no definite sign. A proof must balance the two terms.
-
-## Item 130 — L(z₀) > 0 at the bottom of the window: PROVED (exact certificate). Full window: route set up.
-(a) [P] The sign problem with Λ. Take λ = Λ/3 and r₁ = 1 (scale), roots r₀ ∈ (0, 1) and r₂ ∈ (1, ∞) free, and λ the
-    unique positive root of g(λ) = λ²e₄ + λe₂ + 1. Then a² = −λe₄, α = λa², and every quantity is rational in
-    (r₀, r₂, λ, y), with y = w/a. For a numerator n(λ), pseudo-division gives e₄^k n = Qg + (F₁λ + F₀), so
-    sign n(λ*) = sign(e₄)^k · sign(F₁λ* + F₀). With λ* = (−e₂ − s)/(2e₄) and s = √(e₂² − 4e₄), the condition
-    becomes X < F₁s, where X = −F₁e₂ + 2e₄F₀. This is implied by [F₁ > 0 and F₁²(e₂² − 4e₄) − X² > 0], two
-    polynomial inequalities in (r₀, r₂).
-(b) [P, exact] At w = w₂ (so z₀ = t and R = 1), the three inequalities
-       Q₂ > 0,   H₂ := Q₂ + Q₁/2 + Q₀/4 > 0,   H₁ := Q₂ + Q₁ + Q₀ + 4C₀ > 0
-    each reduce (cert3/w2_build.py → w2_reduce.py → w2_poly.py → w2_bern.py) to the following. With r₂ = 1/v, F₁
-    and P := F₁²D − X² factor as a positive constant × linear/quadratic factors of known sign on (0,1)² (P has only
-    even powers; F₁ has (r₀v − 1)(r₀ − 1)⁵ > 0) × ONE core polynomial (total degree 20 for F₁, 30 for P). Every
-    Bernstein coefficient of every core polynomial on [0, 1]² is STRICTLY POSITIVE, with no subdivision needed.
-    Sign bookkeeping: k = 5 (odd) and e₄ < 0, and the denominator sign is −1. Both were checked numerically against
-    direct evaluation (w2_check.py).
-    Since Q₀ < 0 (Q₀ ≤ 1.5 − 3z₀ < 0, using C₀ ≥ t − ½), L(z₀)/m² = Q₂ + Q₁u + Q₀u² (u = 1/m) is concave in u. So
-    positivity for all m ≥ 2 follows from u = 0 (Q₂) and u = ½ (H₂), and m = 1 is H₁.
-    ⇒ L(z₀) > 0 at w = w₂ for EVERY m ≠ 0 and every subextremal KdS, with the crude angular bound. PROVED.
-(c) Full window, τ ∈ [0, 1] (w = w₂ + τ(w₁ − w₂)): the same three inequalities, with Q₀ < 0 and concavity in u still
-    valid. cert3/win_build.py sets this up in (r₀, r₂, τ), but the sympy `together` build exceeds the 1-minute
-    budget. The next step is a Poly-composition build (as step105) and then 3D Bernstein. Alternatively, prove
-    monotonicity in w (item 129) and use (b).
-
-## Item 131 — Full-window L(z₀) > 0: fast exact pipeline built; remaining obstruction is boundary blow-ups
-(a) [P] A better variable: b = a². Then λ = −b/e₄, α = −b²/e₄, Ξ = 1 − b²/e₄, and the window ends
-    y₂ = (Π̂₀ − Π̂₁)/(ρ₁Π̂₀ − ρ₀Π̂₁), y₁ = (Π̂₃ + Π̂₁)/(ρ₁Π̂₃ + ρ₃Π̂₁) (with Π̂_j = |Π_k≠j (r_j − r_k)|) no longer
-    involve λ. The constraint becomes MONIC: b² − e₂b + e₄ = 0, with a² = (e₂ + s)/2 and s = √(e₂² − 4e₄). There is
-    no parity bookkeeping, and the sign test is F₁ > 0 and P := F₁²(e₂² − 4e₄) − Y² > 0, with Y = −(2F₀ + F₁e₂).
-(b) [tool] python-flint (fmpz_mpoly with gcd-reduced fractions) builds λQ₂, λH₂, λH₁ in 0.2 s (cert3/win_flint.py,
-    win_red3.py), where the sympy build exceeded a minute. Degrees after reduction: P is (76, 78, τ¹²) for H₂ and H₁,
-    and (66, 68, τ⁸) for Q₂. Flint factorisation (win_fac.py) splits off sign-definite small factors and leaves
-    cores of degree ≤ (34, 36, τ⁸) for P and (38, 38, τ⁶) for F₁.
-(c) [N] Sign survey (3000 random points per inequality): F₁ > 0, Y > 0, and P > 0 everywhere, except one H₂ point
-    where P ≈ −3.5·10¹⁰⁹ against terms of size ~10¹²⁶. This is floating-point cancellation: H₂/C₀ = 58 there by direct
-    evaluation.
-(d) [obstruction] The cores vanish on boundary pieces of [0,1]³ (r₀, v = 1/r₂, τ):
-    (i) the whole edge {v = 0, τ = 1}, i.e. Λ → 0 at the window top (z₀ → 1);
-    (ii) the corner {r₀ = 1, v = 1, τ = 0}, i.e. extremal + Nariai at the window bottom.
-    So exact Bernstein B&B does not close without blow-ups. One blow-up chart pair at edge (i) (τ = 1 − ν, v = μν and
-    the swap; ν² factored) is not yet enough: it still runs deep, presumably at corner (ii) or a residual zero of the
-    stripped polynomial.
-NEXT: locate the residual zeros of the charted polynomials, add the corner-(ii) blow-up (three-variable,
-weighted), and run per-chart B&B (each run < 1 min with flint-built inputs).
-
-## Item 132 — Full-window certificate: the boundary zeros, exactly; recursive blow-up certifier (not yet closing)
-(a) [P, exact] (ch4.py) Every core polynomial (Q₂, H₂, H₁; F₁ and P) vanishes IDENTICALLY on three edges of the
-    (r₀, v, τ)-cube: {r₀ = 1, τ = 1} (extremal at the window top), {v = 0, τ = 1} (Λ → 0 at the window top) and
-    {r₀ = 1, v = 1} (extremal + Nariai, all τ). The exception is the small (5, 5, 2) factor of H₂ and H₁'s P, which
-    vanishes only on the second edge. These are degenerate limits of the parametrisation, not physical zeros.
-(b) [tool] rcert.py does exact Bernstein B&B with de Casteljau splitting. It carves ε = 1/8 neighbourhoods of the
-    vanishing edges and vertices and blows them up (two monomial charts per edge, three per vertex; the exceptional
-    power and any face factors a^i(1 − a)^j are stripped), recursively.
-(c) [N, negative] On the smallest core, Q₂-P (9, 9, 2), the recursion does not terminate: the chart sequence
-    e(1,0,2,0)c2 / e(0,0,1,0)c0 repeats periodically. So the zero set near the edge {b = c = 0} is not resolved by
-    monomial blow-ups. It is probably tangential (a non-monomial curve of zeros in the chart, or two branches
-    touching), so a weighted or non-monomial blow-up is needed. Every individual chart that terminates certifies
-    (dozens of "ok" leaves).
-Diagnosis to do next: compute the Newton polygon of the Q₂-P core at the edge {v = 0, τ = 1} (in the transverse
-variables) to read off the weights. Then use weighted charts v = μν^p, 1 − τ = ν^q.
+## Item 133 — Full-window L(z₀) > 0: exact certificate (nonnegative-Bernstein)
+* New idea: no domination or charts are needed. On the open cube (0,1)^3, p > 0 if all Bernstein coefficients are ≥ 0 and some
+  coefficient is > 0, since every Bernstein basis function is strictly positive on the open cube. Zero coefficients are allowed,
+  so this handles polynomials that vanish on cube edges. `cert3/nncert.py` also has the subdivision version with the face
+  condition, but it was not needed.
+* `cert3/fullcert.py`: factor F₁ and P (b eliminated) for each of λQ₂, λH₂, λH₁, map each factor to (x, v = 1/r₂, τ), and
+  certify the sign of every factor, including the even-multiplicity ones, which are therefore nonzero.
+* Result (`cert3/fullcert_out.txt`): F₁ > 0 and P > 0 for Q₂, H₂ and H₁ on the whole window. Every factor closes with a single
+  box, with no subdivision.
+* Consequence: L(z₀) > 0 on the full window for all m ≥ 1, and every subextremal KdS, via the concavity-in-1/m reduction
+  (item 127).
+* Still to re-audit when writing up: that the window is exactly the open cube in (r₀, 1/r₂, τ); that the denominators removed by
+  the gcd-reduced class F have known sign; and the reduction "Q > 0 ⇔ F₁ > 0 ∧ P > 0" (item 131).
+* The domination machinery (domcert.py, autocert.py, remcert.py, edge*.py) is superseded but kept for the record.
