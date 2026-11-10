@@ -2453,3 +2453,20 @@ inequalities.
 * The faster-engine route (interval float Bernstein) is now the practical bottleneck for finishing S_C. The
   mathematics is in place: S_C on the window = [W_C covering outside the corner square (item 183)] + [(G_C) on the
   corner square via S_μ (item 190)], and (G_C) on the square reduces to this 2D sign problem.
+
+## 193. Fast float-Bernstein engine; (G_C) corner chart closes except two isolated spurious points
+* cert3/fbern2.py: exact rational Bernstein coefficients (via the rev–shift–rev trick), normalised and converted to
+  float64, then de Casteljau splitting. All operations are convex combinations, so the coefficient error after k
+  splits is ≤ (k+4)·1e-13 relative to max|b|, and a sign is accepted only beyond that tolerance (rigorous up to
+  float rounding, which is bounded). About 100× faster than the flint compose route.
+* BUG FOUND AND FIXED: the τ-coefficients must be taken from the numerator n with the sign of d's constant
+  (d = c·(square), and c < 0 for H1). Using n·d instead introduced spurious zeros from d. Now scg_tau.py asserts
+  that d is a square and uses sign(c)·n.
+* Extra closure branch: q(τ) ≥ c0 − |c1| − |c2| (the four sign combinations).
+* cover2d_f.py, chart EA: ~20k boxes closed. The only remaining open boxes converge to two isolated points,
+  (σ, β) ≈ (0.17658, 0.82755) and (0.29920, 0.05645). There, for the Q2 target (m² coefficient) at τ = 0, the
+  b-reduced q0 has F1 = Y = 0, i.e. the numerator n vanishes at BOTH roots b±. Physically the m² coefficient there is
+  ≈ 2.0e4 > 0 (and 6.9e3 at the second point), so these are removable zeros of n (n and d share a zero at b₊ at
+  isolated points), not failures.
+* NEXT: locate the shared factor (probably the y2 denominator ρ1Pa0 − ρ0Pa1 or a U-denominator) and cancel it
+  symbolically before the τ-split, or handle the two points with a local chart. Then run chart EB, which mirrors EA.
