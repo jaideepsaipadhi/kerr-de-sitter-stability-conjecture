@@ -1936,3 +1936,13 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * So (b) needs one physical input that the abstract parameters do not see in the near-Nariai corner, e.g. a
   certified relation between A and (t − 1)/x0 there, or a direct physical certificate of Φ-type
   inequalities in the window variables (as in item 148, with the fast Bernstein test).
+
+## Item 151 — (b) in root form: T* := T|_{N=0} is B-free; the condition is "B*(z) ≥ B_crude ⇒ T*(z) ≥ 0"
+* N is affine in B, so N(z) = 0 ⇔ B = B*(z) (explicit rational in t, z0, A, z). At the true root ẑ, B*(ẑ) = B_true ≥ B_crude.
+  So (b) ⇐ [for all z ∈ (1, z0): B*(z) ≥ B_crude ⇒ T*(z) ≥ 0], where T* = (H − s²L)|_{B=B*} is B-FREE.
+* [N] A constant-κ multiplier over the whole interval (T − κN ≥ 0) fails on almost all physical points (b158.py):
+  it is far too strong past ẑ, where N > 0 grows.
+* [N] Root form: 37997/38090 physical R3 points pass (b158b.py). The 93 failures have not yet been separated from
+  floating-point blow-up: the B* denominator vanishes inside (1, z0), which caused the divide warnings. Next: recheck
+  them exactly. If they are genuine, restrict to the sub-interval where the denominator keeps its sign (P1 gives a
+  single root, so only one branch is relevant).
