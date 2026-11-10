@@ -2226,3 +2226,19 @@ Divide E by Q2² (r = K/Q2, T = t−z0). Then D̃ ≤ 0 ⇔ A ≥ P1(b) + Q2·P2
 REDUCED TARGET for hyp:cos (D̃ half): A ≥ α(a, T, r) + Q2·β(a, T, r), where α and β are 3-variable functions defined by a
 one-dimensional sup. Next step: replace α and β by explicit polynomial upper bounds in (a, T, r), via Bernstein on b
 with a margin slack of about 1.37, then certify the physical inequality in the window variables (4D, no w).
+
+## 175. hyp:cos reduced to three scalar conditions plus one 1-variable sup (exact identities, sympy-checked)
+Notation: a = z0−1, T = t−z0, b = z−z0, c = t−z, r = κ/q1 = K/Q2, p = 2az + b, z1 = z−1.
+[P] Identities:  g = b(2+4a+b−5c) − M0, where M0 := T(1+2a) − a(1+a) ∝ μ'(z0);
+                 2p − h2 r − c h3 r² = (1+rc)·[p(2+rc) − r b z z1].
+Hence  P1 = z²(gr − 3b)/(b(1+cr)) ≤ z²[r(2+4a+T) − 3]/(1+cr) whenever M0 ≥ 0, and
+       P2 = b r [p(2+rc) − r b z z1]/z1²   EXACTLY (the (1+cr) cancels).
+THEOREM (reduction). On the gate L(t) < 0, hyp:cos (C̃ ≤ 0, D̃ ≤ 0, L̃(t) > 0 with κ = 1.05 κ_min) follows from:
+  (S_C)  rT ≤ 1                          [item 172]
+  (S_μ)  M0 = T(1+2a) − a(1+a) ≥ 0        [μ'(z0) ≥ 0, item 159]
+  (S_α)  r(2+4a+T) ≤ 3                   [kills the P1 part: α ≤ 0]
+  (S_β)  A ≥ Q2 · sup_{0<b<T} b r[(2az+b)(2+r(T−b)) − r b z(z−1)]/(z−1)²
+[N] (cos192/193): (S_μ) has 0 violations in 1224 gate points; with (S_α), α ≤ 0 holds at every point; (S_β) has min
+margin 1.40. Dropping the −r b z z1 term in (S_β) loses a factor of up to 1.3e5. It is essential, since it is the
+self-limiting part of the bend.
+Remaining: certify (S_C), (S_μ), (S_α), (S_β) in the window variables (x, v, τ, 1/m); (S_β) carries one sup over b.
