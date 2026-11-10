@@ -1682,3 +1682,30 @@ Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency ana
 * NEXT: prove P1 on the new range by Descartes with one bisection (separate Möbius maps on S ∈ (0, x0/2) and (x0/2, x0)),
   or by "N = 0 ⇒ N' < 0". Then redo P2 (item 121 used B ≥ Bf only in the last certificate: replace it with
   B = 3z0 − A/z0 + β), and R1/R2 (item 47).
+
+## Item 135 — (P1) PROVED on R3 ∩ {L(z0) > 0}, with no B floor
+Write B = 3z0 − A/z0 + β, where β = L(z0) > 0 (item 133). The R3 constraints p > 1 and A ≥ Ac2 reduce to the quadrant
+{A ≥ a0 := max(0, Ac2), β ≥ 0}, with the corner on p = 1, outside R3. Möbius S = x0 v/(1+v): coefficients T0..T6
+(step134_P1new.py, T134.pkl).
+* T0 = 6z0³(z0−t)²x0² > 0, and T1 = 6z0²(z0−t)x0²(3z0² + 2z0 − 4tz0 − t) > 0. Neither depends on (A, β).
+* T6 = z0 · N(z = 1) = −z0 (t−1)² x0² (p − 1) < 0 on R3. [P, exact factorisation]
+* For k = 3, 4, 5, T_k is affine with STRICTLY negative A- and β-coefficients. So {T_k ≥ 0} ∩ quadrant is a closed
+  triangle at the corner, or empty. T_{k−1} is affine with nonpositive coefficients, so T_{k−1} > 0 on that triangle iff
+  g1 := a|qA| − |pA| b > 0 and g2 := a|qB| − |pB| b > 0 whenever b ≥ 0. Here a and b are T_{k−1} and T_k at the corner,
+  and p•, q• are their coefficients.
+  CERTIFIED: g1 > 0 and g2 > 0 UNCONDITIONALLY, for k − 1 = 2, 3, 4 in both cases (I: a0 = Ac2, II: a0 = 0). The proof
+  factors g and certifies the sign of every factor by nonneg-Bernstein (nnd.py) on (u, R) ∈ (0,1)², with
+  case I: t − 1 = 6x0²/u, x0 = u/6 + R/(1−R); case II: t − 1 = x0 + (6x0² − x0)u, x0 = 1/6 + R/(1−R). Script:
+  step135g.py, all 12 signs +1. (Floating-point samples had shown about 0.4% "violations"; exact rational re-evaluation
+  showed all of them were roundoff.)
+* Hence T_k ≤ 0 ⇒ T_{k+1} < 0 for k = 2..5. The sequence (T0, ..., T6) has exactly one sign change, so by Descartes N has
+  exactly one root in (0, x0). ∎ (P1)
+
+## Item 136 — (P2) on the new range: item 121's sufficient condition FAILS; P2 itself holds numerically
+* Item 121(c) used B ≥ Bf. With B = 3z0 − A/z0 + β, the A-coefficient of N is 2S³(−S² − x0(t − z0)) < 0, but
+  "K(Ŝ) > 0" fails on about 67% of (t, z0, S) at the corner, and Q(ẑ) > 0 fails on 168 of 3000 random feasible points
+  (step136b.py).
+* [N] The seam condition f2'(z0) > 0 itself holds on all 80 points where Q(ẑ) ≤ 0 (ODE integration, step136c.py).
+  The bootstrap of item 121(a) is too lossy near L(z0) → 0: it replaces f2 by f̂.
+* NEXT: a sharper bootstrap. Keep the growth of f2 (f2 ≥ f̂ e^{∫k} with k a subsolution near ẑ), or compare Φ with
+  the explicit phase-1 data on a short interval past ẑ.
