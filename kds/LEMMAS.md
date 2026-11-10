@@ -1862,3 +1862,23 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   B := B_crude. The crude λ bound is polynomial in (m, α, ξ). b is eliminated as in item 131. (a) is an implication
   with gate N ≥ 0; handle it by λ-multiplier certificates (−g − c·N ≥ 0 type, item 119 style) or by explicit
   parametrisation of {N ≥ 0}.
+
+## Item 147 — P2 (a) reduced BY HAND to one physical inequality: ẑ ≥ (3/5) z0
+* [N] On 117819 physical R3 points with B = B_crude (and on 119395 more with B anywhere above B_crude), every constant
+  θ ∈ [0.3, 1.1] satisfies both (a) and (b) (nearext/phys149*.py). So ONE θ works universally; take θ = 1.
+* [P] HAND LEMMA for θ = 1. Write L = ℓ + sP with ℓ = L(z0) and P = A/(z z0) + 3. Then |L'| = P + As/(z²z0), so
+  L − s|L'| = ℓ − As²/(z²z0). With the certified margin ℓ ≥ A/(2z0) + 2z0 (item 139):
+     L − s|L'| ≥ A(z² − 2s²)/(2z²z0) + 2z0 > 0   whenever z ≥ √2 s, i.e. z ≥ (2 − √2) z0.
+  So g_1 = s²L² + μ(L − s|L'|) > 0 on [(2−√2)z0, z0). Hence (a) holds as soon as ẑ ≥ (2−√2) z0 ≈ 0.586 z0.
+* [N] Physically ẑ/z0 ≥ 0.620 (93016 R3 points with B_crude; nearext/phys149d.py). We use the rational threshold
+  3/5 > 2 − √2. By P1, ẑ ≥ (3/5)z0 ⇔ N(z = 3z0/5) < 0 (needed only when z0 > 5/3). Exactly:
+     N(3z0/5) = N0 + A·NA + B·NB, with
+     NA = (16z0²/125)(t(5 − 4z0) + 3z0² − 4z0) < 0 and NB = (16z0³/3125)(t(100 − 75z0) + 54z0² − 75z0) < 0 for z0 > 5/3,
+     N0 = (2z0²/3125)(3375t²z0² − 9000t²z0 + 5875t² − 3672tz0³ + 11700tz0² − 9000tz0 + 891z0⁴ − 3672z0³ + 3375z0²).
+  N is decreasing in A and in B, so B_crude is the worst case.
+* Certificate in progress (cert3/zhat_build.py, zhat_red.py, zhat_cert.py): λ̃N in the window variables, quadratic in m.
+  The m-coefficients are q2, q1, q0, with q0 < 0 numerically (concave in u = 1/m). Targets are q2 > 0, m = 2 (Hhalf)
+  and m = 1 (H1). First obstacle: after b-reduction, q2's F1 core (degree (62, 62, 12)) is NOT sign-definite on the
+  whole cube (40+/20− at random points). So the sign test must use the full rule (F1 < 0 ∧ Y < 0 ∧ P < 0 also
+  certifies), and possibly the gate z0 > 5/3.
+* Still needed for P2: the start condition (b) at θ = 1, H(ẑ) ≥ ŝ²L̂. It holds on all physical points; no proof yet.
