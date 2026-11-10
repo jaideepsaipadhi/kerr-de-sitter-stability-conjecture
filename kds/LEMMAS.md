@@ -1770,3 +1770,19 @@ The four-variable polynomial certificate (item 127d) remains the route.
     stripped polynomial.
 NEXT: locate the residual zeros of the charted polynomials, add the corner-(ii) blow-up (three-variable,
 weighted), and run per-chart B&B (each run < 1 min with flint-built inputs).
+
+## Item 132 — Full-window certificate: the boundary zeros, exactly; recursive blow-up certifier (not yet closing)
+(a) [P, exact] (ch4.py) Every core polynomial (Q₂, H₂, H₁; F₁ and P) vanishes IDENTICALLY on three edges of the
+    (r₀, v, τ)-cube: {r₀ = 1, τ = 1} (extremal at the window top), {v = 0, τ = 1} (Λ → 0 at the window top) and
+    {r₀ = 1, v = 1} (extremal + Nariai, all τ). The exception is the small (5, 5, 2) factor of H₂ and H₁'s P, which
+    vanishes only on the second edge. These are degenerate limits of the parametrisation, not physical zeros.
+(b) [tool] rcert.py does exact Bernstein B&B with de Casteljau splitting. It carves ε = 1/8 neighbourhoods of the
+    vanishing edges and vertices and blows them up (two monomial charts per edge, three per vertex; the exceptional
+    power and any face factors a^i(1 − a)^j are stripped), recursively.
+(c) [N, negative] On the smallest core, Q₂-P (9, 9, 2), the recursion does not terminate: the chart sequence
+    e(1,0,2,0)c2 / e(0,0,1,0)c0 repeats periodically. So the zero set near the edge {b = c = 0} is not resolved by
+    monomial blow-ups. It is probably tangential (a non-monomial curve of zeros in the chart, or two branches
+    touching), so a weighted or non-monomial blow-up is needed. Every individual chart that terminates certifies
+    (dozens of "ok" leaves).
+Diagnosis to do next: compute the Newton polygon of the Q₂-P core at the edge {v = 0, τ = 1} (in the transverse
+variables) to read off the weights. Then use weighted charts v = μν^p, 1 − τ = ν^q.
