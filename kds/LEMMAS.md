@@ -1846,3 +1846,19 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   1851/1851 R3 points pass (a) and (b) with constant θ.
 * Consequence: certify P2 on the physical parametrisation (cube variables x, v, τ, u = 1/m, plus the position z),
   reusing the machinery of items 133–139 (b eliminated through b² − e2b + e4 = 0). Large m is the u → 0 face.
+
+## Item 146 — What separates the abstract failures from physics; monotonicity in B
+* The abstract (a)-failures of item 145 all have B ≪ t: (B − t)/t ≈ −1, and t/x0 between 6·10³ and 2·10⁸. R3
+  (t − 1 < 2x0L(1)) then forces A huge, with B of order −A/(2z0).
+* [N] PHYSICAL points with x0 ≥ 5 have (B − t)/t ≥ 0.57 (1279 samples). Restricting the abstract set to B ≥ t
+  removes every failure (step148.py). But B ≥ t is FALSE physically in general: for near-extremal, m = 2, top of the
+  window, (B − t)/t reaches −1.26 with λ ≈ −4.2 (nearext/btest.py). So the right physical input is a joint (x0, t, B)
+  constraint, not a single inequality.
+* [P] MONOTONICITY. g_θ is increasing in B wherever L > 0. N is affine in B with negative coefficient (item 121), so
+  raising B shrinks {N ≥ 0}. Hence implication (a) is MONOTONE in B: it suffices to check it at the crude angular
+  lower bound B_crude = c1 + λ_crude·C0. Implication (b), the start condition, is not monotone and needs separate
+  handling.
+* Plan for the physical certificate of P2: cube variables (x, v, τ), u = 1/m, and z, with A, t, z0 exact and
+  B := B_crude. The crude λ bound is polynomial in (m, α, ξ). b is eliminated as in item 131. (a) is an implication
+  with gate N ≥ 0; handle it by λ-multiplier certificates (−g − c·N ≥ 0 type, item 119 style) or by explicit
+  parametrisation of {N ≥ 0}.
