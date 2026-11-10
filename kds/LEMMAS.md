@@ -2367,3 +2367,13 @@ EA2 (τ-blowup) is slow (degree inflation) but closing; EA main stalls at the (�
 more blowup or a hand bound.
 HAND ROUTE (preferred): near the edge prove λ̃q1²T ≥ c·ε⁻²·(τ-factor) and −λ̃L(t) ≤ C·ε⁻¹, with explicit window
 formulas; then W_C ≥ 0 for ε ≤ ε0 with explicit ε0 ≥ 1/8 needed to match the chart.
+
+## 186. W_C ultracold region: covering does not converge efficiently
+* gcover.py now supports nested blow-ups (CH = 'EA:ijl,...') and a variable edge-chart scale. With the exclusion
+  square shrunk to [31/32, 1]², the main-cube covering stalls in thin strips along x ≈ 0.98, v ∈ [0.92, 0.96] and
+  mirror (box count 97 → 411 over 4 runs; open vol 4.0e-3 → 2.3e-3). The degeneracy is not confined to a corner square:
+  it runs along the edges x = 1 and v = 1 near the corner.
+* The EA chart (scale 1/8) is slow (degree inflation; open vol 0.4375 → 0.421).
+* CONCLUSION: brute covering near the ultracold corner costs too much for < 1 min runs. Use the hand route of item 185:
+  near r0, r2 → r1, 2λ̃q1²T ~ ε⁻² beats 1.05·t(t−1)(−λ̃L) ~ ε⁻¹. Write explicit bounds in a neighbourhood
+  {x, v ≥ 7/8}, which is where the main covering already closes everything else (item 183, scale-8 run).

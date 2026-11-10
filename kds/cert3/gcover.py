@@ -40,7 +40,7 @@ def closed(ps):
         return False
     return True
 import json
-PK=f'margin/{NAME}{CH}.json'; t0=time.time()
+PK=f'margin/{NAME}32{CH.replace(":","_").replace(",","-")}.json'; t0=time.time()
 CH=sys.argv[6] if len(sys.argv)>6 else ''
 X,V,T3=c3.gens(); one3=c3.from_dict({(0,0,0):1})
 def chart2(q,sub):
@@ -52,13 +52,32 @@ def chart2(q,sub):
         else: out+=int(c)*(X*T3)**e[0]*V**e[1]*X**e[2]*N**(D-e[0]-e[2])
     dd=out.to_dict(); k=min(int(e[0]) for e in dd)
     return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):c for e,c in dd.items()})
+def blow(q,i,j,lead):
+    # blow up (var_i,var_j)->0 with scale 1/8: lead var = s/8, other = s*g/8 ; s stored in slot i if lead==i else slot j
+    N=8; G=list(c3.gens()); D=sum(int(z) for z in q.degrees()); out=0*one3
+    sl=lead; ot=j if lead==i else i
+    for e,c in q.to_dict().items():
+        e=[int(z) for z in e]; term=int(c)
+        for k in range(3):
+            if k==sl: term=term*G[sl]**e[k]
+            elif k==ot: term=term*(G[sl]*G[ot])**e[k]
+            else: term=term*G[k]**e[k]
+        out+=term*N**(D-e[sl]-e[ot])
+    dd=out.to_dict(); k=min(int(e[sl]) for e in dd)
+    return c3.from_dict({tuple(int(e[t])-(k if t==sl else 0) for t in range(3)):c for e,c in dd.items()})
 def chart(q):
     if not CH: return q
+    if ':' in CH:
+        base,spec=CH.split(':'); q=chart(q) if False else chart_base(q,base[:2])
+        if len(base)==3: q=chart2(q,base[2])
+        for tok in spec.split(','):
+            i,j,l=int(tok[0]),int(tok[1]),int(tok[2]); q=blow(q,i,j,l)
+        return q
     if len(CH)==3:
         return chart2(chart_base(q,CH[:2]),CH[2])
     return chart_base(q,CH)
 def chart_base(q,CH):
-    N=8
+    N=32
     if CH=='EA': Xs,Vs=(N-X),(N-X*V)     # x=1-sigma/N, v=1-sigma*beta/N ; (sigma,beta,tau)=(X,V,T3)
     else: Xs,Vs=(N-X*V),(N-X)
     D=sum(int(z) for z in q.degrees()); out=0*one3
@@ -68,9 +87,9 @@ def chart_base(q,CH):
     return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):c for e,c in dd.items()})
 root={k:[chart(q) for q in v[1]] for k,v in S.items()}
 def excluded(lev,idx):
-    if CH in ('EA','EB'): return idx[0]*8+8<=2**lev[0] and idx[2]*8+8<=2**lev[2]
+    if CH in ('EA','EB'): return (idx[0]*8+8<=2**lev[0] and idx[2]*8+8<=2**lev[2]) or (idx[0]*8+8<=2**lev[0] and idx[1]*8+8<=2**lev[1])
     if CH: return False
-    return all(idx[k]*8>=7*2**lev[k] for k in (0,1))
+    return all(idx[k]*32>=31*2**lev[k] for k in (0,1))
 def descend(lev,idx):
     out={k:list(v) for k,v in root.items()}
     for ax in range(3):
