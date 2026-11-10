@@ -794,20 +794,20 @@ $\Im\sigma>0$.
 
 \begin{proof}
 Let $a=0$. The angular operator then does not depend on $\sigma$ or $\Lambda$, so modes separate into spin-weighted
-spherical harmonics for every $\sigma\in\C$, with a discrete real spectrum $\{\lambda_\ell\}$ independent of $\Lambda$. Two
+spherical harmonics for every $\sigma\in\C$, with a discrete real spectrum $\{\lambda_\ell=\ell(\ell+1)-4\}_{\ell\ge2}$ (in the convention of Proposition~\ref{prop:angular}) independent of $\Lambda$. Two
 exact computations hold on separated modes, in the Kinnersley tetrad with $D^\dagger=\partial_r+i\sigma r^2/\Delta_r$
 and $D=\partial_r-i\sigma r^2/\Delta_r$ (Appendix~\ref{app:cert}, item~C8):
 \begin{equation}\label{eq:sdsTS}
 (\Th')^4(r^4R)=\frac{1}{16r^4}\,\Delta_r^2(D^\dagger)^4\Delta_r^2R,\qquad
 D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
 \end{equation}
-where $\mathcal C_\ell(\sigma)=[(\lambda_\ell+4)(\lambda_\ell+6)]^2+144M^2\sigma^2$, the second identity holds for every solution
+where $\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2$, the second identity holds for every solution
 $R$ of the $s=+2$ radial equation, and $\Lambda$ drops out. Since $P\propto r^4$ at $a=0$, the first identity shows
 that $(\Th')^4(P\Psi)$ vanishes only if $\Delta_r^2(D^\dagger)^4\Delta_r^2R=0$, hence only if $\mathcal C_\ell(\sigma)=0$, that is,
-$\sigma=\sigma_\ell:=i(\lambda_\ell+4)(\lambda_\ell+6)/(12M)$.
+$\sigma=\sigma_\ell:=i(\lambda_\ell+2)(\lambda_\ell+4)/(12M)$.
 
 By Lemma~\ref{lem:kernel} (with $\Omega_2=0$), this can happen for a mode regular at both horizons only if
-$\sigma_\ell=iN\kappa_2^\sharp$ for some integer $N\ge1$, that is, only if $M\kappa_2^\sharp\in\{(\lambda_\ell+4)(\lambda_\ell+6)/(12N)\}$.
+$\sigma_\ell=iN\kappa_2^\sharp$ for some integer $N\ge1$, that is, only if $M\kappa_2^\sharp\in\{(\lambda_\ell+2)(\lambda_\ell+4)/(12N)\}$.
 The right-hand side is a countable set independent of $\Lambda$. On the other hand, $M\kappa_2^\sharp$ is a nonconstant real-analytic function of
 $\Lambda M^2\in(0,1/9)$, so this happens only for countably many values of $\Lambda M^2$.
 

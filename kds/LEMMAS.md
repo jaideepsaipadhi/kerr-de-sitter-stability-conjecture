@@ -2134,3 +2134,11 @@ H = H0 + K_α + V with K_α ≥ 0 and H0 ≥ ℓ0(ℓ0+1) − s². Exactly (symp
 V = α(m+s)²/(2(1−x)) + α(m−s)²/(2(1+x)) + 𝒩/(1+αx²). And 𝒩 − T(1+αx²), with T = λ_cr − ℓ0(ℓ0+1) + 4, is a sum of
 manifestly nonnegative terms on |x| ≤ 1, |s| = 2 (regrouping verified exactly for s = ±2). Written into the paper as
 Prop. "Crude angular bound". [N] Galerkin λ − λ_cr ≥ 2·10⁻⁴ on 1561 points.
+
+## Item 165 — Referee issue (1), λ conventions: RESOLVED
+* λ_ours (lowest eigenvalue of H = H0 + K_α + V; equal to ℓ(ℓ+1) − 4 at a = 0) is the λ in B = λC0 + c1. The c1
+  identity uses the radial potential "+ s(1−α) − λ", which for s = +2 and a = 0 gives Teukolsky's A = (ℓ−2)(ℓ+3).
+* step126's SdS radial uses "−λ_script" with no s(1−α) term, so λ_script = λ_ours − 2. Its constant
+  [(λ_script+4)(λ_script+6)]² + 144M²σ² is therefore [(λ_ours+2)(λ_ours+4)]² + 144M²σ² = [(ℓ−1)ℓ(ℓ+1)(ℓ+2)]² + 144M²σ².
+  This is the standard TS constant and matches the referee's formula.
+* Paper fixed: C_ℓ and σ_ℓ are now written in λ_ℓ = ℓ(ℓ+1) − 4 (our convention).
