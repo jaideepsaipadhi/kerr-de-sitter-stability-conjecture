@@ -1920,3 +1920,19 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   [N] Physically true (phys150c.py, all m = 1..3 points, window up to frac 0.99999). Multiplier route (step154*.py):
   T := H − s²L and N are affine in (A, γ); certify T − κN ≥ 0 on the feasible polyhedron. Infeasible only for
   x0 ≲ 0.05 with t ≈ z0 (about 2% of abstract samples): that corner needs either physics or a smaller θ there.
+
+## Item 150 — Start condition (b): status
+* [N] Physically the start ratio ŵ/(ŝL̂) = Ĥ/(ŝ²L̂) is ≥ 1.13 on 84434 R3 points (median 1.35; nearext/start155.py).
+  So θ = 1 works with room to spare, including at x0 ≈ 0.006.
+* [P] Facts used: at ẑ the phase-1 Riccati residual vanishes, i.e. w_C = H/s satisfies μw' = −w² + 2sLw − 2μs|L'|
+  exactly there (d = 0 ⇔ D̃F_C = 0). In the multiplier form (b) ⇐ T − κN ≥ 0, with T := H − s²L.
+  The choice κ = κ_min = T_B/N_B removes B entirely: Φ = T·N_B − T_B·N is B-FREE and AFFINE in A, with
+  A-coefficient 2(t−z)s³(z−1)/z > 0 (step156.py). So κ_min would need an UPPER bound on A; larger κ needs a LOWER
+  bound on B (the margin) and gains from N_A < 0.
+* [N, NEGATIVE] Abstractly (margin ℓ ≥ A/(2z0) + 2t + γ, A ≥ a0, p > 1), the implication N ≥ 0 ⇒ H − θs²L ≥ 0 fails
+  on about 1.7% of samples for EVERY θ ∈ [0.3, 1]. All of them sit in the NEAR-NARIAI corner t − 1 ≈ x0 ≪ 1
+  (step155*.py, step157.py). A larger margin constant does not help. g_θ > 0 itself holds abstractly for θ ≥ 0.3,
+  so only the start is at issue.
+* So (b) needs one physical input that the abstract parameters do not see in the near-Nariai corner, e.g. a
+  certified relation between A and (t − 1)/x0 there, or a direct physical certificate of Φ-type
+  inequalities in the window variables (as in item 148, with the fast Bernstein test).
