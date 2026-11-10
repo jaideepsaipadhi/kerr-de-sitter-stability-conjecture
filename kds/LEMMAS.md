@@ -2183,3 +2183,19 @@ Replaced the unverifiable determinant "−64Mp₀⁴/c" with a triangular system
 (i) Misner string: the axis generators are ∂ψ + I±²∂t̃. Under δΔ_I = 2δn·I, both roots shift by δn/(c+λ̃a²) (sympy-checked), so the generators differ by 4a·δI·∂t̃. Since t̃ is not periodic, δn = 0 (a ≠ 0; at a = 0 it is the classical NUT case).
 (ii) C-metric conical condition at first order gives 4M·δα = 0.
 Diagonal entries 4a/(c+λ̃a²) and 4M. Residual soft spot: the claim that the acceleration tangent doesn't move the axis generators at first order is asserted from Griffiths–Podolský, not recomputed.
+
+## 172. Cosmological side, C̃ ≤ 0: the w-variable ELIMINATED (proved by hand + positive-coefficient identity)
+Setting: q̃ = (z−z0)(q1 + κ(t−z)), with H = 2μ − μ'(z−z0) and F as in item 158, so q1C̃ = −Q2·H − K(t−z)F (K = κq1, Q2 = q1²).
+* [P] Substitute z0 = 1+a, z = 1+a+b, t = 1+a+b+c (a, b, c > 0). Then
+  H = a²b + 2a²c + 2ab² + 2abc + ab + 2ac + b³ + b² + bc > 0, and
+  G := (t−z0)H + (t−z)F = a²b² + 2a²bc + 4a²c² + 2ab³ + 2ab²c + ab² + 4abc² + 2abc + 4ac² + b⁴ + b³ + b²c + 2bc² ≥ 0,
+  all coefficients positive (sympy). So (t−z)(−F) ≤ (t−z0)H on 1 < z0 < z < t. Numerically sup = 0.895.
+* [P] Hence, wherever F < 0, q1C̃ ≤ −H(Q2 − K(t−z0)); wherever F ≥ 0, q1C̃ ≤ −Q2H < 0.
+  LEMMA: C̃ ≤ 0 on (z0, t) as soon as κ(t−z0) ≤ q1.
+* So the C̃ half of hyp:cos reduces to ONE scalar inequality with no w:
+      (S_C)   1.05·(−L(t))·t(t−1) ≤ 2 q1² (t−z0)   on the gate L(t) < 0.
+  Physically κ(t−z0)/q1 ≤ 0.60 (item 159). This is a 4-variable (x, v, τ, 1/m) certificate, one dimension down.
+* [N] Bend-shape variants φ = ((z−z0)/(t−z0))^p (nearext/cos190.py, 1257 gate points): C̃ ≤ 0 for every p, but
+  D̃ ≤ 0 fails at 437/767/975 points for p = 1/2/4. p = 0 (the linear bend) has 0 failures. Keep p = 0.
+* Reformulation used for intuition: C̃ = −2μ^{3/2}(q̃/√μ)', so C̃ ≤ 0 ⇔ q̃²/μ = V + L̃ is nondecreasing.
+Remaining for hyp:cos: (S_C) [4D, scalar] and D̃ ≤ 0 [5D, still needs w].
