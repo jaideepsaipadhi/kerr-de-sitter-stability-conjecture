@@ -2269,3 +2269,19 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
   ranges are disjoint (S = A/t+3t: need β ≥ 6.9, allowed β ≤ 0.67). So the constraint zf ≥ 1/2 has to enter through
   box COVERING (on each (x, v, τ) box, either 2(z0−1) < t−1 is certified, or Q2'/H2'/H1' ≥ 0), not through a
   multiplier.
+
+## 179. S_μ covering certificate: built, validated, 99% of the window closed
+* cert3/smu_build.py: exact window polynomials for λ̃L(t) (Q2' = m² coeff, H2' = value at m = 2, H1' = m = 1) and
+  G = 2(z0−1) − (t−1), b-reduced to (F1, Y, P). smu_chk.py: H2' and z0 match the direct pdq numerics to 1e-13 at 3
+  points. Concavity in 1/m is automatic (LQ0' = −K(1+7α) + λ̃(1−2t) < 0).
+* Factorisation: every odd-multiplicity factor except the cores is linear and sign-definite on the cube. Cores: G has
+  (2,2,1)², (4,4,2) in Y, (5,5,2)²; L has (24,24,2) in F1, (26,26,2) in Y, (24,26,4) in P.
+* Sign rule at b₊: value > 0 iff (P > 0, F1 > 0) or (P < 0, Y < 0); value < 0 iff (P > 0, F1 < 0) or (P < 0, Y > 0).
+  Sampling shows G < 0 is realised through BOTH patterns, so both are needed.
+* cert3/smu_cover4.py (resumable via margin/smu_open.json): Bernstein covering in (x, v = 1/r2, τ). A box closes if
+  G < 0 is certified or Q2', H2', H1' > 0 are certified (F1/P rule). Result: open volume 0.0110 (122 boxes at total
+  level ≤ 15). 90 boxes are interior, 24 touch x = 1 (r0 → 1, near-extremal), and a few touch τ = 1.
+* Adding the (P < 0, Y < 0) branch for L (smu_cover5.py) makes each box far slower (the Y cores have degree 26), so it
+  closed nothing in 45 s.
+* STATUS: S_μ certificate ~99% done. The remaining interior boxes need depth; the x = 1 boxes need an asymptotic
+  (near-extremal) argument, since a Bernstein covering cannot close on a face where G and L degenerate.
