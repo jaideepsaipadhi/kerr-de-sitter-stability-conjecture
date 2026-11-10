@@ -2024,3 +2024,28 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   (i) A = 0 when g(0) ≥ 0; (ii) A = −g0/g1 when it lies in range; (iii) the recession condition q1 ≥ 0 when the ray is
   unbounded. Each is a 4-variable rational inequality in (t, z0, ŝ, z) with no square roots. Next: certify these
   three by the fast Bernstein test after compactification.
+
+## Item 157 — (b') PROVED. Hence P2, and the EVENT LEMMA IN EVERY REGIME
+* Exact form (step172.py): with g = 2z0·N(ŝ; A, Bm(A)) = g0 + g1A and 2ŝzz0·Q(Bm) = q0 + q1A:
+  g1 = 2ŝ²(−ŝ³ + ŝ(t − z0²) − 2z0(z0−1)(t−z0)). Every piece is polynomial in (t, z0, ŝ, z); no roots, no square roots.
+* Compactification (step173_build.py): z0 = 1 + X/(1−X), t = z0 + x0·T/(1−T), ŝ = x0σ, z = z0 − ŝρ, with
+  (X, T, σ, ρ) ∈ (0,1)⁴. Denominator signs: g0: (T−1)²(X−1)⁷ < 0; g1: (T−1)(X−1)⁵ > 0; q0: (T−1)²(X−1)⁶ > 0;
+  W := q1g0 − q0g1: (T−1)³(X−1)¹¹ > 0. Degrees ≤ (10, 3, 10, 4).
+* CERTIFIED by exact 4-D Bernstein covering (cover4.py, fast rev-shift-rev coefficients; per box: all coefficients
+  ≥ 0, and every face not on the cube boundary carries a positive coefficient):
+  - g1 < 0 everywhere (1 box). So for g0 ≥ 0 the admissible A form the segment [0, A*], A* = −g0/g1; for g0 < 0
+    there is none.
+  - (I) g0 ≥ 0 ⇒ q0 > 0: every box has either g0 < 0 or q0 > 0 (51 boxes, 0.4 s). This gives Q(Bm) > 0 at A = 0.
+  - (II) g0 ≥ 0 ⇒ W > 0 (25 boxes, 0.6 s). This gives Q(A*) = −W/g1 > 0.
+  - The face ρ = 1 (z = ẑ), which the open cube excludes: q0 > 0 and W > 0 there unconditionally (1 box each).
+  Q is affine in A, so Q(Bm) > 0 on the whole admissible segment. ∎ S'
+* Chain: S' ⇒ Q(B*) = Q(Bm) + ŵg/|N_B| > 0 (margin: B* = B_true ≥ Bm; N_B < 0 by item 121). Then ŵL > 2μ|L'| on
+  [ẑ, z0). On the segment where ŵ ≤ sL, this gives D > 0 and k− < ŵ < k+, i.e. R(ŵ) > 0, which is (b'). So
+  k = min(ŵ, sL) is a subsolution from ẑ to z0, hence w > 0 there and f2'(z0) > 0: P2.
+* EVENT LEMMA, all regimes, for every subextremal KdS and every m ≥ 1 on the window:
+  R1/R2 (item 47, needs only L(z0) > 0: item 133); R3: P1 (item 135), P2(a) (item 149), P2(b') (this item).
+  Computer inputs are all exact: the margin certificate L(z0) ≥ A/(2z0) + 2t (items 137/149), plus the covering
+  certificates above.
+* BUG NOTE: fastbern.half had the shift/scale order reversed for right halves (it computed p(x/2 + 1) instead of
+  p((x+1)/2)). Fixed now. No earlier certified claim used subdivision; items 133–149 all passed in a single box.
+  Only the diagnostic zhat2_sub.py "False" result of item 148 is void.

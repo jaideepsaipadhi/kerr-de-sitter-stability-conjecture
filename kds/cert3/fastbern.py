@@ -13,9 +13,10 @@ def pos_open_cube(p):
     mn,mx,n=bern_signs(p); return mn>=0 and mx>0
 def half(p,k,right):
     ctx=p.context(); g=list(ctx.gens()); one=ctx.from_dict({(0,)*len(g):1})
-    if right: p=p.compose(*[(x+one) if i==k else x for i,x in enumerate(g)],ctx=ctx)
     n=int(p.degrees()[k])
-    return ctx.from_dict({ex:c*(2**(n-int(ex[k]))) for ex,c in p.to_dict().items()})
+    q=ctx.from_dict({ex:c*(2**(n-int(ex[k]))) for ex,c in p.to_dict().items()})
+    if right: q=q.compose(*[(x+one) if i==k else x for i,x in enumerate(g)],ctx=ctx)
+    return q
 def subdiv_pos(p,maxdepth=12,tmax=50):
     import time; t0=time.time(); st=[(p,0,(0,0,0),(0,0,0))]; boxes=0
     while st:
