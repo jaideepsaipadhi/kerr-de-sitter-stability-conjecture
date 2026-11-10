@@ -2142,3 +2142,8 @@ Prop. "Crude angular bound". [N] Galerkin λ − λ_cr ≥ 2·10⁻⁴ on 1561 p
   [(λ_script+4)(λ_script+6)]² + 144M²σ² is therefore [(λ_ours+2)(λ_ours+4)]² + 144M²σ² = [(ℓ−1)ℓ(ℓ+1)(ℓ+2)]² + 144M²σ².
   This is the standard TS constant and matches the referee's formula.
 * Paper fixed: C_ℓ and σ_ℓ are now written in λ_ℓ = ℓ(ℓ+1) − 4 (our convention).
+
+## Item 166 — Referee issue (3), adjoint identity: PROVED by hand (paper updated)
+O'^† = (Þ − ρ̄)(Þ' + 3ρ') − (ð − τ̄')(ð' + 3τ') + V0, from (Þ − ρ)^† = −(Þ − ρ̄) and (Þ' − 4ρ' − ρ̄')^† = −(Þ' + 3ρ')
+(and primes/ð analogues). With ÞP = −4ρP etc. (P = Ψ2^{−4/3}, Bianchi ÞΨ2 = 3ρΨ2 …) this gives O'^†∘P = P∘O exactly.
+No sampling is needed.

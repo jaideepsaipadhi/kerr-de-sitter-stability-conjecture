@@ -681,10 +681,24 @@ direct computation gives
 \begin{equation}\label{eq:adjoint}
 \mathcal O'^\dagger\circ P=P\circ\mathcal O.
 \end{equation}
-For instance, the radial part is
+\emph{Proof of \eqref{eq:adjoint}.} Write $\mathcal O=(\Th-4\rho-\bar\rho)(\Th'-\rho')-(\eth-4\tau-\bar\tau')(\eth'-\tau')+V_0$
+and $\mathcal O'$ for its prime, where the zeroth-order term $V_0$ (a constant multiple of $\Psi_2$, plus a $\Lambda$-term) is
+prime-invariant and real. Using $(AB)^\dagger=B^\dagger A^\dagger$ and the adjoint rules,
 \[
-(\Th-\bar\rho)(\Th'+3\rho')(PX)=P(\Th-4\rho-\bar\rho)(\Th'-\rho')X.
+(\Th-\rho)^\dagger=-(\Th-\bar\rho),\qquad(\Th'-4\rho'-\bar\rho')^\dagger=-(\Th'+3\rho'),
 \]
+and similarly for $\eth$, with $(\rho,\bar\rho,\rho')$ replaced by $(\tau,\bar\tau',\tau')$. Hence
+\[
+\mathcal O'^\dagger=(\Th-\bar\rho)(\Th'+3\rho')-(\eth-\bar\tau')(\eth'+3\tau')+V_0.
+\]
+From $\Th\Psi_2=3\rho\Psi_2$, $\Th'\Psi_2=3\rho'\Psi_2$, $\eth\Psi_2=3\tau\Psi_2$ and $\eth'\Psi_2=3\tau'\Psi_2$ we get
+$\Th P=-4\rho P$, $\Th'P=-4\rho'P$, $\eth P=-4\tau P$ and $\eth'P=-4\tau'P$. Therefore
+\[
+(\Th-\bar\rho)(\Th'+3\rho')(PX)=(\Th-\bar\rho)\big(P(\Th'-\rho')X\big)=P(\Th-4\rho-\bar\rho)(\Th'-\rho')X,
+\]
+the same computation applies to the angular term, and $V_0$ commutes with $P$. This proves \eqref{eq:adjoint} as an
+operator identity, with no sampling.
+
 Wald's argument \cite{Wal78}, which uses only the decoupling identity $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$
 and the self-adjointness of the linearized Einstein operator $\mathcal E$, then gives the following.
 
