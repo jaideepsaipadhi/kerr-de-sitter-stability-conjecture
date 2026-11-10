@@ -1743,3 +1743,21 @@ Write B = 3z0 − A/z0 + β, where β = L(z0) > 0 (item 133). The R3 constraints
   fails on 4 of 3000, and with only the constant M it fails on 82.
 * REMAINING for P2: certify (P2*) over the 4-parameter family (t, z0, A, β). It is a nested-integral inequality, so it
   needs validated quadrature with exact bounds on the integrands (rational functions plus the logs from ∫1/μ).
+
+## Item 139 — Margin L(z0) ≥ A/(2z0) + 2z0 PROVED; P2 by an explicit polynomial barrier, except one corner
+* PROVED (cert3/margin_red.py with LQ0 term λ̃(1+t−5z0); fullcert_m.py: all six signs +1): L(z0) ≥ A/(2z0) + 2z0 on the
+  window. Margins 3z0, 4z0 and 6z0 do not certify (H2-P and H1-P return None).
+* P2, barrier version (replaces the nested-integral criterion of item 138 wherever it works). With
+  w = μf2'/f2 and σ = s/ŝ, take k := ŵ σ² (1 − σ + σ²). If
+     (B)  μk' + k² − 2sLk + 2μs|L'| ≤ 0   on (ẑ, z0),
+  then k is a subsolution of the Riccati equation. With k(ẑ) = ŵ, this gives w ≥ k > 0 on [ẑ, z0), and strict comparison
+  gives w(z0) > 0. Condition (B), divided by s, is POLYNOMIAL in (t, z0, A, β, Ŝ, σ).
+  - Eliminations (step140_build.py, step140e.py): N is affine in A and in β, so the root condition N(Ŝ) = 0 can be
+    solved for A at fixed (t, z0, Ŝ, γ), with β = A/(2z0) + c z0 + γ, γ ≥ 0. No R3 gate is needed numerically.
+  - [N] (B) holds on 9000/9000 generic random R3 points with margin ≥ A/(2z0) + z0 (one failure at seed 23, in the corner
+    below). The plain k = ŵσ² fails on 2 of about 16000, and k = ŵσ^p with p > 2.1 fails badly.
+  - FAILS in the CORNER t ≳ 100, zf = x0/(t−1) ≲ 0.02, ẑ → 1 (Ŝ/x0 → 1): about 7% failures for c = 1 and about 4% for
+    c = 1.5 (step141b.py). This is the known degenerate corner (cf. item 33's rescaling x = (z0 − 1)y). It needs a
+    barrier adapted to μ ≈ t·x·z near z = 1.
+* NEXT: (a) corner barrier in rescaled variables; (b) exact certificate of (B) on the complement, which is a 4- or
+  5-variable polynomial with σ and the γ ≥ 0 gate.
