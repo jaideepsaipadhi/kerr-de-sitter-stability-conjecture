@@ -2049,3 +2049,22 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * BUG NOTE: fastbern.half had the shift/scale order reversed for right halves (it computed p(x/2 + 1) instead of
   p((x+1)/2)). Fixed now. No earlier certified claim used subdivision; items 133–149 all passed in a single box.
   Only the diagnostic zhat2_sub.py "False" result of item 148 is void.
+
+## Item 158 — Cosmological lemma for the bent q: structure, and a physical verification with the crude B
+* Setting. f+ = 1, q̃ = (z − z0)Q with Q = q1 + κ(t − z), κ ≥ 0. Changing q changes L, since q²/μ − L is fixed:
+  L̃ = L + κ(z−z0)²(2q1 + κ(t−z))/(z(z−1)). Conditions on (z0, t):
+     C̃ = μ'q̃ − 2μq̃' ≤ 0,   D̃ = q̃L̃' + ½(μq̃'')' = q̃L̃' − κμ' ≤ 0,   and L̃(t) > 0 at the endpoint.
+  (For κ = 0 these reduce to item 19: C+ = −q1H ≤ 0 by Lemma H, and D+ = qL' ≤ 0.)
+* [P] MONOTONICITY. C̃ and D̃ do not involve B (L̃' does not). L̃(t) = L(t) + 2κq1(t−z0)²/(t(t−1)) is increasing in B.
+  So the crude angular bound B_crude suffices, exactly as on the event side.
+* [P] C̃ = −QH + 2κμ(z−z0) = −q1H − κE(z), with E = (t−z)H − 2μ(z−z0) = (t−z)·F and
+  F = z0(2tz − t − z²) − tz − z³ + 2z², which is affine in z0. F(z0 = z) = 2z(z−1)(t−z) > 0 and
+  F(z0 = 1) = (z−1)(t − z²). So E ≥ 0, hence C̃ ≤ 0 for every κ ≥ 0, unless z0 is close to 1 with z² > t. In that
+  case C̃ ≤ 0 needs κ/q1 ≤ H/|E|, which is a bound on the bend relative to q1.
+* [N] PHYSICAL check (nearext/cos174.py, 244834 points, m = 1..39, crude B): q1 > 0 always. L(t) < 0 occurs at
+  1923 points. With the bend κ = 1.05 × (minimal κ making L̃(t) > 0), C̃ ≤ 0 and D̃ ≤ 0 hold on ALL of them. With κ = 0
+  everywhere else, the old item 19 applies.
+* REMAINING. A proof needs two physical relations: (i) κ/q1, i.e. (−L(t))·t(t−1)/(q1²(t−z0)²), against H/|E| in the
+  region z0 ≈ 1, z² > t; (ii) D̃ ≤ 0, where the correction term in L̃' competes with L' = −A/z² − 3 and with κμ'
+  (μ' < 0 near t). Both are certificate targets in the window variables (q1 is explicit there:
+  q1 = −(t−1)Im(e1)/(2(z0−1))).
