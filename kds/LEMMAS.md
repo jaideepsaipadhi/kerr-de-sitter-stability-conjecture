@@ -2439,3 +2439,17 @@ inequalities.
 * To finish this cheaply: (a) a hand argument using that F is linear and 3t − B is linear in w (so (G_C) is a convex
   quadratic in w, whose sign follows from a discriminant inequality in (ε, θ, m)); or (b) a faster engine
   (float Bernstein with outward rounding / interval arithmetic) for the chart covering.
+
+## 192. (G_C) corner: τ eliminated exactly (quadratic in τ), 2D covering, still throughput-limited
+* [P] Each (G_C) target (Q2, H2, H1), after clearing denominators, is a QUADRATIC q(τ) = c0 + c1τ + c2τ² with
+  coefficients polynomial in (r0, r2, b) (cert3/scg_tau.py). So q ≥ 0 on [0, 1] ⇔ q(0) > 0, q(1) > 0, and
+  [c2 ≤ 0 or c1 ≥ 0 or c1 + 2c2 ≤ 0 or 4c0c2 − c1² > 0]. Each condition is b-reduced to (F1, Y, P).
+  This turns the corner problem into a 2D one, in (x, v) or the chart (σ, β).
+* [N] On the chart face σ = 0 (the ultracold limit), q(0), q(1), the discriminant and c1 are all strictly positive
+  for every β (sampled at 21 points). So the 2D covering must terminate.
+* cover2d.py, chart EA: open vol 0.20 after one 40 s run (14 boxes closed). With only {q0, q1, v1} it is worse
+  (0.48): the discriminant branch is needed in the interior. Throughput is again the limit (the disc core has degree
+  ~110 before the chart substitution).
+* The faster-engine route (interval float Bernstein) is now the practical bottleneck for finishing S_C. The
+  mathematics is in place: S_C on the window = [W_C covering outside the corner square (item 183)] + [(G_C) on the
+  corner square via S_μ (item 190)], and (G_C) on the square reduces to this 2D sign problem.
