@@ -2199,3 +2199,18 @@ Setting: q̃ = (z−z0)(q1 + κ(t−z)), with H = 2μ − μ'(z−z0) and F as i
   D̃ ≤ 0 fails at 437/767/975 points for p = 1/2/4. p = 0 (the linear bend) has 0 failures. Keep p = 0.
 * Reformulation used for intuition: C̃ = −2μ^{3/2}(q̃/√μ)', so C̃ ≤ 0 ⇔ q̃²/μ = V + L̃ is nondecreasing.
 Remaining for hyp:cos: (S_C) [4D, scalar] and D̃ ≤ 0 [5D, still needs w].
+
+## 173. Cosmological side, D̃: exact structure after the (a, b, c) substitution
+z0 = 1+a, z = 1+a+b, t = 1+a+b+c; E = q1³D̃·z²(z−1)² (P182), r := K/Q2 = κ/q1. [P, sympy]
+  E =  −A·b(a+b)²·Q2(Q2 + cK)                                   [A-term, < 0]
+       −3b·z²(z−1)²·Q2²                                         [< 0]
+       + z²(z−1)²·g·Q2K,  g = z(z−1) − (t−z)(5z − 3z0 − 1)      [indefinite]
+       + b²·{ 2(2a²+2ab+2a+b)Q2²K  −  h₂·Q2K²  −  c·h₃·K³ }
+  h₂ = a²b − 6a²c + 2ab² − 6abc + ab − 6ac + b³ + b² − 3bc,  h₃ = same pattern with 6→2, 3→1.
+* Every non-A term except −3bz²(z−1)²Q2² carries a factor r. So D̃ ≤ 0 ⇔ A ≥ r·[α(a,b,c,r) + Q2·β(a,b,c,r)], where
+  α comes from the g-term (with the −3b term subtracted) and β from the b²-bracket. Both are explicit.
+* b → 0 (z → z0): E → z0²(z0−1)²·Q2K·[z0(z0−1) − (t−z0)(2z0−1)] = −z0(z0−1)·μ'(z0)·Q2K, which matches item 159
+  (the bend needs μ'(z0) ≥ 0).
+* Certificate target, now explicit: on the gate, with r ≤ 1/(t−z0) (from S_C), show
+  sup_b [α + Q2β]·r ≤ A, with b ∈ (0, t−z0). This is the 5D statement, but in polynomial form linear in A and Q2, with
+  the w-dependence confined to α and β.
