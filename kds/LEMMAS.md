@@ -2088,3 +2088,14 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * [N] On 300 physical bend-needing points, f = 1 − c(z−z0)^p (p = 1, 2, 3, 4, 6; f(t) = −δ) satisfies C^f, D^f ≤ 0 at
   NONE of them (nearext/cosf180.py). Near t both terms of D^f = q(f'L + fL') + ½q1(μf')' turn positive when L, f < 0.
   The bent-q construction (items 158–159) remains the route.
+
+## Item 161 — Cosmological D̃ as a LOWER BOUND on A: physical margin 1.44
+* [P] D̃ is affine in A with coefficient −q̃/z² < 0 on (z0, t). So D̃ ≤ 0 ⇔ A ≥ A_req(t, z0, q1, κ; z), and the
+  cosmological lemma needs A ≥ max_z A_req.
+* [N] Physically, with κ = 1.05·κ_min (κ_min from L(t) at B_crude), A/max_z A_req ≥ 1.44 on all 1742 bend-needing
+  points (5th percentile 2.55, median 31); at 8% of them A_req ≤ 0, so D̃ ≤ 0 holds for every A ≥ 0
+  (nearext/cos181.py).
+* m-structure: q1 ∝ m, A ∝ m², B_crude = m²b2 + mb1 + b0, κ ∝ (−L(t))/q1 = O(m). So D̃ is a low-degree polynomial in m
+  with coefficients in (x, v, τ, z), and the certificate has the same shape as items 148/157 (leading coefficient,
+  plus endpoint values at m = 2, 3, plus concavity), with the gate L(t) < 0 and the √D reduction.
+* This is the last mathematical gap in Theorem A.
