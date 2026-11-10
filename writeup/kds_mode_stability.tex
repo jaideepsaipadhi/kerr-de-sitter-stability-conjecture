@@ -10,6 +10,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \numberwithin{equation}{section}
@@ -31,7 +32,7 @@
 \begin{document}
 
 \begin{abstract}
-We prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
+Conditionally on one explicit, numerically verified inequality (the cosmological-side current near extremality), we prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
 full subextremal range: there are no nontrivial outgoing mode solutions at frequencies $\sigma$ with
 $\Im\sigma\ge0$. We then show that every generalized mode solution of the ungauged linearized Einstein equation
 $D_g\mathrm{Ric}(h)=\Lambda h$ with $\Im\sigma\ge0$ is pure gauge if $\sigma\ne0$, and the sum of a linearized
@@ -75,7 +76,15 @@ The nonlinear stability of the KdS family was proved by Hintz and Vasy \cite{HV1
 holes. Hintz, Petersen and Vasy \cite{HPV25} extended this to the full subextremal range, conditional on mode
 stability for the ungauged linearized Einstein equation \cite[Assumption~1.2]{HPV25}. Hintz \cite{Hin26} recently
 proved mode stability for scalar waves in the full subextremal range, and left the Teukolsky equations of spin
-$s=\pm2$ open. Our main results settle both questions.
+$s=\pm2$ open. Our main results address both questions.
+
+\medskip\noindent\textbf{Status of this draft.} One input remains unproved: Hypothesis~\ref{hyp:cos}, the
+cosmological-side current in the near-extremal regime where $L(t)\le0$. It holds on every sampled point, and it
+reduces to an explicit polynomial inequality in the window variables (Appendix~\ref{app:cert}), but its exact
+certificate has not yet been completed. Theorems~\ref{thm:A} and~\ref{thm:B} and the corollary below are proved
+\emph{conditionally on Hypothesis~\ref{hyp:cos}}. They are unconditional for parameters with $L(t)>0$ throughout the
+window; numerically, $L(t)\le0$ occurs only near extremality.
+\medskip
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
 On every subextremal KdS spacetime, the Teukolsky equations of spin $s=+2$ and $s=-2$ have no nontrivial outgoing
@@ -94,7 +103,7 @@ smooth.
 \end{theorem}
 
 For $a=0$, Theorem~\ref{thm:B} is \cite[\S7]{HV18}. Theorem~\ref{thm:B} is \cite[Assumption~1.2]{HPV25} (with $\cL_Xg=2\delta^*X^\flat$),
-so \cite[Theorem~1.4]{HPV25} now applies unconditionally:
+so, given Hypothesis~\ref{hyp:cos}, \cite[Theorem~1.4]{HPV25} applies:
 
 \begin{corollary}
 Subextremal Kerr--de Sitter black holes are nonlinearly stable as solutions of the Einstein vacuum equations with
@@ -114,7 +123,7 @@ L(z)=\frac{A}{z}+B-3z,\qquad A>0,
 in a variable $z$ in which the event and cosmological horizons sit at $z=1$ and $z=t$. The dual equation has exactly
 the structure of the scalar radial equation in \cite{Hin26}, so Hintz's two-current method applies. It reduces mode
 stability to an \emph{event lemma}: an ordinary differential inequality in the four parameters $(t,z_0,A,B)$. A lower
-bound on the spin-weighted spheroidal eigenvalue gives the a priori bound $B\ge5.5t-1.25$. We prove the event lemma
+angular bound gives the a priori margin $L(z_0)\ge A/(2z_0)+2t$. We prove the event lemma
 in three regimes. In the hardest one we follow \cite[\S4.3.3]{Hin26}: we first saturate one of the two conditions and
 then solve the other with equality. The remaining claims reduce to sign statements about explicit polynomials, which
 we certify by exact Bernstein-basis branch and bound.
@@ -341,47 +350,39 @@ and $n_2+3$ are divisible by $s^2-4$.
 \end{proof}
 
 \begin{lemma}[A priori bounds]\label{lem:floor}
-Throughout the open window, $L'<0$ on $[1,t]$, $L(t)>0$ and $B\ge5.5t-1.25$.
+Throughout the open window, $L'<0$ on $[1,t]$, and for every $m\ge1$
+\begin{equation}\label{eq:margin}
+L(z_0)\ \ge\ \frac{A}{2z_0}+2t .
+\end{equation}
 \end{lemma}
 \begin{proof}
-First, $L'=-A/z^2-3<0$.
-
-Next, by \eqref{eq:vieta}, $2(1-\alpha)C_0-(2t-1)$ is a positive multiple of $3(r_0+r_1)^2\ge0$, so
-$C_0\ge\frac{2t-1}{2(1-\alpha)}$. This gives $c_1\ge4t-\frac12$.
-
-Finally, the spin-weighted spheroidal eigenvalue satisfies $\lambda\ge\frac32$ on the window
-(Proposition~\ref{prop:angular}). Hence $B=\lambda C_0+c_1\ge\frac32\cdot\frac{2t-1}{2}+4t-\frac12=5.5t-1.25$, and
-$L(t)\ge B-3t>0$.
+First, $L'=-A/z^2-3<0$. For \eqref{eq:margin} we use only a crude lower bound for the angular eigenvalue,
+$\lambda\ge\lambda_{\rm cr}:=\ell_0(\ell_0+1)-4-4\alpha-4\alpha|m|(1+\alpha)-2(1+\alpha)^2|\xi|(|m|+2)$ with
+$\ell_0=\max(|m|,2)$ (Proposition~\ref{prop:angular}). Since $L(z_0)$ is increasing in $B=\lambda C_0+c_1$, it suffices to prove
+\eqref{eq:margin} with $\lambda=\lambda_{\rm cr}$. Then $\Lambda/3$ times $L(z_0)-A/(2z_0)-2t$ is a quadratic polynomial
+$m^2Q_2+mQ_1+Q_0$ (with the modification $+4C_0\Lambda/3$ at $m=1$) whose coefficients are rational functions of
+$(r_0,r_2,a^2,\tau)$, where $\tau\in(0,1)$ parametrizes the window. One has $Q_0<0$, so it suffices to show positivity
+at $m=1$, at $m=2$ and of $Q_2$. After eliminating $a^2$ by the quadratic relation it satisfies, each of these reduces
+to the positivity of finitely many polynomials on the open cube in $(r_0,1/r_2,\tau)$. All of them have nonnegative
+Bernstein coefficients on $[0,1]^3$, not all zero, which proves positivity on the open cube (Appendix~\ref{app:cert},
+item~C2).
 \end{proof}
 
-\begin{proposition}[Angular bound]\label{prop:angular}
-For $s=\pm2$ and $w=\sigma/m$ in the window, the eigenvalue satisfies $\lambda\ge\frac32$.
+\begin{proposition}[Crude angular bound]\label{prop:angular}
+For $s=\pm2$ and $w=\sigma/m$ in the window, $\lambda\ge\lambda_{\rm cr}$.
 \end{proposition}
-
 \begin{proof}
-On the window $0<w$ (Proposition~\ref{prop:window}) and $aw\le1$, since $w_1$ is a positive-weight average of
-$\Omega_1$ and $\Omega_3$, and each $\Omega_j<1/a$. Thus $\xi:=a\sigma$ satisfies $0\le m\xi\le m^2$. Also
-$\alpha<7-4\sqrt3$ by Lemma~\ref{lem:alpha}. Write the angular operator as $H=H_0+P+\mathcal R$, where:
-\begin{itemize}
-\item $H_0$ is the operator at $\alpha=\xi=0$, with spectrum $\{\ell(\ell+1)-s(s+1)\}$;
-\item $P$ is polynomial in $\cos\theta$ with coefficients linear in $\xi$;
-\item $|\mathcal R|\le C\alpha$.
-\end{itemize}
-
-\emph{Case $|m|\ge3$.} The terms linear in $m\xi$ are nonnegative, and the remaining perturbation is bounded below by
-$-6\alpha-4\alpha(1+\alpha)|m|$. This gives $\lambda\ge m^2+|m|-4.43-0.31|m|\ge6.6$.
-
-\emph{Case $|m|\in\{1,2\}$.} We use a two-level bound. The lowest state of $H_0$ in the sector $(m,s)$ is the unique
-$\ell=2$ state, and the next eigenvalue exceeds it by at least $6$. For a normalized trial state
-$c\psi_0+\phi$ with $\phi\perp\psi_0$,
-\[
-\langle H(c\psi_0+\phi),c\psi_0+\phi\rangle\ge(2+\langle P\rangle-C\alpha)|c|^2+(8+\inf P-C\alpha)\|\phi\|^2
--2\langle P^2\rangle_c^{1/2}|c|\|\phi\|.
-\]
-The moments $\langle P\rangle$ and $\langle P^2\rangle$ are exact Beta integrals. The minimum over
-$(\alpha,\xi)\in[0,0.0718]\times[0,|m|]$ is certified by interval arithmetic (Appendix~\ref{app:cert}, item~C2). The
-certified minima are $1.957$, $1.665$, $1.920$ and $1.914$ for $(m,s)=(1,-2),(1,2),(2,-2),(2,2)$; all exceed $3/2$.
+Write the angular operator as $H_0+K_\alpha+V_{\rm sing}+E$, where $H_0$ is the operator at $\alpha=\xi=0$,
+$K_\alpha=-\partial_x\alpha x^2(1-x^2)\partial_x\ge0$, and
+$V_{\rm sing}=\frac{\alpha(m+s)^2}{2(1-x)}+\frac{\alpha(m-s)^2}{2(1+x)}\ge0$. The remainder $E$ is the bounded
+potential of \cite[(2.3)]{STU98} after these subtractions (this is an exact identity). The bound follows from
+$H_0\ge\ell_0(\ell_0+1)-s^2$ in the sector $(m,s)$, together with a pointwise lower bound for $E$ on $[-1,1]$, using
+$0\le a\sigma\le m$ on the window.
 \end{proof}
+
+\noindent\emph{Remark.} An earlier version of this paper claimed $\lambda\ge\frac32$. That claim was based on a sign
+error in the angular operator and is false: near extremality, $\lambda$ can be negative for $m=2$. Nothing below uses
+it.
 
 \subsection{Currents}
 On the dual equation \eqref{eq:dual} we use the currents of \cite[Lemma~4.1]{Hin26}, in the form with variable
@@ -416,13 +417,15 @@ Then every outgoing solution of \eqref{eq:dual} vanishes.
 \end{proposition}
 
 \begin{proof}
-\emph{Cosmological side.} On $[z_0,t]$ take $f_+=1$. Then $C^{f_+}=-q_1H\le0$ by Lemma~\ref{lem:H}, and
+\emph{Cosmological side.} If $L(t)>0$, take $f_+=1$ on $[z_0,t]$. Then $C^{f_+}=-q_1H\le0$ by Lemma~\ref{lem:H}, and
 $D^{f_+}=qL'\le0$ because $q\ge0$ there. The limits of the current are computed as in \cite[Lemma~4.2]{Hin26}:
 \[
 \lim_{z\to t}J^{f_+}[u_+]=L(t)q(t)|B_t|^2,\qquad J^{f_+}[u_+](z_0)=-\mu(z_0)q_1\Re(u'\bar u)(z_0).
 \]
-Since $J^{f_+}$ is non-increasing and $L(t)q(t)>0$ by Lemma~\ref{lem:floor}, we get $\Re(u'\bar u)(z_0)\le0$, with
-equality only if $B_t=0$.
+Since $J^{f_+}$ is non-increasing and $L(t)q(t)>0$, we get $\Re(u'\bar u)(z_0)\le0$, with
+equality only if $B_t=0$. If $L(t)\le0$, the same argument is run with the bent phase $\tilde q=(z-z_0)\big(q_1+\kappa(t-z)\big)$
+and the correspondingly modified $\tilde L=L+(\tilde q^2-q^2)/\mu$, for a $\kappa>0$ with $\tilde L(t)>0$; see
+Hypothesis~\ref{hyp:cos} below.
 
 \emph{Event side.} On $[1,z_0]$, write $q=-q_1s$. Then $C^f\le0$ is equivalent to (C), and $D^f\le0$ is equivalent to
 $(\mu f')'\le2s(Lf)'$, which is (D). By (a), $\lim_{z\to1}J^f[u_-]=L(1)f(1)q(1)|B_1|^2=0$. Monotonicity gives
@@ -439,8 +442,16 @@ $u=0$.
 By Propositions~\ref{prop:transform}, \ref{prop:dual} and~\ref{prop:reduction}, the real-frequency part of
 Theorem~\ref{thm:A} follows from the next result, which only involves the four numbers $(t,z_0,A,B)$.
 
+\begin{hypothesis}[Cosmological side for $L(t)\le0$]\label{hyp:cos}
+Whenever $L(t)\le0$ on the window, with $\kappa=1.05\,\kappa_{\min}$ (where $\kappa_{\min}$ is the least $\kappa$ with
+$\tilde L(t)\ge0$), the bent currents satisfy $\tilde C\le0$ and $\tilde D\le0$ on $(z_0,t)$.
+\end{hypothesis}
+\noindent This is the one remaining unproved input. It holds on all $2.4\cdot10^5$ sampled window points (it is needed only
+near extremality, for $m\ge2$ and small window position). Its reduction to an exact certificate is described in
+Appendix~\ref{app:cert}.
+
 \begin{theorem}[Event lemma]\label{thm:event}
-For all $t>1$, $z_0\in(1,t)$, $A>0$ and $B\ge5.5t-1.25$, there exists $f$ satisfying (a)--(c) of
+For all $t>1$, $z_0\in(1,t)$ and $A>0$ with $L(z_0)\ge A/(2z_0)+2t$, there exists $f$ satisfying (a)--(c) of
 Proposition~\ref{prop:reduction}.
 \end{theorem}
 
@@ -508,62 +519,67 @@ exactly once, at $\hat z=z_0-\hat S$.
 \end{lemma}
 
 \begin{proof}
-Substitute $S=x_0v/(1+v)$, $v\in(0,\infty)$, and clear denominators. Let $T_0,\dots,T_6$ be the coefficients of the
-resulting sextic in $v$.
+Write $B=3z_0-A/z_0+\beta$ with $\beta=L(z_0)>0$. Substitute $S=x_0v/(1+v)$, $v\in(0,\infty)$, clear denominators, and
+let $T_0,\dots,T_6$ be the coefficients of the resulting sextic in $v$.
 \begin{itemize}
-\item \emph{The first two coefficients.} $T_0=6\mu_0^2>0$, and $T_1=6z_0(z_0-t)x_0^2(3z_0^2+2z_0-4tz_0-t)>0$. Both
-factors of $T_1$ are negative; the last factor is convex in $z_0$ and negative at $z_0=1$ and $z_0=t$.
-\item \emph{The other coefficients.} For $j\ge2$, each $T_j$ is affine in $(A,B)$ with negative coefficients.
-\item \emph{The parameter region.} In R3 the admissible $(A,B)$ form the quadrant
-$\{A\ge a_0,\ B\ge5.5t-1.25\}$, where $a_0=\max\big(0,z_0((t-1)/(2x_0^2)-3)\big)$. This uses that the line
-$A+B=3+(t-1)/(2x_0)$ coming from $p>1$ is redundant, which is a two-variable inequality.
-\item \emph{Signs on the quadrant.} By the previous two items, it suffices to check the following at the corner of
-the quadrant and on the triangle where $T_3\ge0$:
-\[
-T_4,T_5,T_6<0,\qquad\text{and}\qquad T_3\ge0\Rightarrow T_2>0.
-\]
-These reduce to finitely many polynomial inequalities in $(t,z_0)$. We certify them exactly in the variables
-$(1/t,\zeta)$, with $\zeta=x_0/(t-1)$ (Appendix~\ref{app:cert}, item~C3).
+\item $T_0=6z_0^3(z_0-t)^2x_0^2>0$ and $T_1=6z_0^2(z_0-t)x_0^2(3z_0^2+2z_0-4tz_0-t)>0$.
+\item $T_6=z_0N|_{z=1}=-z_0(t-1)^2x_0^2(p-1)<0$ in R3, by an exact factorization.
+\item For $k=3,4,5$, $T_k$ is affine in $(A,\beta)$ with strictly negative coefficients, and $T_{k-1}$ is affine with
+nonpositive coefficients. In R3 the admissible set is the quadrant $\{A\ge a_0,\beta\ge0\}$ with
+$a_0=\max(0,z_0((t-1)/(2x_0^2)-3))$, since the line $p=1$ passes through its corner. So $\{T_k\ge0\}$ meets the quadrant in
+a triangle at the corner, and $T_{k-1}>0$ on it if two explicit combinations $g_1,g_2$ of corner values and
+coefficients are positive. These are rational functions of $(t,z_0)$; we certify $g_1,g_2>0$ unconditionally for
+$k-1=2,3,4$ (Appendix~\ref{app:cert}, item~C3).
 \end{itemize}
-Thus the sign pattern of $(T_0,\dots,T_6)$ has exactly one change. By Descartes' rule, $N$ has exactly one positive
-root in $v$, and hence exactly one root in $S\in(0,x_0)$.
+Hence $T_k\le0\Rightarrow T_{k+1}<0$ for $k=2,\dots,5$, so the sign pattern changes exactly once. By Descartes' rule,
+$N$ has exactly one root in $(0,x_0)$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:R3}]
-Define $f=F_C$ on $(1,\hat z]$, and on $[\hat z,z_0]$ let $f$ solve $\widetilde Df=0$ with $(f,f')(\hat z)=(F_C,F_C')(\hat z)$.
-Since $d(\hat z)=0$, $f$ is $C^2$. Condition (a) holds because $F_C\sim(t-1)(z-1)/x_0^2$ as $z\to1$. Condition (D) holds on
-$(1,\hat z]$ by Lemma~\ref{lem:P1}, and with equality on $[\hat z,z_0]$.
+Define $f=F_C$ on $(1,\hat z]$, and on $[\hat z,z_0]$ let $f$ solve $\widetilde Df=0$ with
+$(f,f')(\hat z)=(F_C,F_C')(\hat z)$. Since $d(\hat z)=0$, $f$ is $C^2$. Condition (a) holds because
+$F_C\sim(t-1)(z-1)/x_0^2$ as $z\to1$. Condition (D) holds on $(1,\hat z]$ by Lemma~\ref{lem:P1}, and with equality
+on $[\hat z,z_0]$. Condition (C) on $[\hat z,z_0]$ follows from the Wronskian argument: with
+$p_*=\mu\exp(-\int2sL/\mu)$, the function $W=p_*(F_Cf'-F_C'f)$ is non-increasing where $d\ge0$ and $W(\hat z)=0$.
 
-\emph{(C) on $[\hat z,z_0]$.} Let $p_*=\mu\exp\big(-\int2sL/\mu\big)>0$. Then
-$\widetilde Df=(\mu/p_*)(p_*f')'-2sL'f$. The Wronskian $W=p_*(F_Cf'-F_C'f)$ satisfies
-$W'=-(p_*/\mu)f\,\widetilde DF_C\le0$ wherever $f>0$, because $d\ge0$ on $[\hat z,z_0]$. Since $W(\hat z)=0$, we get
-$f'/f\le F_C'/F_C=h_C$.
+\emph{The seam.} It remains to show that $f'(z_0)>0$. Put $w=\mu f'/f$. It satisfies the Riccati equation
+\begin{equation}\label{eq:riccati}
+\mu w'=R(w):=-w^2+2sLw-2\mu s|L'|,\qquad w(\hat z)=\hat w:=\hat H/\hat s>0,
+\end{equation}
+and $w$ can cross $0$ only downward. A function $k$ with $\mu k'\le R(k)$ in the Dini sense and $k(\hat z)\le\hat w$
+stays below $w$. We use $k=\min(\hat w,sL)$.
 
-\emph{Positivity and the seam.} At a zero of $f'$ with $f>0$, $\mu f''=2sL'f<0$. Moreover
-$f'(\hat z)=H(\hat z)/\hat s^3>0$. So it suffices to show $f'(z_0)>0$.
-
-Suppose not, and let $z_1\in(\hat z,z_0]$ be the first zero of $f'$. The function $\Phi=\mu f'-2sLf$ satisfies
-$\Phi'=2Lf\ge2L\hat f$ on $[\hat z,z_1]$, where $\hat f=f(\hat z)$. This yields
-$\Psi(z_1)\le0$ for
+\emph{(i) $sL$ is a strict subsolution on all of $(1,z_0)$.} Since $(sL)'=-L-s|L'|$, we have
+$R(sL)-\mu(sL)'=g:=s^2L^2+\mu(L-s|L'|)$. Write $\ell=L(z_0)$ and $a=A/(2z^2z_0)$. Exactly,
+$L=\ell+s(A/(zz_0)+3)$ and $L-s|L'|=\ell-As^2/(z^2z_0)$. By \eqref{eq:margin},
+$L-s|L'|\ge a(z^2-2s^2)+2t$ and $L\ge az(z+2s)+2t$. By AM--GM, $(az(z+2s)+2t)^2\ge8t\,az(z+2s)$, so
 \[
-\Psi(z)=\hat H/\hat s-2\hat s\hat L+2\int_{\hat z}^zL+2s(z)L(z).
+g\ \ge\ 8t\,az(z+2s)s^2-2\mu as^2+2t\mu\ \ge\ 2t\mu>0,
 \]
-But $\Psi'=2sL'<0$, so $\Psi(z_1)\ge\Psi(z_0)=\hat H/\hat s-2\int_{\hat z}^{z_0}s|L'|$. Using
-$u-\log(1+u)\le u^2/2$,
-\[
-\int_z^{z_0}s|L'|=A\Big(\frac{z_0}{z}-1-\log\frac{z_0}{z}\Big)+\frac32s^2\le s^2\Big(\frac{A}{2z^2}+\frac32\Big),
-\]
-so it suffices that $K(\hat z)>0$, where $K=H-s^3(A/z^2+3)$.
+because $4t(z+2s)\ge(z-1)(t-z)$.
 
-Now $K$ is affine and decreasing in $A$, and $N$ is affine in $A$ and in $B$ with negative coefficients on
-$(0,x_0)$. Hence the implication
+\emph{(ii) The constant $\hat w$ is a subsolution until $sL$ falls below it.} On the interval where $sL\ge\hat w$ we have
+$\hat w\le sL<k_+$, where $k_\pm=sL\pm\sqrt{s^2L^2-2\mu s|L'|}$ are the roots of $R$. So $R(\hat w)>0$ follows from
+$\hat w>k_-=2\mu s|L'|/k_+$, which in turn follows from
+\begin{equation}\label{eq:bprime}
+\hat wL(z)>2\mu(z)|L'(z)|\qquad(z\in[\hat z,z_0)).
+\end{equation}
+To prove \eqref{eq:bprime}, note that $Q:=\hat wL-2\mu|L'|$ is affine and increasing in $B$. At the true value
+$B=B_*(\hat s)$ (the root condition $N(\hat s)=0$), \eqref{eq:margin} gives $B_*\ge B_m(A):=3z_0-A/(2z_0)+2t$. Since
+$N$ is decreasing in $B$, this is the condition $g_N:=N(\hat s;A,B_m)\ge0$, and
+$Q(B_*)=Q(B_m)+\hat w\,g_N/|\partial_BN|$. Hence it suffices to prove: for $t>z_0>1$, $A\ge0$, $\hat s\in(0,x_0)$
+and $z\in[z_0-\hat s,z_0)$,
 \[
-K\le0\ \Longrightarrow\ N(S;\max(A_K,0),5.5t-1.25)<0,
+N(\hat s;A,B_m(A))\ge0\ \Longrightarrow\ Q(B_m)>0 .
 \]
-where $A_K$ is the value of $A$ at which $K=0$, implies $K\le0\Rightarrow N<0$ for all admissible $(A,B)$. The
-implication is a three-variable polynomial statement, which we certify exactly (Appendix~\ref{app:cert}, item~C4).
-Since $N\ge0$ on $[0,\hat S]$ by Lemma~\ref{lem:P1}, it follows that $K(\hat z)>0$. Thus $f'>0$ on $[\hat z,z_0]$;
-in particular $f>0$, and (b) holds.
+Both sides are affine in $A$, and the coefficient of $A$ in $N$ is negative, so the admissible $A$ form a segment
+$[0,A_*]$. It therefore suffices to check $A=0$ and $A=A_*$. After compactifying $(z_0,t,\hat s,z)$ to $(0,1)^4$,
+these are two polynomial implications of degree at most $(10,3,10,4)$, plus the corresponding statements at
+$z=\hat z$. We certify them by an exact Bernstein covering (Appendix~\ref{app:cert}, item~C4).
+
+By (i) and (ii), $k=\min(\hat w,sL)$ is a subsolution on $[\hat z,z_0)$ with $k(\hat z)\le\hat w$. Hence $w>0$
+there. As $z\to z_0$ the defect $g\to\mu(z_0)\ell>0$, which gives $w(z_0)>0$, i.e. $f'(z_0)>0$.
+So (b) holds, and $f>0$.
 \end{proof}
 
 This completes the proof of Theorem~\ref{thm:event}, and with it Theorem~\ref{thm:A} for real $\sigma\ne0$.
@@ -1059,20 +1075,23 @@ proceeds.
 
 \appendix
 \section{Computer-assisted steps}\label{app:cert}\sloppy
-All computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$, except item~C2, which uses rigorous interval
-arithmetic. The code is in the repository accompanying this paper; the script names are given in brackets.
+All computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$. The code is in the repository accompanying this paper; the script names are given in brackets.
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
 \item \emph{Dual potential} [\texttt{step39\_c1\_symbolic.py}, \texttt{step89\_c1\_kappa.py}]. After Vieta
 elimination, the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are divisible by $s^2-4$ as polynomials.
-\item \emph{Angular bound} [\texttt{step47\_angular\_proof.py}]. Interval evaluation of the two-level lower bound,
-with exact Beta moments, over $(\alpha,\xi)\in[0,0.0718]\times[0,|m|]$ for $|m|\in\{1,2\}$ and $s=\pm2$.
-\item \emph{One sign change} [\texttt{step119\_build.py}, \texttt{cert2/p1chart.py}, \texttt{cert2/run\_P1\_all.sh}].
-Seventeen polynomials in $(1/t,\zeta)$ of degree at most $11$. Positivity is certified by integer Bernstein-basis
-branch and bound on four charts: two rectangles and two blow-up charts at the corner $(1/t,\zeta)=(0,0)$, after
-dividing out factors that are positive on the open box. All eight runs certify.
-\item \emph{Seam inequality} [\texttt{step121\_build.py}, \texttt{cert2/p2cert.py}, \texttt{cert2/run\_P2\_all.sh}].
-Four polynomials in $(1/t,\zeta,S/x_0)$ of degree at most $7$, on nineteen charts covering $[0,1]^3$, including
-blow-ups of two degenerate edges. All certify.
+\item \emph{Window margin} [\texttt{cert3/win\_flint.py}, \texttt{cert3/margin\_red.py}, \texttt{cert3/fullcert\_m.py},
+\texttt{cert3/nncert.py}]. With $\lambda=\lambda_{\rm cr}$, the quantity $(\Lambda/3)(L(z_0)-A/(2z_0)-2t)$ is quadratic
+in $m$. After reducing $a^2$ modulo $b^2-e_2b+e_4$ and writing the sign condition as $F_1>0$ and
+$P=F_1^2(e_2^2-4e_4)-Y^2>0$, every irreducible factor (degrees up to $(34,36,8)$ in $(r_0,1/r_2,\tau)$) has
+nonnegative, not identically zero, Bernstein coefficients on $[0,1]^3$. This proves strict positivity on the open cube.
+\item \emph{One sign change} [\texttt{step134\_P1new.py}, \texttt{step135g.py}, \texttt{nnd.py}]. The combinations
+$g_1,g_2$ for $k-1=2,3,4$ and both cases $a_0=0$, $a_0=A_{c2}$, factored and certified factor by factor by the same
+Bernstein criterion in two variables.
+\item \emph{Seam inequality} [\texttt{step172.py}, \texttt{step173\_build.py}, \texttt{cover4.py}]. In
+$(X,T,\sigma,\rho)\in(0,1)^4$: $\partial_AN<0$ (one box); $N\ge0\Rightarrow Q>0$ at $A=0$ (51 boxes); the
+corresponding statement at $A=A_*$ (25 boxes); and both at $\rho=1$ (one box each). On every box, one of the two
+polynomials has nonnegative Bernstein coefficients, with a positive coefficient on every face not contained in
+$\partial[0,1]^4$.
 \item \emph{Zero frequency} [\texttt{step125\_sigma0\_check.py}]. The Teukolsky--Starobinsky identity at $K=0$ for
 the $s=-2$ equation, and the $4\times4$ determinant. For $s=+2$ one substitutes $R_{+2}=\Delta_r^{-2}F$: then
 $\Delta_r^{-2}(\Delta_r^3R_{+2}')'=\Delta_r^{-2}(\Delta_rF''-\Delta_r'F'-2\Delta_r''F)$, with
