@@ -2127,3 +2127,10 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * So the certificate must handle the gate by COVERING: on each box of (x, v, τ, u = 1/m) either L(t) > 0 is certified
   (no bend; item 19 applies) or E < 0 and q1C̃ ≤ 0 are certified for all w ∈ (0, 1). Every sign is a b-expression
   (F1·b + F0), decided per box by the (F1, Y, P) rule.
+
+## Item 164 — Crude angular bound PROVED by hand
+λ ≥ λ_cr = ℓ0(ℓ0+1) − 4 − 4α − 4αm(1+α) − 2(1+α)²ξ(m+2), for s = ±2, m ≥ 1, α ≥ 0, ξ ≥ 0.
+H = H0 + K_α + V with K_α ≥ 0 and H0 ≥ ℓ0(ℓ0+1) − s². Exactly (sympy, 0 residual),
+V = α(m+s)²/(2(1−x)) + α(m−s)²/(2(1+x)) + 𝒩/(1+αx²). And 𝒩 − T(1+αx²), with T = λ_cr − ℓ0(ℓ0+1) + 4, is a sum of
+manifestly nonnegative terms on |x| ≤ 1, |s| = 2 (regrouping verified exactly for s = ±2). Written into the paper as
+Prop. "Crude angular bound". [N] Galerkin λ − λ_cr ≥ 2·10⁻⁴ on 1561 points.

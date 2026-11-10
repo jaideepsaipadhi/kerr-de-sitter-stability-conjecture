@@ -369,15 +369,30 @@ item~C2).
 \end{proof}
 
 \begin{proposition}[Crude angular bound]\label{prop:angular}
-For $s=\pm2$ and $w=\sigma/m$ in the window, $\lambda\ge\lambda_{\rm cr}$.
+For $s=\pm2$, $m\ge1$, $\alpha\ge0$ and $\xi=a\sigma\ge0$ (in particular on the window), $\lambda\ge\lambda_{\rm cr}$.
 \end{proposition}
 \begin{proof}
-Write the angular operator as $H_0+K_\alpha+V_{\rm sing}+E$, where $H_0$ is the operator at $\alpha=\xi=0$,
-$K_\alpha=-\partial_x\alpha x^2(1-x^2)\partial_x\ge0$, and
-$V_{\rm sing}=\frac{\alpha(m+s)^2}{2(1-x)}+\frac{\alpha(m-s)^2}{2(1+x)}\ge0$. The remainder $E$ is the bounded
-potential of \cite[(2.3)]{STU98} after these subtractions (this is an exact identity). The bound follows from
-$H_0\ge\ell_0(\ell_0+1)-s^2$ in the sector $(m,s)$, together with a pointwise lower bound for $E$ on $[-1,1]$, using
-$0\le a\sigma\le m$ on the window.
+In the variable $x=\cos\theta$, the angular operator of \cite[(2.3)]{STU98} is $H=H_0+K_\alpha+V$, where
+\[
+H_0=-\partial_x(1-x^2)\partial_x+\frac{(m+sx)^2}{1-x^2},\qquad K_\alpha=-\partial_x\,\alpha x^2(1-x^2)\,\partial_x\ \ge0,
+\]
+and $\lambda$ is the lowest eigenvalue of $H$ in the sector $(m,s)$. On that sector $H_0\ge\ell_0(\ell_0+1)-s^2$ with
+$\ell_0=\max(|m|,|s|)$. An exact computation gives
+$V=\frac{\alpha(m+s)^2}{2(1-x)}+\frac{\alpha(m-s)^2}{2(1+x)}+\frac{\mathcal N}{1+\alpha x^2}$, where the first two terms are
+nonnegative and
+\[
+\mathcal N=\alpha^2m^2-2\alpha^2msx+2\alpha^2x^4+\alpha m^2-2\alpha msx+\alpha s^2x^2-\alpha s^2+2\alpha x^2
++\xi^2(1+\alpha)^2(1-x^2)-2\xi(1+\alpha)^2(m-sx).
+\]
+Let $T=-4\alpha-4\alpha m(1+\alpha)-2(1+\alpha)^2\xi(m+2)$. With $s^2=4$,
+\begin{align*}
+\mathcal N-T(1+\alpha x^2)={}&(2\alpha^2x^4+4\alpha^2x^2+6\alpha x^2)+(\alpha^2+\alpha)m^2\\
+&+m\big(4\alpha^3x^2+4\alpha^2x^2+4(\alpha^2+\alpha)(1-\tfrac{s}{2}x)\big)+\xi^2(1+\alpha)^2(1-x^2)\\
+&+\xi\big(2\alpha^3mx^2+4\alpha^3x^2+4\alpha^2mx^2+8\alpha^2x^2+2\alpha mx^2+4\alpha x^2
++2(1+\alpha)^2(2+sx)\big).
+\end{align*}
+Every term is nonnegative for $|x|\le1$, $|s|=2$, $m,\alpha,\xi\ge0$. Hence $V\ge T$, and
+$\lambda\ge\ell_0(\ell_0+1)-4+T=\lambda_{\rm cr}$.
 \end{proof}
 
 \noindent\emph{Remark.} An earlier version of this paper claimed $\lambda\ge\frac32$. That claim was based on a sign
