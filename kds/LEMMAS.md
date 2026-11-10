@@ -1789,3 +1789,14 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * Conclusion: the corner needs the actual tail dynamics. Next route: the t → ∞ limit problem (item 140) on the tail
   zone, where D ≤ 0 and the equation is μw' = −(w − sL)² − |D|: a monotone decreasing Riccati equation with an
   explicit lower solution once |D| is bounded above by a quadratic in s.
+
+## Item 142 — Explicit tail bound: rigorous but too lossy in the corner
+* [P] TAIL LEMMA. Fix a switch point z_s. Suppose zone 1 (item 141) gives w(z_s) ≥ v_s := min(ŵ, s_sL_s + θ√D_s). Then
+  v(z) := v_s − ∫_{z_s}^{z} (v_s² + max(−D,0))/μ is a lower solution for w. Reason: for 0 ≤ v ≤ v_s and 0 ≤ sL ≤ v_s
+  we have (v − sL)² ≤ v_s², and the true equation is μw' = −(w − sL)² + D. So
+     w(z0) ≥ v_s − v_s² ∫_{z_s}^{z0} dz/μ − ∫_{z_s}^{z0} max(−D,0)/μ dz,
+  which is explicit (∫dz/μ by partial fractions; the D-integral is rational plus logs).
+* [N] With the switch point scanned (step144*.py): corner 1749/3000, generic 1485/1500. The loss is replacing
+  (w − sL)² by v_s²: in the tail w stays near 0.3ŵ while sL → 0, so the true drop is much smaller than the bound.
+* Still to try: a tail bound that keeps the Riccati structure. (1/v)' ≤ (1 + max(−D,0)/v_min²)/μ gives an explicit
+  lower bound on v once a floor v_min is assumed, which can be closed by bootstrap.
