@@ -2285,3 +2285,14 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
   closed nothing in 45 s.
 * STATUS: S_μ certificate ~99% done. The remaining interior boxes need depth; the x = 1 boxes need an asymptotic
   (near-extremal) argument, since a Bernstein covering cannot close on a face where G and L degenerate.
+
+## 180. S_μ near-extremal face x = 1: first look
+* [P] Each target has the linear factor (r0 − 1) (sign-definite on the open cube, removed). The cores do NOT vanish
+  identically on x = 1.
+* [N] On the face, the H2 cores of F1 and Y have constant sign (−). The P core of H2 and all three G cores change sign
+  on the face. So the face boxes straddle the curves {G-core = 0} and {H2-P core = 0} on x = 1. Whether these cross
+  inside {zf ≥ 1/2} is the question.
+* [N, unreliable] A float check of the b₊-values near x = 1 is dominated by cancellation (|terms| ~ 1e50). Exact or
+  mpmath evaluation is needed, and the straightforward mpmath loop is too slow (> 60 s for 625 points). Next: restrict the
+  cores to x = 1 symbolically (2-variable polynomials in v, τ) and decide the face question exactly (resultant of the
+  G-core and the H2-P core on the face, plus sign checks on each arc).
