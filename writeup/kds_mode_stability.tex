@@ -103,12 +103,30 @@ smooth.
 \end{theorem}
 
 For $a=0$, Theorem~\ref{thm:B} is \cite[\S7]{HV18}. Theorem~\ref{thm:B} is \cite[Assumption~1.2]{HPV25} (with $\cL_Xg=2\delta^*X^\flat$),
-so, given Hypothesis~\ref{hyp:cos}, \cite[Theorem~1.4]{HPV25} applies:
+so, given Hypothesis~\ref{hyp:cos}, \cite[Theorem~1.4]{HPV25} applies (see Remark~\ref{rem:T} for the choice of $T$):
+
+
+
 
 \begin{corollary}
 Subextremal Kerr--de Sitter black holes are nonlinearly stable as solutions of the Einstein vacuum equations with
 positive cosmological constant, in the sense of \cite[Theorem~1.4]{HPV25}.
 \end{corollary}
+
+\begin{remark}[Choice of $T$]\label{rem:T}
+\cite{HPV25} use $T'=\partial_{t_*}+\frac{a}{r_0^2+a^2}\partial_{\varphi_*}$, where $r_0$ is a critical point of
+$\mu/(r^2+a^2)$, instead of our $T$. The two differ by $c\,\partial_{\varphi_*}$ with $c\in\R$, and $\partial_{\varphi_*}$ commutes
+with $T$, $T'$ and $D_g\mathrm{Ric}-\Lambda$. Let $h$ be a (generalized) $T'$-mode at frequency $\sigma'$ with $\Im\sigma'\ge0$.
+Put it in the gauge of \cite[(23)]{HPV25} by adding $\cL_Yg$ for a $T'$-mode $Y$; this is possible because the gauge
+equation is solvable on $T'$-modes \cite[\S10]{HV18}. Then $h$ lies in the finite-dimensional space of
+generalized resonant states of the gauge-fixed operator at $\sigma'$, which is $\partial_{\varphi_*}$-invariant. Hence
+$h=\sum_{|m|\le m_0}h_m$ with $\partial_{\varphi_*}h_m=imh_m$, and each $h_m$ is a (generalized) $T$-mode at frequency
+$\sigma'-cm$, which has the same imaginary part. Apply Theorem~\ref{thm:B} to each $h_m$; for generalized modes with
+$\sigma\ne0$ use the reduction in the proof of \cite[Theorem~2.7]{HPV25}. If $\sigma'-cm=0$ and $m\ne0$, the
+linearized Kerr--de Sitter part vanishes, because $\partial_Mg$ and $\partial_ag$ are axisymmetric. Summing the
+finitely many pieces shows that Theorem~\ref{thm:B} implies \cite[Assumption~1.2]{HPV25} for $T'$.
+\end{remark}
+
 
 \subsection{Strategy}
 The proof of Theorem~\ref{thm:A} has three parts.

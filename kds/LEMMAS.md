@@ -2147,3 +2147,13 @@ Prop. "Crude angular bound". [N] Galerkin λ − λ_cr ≥ 2·10⁻⁴ on 1561 p
 O'^† = (Þ − ρ̄)(Þ' + 3ρ') − (ð − τ̄')(ð' + 3τ') + V0, from (Þ − ρ)^† = −(Þ − ρ̄) and (Þ' − 4ρ' − ρ̄')^† = −(Þ' + 3ρ')
 (and primes/ð analogues). With ÞP = −4ρP etc. (P = Ψ2^{−4/3}, Bianchi ÞΨ2 = 3ρΨ2 …) this gives O'^†∘P = P∘O exactly.
 No sampling is needed.
+
+## Item 167 — Referee issue (11), HPV's T: addressed (paper Remark "Choice of T")
+HPV25 (arXiv 2508.06620, eq. (9)) use T' = ∂t* + a/(r0²+a²)∂φ*, with r0 a critical point of μ/(r²+a²).
+T' − T = c∂φ*, which commutes with everything. To transfer the statement:
+* Gauge-fix the T'-mode (HV18 §10).
+* The generalized resonant space of the gauge-fixed operator is finite-dimensional and ∂φ*-invariant, so the mode is a
+  finite sum of m-components.
+* Each component is a T-mode at σ' − cm, with the same imaginary part. For generalized σ ≠ 0 use HPV Thm 2.7's
+  reduction. When σ' − cm = 0 with m ≠ 0, the parameter part vanishes (axisymmetry).
+To double-check against HV18 §10 when re-refereeing: whether the gauge equation is solvable on T'-modes.
