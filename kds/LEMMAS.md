@@ -2323,3 +2323,21 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
 * Ingredients: exact window polynomials validated against direct numerics (item 179); b₊ sign rules
   (F1, Y, P); concavity in 1/m (LQ0' < 0) ⇒ checking Q2', H2' (m = 2) and H1' (m = 1) covers all m ≥ 1.
 => S_μ holds on the whole window. Remaining for hyp:cos: S_C, S_α, S_β.
+
+## 183. S_C and S_α: gate-free reformulation, polynomials built, S_C main cube certified, ultracold edge open
+* [P] The S_C and S_α conditions hold automatically where L(t) ≥ 0 (their left sides are then ≤ 0). So they are
+  equivalent to GLOBAL inequalities with no gate:
+    W_C := 2λ̃Q2·T − 1.05·t(t−1)·(−λ̃L(t)) ≥ 0,   W_α := 6λ̃Q2·T²/(2+4a+T) − 1.05·t(t−1)·(−λ̃L(t)) ≥ 0,
+  with λ̃Q2/m² = t²Ξ²b(f1+f2)²/(λ̃z0²). Both are quadratics in m with the concave L-part, so checking Q2 (m²), H2 (m = 2)
+  and H1 (m = 1) suffices. cert3/sca_build.py; validated against direct numerics to 1e-12 at 3 points (sca_chk.py).
+* cert3/gcover.py: generic resumable covering (box index mode, lazy descend, largest-first, depth-6 cap per subtree,
+  cached factor cores). W_C on the main cube: ALL CLOSED outside the edge region x, v ∈ [7/8, 1].
+* Edge x, v → 1 (r0, r2 → r1: ULTRACOLD triple-root limit). Chart EA (x = 1−σ/8, v = 1−σβ/8) with sub-charts at
+  (σ, τ) → 0: EA1 closed. EA2 (τ = s/8, σ = sg/8) is stuck, because the leading forms of the F1/Y/P cores CHANGE SIGN
+  in g there. Most likely the discriminant D = e2² − 4e4 → 0 at the triple root, so the (F1, Y, P) sign rule loses
+  resolution.
+* [N] Physics is fine there: 224546 points with r0 = 1−ε0, r2 = 1+ε2 (ε up to 0.3), normalized W_C ≥ 0.89 (797 gate
+  points). So the obstruction is in the b-reduction, not in the inequality.
+* NEXT: in the ultracold edge, either (i) avoid the b-reduction by working with b as a variable (b₊ is then a smooth
+  function near the triple root?), or (ii) factor the leading D-power out of F1, Y, P in the EA2 chart. Then S_α
+  (same machinery, polynomials ready) and S_β.
