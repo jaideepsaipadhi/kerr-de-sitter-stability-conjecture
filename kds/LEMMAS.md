@@ -2177,3 +2177,9 @@ To double-check against HV18 §10 when re-refereeing: whether the gauge equation
 
 ## 170. Euler transform (referee issue 5) — rewritten
 The real RL integral is always divergent at one endpoint (Re ν = s−1, Re ρ₁ = −s). Replaced it with the Pochhammer loop γ_z around {1, z}. On powers the normalisation c(β) ∝ 1/(Γ(−β)Γ(−ν)Γ(β+ν+2)) is entire and nonzero for β = ρ₁+k in the window (ν ∉ Z, since κ₃ ∉ R). Threshold κ₁ = 0: the analytic part is killed by Pochhammer, so use a single loop around w = z (s = −2, or s = +2 with a₀ = a₁ = 0), and Pochhammer on the polar part otherwise. Boundary terms vanish because the contour is closed. Status: fixed in the paper.
+
+## 171. Axis/acceleration step (referee issue 13) — rewritten
+Replaced the unverifiable determinant "−64Mp₀⁴/c" with a triangular system.
+(i) Misner string: the axis generators are ∂ψ + I±²∂t̃. Under δΔ_I = 2δn·I, both roots shift by δn/(c+λ̃a²) (sympy-checked), so the generators differ by 4a·δI·∂t̃. Since t̃ is not periodic, δn = 0 (a ≠ 0; at a = 0 it is the classical NUT case).
+(ii) C-metric conical condition at first order gives 4M·δα = 0.
+Diagonal entries 4a/(c+λ̃a²) and 4M. Residual soft spot: the claim that the acceleration tangent doesn't move the axis generators at first order is asserted from Griffiths–Podolský, not recomputed.

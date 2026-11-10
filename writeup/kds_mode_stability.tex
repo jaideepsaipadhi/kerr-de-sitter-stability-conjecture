@@ -1084,10 +1084,28 @@ with general solution
 (exact computation, item~C7). Modulo the rescaling gauge, the variations are $\delta M$, $\delta a$ and the NUT
 variation $\delta\mathfrak n$, together with the acceleration removed in Step 1.
 
-\emph{Step 4: axis regularity.} Elementary flatness at the two axes gives two linear conditions on
-$(\delta\mathfrak n,\delta\alpha_{\mathrm{acc}})$ with determinant $-64Mp_0^4/c\ne0$, so both vanish. The gauge
-vector $X$ is the generator of the change from the background to the perturbed adapted coordinates, together with
-the rescalings of $\xi$ and $\zeta$.
+\emph{Step 4: axis regularity.} Write the background as $\Delta_I=(a^2-I^2)(c+\tilde\lambda I^2)$ with
+$\tilde\lambda=\Lambda/3$ and $c>0$, so the axes are the roots $I=\pm a$ and $\Delta_I'(\pm a)=\mp2a(c+\tilde\lambda a^2)$.
+Two conditions are needed.
+
+\emph{(i) Misner string.} At a simple root $I_0$ of $\Delta_I$, the Killing field that vanishes on the axis is
+$\partial_\psi+I_0^2\partial_{\tilde t}$, as one reads off from the ansatz. Under $\delta\Delta_I=2\,\delta\mathfrak n\,I$
+both roots move by the same amount: $\delta I_\pm=-2\delta\mathfrak n\,I_\pm/\Delta_I'(I_\pm)=\delta\mathfrak n/(c+\tilde\lambda a^2)$,
+since $\Delta_I'$ is odd. So the two axis generators differ by $4a\,\delta I_+\,\partial_{\tilde t}$. Because $\tilde t$ is not
+periodic on $M$, both axes are regular only if the generators coincide. For $a\ne0$ this forces $\delta\mathfrak n=0$.
+For $a=0$ this is the classical Misner-string condition on Schwarzschild--NUT--de~Sitter, with the same conclusion. The
+acceleration tangent does not move the axis generators at first order, since its $\delta\Delta_I$ is even in $I$
+after the conformal rescaling.
+
+\emph{(ii) Conical regularity.} With $\delta\mathfrak n=0$, the ratio of the two conical periods along the acceleration
+tangent is $1+4M\,\delta\alpha_{\rm acc}+O(\delta^2)$. This is the first-order expansion of the
+C-metric condition $P(0)=P(\pi)$ in Griffiths--Podolsk\'y form, $P=1-2\alpha M\cos\theta+O(a^2,\Lambda a^2)\cos^2\theta$,
+where the $\cos^2\theta$ term is even. A single period of $\varphi$ regularizes both axes only if
+$\delta\alpha_{\rm acc}=0$.
+
+The system for $(\delta\mathfrak n,\delta\alpha_{\rm acc})$ is triangular, with diagonal entries
+$4a/(c+\tilde\lambda a^2)$ and $4M$, both nonzero, so both variations vanish. The gauge vector $X$ generates the change from
+the background to the perturbed adapted coordinates, together with the rescalings of $\xi$ and $\zeta$.
 
 \emph{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg$ and $\partial_ag$ denote the parameter derivatives
 of the KdS family in the regular coordinates $(t_*,r,\theta,\varphi_*)$, as in \cite{HPV25}.
