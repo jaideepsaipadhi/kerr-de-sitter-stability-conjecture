@@ -2242,3 +2242,11 @@ THEOREM (reduction). On the gate L(t) < 0, hyp:cos (C̃ ≤ 0, D̃ ≤ 0, L̃(t)
 margin 1.40. Dropping the −r b z z1 term in (S_β) loses a factor of up to 1.3e5. It is essential, since it is the
 self-limiting part of the bend.
 Remaining: certify (S_C), (S_μ), (S_α), (S_β) in the window variables (x, v, τ, 1/m); (S_β) carries one sup over b.
+
+## 176. (S_μ) reduced to "gate ⇒ zf ≤ 1/2"
+[P] The max of μ = z(z−1)(t−z) is at z* = [(1+t) + √(t²−t+1)]/3. Moreover z* − 1 ≥ (t−1)/2 ⇔ √(t²−t+1) ≥ (t+1)/2
+⇔ 3(t−1)² ≥ 0. So μ'(z0) ≥ 0 whenever zf := (z0−1)/(t−1) ≤ 1/2 (and zf* runs from 1/2 at t→1 to 2/3 at t→∞).
+In window terms, zf ≤ 1/2 ⇔ q1v ≤ −qtv ⇔ Im e1 ≤ t·Im(−et)  (e1 = 2(κ1+κ3), et = 2(κ2+κ3)).
+[N] cos194.py: 268158 physical points, 648 on the gate, max zf on the gate = 0.356 (margin 0.14 below 1/2).
+REMAINING for S_μ: certify "L(t) < 0 ⇒ zf ≤ 1/2". Equivalently, zf > 1/2 ⇒ L(t) ≥ 0, which is a statement with no b
+and no bend.
