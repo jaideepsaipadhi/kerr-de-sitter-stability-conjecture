@@ -2166,3 +2166,11 @@ To double-check against HV18 §10 when re-refereeing: whether the gauge equation
 * (12) Gluing across horizons. δ(Ψ2φ³) ≡ 0 because φ := Ψ2^{−1/3}, so it cannot fix the constants. They are now matched
   with the Iyer–Wald charges: δQ_K − K·Θ is closed and smooth on M, so δH_K[h] is the same on spheres in all three
   regions, and it vanishes on L_Xg. The nonzero Jacobian of (E, J) in (M, a) then gives (c_M, c_a) equal on all regions.
+
+## Item 169 — Referee issue (4), Ψ4 bookkeeping: rewritten in the paper
+* Convention h_xy := h_ab x^a y^b. S'^† produces h_Ψ = X n⊗n + Y n⊙m̄ + Z m̄⊗m̄, whose nonzero components are h_ll,
+  h_lm, h_mm. Linearized Ψ4 uses only h_nn, h_nm̄, h_m̄m̄, so Ψ4[h_Ψ] = 0. For h̃ = conj(h_Ψ), Ψ4[h̃] comes from
+  h̃_m̄m̄ alone. The result is Ψ4[h̃] = c0·Þ'^4(P̄Ψ̄) with a universal c0 ≠ 0 (½ in KSFK), and only c0 ≠ 0 is used.
+  Wald's step is also spelled out: E S'^† = T'^† O'^†.
+* To recheck at the re-referee: the claim that the Λ-terms do not enter (only Þ' and the Ricci identities Þ'ρ' = ρ'²
+  are used). The value of c0 itself is irrelevant.

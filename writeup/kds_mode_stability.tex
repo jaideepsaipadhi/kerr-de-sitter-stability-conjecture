@@ -722,17 +722,25 @@ and the self-adjointness of the linearized Einstein operator $\mathcal E$, then 
 
 \begin{lemma}[Reconstruction]\label{lem:recon}
 If $\mathcal O\Psi=0$, then $h_\Psi:=\mathcal S'^\dagger(P\Psi)$ solves $\mathcal E h_\Psi=0$. Moreover, the complex
-conjugate $\tilde h:=\overline{h_\Psi}$ satisfies $\Psi_4[\tilde h]=\frac12(\Th')^4(\bar P\bar\Psi)$.
+conjugate $\tilde h:=\overline{h_\Psi}$ satisfies $\Psi_4[\tilde h]=c_0(\Th')^4(\bar P\bar\Psi)$ for a universal constant
+$c_0\neq0$ ($c_0=\frac12$ in the normalization of \cite{KSFK03}).
 \end{lemma}
 
 \begin{proof}
-The first claim is Wald's argument combined with \eqref{eq:adjoint}. For the second: $h_\Psi$ has components only
-along $l\otimes l$, $l\otimes m$ and $m\otimes m$. By GHP type counting, $\delta\Psi_4$ involves only the components
-$h_{nn}$, $h_{n\bar m}$ and $h_{\bar m\bar m}$. Hence $\Psi_4[h_\Psi]=0$, and $\Psi_4[\tilde h]$ comes from
-$\tilde h_{\bar m\bar m}$ alone. It involves only $\Th'$-derivatives and the
-coefficients $\rho',\bar\rho'$, and its evaluation uses only the Ricci identities $\Th'\rho'=\rho'^2$ and
-$\Th'\bar\rho'=\bar\rho'^2$. In particular, no commutator enters, so the $\Lambda$-terms of the GHP commutators play
-no role. The algebra is therefore literally that of the Kerr case \cite{Wal78,KSFK03}.
+The first claim is Wald's argument combined with \eqref{eq:adjoint}: from $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$ and
+the self-adjointness of $\mathcal E$ we get $\mathcal E\mathcal S'^\dagger=\mathcal T'^\dagger\mathcal O'^\dagger$, and
+$\mathcal O'^\dagger(P\Psi)=P\mathcal O\Psi=0$.
+
+For the second claim we use the convention $h_{xy}:=h_{ab}x^ay^b$. The operator $\mathcal S'$ only involves the
+components $T_{nn}$, $T_{n\bar m}$ and $T_{\bar m\bar m}$. So $\mathcal S'^\dagger$ produces a tensor of the form
+$h_\Psi=X\,n\otimes n+Y\,n\odot\bar m+Z\,\bar m\otimes\bar m$ (indices lowered), whose only nonzero components are
+$h_{ll}$, $h_{lm}$ and $h_{mm}$. By GHP
+type counting, the linearized $\Psi_4$ depends only on $h_{nn}$, $h_{n\bar m}$ and $h_{\bar m\bar m}$. Hence
+$\Psi_4[h_\Psi]=0$. For $\tilde h=\overline{h_\Psi}$ the only nonzero components are $h_{ll}$, $h_{l\bar m}$ and
+$h_{\bar m\bar m}$, so $\Psi_4[\tilde h]$ comes from $\tilde h_{\bar m\bar m}=\overline{h_{mm}}$ alone. The resulting expression involves only $\Th'$-derivatives and the coefficients $\rho',\bar\rho'$. Its evaluation
+uses only the Ricci identities $\Th'\rho'=\rho'^2$ and $\Th'\bar\rho'=\bar\rho'^2$, so no commutator and no
+$\Lambda$-term enters. The algebra is therefore literally that of the Kerr case \cite{Wal78,KSFK03}, which gives
+$\Psi_4[\tilde h]=c_0(\Th')^4(\bar P\bar\Psi)$. Only $c_0\ne0$ is used below.
 \end{proof}
 
 \subsection{The kernel lemma}
