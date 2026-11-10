@@ -1761,3 +1761,18 @@ Write B = 3z0 − A/z0 + β, where β = L(z0) > 0 (item 133). The R3 constraints
     barrier adapted to μ ≈ t·x·z near z = 1.
 * NEXT: (a) corner barrier in rescaled variables; (b) exact certificate of (B) on the complement, which is a 4- or
   5-variable polynomial with σ and the γ ≥ 0 gate.
+
+## Item 140 — The P2 corner (t ≫ 1, zf small, ẑ → 1): every comparison scheme tried fails on a few percent
+Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β ≥ A/(2z0) + 2z0 (step141b.py).
+* Polynomial barriers ŵσ^p(1 − cσ(1−σ)) and ŵσ²e^{−aσ(1−σ)} (step142.py): best 2914/3000, union 2981/3000.
+* The equilibrium-type barrier θ·2sL (step142b.py): at most 2556/3000. Max-combinations with the polynomial barrier,
+  and with the Riccati root k₊ = sL + √(s²L² − 2μs|L'|) (step142c/e/f): at most 2936/3000.
+* The nested-integral criterion P2* of item 138 (step142g.py): 2944/3000.
+* The TRUE solution is comfortable: w(z0)/ŵ ≈ 0.27–0.33. Early on it tracks 2sL closely (w ≈ 2sL + O(ŵ/20)), then
+  flattens (step142d.py). The schemes fail because w hugs the moving root 2sL − μ|L'|/L early on: any barrier below it
+  must decrease at least as fast as (2sL)', and polynomial-in-σ shapes overshoot at σ ≈ 0.9.
+* Structure: under ω = w/t, Â = A/t, B̂ = B/t, μ ≈ t·x·z, the corner has a t-independent LIMIT PROBLEM
+  x z ω' = −ω² + 2(sL/t)ω − 2xz s|L'|/t on [ẑ, z0], with parameters (x0, Â, β̂).
+* NEXT: prove P2 in the corner by (i) the t → ∞ limit problem plus an explicit O(1/t) perturbation bound, or (ii) a
+  two-zone barrier that follows the root k₊ − Cμ|L'|/L until s²L² = 4μs|L'|, then switches to a polynomial tail
+  matched at the switch point.
