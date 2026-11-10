@@ -2401,3 +2401,15 @@ So a corner lemma with very crude constants is enough (a factor of ~100 to spare
 Ingredients still to write: (i) a lower bound for |Im et| on the gate near the corner (it blows up like 1/D'(r2)
 unless the numerator ω(r2²+a²) − am is small; S_μ, i.e. |Im e1| ≤ t|Im et| on the gate, controls that case);
 (ii) an upper bound 3t − B ≤ C/ε from the crude angular bound and C0 = 3/(Λ(r1−r0)(r2−r3)).
+
+## 189. Ultracold corner: scaling structure (toward a hand lemma)
+Im κ_j = Ξ m (r_j²+a²)(w − Ω_j)/D'(r_j), Ω_j = a/(r_j²+a²), w ∈ [w2, w1],
+w1 = (P1Ω1 + P3Ω3)/(P1+P3), P_j = (r_j²+a²)/|D'(r_j)|.
+Corner limit r0, r2 → 1 (r3 → −3): 3λ̃² + 6λ̃ − 1 = 0, so λ̃ = 2/√3 − 1, a² = 3λ̃.
+D'(r0), D'(r1), D'(r2) ~ ε²; D'(r3) = O(1); Ω1 − Ω2 ~ ε; w1 = Ω1 + O(ε²).
+Hence at the top of the window |Im et| ~ (Ω1−Ω2)/D'(r2) ~ 1/ε, so t(Im et)² ~ ε⁻², while 3t − B ~ C0 ~ ε⁻¹.
+That is the observed 1/ε margin growth (item 188).
+OBSTRUCTION for a clean hand lemma: if w2 < Ω2 < w1, the numerator of Im κ2 vanishes inside the window, so |Im et|
+can be small. Then t(Im et)² gives no lower bound, and one must show the gate cannot occur there (L(t) ≥ 0, through
+the A term or B). This is a genuine multi-scale analysis (the three horizons merge at rates set by θ, and the window
+endpoints move with ε).
