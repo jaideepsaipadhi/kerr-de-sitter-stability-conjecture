@@ -2429,3 +2429,13 @@ cert3/scg_build.py builds the (G_C) window polynomials (degree ~56); edge-chart 
 NEXT: prove (G_C) on the corner square by hand. F and B are explicit and linear/quadratic in w, so the minimum over
 w sits at a kink (w = Ω1 or Ω2) or at a window endpoint; this reduces to finitely many 2-parameter (ε, θ)
 inequalities.
+
+## 191. (G_C) on the corner chart: face definite, covering too slow
+* In chart EA (x = 1−σ/8, v = 1−σβ/8), the σ = 0 face of every (G_C) core is sign-DEFINITE on the whole closed face,
+  edges and corners included (F1 < 0, Y < 0, P < 0 ⇒ value > 0). So, unlike W_C, there is no degenerate sub-face,
+  and a covering must terminate.
+* Throughput is the obstacle: ~3 boxes closed per 42 s run (exact fmpz Bernstein, 9 cores of degree ≥ 56 after the
+  chart substitution). Open vol 0.375 after one run.
+* To finish this cheaply: (a) a hand argument using that F is linear and 3t − B is linear in w (so (G_C) is a convex
+  quadratic in w, whose sign follows from a discriminant inequality in (ε, θ, m)); or (b) a faster engine
+  (float Bernstein with outward rounding / interval arithmetic) for the chart covering.

@@ -77,7 +77,7 @@ def chart(q):
         return chart2(chart_base(q,CH[:2]),CH[2])
     return chart_base(q,CH)
 def chart_base(q,CH):
-    N=32
+    N=8
     if CH=='EA': Xs,Vs=(N-X),(N-X*V)     # x=1-sigma/N, v=1-sigma*beta/N ; (sigma,beta,tau)=(X,V,T3)
     else: Xs,Vs=(N-X*V),(N-X)
     D=sum(int(z) for z in q.degrees()); out=0*one3
@@ -87,6 +87,7 @@ def chart_base(q,CH):
     return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):c for e,c in dd.items()})
 root={k:[chart(q) for q in v[1]] for k,v in S.items()}
 def excluded(lev,idx):
+    if os.environ.get('NOEX'): return False
     if CH in ('EA','EB'): return (idx[0]*8+8<=2**lev[0] and idx[2]*8+8<=2**lev[2]) or (idx[0]*8+8<=2**lev[0] and idx[1]*8+8<=2**lev[1])
     if CH or os.environ.get('NOEX'): return False
     return all(idx[k]*32>=31*2**lev[k] for k in (0,1))
