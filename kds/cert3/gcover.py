@@ -88,7 +88,7 @@ def chart_base(q,CH):
 root={k:[chart(q) for q in v[1]] for k,v in S.items()}
 def excluded(lev,idx):
     if CH in ('EA','EB'): return (idx[0]*8+8<=2**lev[0] and idx[2]*8+8<=2**lev[2]) or (idx[0]*8+8<=2**lev[0] and idx[1]*8+8<=2**lev[1])
-    if CH: return False
+    if CH or os.environ.get('NOEX'): return False
     return all(idx[k]*32>=31*2**lev[k] for k in (0,1))
 def descend(lev,idx):
     out={k:list(v) for k,v in root.items()}

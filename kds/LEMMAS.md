@@ -2377,3 +2377,18 @@ formulas; then W_C ≥ 0 for ε ≤ ε0 with explicit ε0 ≥ 1/8 needed to matc
 * CONCLUSION: brute covering near the ultracold corner costs too much for < 1 min runs. Use the hand route of item 185:
   near r0, r2 → r1, 2λ̃q1²T ~ ε⁻² beats 1.05·t(t−1)(−λ̃L) ~ ε⁻¹. Write explicit bounds in a neighbourhood
   {x, v ≥ 7/8}, which is where the main covering already closes everything else (item 183, scale-8 run).
+
+## 187. S_C: exact z0-FREE form (identity, checked to 1e-14)
+Throughout the window Im e1 < 0 and Im et < 0 (sampled), and zf = |Im e1|/(|Im e1| + t|Im et|),
+q1 = −(t−1)Im e1/(2(z0−1)). Substituting gives
+    rT ≤ 1   ⇔   2.1·(−L(t)) ≤ |Im et|·(|Im e1| + t|Im et|)          (S_C exact)
+and, in the window, Im e1 = 2Ξ a m f1/λ̃, Im et = 2Ξ a m f2/λ̃ (checked to 1e-15).
+So λ̃·[Im et(Im e1 + t Im et) + 2.1 L(t)] = m²·4Ξ²b f2(f1 + t f2)/λ̃ + 2.1(m²LQ2' + mLQ1 + LQ0'):
+no z0, no R. cert3/scn_build.py, validated (scn_chk.py) to 1e-14.
+[N] Margins on the gate (816 pts): exact 1.54; dropping the |Im e1| term 1.54; also dropping A ≥ 0, 1.43.
+So on the gate, S_C ⇐ t·(Im et)² ≥ 2.1(3t − B). But that weaker form is NOT global (fails where L ≥ 0 only
+because of A), so it would need the gate inside the covering.
+Covering of the exact form (gcover, scN): it again stalls only at the ultracold corner (x, v → 1), and the
+edge charts do not converge at depth 6 (Bernstein pessimism at degree ~56).
+Scaling there: Im e1, Im et ~ 1/D'(r) blow up as roots merge, while L ~ ε⁻¹. The right side dominates by
+powers of ε, so a hand corner lemma is the right tool. The z0-free form makes it tractable.
