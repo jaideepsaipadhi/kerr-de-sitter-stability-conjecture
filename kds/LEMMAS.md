@@ -1800,3 +1800,17 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   (w − sL)² by v_s²: in the tail w stays near 0.3ŵ while sL → 0, so the true drop is much smaller than the bound.
 * Still to try: a tail bound that keeps the Riccati structure. (1/v)' ≤ (1 + max(−D,0)/v_min²)/μ gives an explicit
   lower bound on v once a floor v_min is assumed, which can be closed by bootstrap.
+
+## Item 143 — P2 via the Φ-integral: no tail barrier needed. Generic region 100%, corner about 97%
+* [P] Φ-CRITERION. Normalise f2(ẑ) = 1. Then μ0 f2'(z0) = Φ(z0) = Φ̂ + 2∫_ẑ^{z0} L f2, with Φ̂ = Ĥ/ŝ − 2ŝL̂. Here
+  L > 0 and f2 > 0 (f2 = exp∫w/μ is finite and positive whatever the sign of w). So ANY lower bound f2 ≥ f_lo ≥ 0 on any
+  subinterval gives f2'(z0) > 0 as soon as Φ̂ + 2∫ L f_lo > 0. A tail where w turns negative only costs its (nonnegative)
+  contribution, which is dropped.
+* Lower bounds used:
+  - zone 1 (item 141): f2 ≥ exp∫k/μ with k = min(ŵ, sL + θ√D), on the initial run where D > 0 and k is nonincreasing;
+  - tail: w ≥ v, where v' = −(v_s·min(v_s, v + sL) + max(−D,0))/μ, using (v − sL)² ≤ v_s·min(v_s, v + sL) for
+    0 ≤ v, sL ≤ v_s. Only the part with v > 0 is used.
+* [N] (step145b/c/d.py): generic R3 1500/1500 for every θ tried; corner (t ∈ [1e2, 3e3], zf ≤ 0.05) 2902/3000 with
+  θ = 0.9. Zone 1 alone: 2527/3000.
+* Status: generic P2 now rests on an explicit nested-integral criterion, which still has to be certified (validated
+  quadrature). The corner still loses about 3% and needs the limit-problem analysis or a sharper tail.
