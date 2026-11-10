@@ -1066,9 +1066,16 @@ the rescalings of $\xi$ and $\zeta$.
 \emph{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg$ and $\partial_ag$ denote the parameter derivatives
 of the KdS family in the regular coordinates $(t_*,r,\theta,\varphi_*)$, as in \cite{HPV25}.
 
-The parameters $c_M,c_a$ are determined by local invariants, for example $\delta(\Psi_2\phi^3)$, which is smooth on $M$
-and locally constant on each of the three regions $M\setminus\{r=r_1,r_2\}$. Hence they are the same on all three
-regions. By Lemma~\ref{lem:collar}, Steps 1--4 apply verbatim on each of the three regions, where
+Steps 1--4, applied on each of the three regions of $M\setminus\{r=r_1,r_2\}$, give constants
+$(c_M^{(i)},c_a^{(i)})$ and smooth $X^{(i)}$ with $h=c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag+\cL_{X^{(i)}}g$ there. The
+constants agree. Indeed, for $K\in\{\partial_t,\zeta\}$ the Iyer--Wald form $\delta Q_K-K\cdot\Theta$ evaluated on $h$ is
+closed and smooth on $M$, so its integral $\delta H_K[h]$ over a sphere $\{t_*=\tau,r=\rho\}$ is the same for all
+$\rho$, including spheres in different regions. On $\cL_Xg$ it vanishes (see the proof of Theorem~\ref{thm:B}). So
+$\delta H_K[c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag]$ is independent of $i$, and since $(E,J)$ has nonzero Jacobian with
+respect to $(M,a)$, so is $(c_M^{(i)},c_a^{(i)})=:(c_M,c_a)$. (An earlier version used $\delta(\Psi_2\phi^3)$, which
+vanishes identically because $\phi$ is normalized by $\Psi_2$.)
+
+By Lemma~\ref{lem:collar}, Steps 1--4 apply verbatim on each of the three regions, where
 $\Psi_2\ne0$ and $\Delta_R\ne0$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$, and $k=\cL_{X^{(i)}}g$ on
 the $i$-th region with $X^{(i)}$ smooth there.
 
@@ -1110,13 +1117,19 @@ induction, using Proposition~\ref{prop:puregauge}(ii), shows that $h_\perp$ is p
 satisfies $\cL_{\partial_\varphi}h_0=0$ and $(\cL_{\partial_t})^kh_0=0$. For $k=1$, Proposition~\ref{prop:stationary}
 applies. For $k\ge2$:
 \begin{itemize}
-\item Suppose $\cL_{\partial_t}h_0=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$. The Iyer--Wald charges $\delta H_K$, for
-$K\in\{\partial_t,\zeta\}$, are independent of the 2-sphere. They vanish on $\cL_Xg$ for every smooth $X$: from
-$\Theta(\cL_Xg)=X\cdot L+dQ_X$ and naturality of $Q$, one gets
-$\delta H_K[\cL_Xg]=-\oint(Q_{[X,K]}+Q_{[K,X]})=0$. Applying them on the spheres $\{t_*=\tau\}$ forces
-$\delta H_K[c_M\partial_Mg+c_a\partial_ag]=0$. Since $(E,J)=(M/\Xi^2,aM/\Xi^2)$ has Jacobian $M/\Xi^4\ne0$ with
-respect to $(M,a)$, it follows that $c_M=c_a=0$. Then $h_0-\cL_{t_*X}g$ has lower order, and the induction
-proceeds.
+\item Let $h_1:=(\cL_{\partial_t})^{k-1}h_0$. It is stationary and axisymmetric and solves the linearized equation, so by
+Proposition~\ref{prop:stationary} $h_1=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$. By Step~5 of that proof, $X=X_0+t_*K$, where
+$X_0$ is stationary and $K=c^t\partial_{t_*}+c^\varphi\partial_{\varphi_*}$ is Killing.
+\item The Iyer--Wald charges $\delta H_K$, for $K\in\{\partial_t,\zeta\}$, are independent of the 2-sphere. They vanish
+on $\cL_Yg$ for every smooth $Y$: from $\Theta(\cL_Yg)=Y\cdot L+dQ_Y$ and naturality of $Q$, one gets
+$\delta H_K[\cL_Yg]=-\oint(Q_{[Y,K]}+Q_{[K,Y]})=0$. Since $h_1=(\cL_{\partial_t})^{k-1}h_0$ with $k\ge2$, we have
+$\delta H_K[h_1]=\frac{d}{d\tau}\delta H_K[(\cL_{\partial_t})^{k-2}h_0]|_{\{t_*=\tau\}}=0$, because the charge of a
+solution does not depend on $\tau$. Hence $\delta H_K[c_M\partial_Mg+c_a\partial_ag]=0$. Since
+$(E,J)=(M/\Xi^2,aM/\Xi^2)$ has Jacobian $M/\Xi^4\ne0$ with respect to $(M,a)$, it follows that $c_M=c_a=0$.
+\item Put $Z=\frac{t_*^{k-1}}{(k-1)!}X_0+\frac{t_*^{k}}{k!}K$, which is smooth since $t_*$ is regular. Because
+$[\partial_{t_*},X_0]=[\partial_{t_*},K]=0$ and $\partial_{t_*}t_*=1$, we get $(\mathrm{ad}_{\partial_{t_*}})^{k-1}Z=X_0+t_*K=X$. Hence
+$(\cL_{\partial_t})^{k-1}(h_0-\cL_Zg)=h_1-\cL_Xg=0$, so $h_0-\cL_Zg$ has order $k-1$, and the induction proceeds.
+(Without the $t_*^k$-term the Killing part of $X$ would not be removed; this corrects an earlier version.)
 \end{itemize}
 \end{proof}
 

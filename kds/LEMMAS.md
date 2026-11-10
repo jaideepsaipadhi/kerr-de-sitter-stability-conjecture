@@ -2157,3 +2157,12 @@ T' − T = c∂φ*, which commutes with everything. To transfer the statement:
 * Each component is a T-mode at σ' − cm, with the same imaginary part. For generalized σ ≠ 0 use HPV Thm 2.7's
   reduction. When σ' − cm = 0 with m ≠ 0, the parameter part vanishes (axisymmetry).
 To double-check against HV18 §10 when re-refereeing: whether the gauge equation is solvable on T'-modes.
+
+## Item 168 — Referee issues (15) and (12): FIXED in the paper
+* (15) Generalized-mode induction, part (2). The gauge vector of the stationary step is X = X0 + t*K, with X0 stationary
+  and K Killing (from Step 5). The correct correction is Z = t*^{k−1}X0/(k−1)! + t*^k K/k!, so that
+  (ad ∂t)^{k−1}Z = X. The charge argument now also justifies c_M = c_a = 0 at the top order:
+  δH_K[(L∂t)^{k−1}h0] = d/dτ of a conserved charge = 0.
+* (12) Gluing across horizons. δ(Ψ2φ³) ≡ 0 because φ := Ψ2^{−1/3}, so it cannot fix the constants. They are now matched
+  with the Iyer–Wald charges: δQ_K − K·Θ is closed and smooth on M, so δH_K[h] is the same on spheres in all three
+  regions, and it vanishes on L_Xg. The nonzero Jacobian of (E, J) in (M, a) then gives (c_M, c_a) equal on all regions.
