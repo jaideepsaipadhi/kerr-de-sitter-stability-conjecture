@@ -2356,3 +2356,14 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
 * NEXT: a direct asymptotic expansion of W_C at the ultracold edge (r0 = 1−ε·p, r2 = 1+ε·q), using the Nariai/ultracold
   scaling of t − 1, T, q1, L(t) in ε, to get the leading coefficient as an explicit function of (p/q, τ). Then a
   2-variable certificate for that leading coefficient, plus a remainder bound.
+
+## 185. Ultracold asymptotics of W_C: the q1² term dominates by a full power of ε
+[N] r0 = 1−ε·cos(θπ/2), r2 = 1+ε·sin(θπ/2), m = 2, several τ: t−1 stays O(1) (it depends on the direction θ only),
+2λ̃q1²T ~ ε⁻², while 1.05·t(t−1)·(−L(t)) ~ ε⁻¹, so their ratio → 0 linearly in ε (≤ 0.048 at ε = 1e-2, ≤ 5e-4 at
+ε = 1e-4). L(t) < 0 does occur there (θ = 0.8, τ = 0.95), but W_C ≫ 0. So S_C is NOT degenerate at the ultracold
+edge; the covering is stuck only on the chart's sub-faces:
+  β = 0 (v = 1, the Nariai face r2 = r1, where t → 1) meets σ = 0, and τ = 0 (bottom of the window, q1 → 0) meets σ = 0.
+EA2 (τ-blowup) is slow (degree inflation) but closing; EA main stalls at the (σ, β) = (0, 0) corner, which needs one
+more blowup or a hand bound.
+HAND ROUTE (preferred): near the edge prove λ̃q1²T ≥ c·ε⁻²·(τ-factor) and −λ̃L(t) ≤ C·ε⁻¹, with explicit window
+formulas; then W_C ≥ 0 for ε ≤ ε0 with explicit ε0 ≥ 1/8 needed to match the chart.
