@@ -2005,3 +2005,22 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   ŵL − 2μ|L'| > 0 by covering with the fast Bernstein test. Or find the hand proof: the bound
   |L'|/L ≤ 2z0/(z(z+2s)) + 3/(2t) from the margin reduces the leading term to ẑ ≥ √2·ŝ, so the μ̂' term and the
   segment bound s ≥ ŵ/L must close the rest.
+
+## Item 156 — (b') reduced to a purely algebraic 4/5-variable statement, numerically clean
+* [N] The sufficient form ŵL(z) > 2μ(z)|L'(z)| holds on ALL of [ẑ, z0), not just on the segment, on every abstract
+  sample with the margin (3349/3349; step169b.py). Replacing ŵ by min_z H/s (root-free) FAILS (30%; step170.py),
+  so the value at the root matters.
+* [P] Reduction to the margin-minimal B. Q := ŵL − 2μ|L'| is affine and increasing in B (∂Q/∂B = ŵ > 0). At the
+  true root B = B*(ŝ), and the margin says B* ≥ Bm(A) := 3z0 − A/(2z0) + 2t. Since N is decreasing in B,
+  B* ≥ Bm ⇔ N(ŝ; A, Bm) ≥ 0. Writing g := N(ŝ; A, Bm):
+     Q(B*) = Q(Bm) + ŵ·g/|N_B|, so (b') ⇐ [ g ≥ 0 ⇒ Q(Bm) > 0 ].
+  Statement S': for t > z0 > 1, A ≥ 0, ŝ ∈ (0, x0), z ∈ [z0 − ŝ, z0):
+     N(ŝ; A, Bm(A)) ≥ 0  ⇒  (Ĥ/ŝ)·L_m(z) − 2μ(z)(A/z² + 3) > 0,   L_m = A/z + Bm − 3z.
+  No physics, no b, no λ, no root.
+* [N] S' holds on 192969/192969 gated samples, t up to 10⁷·x0 and A up to 10⁹ (step171.py). Without the gate it fails
+  on about 3.5%, so the gate is genuinely used.
+* [P] STRUCTURE for the certificate. Both g and Q(Bm) are AFFINE in A. For fixed (t, z0, ŝ, z) the gate set
+  {A ≥ 0 : g ≥ 0} is a ray or a segment, so S' reduces to endpoint checks:
+  (i) A = 0 when g(0) ≥ 0; (ii) A = −g0/g1 when it lies in range; (iii) the recession condition q1 ≥ 0 when the ray is
+  unbounded. Each is a 4-variable rational inequality in (t, z0, ŝ, z) with no square roots. Next: certify these
+  three by the fast Bernstein test after compactification.
