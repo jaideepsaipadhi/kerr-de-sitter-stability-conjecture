@@ -2214,3 +2214,15 @@ z0 = 1+a, z = 1+a+b, t = 1+a+b+c; E = q1³D̃·z²(z−1)² (P182), r := K/Q2 = 
 * Certificate target, now explicit: on the gate, with r ≤ 1/(t−z0) (from S_C), show
   sup_b [α + Q2β]·r ≤ A, with b ∈ (0, t−z0). This is the 5D statement, but in polynomial form linear in A and Q2, with
   the w-dependence confined to α and β.
+
+## 174. D̃: split sup over b is nearly lossless; the bend ratio r must stay a variable
+Divide E by Q2² (r = K/Q2, T = t−z0). Then D̃ ≤ 0 ⇔ A ≥ P1(b) + Q2·P2(b) for all b ∈ (0, T), where
+  P1 = z²(g·r − 3b)/(b(1+cr)),   P2 = b·r(2p − h2·r − c·h3·r²)/(z1²(1+cr))   (z1 = z−1, c = T−b, p = 2a²+2ab+2a+b).
+[N] (nearext/cos191.py, 1229 gate points):
+* exact A/max_b(P1 + Q2P2) has min 1.468 (reproduces item 161's 1.44, which validates the decomposition);
+* SPLIT bound A ≥ α + Q2·β⁺ with α = sup_b P1 and β = sup_b P2 has min margin 1.371, so it is nearly lossless;
+* replacing r by the S_C cap 0.7/T DESTROYS it (min 0.001). The actual r is usually far below the cap, so r must
+  remain a certificate variable.
+REDUCED TARGET for hyp:cos (D̃ half): A ≥ α(a, T, r) + Q2·β(a, T, r), where α and β are 3-variable functions defined by a
+one-dimensional sup. Next step: replace α and β by explicit polynomial upper bounds in (a, T, r), via Bernstein on b
+with a margin slack of about 1.37, then certify the physical inequality in the window variables (4D, no w).
