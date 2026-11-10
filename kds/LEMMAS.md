@@ -2341,3 +2341,18 @@ Margin 0.2 means the subdivision depth should be similar to fullcert_m.
 * NEXT: in the ultracold edge, either (i) avoid the b-reduction by working with b as a variable (b₊ is then a smooth
   function near the triple root?), or (ii) factor the leading D-power out of F1, Y, P in the EA2 chart. Then S_α
   (same machinery, polynomials ready) and S_β.
+
+## 184. Ultracold edge for W_C: diagnosis
+* D = e2² − 4e4 does NOT vanish at the triple root (r0 = r2 = 1, r3 = −3: e2 = −6, e4 = −3, D = 48). So the b₊
+  sign rule is not the problem; item 183's guess was wrong.
+* Chart EA (x = 1−σ/8, v = 1−σβ/8, τ free): the σ = 0 face is the single physical edge x = v = 1, but the chart
+  polynomials depend on the approach direction β. Open boxes cluster (a) along the whole σ = 0 face and (b) in a band
+  β ∈ [0.5, 0.75], τ ∈ [0.25, 0.5] extending into σ > 0. This suggests that in the limit, value(W_C) vanishes to leading
+  order along a curve β(τ), i.e. a genuine second-order degeneracy (both sides of S_C → 0 at the same rate as
+  r0, r2 → r1).
+* Comparing leading forms needs a consistent σ-order for F1 and Y (the per-core power stripping in gcover.chart is
+  sign-correct for box tests, but it hides the relative orders). Not done yet.
+* [N] Physically W_C is fine near the edge (normalized ≥ 0.89, item 183).
+* NEXT: a direct asymptotic expansion of W_C at the ultracold edge (r0 = 1−ε·p, r2 = 1+ε·q), using the Nariai/ultracold
+  scaling of t − 1, T, q1, L(t) in ε, to get the leading coefficient as an explicit function of (p/q, τ). Then a
+  2-variable certificate for that leading coefficient, plus a remainder bound.
