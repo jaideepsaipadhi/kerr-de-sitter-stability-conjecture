@@ -1832,3 +1832,17 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * REMAINING to make P2 a theorem: partition the parameter space into cells, fix θ per cell (θ constant on most cells),
   and certify g > 0 by Bernstein, as with items 133–137. The variables (t, z0, A, β, Ŝ, u) are linked by N(Ŝ) = 0:
   eliminate A or β via the affine dependence (item 139).
+
+## Item 145 — P2 reduced to root-free polynomial implications; true on the physical set, false on the abstract 4-parameter set
+* Root-free form. By P1, N ≥ 0 exactly on z ∈ [ẑ, z0]. So the θ-barrier (item 144, constant θ) proves P2 provided
+     (a) N(z) ≥ 0 ⇒ g_θ(z) > 0   and   (b) N(z) ≥ 0 ⇒ H(z) − θs²L(z) ≥ 0,   for all z ∈ (1, z0)
+  ((b) at z = ẑ is the start condition). Both are POLYNOMIAL implications in (t, z0, A, B, z). No root ẑ is needed.
+* [N] On sampled R3 points (step147d.py): 29952/30000 with a per-point θ from a grid in [0.3, 1.95].
+* g_θ is AFFINE in t (μ is linear in t), so on each t-interval only the endpoints matter.
+* [N, NEGATIVE] On the abstract R3 ∩ margin set, (a) FAILS for every θ at extreme points: x0 ≳ 10, A ≳ 10³, t near the
+  R3 upper limit t − 1 = min(2x0L(1), 2x0²(A/z0 + 3)), z near 1. Rechecked with exact N via mpmath (step147g.py).
+  So the abstract 4-parameter event lemma cannot be closed this way.
+* [N, POSITIVE] On PHYSICAL points (window map (r0, r2, frac, m), m = 1..29, Galerkin λ; nearext/phys147.py):
+  1851/1851 R3 points pass (a) and (b) with constant θ.
+* Consequence: certify P2 on the physical parametrisation (cube variables x, v, τ, u = 1/m, plus the position z),
+  reusing the machinery of items 133–139 (b eliminated through b² − e2b + e4 = 0). Large m is the u → 0 face.
