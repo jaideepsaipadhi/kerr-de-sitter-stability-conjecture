@@ -2486,3 +2486,21 @@ inequalities.
   re-run in exact arithmetic or with interval rounding for the final version); (ii) A ≥ 0 on the window is used as in
   items 147ff.
 Remaining for hyp:cos: S_α and S_β.
+
+## 195. S_α: exact z0-free form, polynomials, 3D float covering; obstacle = catastrophic cancellation in the b₊ rule
+* [P, identity checked to 1e-14] On the gate, with F = |Im e1| + t|Im et|:
+    S_α ⇔ 2.1·(−L(t))·[2F + (t−1)(F + 3|Im e1|)] ≤ 3t(t−1)·(Im et)²·F.
+  It is gate-free as W_α := 3t(t−1)(Im et)²F + 2.1·L(t)·G ≥ 0 (G > 0). After dividing by m·a it is a quadratic in m
+  with the concave L-part, so Q2/H2/H1 suffice. Physical margin 4.77 (770 gate points).
+  cert3/sal_build.py (odd parts of n and d only; squares dropped); validated (sal_chk.py) to 1e-12.
+* cert3/cover3d_f.py: 3D float-Bernstein covering (fbern3.py), resumable, depth cap per subtree. It excludes the
+  ultracold square and the extremal-Kerr strip {x ≥ 7/8, v ≤ 1/8}, to be handled by charts EA/EB/KA/KB (implemented).
+  Weakly definite cores are now detected on the whole cube and treated as constants.
+* Main cube: open vol ~8e-6, but stuck at level 36 on a surface near τ ≈ 1 and near (x, v) ≈ (0.985, 0.865).
+  Cause (mpmath at (0.9858, 0.8643, 0.9763)): for Q2, F1 ≈ 1.6e11, Y ≈ 1.2e12, and F1√D − Y ≈ 2.2e7, a relative
+  cancellation of ~1e-5. The value at b₊ is tiny compared with its two components (n(b₋) is huge), so the
+  (F1, Y, P) rule needs boxes of size ~1e-5 per axis (level ~50). This is a defect of the b-reduction, not of S_α
+  (the value is positive).
+* NEXT: avoid the b-reduction near this surface. Options: (i) a parametrisation in which a² is polynomial (e.g. use
+  (r0, a) or (λ̃, a) as coordinates and solve for r2 rationally, if possible); (ii) scale out the factor making n(b₊)
+  small (find the polynomial relation responsible); (iii) interval evaluation of n at b₊ with a tight √D enclosure.
