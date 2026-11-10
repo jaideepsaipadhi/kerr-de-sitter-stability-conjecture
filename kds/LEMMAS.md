@@ -1776,3 +1776,16 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * NEXT: prove P2 in the corner by (i) the t → ∞ limit problem plus an explicit O(1/t) perturbation bound, or (ii) a
   two-zone barrier that follows the root k₊ − Cμ|L'|/L until s²L² = 4μs|L'|, then switches to a polynomial tail
   matched at the switch point.
+
+## Item 141 — Two-zone barriers for P2: zone 1 is free, the tail is the obstruction
+* [P] ZONE 1 LEMMA. Wherever D := s²L² − 2μs|L'| > 0, the Riccati right side R(k) = −k² + 2sLk − 2μs|L'| is positive
+  strictly between its roots k± = sL ± √D. So ANY nonincreasing k in (k−, k+) is a subsolution: μk' ≤ 0 < R(k).
+  Examples: sL; sL + θ√D for θ ∈ (0,1); min(ŵ, ·) wherever ŵ < k+. Min and max of subsolutions are subsolutions in the
+  Dini sense, which is enough for ODE comparison.
+* So all the difficulty sits in the tail zone near z0, where D ≤ 0 and R < 0 everywhere.
+  Tested tails (step143*.py): linear in s (k = cs), linear in z with positive end value (k = k* − ρ(z − z*), ρ by
+  fixed point), with switch points scanned. Best: corner 1995/3000, generic 1490/1500. The tail needs
+  |k'| ≥ (k² − 2sLk)/μ + 2s|L'|, and 2s|L'| is large at the switch point in the corner (A large).
+* Conclusion: the corner needs the actual tail dynamics. Next route: the t → ∞ limit problem (item 140) on the tail
+  zone, where D ≤ 0 and the equation is μw' = −(w − sL)² − |D|: a monotone decreasing Riccati equation with an
+  explicit lower solution once |D| is bounded above by a quadratic in s.
