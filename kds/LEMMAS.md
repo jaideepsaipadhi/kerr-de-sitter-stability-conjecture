@@ -2260,3 +2260,12 @@ PLAN: the same machinery as the margin certificate (cert3/margin_red.py: variabl
 b² − e2b + e4; L(t) as LQ2·m² + LQ1·m + LQ0 with the crude λ). Add the constraint 2(z0 − 1) ≥ (t − 1) as a polynomial
 sign on the box (clear the denominators of z0 = t/R), and certify LQ(t) ≥ 0 on boxes where the constraint can hold.
 Margin 0.2 means the subdivision depth should be similar to fullcert_m.
+
+## 178. S_μ certificate: build data and a NEGATIVE on multipliers
+* [P] Window expression for λ̃·L(t) (same normalization as margin_red; m ≥ 2, crude λ):
+    LQ2' = 4Ξ²b·U0U3/λ̃ + K(1 − 2Ξ²b·y),   LQ1' = LQ1 (unchanged),   LQ0' = −K(1+7α) + λ̃(1 − 2t).
+  Derived from margin_red via λ̃A/(t m²) = (2z0/t)·[λ̃A/(2z0 m²)] and λ̃c1 = λ̃(1+t) + 3(1−α)K.
+* [N, NEGATIVE] S-procedure L(t) + β(1 − 2zf)·S ≥ 0 on the whole window, with S ∈ {A/t, t, A/t + 3t}: the required β
+  ranges are disjoint (S = A/t+3t: need β ≥ 6.9, allowed β ≤ 0.67). So the constraint zf ≥ 1/2 has to enter through
+  box COVERING (on each (x, v, τ) box, either 2(z0−1) < t−1 is certified, or Q2'/H2'/H1' ≥ 0), not through a
+  multiplier.
