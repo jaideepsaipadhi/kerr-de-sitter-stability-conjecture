@@ -1901,3 +1901,22 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
     [N] Physically N(z*) ≥ 0 does occur near the window top, but ONLY at points outside R3 (66/180 test points, all
     with R3 false). So the m = 1, 2 certificates need the R3 gate (or a split near τ → 1, where R1/R2 take over).
 * Still open for P2: the R3-gated certificates for m = 1, 2 (and q0 ≤ 0 for concavity); start condition (b).
+
+## Item 149 — P2 condition (a) PROVED for all m, by hand, from a new certified margin L(z0) ≥ A/(2z0) + 2t
+* [P, certificate] L(z0) ≥ A/(2z0) + 2t on the whole window, for all m ≥ 1 (cert3/margin_red.py with LQ2 coefficient 2
+  and LQ0 = −K(1+7α) + λ̃(1 − t − 3z0); fullcert_m.py: all six signs +1). Physically min (ℓ − A/(2z0))/t ≈ 2.63
+  (nearext/ell153.py), so the certified constant is close to sharp.
+* [N] Physically g_1 > 0 on ALL of (1, z0), not just on [ẑ, z0): 206179 points, normalised margin ≥ 0.745
+  (nearext/g152.py). Abstractly, ℓ ≥ A/(2z0) + 2t ⇒ g_1 > 0: 0 failures in 3·10⁶ samples (step153.py).
+* [P] HAND PROOF of (a), θ = 1, on the whole interval. Let ℓ = L(z0), a := A/(2z²z0), s = z0 − z, z ∈ (1, z0).
+  Exactly: L = ℓ + s(A/(zz0) + 3) and L − s|L'| = ℓ − As²/(z²z0).
+  With ℓ ≥ A/(2z0) + 2t:  L − s|L'| ≥ a(z² − 2s²) + 2t  and  L ≥ az(z + 2s) + 2t =: X + 2t.
+  AM–GM: (X + 2t)² ≥ 8tX. Hence
+     g_1 = s²L² + μ(L − s|L'|) ≥ 8t·az(z+2s)s² − 2μas² + 2tμ ≥ 2tμ > 0,
+  because 8t·z(z+2s) ≥ 2μ = 2z(z−1)(t−z) ⇔ 4t(z + 2s) ≥ (z − 1)(t − z), which is true termwise. ∎
+  So the barrier k = sL is a strict subsolution on all of (1, z0), for every m and every subextremal KdS. No
+  root ẑ, no R3 gate, no computer beyond the margin certificate.
+* REMAINING for P2: only the START condition (b), ŵ ≥ ŝL̂, i.e. H(ẑ) ≥ ŝ²L(ẑ) at the phase-1/phase-2 switch.
+  [N] Physically true (phys150c.py, all m = 1..3 points, window up to frac 0.99999). Multiplier route (step154*.py):
+  T := H − s²L and N are affine in (A, γ); certify T − κN ≥ 0 on the feasible polyhedron. Infeasible only for
+  x0 ≲ 0.05 with t ≈ z0 (about 2% of abstract samples): that corner needs either physics or a smaller θ there.
