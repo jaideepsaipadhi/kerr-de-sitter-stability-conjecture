@@ -1661,3 +1661,24 @@ Remaining sub-lemmas (the gap is now these, not "uncontrolled high-frequency ana
 * Still to re-audit when writing up: that the window is exactly the open cube in (r₀, 1/r₂, τ); that the denominators removed by
   the gcd-reduced class F have known sign; and the reduction "Q > 0 ⇔ F₁ > 0 ∧ P > 0" (item 131).
 * The domination machinery (domcert.py, autocert.py, remcert.py, edge*.py) is superseded but kept for the record.
+
+## Item 134 — Audit of item 133 closed; event lemma (P1) on the new range
+* Audit (item 133), all three points closed:
+  - Denominators: win_red3 reduces e.n·e.d, which has the same sign as e. So nothing with unknown sign was removed.
+  - Root choice: e4 = r0 r1 r2 r3 < 0, so b² − e2 b + e4 has exactly one positive root, b+ = (e2 + √D)/2, and b = a² is that
+    root. G(b+) = (−Y + F1√D)/2 > 0 ⇐ F1 > 0 ∧ F1²D − Y² > 0. Correct in both directions of Y's sign.
+  - Domain: r0 ∈ (0,1), r2 > 1, τ ∈ (0,1) is the open cube in (r0, 1/r2, τ).
+  So L(z0) > 0 on the window is PROVED.
+* (P1) without the false floor. The old Descartes proof (item 119) needs B ≥ 5.5t − 1.25 and fails with B ≥ 4t − 1/2.
+  New facts:
+  - [P] N at z = 1 equals −(t−1)² x0² (p − 1), with p = 2x0 L(1)/(t−1). So N(z=1) < 0 exactly on p > 1, i.e. R3. At the
+    corner (A = Ac2, L(z0) = 0) the pp line, the R2/R3 gate and L(z0) = 0 all meet, at p = 1.
+  - [P] With B = 3z0 − A/z0 + β (β = L(z0) > 0), the Möbius coefficients T2..T6 are affine in (A, β) with
+    coefficients ≤ 0 (step134_P1new.py).
+  - [N] On R3 ∩ {L(z0) > 0}, N has exactly ONE root in (0, x0): 20000/20000 random points, plus all 91 near-corner points
+    checked with mpmath. P1 holds without any B floor.
+  - [N] But the single-transform Descartes pattern has more than one sign change on about 0.05% of points
+    (T_j < 0 < T_{j+1} for some j ≥ 2), so item 119's proof does not carry over.
+* NEXT: prove P1 on the new range by Descartes with one bisection (separate Möbius maps on S ∈ (0, x0/2) and (x0/2, x0)),
+  or by "N = 0 ⇒ N' < 0". Then redo P2 (item 121 used B ≥ Bf only in the last certificate: replace it with
+  B = 3z0 − A/z0 + β), and R1/R2 (item 47).
