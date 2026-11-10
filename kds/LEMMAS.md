@@ -2413,3 +2413,19 @@ OBSTRUCTION for a clean hand lemma: if w2 < Ω2 < w1, the numerator of Im κ2 va
 can be small. Then t(Im et)² gives no lower bound, and one must show the gate cannot occur there (L(t) ≥ 0, through
 the A term or B). This is a genuine multi-scale analysis (the three horizons merge at rates set by θ, and the window
 endpoints move with ε).
+
+## 190. S_C at the ultracold corner: GATE-FREE sufficient form via S_μ
+[P] Put F := |Im e1| + t|Im et| = −(Im e1 + t·Im et), which is linear in w; in the window F = −2Ξam(f1 + t f2)/λ̃.
+On the gate S_μ (PROVED, item 182) gives zf ≤ 1/2 ⇔ t|Im et| ≥ |Im e1| ⇒ t|Im et| ≥ F/2. Hence
+|Im et|·F ≥ F²/(2t). With −L(t) ≤ 3t − B (since A ≥ 0), S_C (item 187) follows from
+      (G_C)   F² ≥ 4.2·t·(3t − B),
+which needs NO gate. This also closes the item-189 obstruction: Im e1 and Im et cannot both be small, because
+their numerators vanish at w = Ω1 and w = Ω2 respectively.
+[N] Near the corner (r0 = 1−ε cos θ, r2 = 1+ε sin θ, θ ∈ [0, π/2], all τ, m ≤ 60), the ratio F²/(4.2t(3t−B)) has
+min 6.9 for ε ∈ [0.13, 0.25], 16 for ε ∈ [0.03, 0.13], and 69 for ε ≤ 0.03 (from 8.4-factor runs, ×2).
+Globally (G_C) is FALSE (min 0.71 at 0.13% of points, away from the corner), so it is used only on the corner
+square, where the W_C covering stalls; outside the square, W_C is certified (item 183).
+cert3/scg_build.py builds the (G_C) window polynomials (degree ~56); edge-chart covering again slow.
+NEXT: prove (G_C) on the corner square by hand. F and B are explicit and linear/quadratic in w, so the minimum over
+w sits at a kink (w = Ω1 or Ω2) or at a window endpoint; this reduces to finitely many 2-parameter (ε, θ)
+inequalities.
