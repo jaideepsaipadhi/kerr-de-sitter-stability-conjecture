@@ -27,5 +27,5 @@ while time.time()-t0<40:
     x0=zz-1
     if not (2*x0*(AA+BB-3)>tt-1 and 2*x0**2*(AA/zz+3)>=tt-1): continue
     u=np.linspace(1e-6,1-1e-6,800); q=1+x0*u; s_=zz-q; N=Nf(tt,zz,AA,BB,s_)
-    zh=q[N>=0].min(); n+=1; mins.append(zh/zz); below+= zh<(2-np.sqrt(2))*zz
-print(n,'zhat<0.586 z0:',below,'min zhat/z0',min(mins))
+    zh=q[N>=0].min(); n+=1; mins.append((zh-1)/x0); below+= zh<1+0.62*x0*x0/zz
+print(n,'zhat<1+0.6x0:',below,'min (zhat-1)/x0',min(mins))

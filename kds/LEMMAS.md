@@ -1882,3 +1882,22 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   whole cube (40+/20− at random points). So the sign test must use the full rule (F1 < 0 ∧ Y < 0 ∧ P < 0 also
   certifies), and possibly the gate z0 > 5/3.
 * Still needed for P2: the start condition (b) at θ = 1, H(ẑ) ≥ ŝ²L̂. It holds on all physical points; no proof yet.
+
+## Item 148 — Gate-free threshold z* = 1 + (31/50)x0²/z0; fast Bernstein sign test; leading m-coefficient PROVED
+* Threshold. The gate z0 > 5/3 of item 147 is removed by z* := 1 + (31/50) x0²/z0 ∈ (1, z0).
+  [P] z* ≥ (2−√2)z0 for every x0 > 0. Writing z0 = 1 + x0:
+      z0 + 0.62x0² − (2−√2)z0² = 0.4142 − 0.1716x0 + 0.0342x0² (coefficients rounded),
+  with negative discriminant, so it is positive. Hence the hand lemma (item 147) makes g_1 > 0 on [z*, z0).
+  [N] Physically ẑ ≥ z*: 0 violations in 99461 R3 points (nearext/phys149d.py). The simpler 1 + 0.6x0 fails on 159.
+* FAST BERNSTEIN TEST (cert3/fastbern.py). The Bernstein coefficients on [0,1]³ have the signs of the coefficients
+  of rev(shift(rev(p))): rev(p) = xⁿp(1/x) per variable, and shift is x ↦ x + 1 (one flint compose). This replaces
+  the Fraction arrays; the (162, 164, 38) polynomial is tested in 35 s. subdiv_pos does dyadic subdivision exactly
+  (p(x/2)·2ⁿ, p((x+1)/2)·2ⁿ).
+* Build (cert3/zhat2_*.py). λ̃·(−N(z*)) = m²q2 + mq1 + q0 at B = B_crude (m ≥ 2), plus the m = 1 variant H1.
+  - [P] q2 > 0 on the whole window cube: F1 > 0 by factor signs (core (93, 93, 19) passes one Bernstein box);
+    P = g²·Pr with Pr > 0 by one Bernstein box (degree (162, 164, 38)) and g nonvanishing (all factors definite).
+    So N(z*) < 0 for all m ≥ m0(geometry): P2(a) holds for large m everywhere.
+  - Hhalf (m = 2): its F1 core (110, 110, 24) is NEGATIVE on the face τ = 1 (window top) and positive at τ ≤ 0.99.
+    [N] Physically N(z*) ≥ 0 does occur near the window top, but ONLY at points outside R3 (66/180 test points, all
+    with R3 false). So the m = 1, 2 certificates need the R3 gate (or a split near τ → 1, where R1/R2 take over).
+* Still open for P2: the R3-gated certificates for m = 1, 2 (and q0 ≤ 0 for concavity); start condition (b).
