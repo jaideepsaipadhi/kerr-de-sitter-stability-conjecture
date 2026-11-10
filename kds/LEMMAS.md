@@ -2080,3 +2080,11 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * [P] Useful identity for the next step: A = t(X0² − Y²) and q1 = tY/z0 with Y = X1 + Xt (the residue of q² − P4 at
   z = 0), so q1 and A are tied through X0. A certificate in the window variables (with κ = c·κ_min built in) is the
   route. The bend is needed only for small zf, m ≥ 2, near-extremal.
+
+## Item 160 — Cosmological side: sign-changing f+ instead of bending q. NEGATIVE
+* Idea: with the currents of Prop. "Reduction", J^{f+}(t) = L(t)f(t)q(t)|B_t|². If L(t) < 0, take f+ with f(z0) > 0,
+  f'(z0) ≤ 0 and f(t) < 0. Then J(t) > 0 when B_t ≠ 0, monotonicity forces Re(u'ū)(z0) < 0, and that contradicts the
+  event side. This would need C^f ≤ 0 and D^f ≤ 0 on (z0, t).
+* [N] On 300 physical bend-needing points, f = 1 − c(z−z0)^p (p = 1, 2, 3, 4, 6; f(t) = −δ) satisfies C^f, D^f ≤ 0 at
+  NONE of them (nearext/cosf180.py). Near t both terms of D^f = q(f'L + fL') + ½q1(μf')' turn positive when L, f < 0.
+  The bent-q construction (items 158–159) remains the route.
