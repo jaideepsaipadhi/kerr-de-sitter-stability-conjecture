@@ -2470,3 +2470,19 @@ inequalities.
   isolated points), not failures.
 * NEXT: locate the shared factor (probably the y2 denominator ρ1Pa0 − ρ0Pa1 or a U-denominator) and cancel it
   symbolically before the τ-split, or handle the two points with a local chart. Then run chart EB, which mirrors EA.
+
+## 194. (S_C) PROVED (certificate). Corner charts EA and EB both close.
+* Root cause of the "stuck points" (item 193): the τ-condition polynomials (q0, q1, disc, c2neg, v1, v2) carry
+  SQUARE factors in (r0, r2, b), e.g. (1,1,1,0)², (1,2,1,0)², (2,2,2,0)², which vanish at b₊ on curves. After
+  b-reduction these become spurious near-zeros of F1, Y, P. Fix (scg_tau.py): factor each condition polynomial
+  and drop the even-multiplicity factors before the b-reduction (sign unchanged).
+* cover2d_f.py (float Bernstein, fbern2.py): chart EA closed (~21k boxes, 3 runs); chart EB closed (~24.5k boxes,
+  3 runs). EA ∪ EB = the corner square {r0 ≥ 7/8, 1/r2 ≥ 7/8}.
+* ASSEMBLY of S_C (rT ≤ 1 on the gate):
+  - outside the corner square: the W_C covering, exact fmpz Bernstein (item 183);
+  - inside it: S_μ (item 182) + A ≥ 0 + exact identity (item 187) ⇒ S_C ⇐ (G_C), and (G_C) ⇔ for each target
+    (Q2, H2, H1) the τ-quadratic is ≥ 0 on [0, 1], certified via the closure rules above.
+* Caveats for the re-referee: (i) the corner part uses the float engine (tolerance (k+4)·1e-13 relative; should be
+  re-run in exact arithmetic or with interval rounding for the final version); (ii) A ≥ 0 on the window is used as in
+  items 147ff.
+Remaining for hyp:cos: S_α and S_β.
