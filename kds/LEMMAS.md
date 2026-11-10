@@ -2099,3 +2099,18 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   with coefficients in (x, v, τ, z), and the certificate has the same shape as items 148/157 (leading coefficient,
   plus endpoint values at m = 2, 3, plus concavity), with the gate L(t) < 0 and the √D reduction.
 * This is the last mathematical gap in Theorem A.
+
+## Item 162 — Cosmological certificate: exact algebraic data assembled
+* [P, numerically confirmed to 1e-15] q1 = tY/z0 with Y = X1 + Xt. In the window variables
+  Y = −Ξ·a·m·(f1 + f2)/λ̃ (f1 = U1 + U3 < 0, f2 = U2 + U3 < 0, λ̃ = Λ/3; checked against the direct κ_j formulas,
+  cert3/cos_dbg.py). Only even powers of a appear: q1² = t²Ξ²b·m²(f1+f2)²/(λ̃²z0²), polynomial in b.
+* [P] Write K := κq1 = 1.05·(−L(t))·t(t−1)/(2(t−z0)²), which contains no q1, and Q2 := q1². Then
+  q1C̃ = μ'(z−z0)(Q2 + K(t−z)) − 2μ(Q2 + K(t−z) − K(z−z0)), and
+  q1³D̃ = E/(z²(z−1)²), where E is a polynomial whose (A, B, Q2, K)-monomials are only
+  K³, Q2K, Q2K², Q2², Q2²K, AQ2K, AQ2² (step182.py, P182.pkl). B enters only through K.
+* m-structure: A, Q2 ∝ m²; K is quadratic in m (through L(t) at B_crude). E has degree ≤ 6 in m. The bend gate
+  L(t) < 0 is a quadratic in m; it holds only on a bounded m-range for each geometry, because the m² coefficient
+  Â/t + b2 of L(t) is positive.
+* Certificate to build: in the variables (x, v, τ) plus w (z = z0 + (t−z0)w), for m in the gate range, show E < 0 and
+  q1C̃ ≤ 0. Bounded m-range plus the polynomial structure in m means the m = 2..m_max(geometry) cases can be handled
+  through u = 1/m ∈ [0, 1/2] with the gate. Expected size: the largest certificate so far (5 variables, √D reduction).
