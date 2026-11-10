@@ -2392,3 +2392,12 @@ Covering of the exact form (gcover, scN): it again stalls only at the ultracold 
 edge charts do not converge at depth 6 (Bernstein pessimism at degree ~56).
 Scaling there: Im e1, Im et ~ 1/D'(r) blow up as roots merge, while L ~ ε⁻¹. The right side dominates by
 powers of ε, so a hand corner lemma is the right tool. The z0-free form makes it tractable.
+
+## 188. Ultracold corner for S_C: margin grows like 1/ε
+[N] r0 = 1−ε cos θ, r2 = 1+ε sin θ, all τ, m ≤ 60, the sufficient form t·(Im et)² ≥ 2.1(3t − B) on the gate:
+  ε ∈ [0.03, 0.1]: min ratio 96.6;  ε ∈ [0.01, 0.03]: 255;  ε ∈ [0.001, 0.01]: 1229.
+The gate near the corner occurs only at the top of the window (τ ≈ 0.96) with θ ≈ 1.5 and m = 2.
+So a corner lemma with very crude constants is enough (a factor of ~100 to spare at ε = 0.1).
+Ingredients still to write: (i) a lower bound for |Im et| on the gate near the corner (it blows up like 1/D'(r2)
+unless the numerator ω(r2²+a²) − am is small; S_μ, i.e. |Im e1| ≤ t|Im et| on the gate, controls that case);
+(ii) an upper bound 3t − B ≤ C/ε from the crude angular bound and C0 = 3/(Λ(r1−r0)(r2−r3)).
