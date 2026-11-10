@@ -1709,3 +1709,19 @@ Write B = 3z0 − A/z0 + β, where β = L(z0) > 0 (item 133). The R3 constraints
   The bootstrap of item 121(a) is too lossy near L(z0) → 0: it replaces f2 by f̂.
 * NEXT: a sharper bootstrap. Keep the growth of f2 (f2 ≥ f̂ e^{∫k} with k a subsolution near ẑ), or compare Φ with
   the explicit phase-1 data on a short interval past ẑ.
+
+## Item 137 — Quantitative margin L(z0) ≥ A/(2z0) PROVED on the window; R1/R2 survive; P2 status
+* PROVED (cert3/margin_red.py + fullcert_m.py, same exact pipeline as item 133): on the whole window, for all m ≥ 1,
+  L(z0) − A/(2z0) > 0. The proof replaces the A-term coefficient 4 in LQ2 by 2. All six sign certificates (F1 and P for
+  Q2, H2, H1) pass with no subdivision. Concavity in 1/m is unaffected, since only the m² coefficient changes.
+  At coefficient 1 (margin 3A/(4z0)) the H2-P certificate does not close.
+* R1/R2 (item 47) need only L̃ > 0 on [1, z0] (L decreasing ⇒ ⇔ L(z0) > 0 in R1; in R2, L̃(z0) > 0 IS the R2 condition)
+  and H ≥ s(t−1). Neither uses the B floor. So the event lemma in R1 ∪ R2 is PROVED unconditionally.
+* P2 in R3 with β = L(z0) ≥ A/(2z0):
+  - [N] Item 121's Q(ẑ) > 0 still fails on 20 of 3000 random points (step137c.py 0.5). The only lossy step is f2 ≥ f̂
+    in the bootstrap.
+  - [N] The one-step improvement (freeze Φ ≥ Φ̂, solve the linear lower ODE f_l' = (Φ̂ + 2sL f_l)/μ, then use
+    Φ(z0) ≥ Φ̂ + 2∫L f_l) passes 3000/3000 with normalised margin ≥ 0.71. Each Picard iterate is a rigorous lower bound
+    (L > 0, s > 0), but it is an integral, not a closed form.
+  - NEXT: an explicit lower bound for f2 on [ẑ, z1]. Integrand (Ĥ/ŝ − 2ŝL̂ + 2sL)/μ, with sL decreasing; certify the
+    resulting closed-form inequality in (t, z0, S, A) on the margin set.
