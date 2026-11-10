@@ -1972,3 +1972,18 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
   about 1.6%. Physically ℓ ≥ 0.63A/z0 + 2t holds (min excess 0.13·A/z0; nariai164.py), and near Nariai ℓ/t ≥ 11. But
   no simple bound of the form ℓ ≳ t/x0 holds globally. The separating information is a joint (A, ℓ, t, x0)
   constraint, so (b) needs a certificate in the window variables, either the covering of item 152 or z_T-parametrised.
+
+## Item 154 — (b) by z_T-parametrisation: works for m ≥ 3; m = 1, 2 need direct certificates
+* Lower bound on B without the linear m-term: since ℓ0 ≥ m, λ ≥ m² + m − 4 − 4α − 4αΞm − 2Ξ²aw·m(m+2). So
+  B ≥ min(Blow1, Blow2) with Blow1 = m²(b2 + b1) + b0 (valid when b1 ≤ 0) and Blow2 = m²b2 + b0 (valid when b1 ≥ 0);
+  b2 = C0(1 − 2Ξ²aw), b1 = C0(1 − 4αΞ − 4Ξ²aw), b0 = −C0(4 + 4α) + c1. N is decreasing in B, so it suffices to
+  prove N < 0 for BOTH bounds, with no gate on the sign of b1.
+  [N] With integer m and this weaker B: 0 violations on 101339 physical points (nearext/bmin165.py).
+* z_T-parametrisation: set A = A_T(z_T) (so m² = A_T(z_T)/Â). Then everything is explicit in (geometry, z_T).
+  Gates: z_T is a "record" point of A_T (first crossing), R3, and m² ≥ m0².
+  [N] (nearext/zt166/167.py): with m² ≥ 9, about 0.3% flagged points remain, all at m² ≥ 3·10³ with z_T → z0, i.e.
+  the float-cancellation regime of item 152. With m² ∈ [1, 9) (non-integer m included) the relaxation fails often. For
+  m = 1, 2 the true λ floor (ℓ0 = 2) is much stronger than m² + m and must be used directly.
+* Plan: (i) m ≥ 3: certify N(z_T; A_T(z_T), Blow_i) < 0 on the record set in window variables × z_T (exact; the
+  near-z0 end is handled by the limits of item 152); (ii) m = 1, 2: fixed-m covering certificate (T* > 0 or N < 0 per
+  box) in (x, v, τ, w).
