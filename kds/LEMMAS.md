@@ -2114,3 +2114,16 @@ Test set: 3000 R3 points with t ∈ [1e2, 3e3], zf ∈ [1e-3, 0.05], margin β �
 * Certificate to build: in the variables (x, v, τ) plus w (z = z0 + (t−z0)w), for m in the gate range, show E < 0 and
   q1C̃ ≤ 0. Bounded m-range plus the polynomial structure in m means the m = 2..m_max(geometry) cases can be handled
   through u = 1/m ∈ [0, 1/2] with the gate. Expected size: the largest certificate so far (5 variables, √D reduction).
+
+## Item 163 — Cosmological certificate: the gate L(t) < 0 is unavoidable; m-range unbounded
+* [N] With the minimal-type bend K = 1.05(−L(t))t(t−1)/(2(t−z0)²) evaluated without the gate, E > 0 or q1C̃ > 0 on
+  most points with L(t) > 0 (a negative "bend" is bad). On the gate L(t) < 0: 0 failures in 597 points
+  (nearext/cos183.py).
+* [N] No constant-coefficient multiplier −E + c·L(t)·W ≥ 0 exists for the normalisations W ∈ {q1⁴t², q1⁴t(t−z0)z0,
+  q1⁴t³/z0}: the required c ranges are disjoint by about 30 orders of magnitude (cos184.py).
+* [N] A universal bend K = θq1²/(t−z0) (no gate) fails broadly for every θ ∈ [0.01, 1] (cos185.py).
+* [N] The bend is needed for m up to at least 103 (r0 → 1; nearext sampling with m ≤ 200). So the m-range is bounded for
+  each geometry but not uniformly.
+* So the certificate must handle the gate by COVERING: on each box of (x, v, τ, u = 1/m) either L(t) > 0 is certified
+  (no bend; item 19 applies) or E < 0 and q1C̃ ≤ 0 are certified for all w ∈ (0, 1). Every sign is a b-expression
+  (F1·b + F0), decided per box by the (F1, Y, P) rule.
