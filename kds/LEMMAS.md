@@ -2640,3 +2640,17 @@ conditions on an interval (Sturm/discriminant), which is heavy.
   S_β is g(κ̂) ≥ 0 for all s ∈ [0, T] and all κ̂ ∈ (0, κ̂_max(geometry)] that occur (gate ⇔ κ̂ > 0). Since g is a
   concave/convex quadratic in κ̂ depending on the sign of E, the natural certificate is in (x, v, τ, s/T, κ̂/κ̂_max): 5D,
   with a b-reduction. This is the largest certificate of the four; not started.
+
+## 205. S_β reduced from 5D to two 4D statements (m = 1, 2)
+[P] Put ρ := rT = κT/q1 (so ρ ≤ 1 is S_C, proved) and Γ := A·T/q1², which is m-FREE (A, q1² ∝ m²). Writing
+s = Tσ, φ(s) = φ0(s) + ρ·φ1(s) is affine in ρ, with
+  φ0 = 2s(2az+s)/c²,  φ1 = s[(2az+s)(1−σ) − σ z c]/c²   (c = z−1, z = z0+s, a = z0−1).
+S_β ⇔ Γ ≥ ρ·sup_s φ = sup_s (ρφ0 + ρ²φ1) =: H(ρ), and H is nondecreasing in ρ ≥ 0 [N: 0 violations on 1406 points].
+By the S_C identity, ρ_m = 2.1·(−λ̃L/m²)/(λ̃·ê(û + tê)) with an m-free denominator, while
+λ̃L/m² = LQ2' + LQ1·u + LQ0'·u² (u = 1/m) is CONCAVE in u (LQ0' < 0). So ρ_m is convex in u ∈ [0, 1/2], and
+ρ_m ≤ max(ρ_2, ρ_∞ < 0) for all m ≥ 2. Hence
+   S_β for ALL m  ⇐  Γ ≥ H(ρ̄),  ρ̄ := max(ρ_1, ρ_2)   ⇐   [Γ ≥ H(ρ_1)] ∧ [Γ ≥ H(ρ_2)].
+Each bracket is a 4D statement in (x, v, τ, σ): Γ·c² ≥ ρφ0c² + ρ²φ1c² for σ ∈ [0, 1] (quartic in s), with an
+OR-closure "ρ_m ≤ 0" (that m is off the gate).
+[N] Exact margin min 1.287 (1406 gate points). The crude ρ := 1 substitute FAILS (2.3e-4), so ρ_m must be kept.
+NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D float covering for m = 1 and m = 2.
