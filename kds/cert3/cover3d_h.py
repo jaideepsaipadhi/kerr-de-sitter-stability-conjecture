@@ -93,6 +93,9 @@ def bval(ps,kk,j,dep):
     if p<0 and y!=0: return -y
     return 0
 def closed(ps,dep):
+    if os.environ.get('PERM2'):
+        tgL,itL,pL=ALTS[0]
+        return all(closed1(ps,dep,[w],ITEMS,()) or closed1(ps,dep,[l],itL,pL) for w,l in zip(TG,tgL))
     if os.environ.get('PERM'):
         (tgK,itK,pK),(tgL,itL,pL)=ALTS[0],ALTS[1]
         if closed1(ps,dep,tgK,itK,pK): return True

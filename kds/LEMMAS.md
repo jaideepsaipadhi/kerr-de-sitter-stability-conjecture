@@ -2729,3 +2729,14 @@ NEXT: a sharper s-free bound valid for small a (e.g. sup_s φ0 ≤ 2 + O(a/s) wh
   The remaining boxes sit on x → 1 (extremal) at v → 0 (Kerr) and v → 1 (ultracold), plus the
   (x, τ) → (1, 1) edge: the same degenerate corners as for S_α/S_C. These need the KA/KB/EA/EB/XT-type charts in 4D.
   Exact 4D chart expansion of the 100k-term W cores is too slow, but Z (3D) may suffice there. To test next.
+
+## 212. S_β near the extremal face: the s-free closures are not enough; W is needed there
+* 3D covering of {ρ_m ≤ 0 ∨ Z_m > 0} for m = 1, 2 (zr_build.py, cover3d_h PERM2), with charts: VT, KA, KB, XT1, EA
+  close in 1 box each. The main cube, XT2 and EB stall on the extremal face x = 1 near v ≈ 0.49, τ ≈ 0.84–0.88.
+* [N] There Z genuinely FAILS in the extremal limit: ε = 1e-3…1e-5 gives Γ/(ρ2(2.7+5.4a)) ≈ 0.94–0.97 (a, T ~ 1/ε,
+  so the bound 2+4a on φ0 is too crude). The variant Z2 = Γ − 1.35·ρ·φ0(T), with φ0(T) = 2T(2at+T)/(t−1)² (φ0 is
+  monotone in s: 0 violations in 26k), also fails at 1.7% of points (min 0.88).
+* But the full W-form (ρ² ≤ 0.7ρ) holds there with margin ≈ 1.37–1.62, uniformly as ε → 0.
+* So near the extremal face, S_β needs the 4D W-covering with an extremal chart. Exact 4D chart expansion of the
+  W cores (≈1e5 terms) exceeds the time budget. Options: (i) rescaled variables a/T, s/T in the extremal limit
+  (scale-invariant reformulation of W), or (ii) a float/interval chart substitution instead of exact expansion.
