@@ -2598,3 +2598,9 @@ expansion of G_α with the scaling w − Ω1 = β·s.
   r0 = r1 is not captured by "strip the minimal β-power per monomial" (W ~ ε⁻², d ~ ε³). The right fix is to expand n
   in β exactly at b₊ (the b-reduction mixes orders), i.e. b-reduce AFTER the chart substitution and β-expansion,
   not before.
+* CORRECTION to the line above: stripping positive monomials never changes the SIGNS of F1, Y, P, so "reduce after
+  substituting" would not help by itself. The real picture on the face β = 0: across τ*(σ), (F1, Y, P) go from
+  (+, +, +) to (−, −, −). The b₊-value is positive on BOTH sides (P > 0, F1 > 0 ⇒ +; P < 0, Y < 0 ⇒ +), and it
+  vanishes to leading face order ON the curve. So boxes straddling the curve can never be closed by the sign rule. What
+  is needed is the next-order term in β along the curve, i.e. a genuine blow-up τ = τ*(σ) + β·s, with τ*(σ) algebraic
+  (implicit in the face polynomial). Not attempted.
