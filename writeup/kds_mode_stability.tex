@@ -722,58 +722,37 @@ $\zeta(l)\zeta(n)-\zeta(m)\zeta(\bar m)=\frac12G(\zeta,\zeta)$. The last stateme
 modes, together with Lemma~\ref{lem:bc}.
 \end{proof}
 
-Fix $m\in\Z$, and let $P_b(\sigma)$ be the spectral family of this operator on $\ker(\partial_{\varphi_*}-im)$, at
-parameters $b=(\Lambda,M,a)$. The dynamical hypotheses of \cite[\S5.1]{HV18} concern only the principal symbol $G$
-(radial sets at the horizons, and the global null-bicharacteristic flow). They were verified in the full
-subextremal range by Petersen--Vasy \cite{PV25,PV24}; see \cite[Remark~2.12]{HPV25}. The Teukolsky operator acts on sections of a line bundle with scalar principal
-symbol, which is the setting of \cite{Vas13,HV18}. Its subprincipal part enters only through the threshold regularity
-at the radial sets: Fredholm estimates hold on $H^{\mathsf s}$ for $\mathsf s>\mathsf s_0+\beta\Im\sigma$, with $\mathsf s_0,\beta$
-depending on the subprincipal symbol there (hence on $s$). Taking $\mathsf s$ large handles any strip $\Im\sigma>-c$, and
-the kernel then consists of smooth, i.e.\ outgoing, modes. The trapping hypothesis of \cite[\S5.1]{HV18} is needed
-only for high-energy estimates near the real axis, not for the Fredholm property \cite[Theorem~5.4 and the remark
-in its proof]{HV18}. We therefore have:
+Fix $m\in\Z$ and let $P_b(\sigma)$ be the spectral family of this operator on $\ker(\partial_{\varphi_*}-im)$ at
+parameters $b=(\Lambda,M,a)$. The hypotheses of \cite[\S5.1]{HV18} on the null-bicharacteristic flow and the radial
+sets concern only $G$, and hold in the full subextremal range \cite{PV25,PV24}. The operator acts on a line bundle with
+scalar principal symbol, the setting of \cite{Vas13,HV18}; the spin enters only through the threshold regularity at
+the radial sets, $\mathsf s>\mathsf s_0+\beta\Im\sigma$, so large $\mathsf s$ handles any strip and the kernel consists of
+outgoing modes. Trapping matters only for high-energy estimates \cite[Theorem~5.4]{HV18}. Thus:
 \begin{enumerate}[label=(F\arabic*)]
-\item $P_b(\sigma)$ is a holomorphic family of Fredholm operators of index $0$ on $\Im\sigma>-c$
-\cite[Theorem~5.4]{HV18}. Its non-invertibility set is discrete, and it is the set of quasinormal mode (QNM)
-frequencies.
-\item There is $C_0$, uniform for $b$ near $b_0$, such that $P_b(\sigma)$ is invertible for $\Im\sigma>C_0$. This
-follows from the global energy estimate on growing function spaces, which uses only hyperbolicity and holds
-uniformly in $b$ \cite[\S5.1.2]{HV18}.
-\item The non-invertibility set is closed in $(b,\sigma)$, and QNMs move continuously, with constant total rank in
-small discs \cite[Proposition~5.11]{HV18}. That proof uses only the Fredholm estimates \cite[(5.26)]{HV18} on a
-precompact set of $\sigma$, which hold uniformly in $b$.
+\item $P_b(\sigma)$ is a holomorphic Fredholm family of index $0$ on $\Im\sigma>-c$; its non-invertibility set, the
+quasinormal mode (QNM) frequencies, is discrete \cite[Theorem~5.4]{HV18}.
+\item There is $C_0$, uniform for $b$ near $b_0$, with $P_b(\sigma)$ invertible for $\Im\sigma>C_0$ (energy estimates
+on growing spaces, \cite[\S5.1.2]{HV18}).
+\item The non-invertibility set is closed in $(b,\sigma)$, and QNMs move continuously with locally constant total rank
+\cite[Proposition~5.11]{HV18}; the proof uses only Fredholm estimates on a precompact set of $\sigma$, uniform in $b$.
 \end{enumerate}
-What is \emph{not} available for Teukolsky in the full subextremal range is the high-energy estimate bounding
-$|\Re\sigma|$. We obtain it sector by sector from the gauge-fixed Einstein operator, for which it is proved in
-\cite{HPV25}.
+The missing ingredient for Teukolsky in the full subextremal range is a high-energy bound on $|\Re\sigma|$. We borrow
+it from the gauge-fixed Einstein operator \cite{HPV25}.
 
 \subsection{Metric reconstruction}
 We use the Geroch--Held--Penrose (GHP) formalism with $\Th'=\Delta-p\gamma-q\bar\gamma$ and
 $\eth'=\bar\delta-p\alpha-q\bar\beta$ \cite{GHP73}. Let $\mathcal O$ be the GHP Teukolsky operator for $\Psi_0$, and
 $\mathcal O'$ its prime. On any type D $\Lambda$-vacuum the Bianchi identities give $\Th\Psi_2=3\rho\Psi_2$,
 $\eth\Psi_2=3\tau\Psi_2$ and their primes; there are no $\Lambda$-terms. With $P:=\Psi_2^{-4/3}$ (GHP type $(0,0)$),
-and using the formal adjoint rules $\Th^\dagger=-(\Th-\rho-\bar\rho)$ and $\eth^\dagger=-(\eth-\tau-\bar\tau')$, a
-direct computation gives
+and the formal adjoint rules $\Th^\dagger=-(\Th-\rho-\bar\rho)$, $\eth^\dagger=-(\eth-\tau-\bar\tau')$, we have
 \begin{equation}\label{eq:adjoint}
 \mathcal O'^\dagger\circ P=P\circ\mathcal O.
 \end{equation}
-\emph{Proof of \eqref{eq:adjoint}.} Write $\mathcal O=(\Th-4\rho-\bar\rho)(\Th'-\rho')-(\eth-4\tau-\bar\tau')(\eth'-\tau')+V_0$
-and $\mathcal O'$ for its prime, where the zeroth-order term $V_0$ (a constant multiple of $\Psi_2$, plus a $\Lambda$-term) is
-prime-invariant and real. Using $(AB)^\dagger=B^\dagger A^\dagger$ and the adjoint rules,
-\[
-(\Th-\rho)^\dagger=-(\Th-\bar\rho),\qquad(\Th'-4\rho'-\bar\rho')^\dagger=-(\Th'+3\rho'),
-\]
-and similarly for $\eth$, with $(\rho,\bar\rho,\rho')$ replaced by $(\tau,\bar\tau',\tau')$. Hence
-\[
-\mathcal O'^\dagger=(\Th-\bar\rho)(\Th'+3\rho')-(\eth-\bar\tau')(\eth'+3\tau')+V_0.
-\]
-From $\Th\Psi_2=3\rho\Psi_2$, $\Th'\Psi_2=3\rho'\Psi_2$, $\eth\Psi_2=3\tau\Psi_2$ and $\eth'\Psi_2=3\tau'\Psi_2$ we get
-$\Th P=-4\rho P$, $\Th'P=-4\rho'P$, $\eth P=-4\tau P$ and $\eth'P=-4\tau'P$. Therefore
-\[
-(\Th-\bar\rho)(\Th'+3\rho')(PX)=(\Th-\bar\rho)\big(P(\Th'-\rho')X\big)=P(\Th-4\rho-\bar\rho)(\Th'-\rho')X,
-\]
-the same computation applies to the angular term, and $V_0$ commutes with $P$. This proves \eqref{eq:adjoint} as an
-operator identity.
+Indeed, writing $\mathcal O=(\Th-4\rho-\bar\rho)(\Th'-\rho')-(\eth-4\tau-\bar\tau')(\eth'-\tau')+V_0$ with $V_0$ real and
+prime-invariant, the adjoint rules give
+$\mathcal O'^\dagger=(\Th-\bar\rho)(\Th'+3\rho')-(\eth-\bar\tau')(\eth'+3\tau')+V_0$. Since $\Th P=-4\rho P$,
+$\Th'P=-4\rho'P$, $\eth P=-4\tau P$, $\eth'P=-4\tau'P$, we get $(\Th-\bar\rho)(\Th'+3\rho')(PX)=P(\Th-4\rho-\bar\rho)(\Th'-\rho')X$,
+and likewise for the angular term.
 
 Wald's argument \cite{Wal78}, which uses only the decoupling identity $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$
 and the self-adjointness of the linearized Einstein operator $\mathcal E$, then gives the following.
@@ -785,20 +764,13 @@ $c_0\neq0$ ($c_0=\frac12$ in the normalization of \cite{KSFK03}).
 \end{lemma}
 
 \begin{proof}
-The first claim is Wald's argument combined with \eqref{eq:adjoint}: from $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$ and
-the self-adjointness of $\mathcal E$ we get $\mathcal E\mathcal S'^\dagger=\mathcal T'^\dagger\mathcal O'^\dagger$, and
-$\mathcal O'^\dagger(P\Psi)=P\mathcal O\Psi=0$.
-
-For the second claim we use the convention $h_{xy}:=h_{ab}x^ay^b$. The operator $\mathcal S'$ only involves the
-components $T_{nn}$, $T_{n\bar m}$ and $T_{\bar m\bar m}$. So $\mathcal S'^\dagger$ produces a tensor of the form
-$h_\Psi=X\,n\otimes n+Y\,n\odot\bar m+Z\,\bar m\otimes\bar m$ (indices lowered), whose only nonzero components are
-$h_{ll}$, $h_{lm}$ and $h_{mm}$. By GHP
-type counting, the linearized $\Psi_4$ depends only on $h_{nn}$, $h_{n\bar m}$ and $h_{\bar m\bar m}$. Hence
-$\Psi_4[h_\Psi]=0$. For $\tilde h=\overline{h_\Psi}$ the only nonzero components are $h_{ll}$, $h_{l\bar m}$ and
-$h_{\bar m\bar m}$, so $\Psi_4[\tilde h]$ comes from $\tilde h_{\bar m\bar m}=\overline{h_{mm}}$ alone. The resulting expression involves only $\Th'$-derivatives and the coefficients $\rho',\bar\rho'$. Its evaluation
-uses only the Ricci identities $\Th'\rho'=\rho'^2$ and $\Th'\bar\rho'=\bar\rho'^2$, so no commutator and no
-$\Lambda$-term enters. The algebra is therefore literally that of the Kerr case \cite{Wal78,KSFK03}, which gives
-$\Psi_4[\tilde h]=c_0(\Th')^4(\bar P\bar\Psi)$. Only $c_0\ne0$ is used below.
+From $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$ and $\mathcal E^\dagger=\mathcal E$ we get
+$\mathcal E\mathcal S'^\dagger=\mathcal T'^\dagger\mathcal O'^\dagger$, and $\mathcal O'^\dagger(P\Psi)=P\mathcal O\Psi=0$. Next,
+$\mathcal S'$ involves only $T_{nn},T_{n\bar m},T_{\bar m\bar m}$, so $h_\Psi$ has only the components $h_{ll},h_{lm},h_{mm}$,
+and $\tilde h$ only $h_{ll},h_{l\bar m},h_{\bar m\bar m}$. By type counting, $\Psi_4$ depends only on
+$h_{nn},h_{n\bar m},h_{\bar m\bar m}$, so $\Psi_4[\tilde h]$ comes from $\tilde h_{\bar m\bar m}=\overline{h_{mm}}$ alone. That
+computation uses only $\Th'$ and the Ricci identities $\Th'\rho'=\rho'^2$, $\Th'\bar\rho'=\bar\rho'^2$, with no commutator
+or $\Lambda$-term, so it is literally the Kerr computation \cite{Wal78,KSFK03}.
 \end{proof}
 
 \subsection{The kernel lemma}
@@ -814,22 +786,14 @@ $(0,4)$ or $(4,0)$, regular at the future cosmological horizon, with $(\Th')^4F=
 \end{lemma}
 
 \begin{proof}
-In the tetrad of Lemma~\ref{lem:regframe}, $\Th'$ differentiates only along $n$, which has no
-$\partial_\theta$-component. So for each fixed $\theta$, $(\Th')^4F=0$ is a fourth-order linear ODE in $r$, the
-composition of four first-order operators
-\[
-n(\cdot)-(p_i+q_i)\gamma,\qquad p_i+q_i\in\{4,2,0,-2\}.
-\]
-On modes, $n=-(\Delta_r/2\varrho^2)\big(\partial_r+iK/\Delta_r\big)$ in the Kinnersley normalization, and
-$\gamma=\mu+\Delta_r'/(4\varrho^2)$ with $\mu$ vanishing like $\Delta_r$. Hence each first-order
-factor has kernel spanned by $\exp(-i\int K/\Delta_r)$ times $\Delta_r^{k}$ times an analytic function, with
-$k\in\frac12(p_i+q_i)+\Z\subset\Z$. Every local solution near $r_2$ is therefore a finite sum of terms
-$(r_2-r)^{-\kappa_2+k}\log^j(r_2-r)$ times analytic functions, with $k\in\Z$.
-
-Regularity at the future cosmological horizon is the branch $(r_2-r)^{\kappa_2}C^\infty$ (Lemma~\ref{lem:bc}). So a
-nonzero $F$ requires $2\kappa_2\in\Z$. For $\Im\sigma>0$ we have
-$\Re(2\kappa_2)=2\Xi\rho_2\Im\sigma/|\Delta_r'(r_2)|>0$ and $\Im(2\kappa_2)=2\Xi(\rho_2\Re\sigma-am)/\Delta_r'(r_2)$.
-Hence $\Re\sigma=m\Omega_2$ and $\Im\sigma=N\kappa_2^\sharp$ with $N=2\kappa_2\in\{1,2,3,\dots\}$. Finally, $F$ vanishes identically once it vanishes near $r_2$, by uniqueness for the ODE.
+In the tetrad of Lemma~\ref{lem:regframe}, $\Th'$ differentiates only along $n$, which has no $\partial_\theta$-component,
+so for fixed $\theta$, $(\Th')^4F=0$ is a composition of four first-order ODEs $n(\cdot)-(p_i+q_i)\gamma$ in $r$, with
+$p_i+q_i\in\{4,2,0,-2\}$. On modes $n=-(\Delta_r/2\varrho^2)(\partial_r+iK/\Delta_r)$ and $\gamma=\mu+\Delta_r'/(4\varrho^2)$ with
+$\mu=O(\Delta_r)$, so each factor has kernel $e^{-i\int K/\Delta_r}\Delta_r^k\cdot(\text{analytic})$ with $k\in\Z$. Every local
+solution near $r_2$ is thus a sum of terms $(r_2-r)^{-\kappa_2+k}\log^j(r_2-r)\cdot(\text{analytic})$, $k\in\Z$, while
+regularity means $F\in(r_2-r)^{\kappa_2}C^\infty$ (Lemma~\ref{lem:bc}). So $F\ne0$ forces $2\kappa_2\in\Z$. For $\Im\sigma>0$,
+$\Re(2\kappa_2)=2\Xi\rho_2\Im\sigma/|\Delta_r'(r_2)|>0$ and $\Im(2\kappa_2)=2\Xi(\rho_2\Re\sigma-am)/\Delta_r'(r_2)$, which gives
+$\sigma\in\mathcal Z_m$. Finally, $F$ vanishes identically once it vanishes near $r_2$.
 \end{proof}
 
 \begin{proposition}[Transfer]\label{prop:transfer}
