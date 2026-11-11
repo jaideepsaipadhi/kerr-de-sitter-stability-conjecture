@@ -32,14 +32,12 @@
 \begin{document}
 
 \begin{abstract}
-We prove mode stability for the Teukolsky equations of spin $\pm2$ on Kerr--de Sitter black holes in the full
-subextremal range: there are no nontrivial outgoing modes with $\Im\sigma\ge0$. We deduce that every generalized mode
-of the ungauged linearized Einstein equation with $\Im\sigma\ge0$ is pure gauge, up to a linearized Kerr--de Sitter
-metric when $\sigma=0$. This is the hypothesis under which Hintz, Petersen and Vasy proved nonlinear stability of
-Kerr--de Sitter in the full subextremal range. For real frequencies we apply Hintz's two-current method to a real dual
-radial equation obtained by an Euler transform; the upper half plane is reached by continuity, with high-frequency
-control borrowed from the gauge-fixed Einstein operator via metric reconstruction. Part of the argument is
-computer-assisted.
+A Kerr--de Sitter black hole is mode stable if no linear perturbation grows exponentially or oscillates without decay.
+Hintz proved this for scalar waves in the full subextremal range. We prove it for the Teukolsky equations of spin
+$\pm2$, and deduce that every generalized mode of the ungauged linearized Einstein equation with $\Im\sigma\ge0$ is
+pure gauge, up to a linearized Kerr--de Sitter metric when $\sigma=0$. This is the hypothesis under which Hintz,
+Petersen and Vasy proved the nonlinear stability of Kerr--de Sitter in the full subextremal range. Part of the proof
+is computer-assisted.
 \end{abstract}
 
 \maketitle
@@ -68,11 +66,10 @@ azimuthal angle $\varphi_*$ that are smooth across the future event and cosmolog
 $e^{-i\sigma t_*}v$ with $v$ independent of $t_*$ and smooth on $[r_1-\delta,r_2+\delta]\times S^2$. In the language of
 \cite{Hin26}, such modes are \emph{outgoing}.
 
-The nonlinear stability of the KdS family was proved by Hintz and Vasy \cite{HV18} for very slowly rotating black
-holes. Hintz, Petersen and Vasy \cite{HPV25} extended this to the full subextremal range, conditional on mode
-stability for the ungauged linearized Einstein equation \cite[Assumption~1.2]{HPV25}. Hintz \cite{Hin26} recently
-proved mode stability for scalar waves in the full subextremal range, and left the Teukolsky equations of spin
-$s=\pm2$ open.
+Hintz and Vasy proved in 2018 that the KdS family is nonlinearly stable for small $a/M$ \cite{HV18}. Hintz, Petersen
+and Vasy extended this to the full subextremal range, conditional on mode stability of the ungauged linearized
+Einstein equation \cite[Assumption~1.2]{HPV25}. Hintz then proved mode stability for scalar waves in the same range
+\cite{Hin26}, and left spin $\pm2$ open. We settle that case.
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
 On every subextremal KdS spacetime, the Teukolsky equations of spin $s=+2$ and $s=-2$ have no nontrivial outgoing
@@ -107,30 +104,30 @@ Theorem~\ref{thm:B} applies to each $h_m$ (for generalized modes with $\sigma\ne
 \cite[Theorem~2.7]{HPV25}); if $\sigma'=cm$ with $m\ne0$, the linearized KdS part vanishes by axisymmetry.
 \end{remark}
 
-\subsection{Strategy}
-\emph{Real frequencies} (\S\S\ref{sec:radial}--\ref{sec:event}). Outside the superradiant window a Wronskian identity
-suffices. Inside it, an Euler transform of the Heun form of the radial equation produces a \emph{real} dual equation
-with potential $L(z)=A/z+B-3z$, $A>0$, in a variable placing the horizons at $z=1$ and $z=t$. This has the structure of
-the scalar radial equation of \cite{Hin26}, and Hintz's two-current method reduces mode stability to an ODE inequality
-in $(t,z_0,A,B)$ (the \emph{event lemma}) plus a cosmological condition. Sign statements about explicit polynomials are
-certified by Bernstein branch and bound.
+\subsection{Outline}
+For real $\sigma\ne0$ we separate variables. Outside the superradiant window a Wronskian identity is enough. Inside it
+we do not work with the radial Teukolsky equation directly. An Euler transform of its Heun form gives a dual equation
+which, unlike the original, is real, with potential $L(z)=A/z+B-3z$ and $A>0$; the horizons sit at $z=1$ and $z=t$.
+This is the structure of the scalar problem in \cite{Hin26}, and Hintz's two currents reduce everything to an
+ordinary differential inequality (the \emph{event lemma}, \S\ref{sec:event}) and a condition at the cosmological
+horizon (Proposition~\ref{hyp:cos}). Both come down to signs of explicit polynomials. At $\sigma=0$ an energy
+identity and a Teukolsky--Starobinsky map suffice (\S\ref{sec:zero}).
 
-\emph{Zero frequency} (\S\ref{sec:zero}): an energy identity and a Teukolsky--Starobinsky map.
+For $\Im\sigma>0$ we deform to Schwarzschild--de Sitter, as Hintz does for scalars (\S\ref{sec:uhp}). The difficulty
+is that no high-frequency estimate for Teukolsky is known in the full subextremal range. We borrow one. A Teukolsky
+mode, used as a Hertz potential \cite{Wal78}, gives a linearized Einstein mode; if its $\Psi_4$ is nonzero, it becomes a
+quasinormal mode of the gauge-fixed operator of \cite{HPV25}, whose high-energy estimates confine it to a compact set.
+That $\Psi_4\ne0$ holds off a discrete set of frequencies, because nothing killed by $(\Th')^4$ can be regular at the
+cosmological horizon.
 
-\emph{Upper half plane} (\S\ref{sec:uhp}). We argue by continuity from Schwarzschild--de Sitter as in \cite[\S6]{Hin26}.
-No high-frequency estimate for Teukolsky is available in the full subextremal range; instead a Teukolsky mode, used as
-a Hertz potential \cite{Wal78}, yields a linearized Einstein mode with $\Psi_4\ne0$, hence a quasinormal mode of the
-gauge-fixed operator of \cite{HPV25}, whose high-energy estimates give compactness. That $\Psi_4\ne0$ rests on the
-observation that, off a discrete set, nothing annihilated by $(\Th')^4$ is regular at the cosmological horizon.
-
-\emph{Theorem~\ref{thm:B}} (\S\ref{sec:B}). Once the Teukolsky scalars vanish, linearized Goldberg--Sachs makes the
-perturbation algebraically special, and the Killing fields $\xi$ (from the Killing spinor) and $\zeta$ (Carter's) stay
-Killing to first order. This makes $h$ pure gauge with an explicit gauge vector, except in the stationary axisymmetric
-sector, which reduces to Carter's separable ansatz.
+Theorem~\ref{thm:B} follows from Theorem~\ref{thm:A} in \S\ref{sec:B}. Once the Teukolsky scalars vanish, the
+perturbation is algebraically special to first order, and the Killing spinor field $\xi$ and Carter's field $\zeta$
+stay Killing. This makes $h$ pure gauge with an explicit gauge vector, except in the stationary axisymmetric sector,
+where Carter's separable ansatz linearizes the field equations.
 
 \subsection*{Computer assistance}
-The computer-assisted steps are listed in Appendix~\ref{app:cert}. All are exact, except item C9, which uses
-floating-point arithmetic with rigorous a priori error bounds.
+The computer-assisted steps are listed in Appendix~\ref{app:cert}. All are exact except C9, which uses floating-point
+arithmetic with rigorous error bounds. The code is available on request.
 
 \subsection*{Acknowledgments}
 I thank the authors of \cite{Hin26,HPV25} for making their work publicly available.
@@ -222,16 +219,12 @@ $\Im e_1\cdot\Im e_t>0$ exactly on the open interval $(w_2,w_1)$, the \emph{wind
 \end{proposition}
 
 \begin{proof}
-The formulas follow from the definition of $\kappa_j$ and the signs of $\Delta_r'(r_j)$.
-\begin{itemize}
-\item \emph{Monotonicity.} The slope of $f_1$ is $P_1+P_3>0$. By the residue identities, the slope of $f_2$ is
-$P_3-P_2=P_0-P_1$. Moreover $D_0/D_1=f(r_0)/f(r_1)$ for the concave parabola $f(x)=(x-r_3)(r_2-x)$, whose vertex
-$-(r_0+r_1)/2$ lies to the left of $r_0$. Hence $D_0>D_1$, and with $\rho_1>\rho_0$ this gives $P_1>P_0$.
-\item \emph{Positivity of $w_2$.} The same comparison gives $w_2=a(D_1^{-1}-D_0^{-1})/(P_1-P_0)>0$.
-\item \emph{Ordering $w_2<w_1$.} Cross-multiplying, the terms involving $a^2$ cancel, and $D_0D_1D_3$ times the
-difference $w_1-w_2$ factors as $2(r_0-r_1)(r_0-r_3)(r_1-r_3)(r_0r_3-r_1r_2)$. All four factors are negative,
-since $r_0r_3\le0<r_1r_2$, so the product is positive. \qedhere
-\end{itemize}
+The formulas follow from the definition of $\kappa_j$ and the signs of $\Delta_r'(r_j)$. The slope of $f_1$ is
+$P_1+P_3>0$, and by the residue identities that of $f_2$ is $P_3-P_2=P_0-P_1$. Now $D_0/D_1=f(r_0)/f(r_1)$ for the
+concave parabola $f(x)=(x-r_3)(r_2-x)$, whose vertex $-(r_0+r_1)/2$ lies left of $r_0$; so $D_0>D_1$, and as
+$\rho_1>\rho_0$, $P_1>P_0$. The same comparison gives $w_2=a(D_1^{-1}-D_0^{-1})/(P_1-P_0)>0$. Finally, $D_0D_1D_3(w_1-w_2)$
+(in which the $a^2$ terms cancel) factors as $2(r_0-r_1)(r_0-r_3)(r_1-r_3)(r_0r_3-r_1r_2)$, a product of four negative
+numbers.
 \end{proof}
 
 For every real $\sigma\ne0$, Proposition~\ref{prop:dual} below puts the dual equation in the real form
@@ -317,11 +310,11 @@ $\widetilde{\mathcal H}\tilde y=0$ becomes
 \end{equation}
 with real coefficients, $q$ affine, and $q(1)$, $q(t)$ proportional (with a common sign) to
 $\frac12(t-1)\Im e_1$ and $-\frac12t(t-1)\Im e_t$. If $w$ lies in the open window, then moreover:
-\begin{itemize}
-\item $q=q_1(z-z_0)$ with $q_1>0$ and $z_0\in(1,t)$, after replacing $u$ by $\bar u$ and $q$ by $-q$ if necessary;
-\item $A=t\big(X_0^2-(X_1+X_t)^2\big)$ with $X_j=|\kappa_j+\kappa_3|$, and $A>0$;
-\item $B=\lambda C_0+c_1$.
-\end{itemize}
+$q=q_1(z-z_0)$ with $q_1>0$ and $z_0\in(1,t)$, after replacing $u$ by $\bar u$ and $q$ by $-q$ if necessary;
+
+$A=t\big(X_0^2-(X_1+X_t)^2\big)$ with $X_j=|\kappa_j+\kappa_3|$, and $A>0$;
+
+$B=\lambda C_0+c_1$.
 The transformed solution $u$ is outgoing for \eqref{eq:dual} in the sense of \cite[(3.4)]{Hin26}: near $z=1$ it is
 $(z-1)^{-iq(1)/\mu'(1)}$ times a smooth function, and near $z=t$ it is $(t-z)^{-iq(t)/|\mu'(t)|}$ times a smooth
 function.
@@ -333,19 +326,18 @@ real parts. The resulting operator is formally real, and writing it in the form 
 $q(t)$ from the exponents at $z=1$ and $z=t$. We take $q$ to be linear. By Proposition~\ref{prop:window},
 $q(1)q(t)<0$, so $q$ has a unique zero $z_0\in(1,t)$, and the sign of $q_1$ is fixed by replacing $u$ with $\bar u$
 if necessary. The remaining claims are as follows.
-\begin{itemize}
-\item \emph{Form of $L$.} The function $L:=(q^2-\mu^2V)/\mu$ is then rational, and $L=n_0/z+n_1+n_2z$. Expanding at
+\emph{Form of $L$.} The function $L:=(q^2-\mu^2V)/\mu$ is then rational, and $L=n_0/z+n_1+n_2z$. Expanding at
 $z=\infty$ with the exponents $\{1+2s,1+s-2\kappa_3\}$ gives $n_2=-3$, since the exponent difference there is $\pm4$.
-\item \emph{The coefficient $n_0$.} Expanding at $z=0$ gives $n_0=t(X_0^2-(X_1+X_t)^2)$. In the window
+
+\emph{The coefficient $n_0$.} Expanding at $z=0$ gives $n_0=t(X_0^2-(X_1+X_t)^2)$. In the window
 $X_0-X_1-X_t=2\Im\kappa_3$, so $n_0=2t\,\Im\kappa_3\,(X_0+X_1+X_t)$. This is positive because $\Im\kappa_3>0$ for
 $w>\Omega_3$, and $\Omega_3<\Omega_2<w$ since $|r_3|>r_2$.
-\item \emph{The coefficient $n_1$.} The identity $n_1=\lambda C_0+c_1$ is an exact identity between rational
-functions of $(r_0,r_1,r_2,\sigma,m,\lambda,a,s)$ after elimination by \eqref{eq:vieta} and \eqref{eq:residues}.
-Its verification is computer algebra (Appendix~\ref{app:cert}, item~C1): the numerators of $n_1-(\lambda C_0+c_1)$
-and $n_2+3$ are divisible by $s^2-4$.
-\item \emph{Outgoing behavior.} This follows from Proposition~\ref{prop:transform}(ii) and the matching of exponents.
-\qedhere
-\end{itemize}
+
+\emph{The coefficient $n_1$.} After eliminating by \eqref{eq:vieta} and \eqref{eq:residues}, $n_1=\lambda C_0+c_1$
+is an identity of rational functions; the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are divisible by $s^2-4$
+(item~C1).
+
+\emph{Outgoing behavior.} This is Proposition~\ref{prop:transform}(ii), after matching exponents.
 \end{proof}
 
 \begin{lemma}[A priori bounds]\label{lem:floor}
@@ -459,7 +451,7 @@ $\tilde q=(z-z_0)\big(q_1+\kappa(t-z)\big)$ and $\tilde L=L+(\tilde q^2-q^2)/\mu
 $\tilde C:=\mu'\tilde q-2\mu\tilde q'\le0$ and $\tilde D:=\tilde q\tilde L'-\kappa\mu'\le0$ on $(z_0,t)$.
 \end{proposition}
 
-With $f_+=1$, the current argument of \cite[Lemma~4.1, \S7]{Hin26} applies verbatim to the phase $\tilde q$: the
+With $f_+=1$, the current argument of \cite[Lemma~4.1, \S7]{Hin26} applies to the phase $\tilde q$: the
 derivative of the current is $\tilde C|u_+'|^2+\tilde D|u_+|^2$, where $\tilde D=\tilde q\tilde L'+\frac12(\mu\tilde q'')'$
 and $\tilde q''=-2\kappa$. Since $\tilde q(t)=q(t)$, the boundary limit at $t$ is $\tilde L(t)q(t)|B_t|^2$. At $z_0$ the
 current equals $-\mu(z_0)\tilde q'(z_0)\Re(u'\bar u)(z_0)$ with $\tilde q'(z_0)=q_1+\kappa(t-z_0)>0$. So
@@ -607,16 +599,16 @@ exactly once, at $\hat z=z_0-\hat S$.
 \begin{proof}
 Write $B=3z_0-A/z_0+\beta$ with $\beta=L(z_0)>0$. Substitute $S=x_0v/(1+v)$, $v\in(0,\infty)$, clear denominators, and
 let $T_0,\dots,T_6$ be the coefficients of the resulting sextic in $v$.
-\begin{itemize}
-\item $T_0=6z_0^3(z_0-t)^2x_0^2>0$ and $T_1=6z_0^2(z_0-t)x_0^2(3z_0^2+2z_0-4tz_0-t)>0$.
-\item $T_6=z_0N|_{z=1}=-z_0(t-1)^2x_0^2(p-1)<0$ in R3, by an exact factorization.
-\item For $k=3,4,5$, $T_k$ is affine in $(A,\beta)$ with strictly negative coefficients, and $T_{k-1}$ is affine with
+$T_0=6z_0^3(z_0-t)^2x_0^2>0$ and $T_1=6z_0^2(z_0-t)x_0^2(3z_0^2+2z_0-4tz_0-t)>0$.
+
+$T_6=z_0N|_{z=1}=-z_0(t-1)^2x_0^2(p-1)<0$ in R3, by an exact factorization.
+
+For $k=3,4,5$, $T_k$ is affine in $(A,\beta)$ with strictly negative coefficients, and $T_{k-1}$ is affine with
 nonpositive coefficients. In R3 the admissible set is the quadrant $\{A\ge a_0,\beta\ge0\}$ with
 $a_0=\max(0,z_0((t-1)/(2x_0^2)-3))$, since the line $p=1$ passes through its corner. So $\{T_k\ge0\}$ meets the quadrant in
 a triangle at the corner, and $T_{k-1}>0$ on it if two explicit combinations $g_1,g_2$ of corner values and
 coefficients are positive. These are rational functions of $(t,z_0)$; we certify $g_1,g_2>0$ unconditionally for
 $k-1=2,3,4$ (Appendix~\ref{app:cert}, item~C3).
-\end{itemize}
 Hence $T_k\le0\Rightarrow T_{k+1}<0$ for $k=2,\dots,5$, so the sign pattern changes exactly once. By Descartes' rule,
 $N$ has exactly one root in $(0,x_0)$.
 \end{proof}
@@ -675,7 +667,7 @@ This completes the proof of Theorem~\ref{thm:event}, and with it Theorem~\ref{th
 There are no nontrivial outgoing modes at $\sigma=0$, for $s=\pm2$.
 \end{proposition}
 \begin{proof}
-\emph{Case $m\ne0$.} Then $w=0<w_2$ lies outside the window, and Corollary~\ref{cor:outside} applies. Indeed,
+\emph{Case $m\ne0$.} Then $w=0<w_2$ lies outside the window, and Corollary~\ref{cor:outside} applies, since
 $\Im\kappa_1$ and $\Im\kappa_3$ are nonzero because $am\ne0$.
 
 \emph{Case $m=0$, $s=-2$.} The radial equation is $(\Delta_r^{-1}R')'+V\Delta_r^{-2}R=0$, with
@@ -868,12 +860,11 @@ Next we gauge-fix $\tilde h$: put $h'=\tilde h+\delta^*\omega$, where $\omega$ s
 $D\Upsilon(\delta^*\omega)=-D\Upsilon(\tilde h)$ at frequency $-\bar\sigma$. The operator $\omega\mapsto D\Upsilon(\delta^*\omega)$
 is a principally scalar wave operator on 1-forms, so it is Fredholm of index $0$ by (F1) in its version for
 1-forms.
-\begin{itemize}
-\item If it is invertible at $-\bar\sigma$, then $h'$ is a QNM of $L_b$, and $h'\ne0$ since $\Psi_4[h']=\Psi_4[\tilde h]\ne0$.
-\item If it is not invertible, there is $\omega\ne0$ with $D\Upsilon(\delta^*\omega)=0$. Then
+If it is invertible at $-\bar\sigma$, then $h'$ is a QNM of $L_b$, and $h'\ne0$ since $\Psi_4[h']=\Psi_4[\tilde h]\ne0$.
+
+If it is not invertible, there is $\omega\ne0$ with $D\Upsilon(\delta^*\omega)=0$. Then
 $L_b(\delta^*\omega)=0$, and $\delta^*\omega\ne0$ because KdS has no Killing modes with $\Im\ne0$. So
 $\delta^*\omega$ is a QNM of $L_b$ at frequency $-\bar\sigma$.
-\end{itemize}
 In either case $L_b$ has a QNM at $T$-frequency $-\bar\sigma-(-m)\Omega_T$, so
 $|\sigma|\le R_0+|m|\Omega_T$. For $s=-2$ the event-horizon ladder enters instead. Hence we can take
 $R_m=\max(R_0+|m|\Omega_T,\ |m|\Omega_1+C_0,\ |m|\Omega_2+C_0)$.
@@ -916,15 +907,15 @@ Fix a subextremal $b_1$ and $m\in\Z$. Choose an SdS point $b_*$ as in Lemma~\ref
 $p:[0,1]\to\{\text{subextremal parameters}\}$ with $p(0)=b_*$ and $p(1)=b_1$. For example, scale $r_0$ to $0$ with
 $r_1,r_2$ fixed, as in \cite[\S6]{Hin26}, and then move within the SdS family. Let $S$ be the set of $s\in[0,1]$ for
 which the sector $m$ has a QNM with $\Im\sigma>0$.
-\begin{itemize}
-\item $S$ is open, by (F3).
-\item $S$ is closed. Let $s_j\to s_0$ with $s_j\in S$ and QNMs $\sigma_j$. By Lemma~\ref{lem:compact} and (F2), the
+$S$ is open, by (F3).
+
+$S$ is closed. Let $s_j\to s_0$ with $s_j\in S$ and QNMs $\sigma_j$. By Lemma~\ref{lem:compact} and (F2), the
 $\sigma_j$ lie in the compact set $\{0\le\Im\sigma\le C_0,\ |\sigma|\le R_m\}$. A subsequence converges to some
 $\sigma_0$, which is a QNM at $p(s_0)$ by (F3). Now $\sigma_0\ne0$, because $P(0)$ is invertible by
 Proposition~\ref{prop:zero} and invertibility is open. And $\sigma_0\notin\R$ by \S\ref{sec:event} and
 Corollary~\ref{cor:outside}. Hence $\Im\sigma_0>0$.
-\item $0\notin S$, by Lemma~\ref{lem:sds}.
-\end{itemize}
+
+$0\notin S$, by Lemma~\ref{lem:sds}.
 Here (F2), (F3) and Lemma~\ref{lem:compact} are applied in finitely many neighborhoods $U$ covering the compact path. Hence $S=\emptyset$. Generalized modes reduce to modes, since their top coefficient is a mode.
 \end{proof}
 
@@ -1008,7 +999,7 @@ then $J[h]=0$.
 For real $h$, $J[h]=\Im\delta\xi$, and the imaginary part of the linearized Killing equation reads $\cL_Jg=0$;
 by complex linearity this holds for all $h$.
 
-The local Killing algebra of KdS with $a\neq0$ is $\mathrm{span}\{\partial_t,\partial_\varphi\}$ on every open set. Indeed,
+The local Killing algebra of KdS with $a\neq0$ is $\mathrm{span}\{\partial_t,\partial_\varphi\}$ on every open set:
 a Killing field preserves $\Psi_2$, hence $r$ and $a\cos\theta$. It is therefore tangent to the $(t,\varphi)$-orbits,
 and the isotropy is trivial because it must fix $\nabla r$, $\nabla(a\cos\theta)$ and the principal null directions.
 
@@ -1041,14 +1032,15 @@ To first order, $\zeta$ is Killing. On KdS, $\zeta=-\Xi(a^2\partial_t+a\partial_
 \end{lemma}
 \begin{proof}
 The $ll$, $nn$, $mm$ and $\bar m\bar m$ components are immediate from those of $\xi$.
-\begin{itemize}
-\item The $ln$ component equals $-|\phi|^2\phi(\tau\bar\tau-\tau'\bar\tau')=0$, since by reality
+The $ln$ component equals $-|\phi|^2\phi(\tau\bar\tau-\tau'\bar\tau')=0$, since by reality
 $\tau\bar\tau=\tau'\bar\tau'$.
-\item The $m\bar m$ component equals $|\phi|^2\phi(\rho\bar\rho'-\rho'\bar\rho)=0$, again by reality.
-\item The $lm$ component equals $2AC\phi+|\phi|^2(\eth A+\bar\tau'A)=0$, using $\eth A=-\phi\bar\rho\tau$.
-\item The $nm$ component equals $-2BC\bar\phi+|\phi|^2(\eth B+\tau B)$. Differentiating the first-order reality
+
+The $m\bar m$ component equals $|\phi|^2\phi(\rho\bar\rho'-\rho'\bar\rho)=0$, again by reality.
+
+The $lm$ component equals $2AC\phi+|\phi|^2(\eth A+\bar\tau'A)=0$, using $\eth A=-\phi\bar\rho\tau$.
+
+The $nm$ component equals $-2BC\bar\phi+|\phi|^2(\eth B+\tau B)$. Differentiating the first-order reality
 relation $\phi\rho'=\bar\phi\bar\rho'$ along $m$ gives $\eth B+\tau B=2\tau B$, and the sum vanishes.
-\end{itemize}
 The remaining components are complex conjugates. The value on KdS is an exact computation (item~C6).
 \end{proof}
 
@@ -1173,20 +1165,20 @@ Then $(\cL_T+i\sigma)^{k-1}Y=X_1$, so $h-\cL_Yg$ has order $k-1$.
 induction, using Proposition~\ref{prop:puregauge}(ii), shows that $h_\perp$ is pure gauge. The average $h_0$
 satisfies $\cL_{\partial_\varphi}h_0=0$ and $(\cL_{\partial_t})^kh_0=0$. For $k=1$, Proposition~\ref{prop:stationary}
 applies. For $k\ge2$:
-\begin{itemize}
-\item Let $h_1:=(\cL_{\partial_t})^{k-1}h_0$. It is stationary and axisymmetric and solves the linearized equation, so by
+Let $h_1:=(\cL_{\partial_t})^{k-1}h_0$. It is stationary and axisymmetric and solves the linearized equation, so by
 Proposition~\ref{prop:stationary} $h_1=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$. By Step~5 of that proof, $X=X_0+t_*K$, where
 $X_0$ is stationary and $K=c^t\partial_{t_*}+c^\varphi\partial_{\varphi_*}$ is Killing.
-\item The Iyer--Wald charges $\delta H_K$, for $K\in\{\partial_t,\zeta\}$, are independent of the 2-sphere. They vanish
+
+The Iyer--Wald charges $\delta H_K$, for $K\in\{\partial_t,\zeta\}$, are independent of the 2-sphere. They vanish
 on $\cL_Yg$ for every smooth $Y$: from $\Theta(\cL_Yg)=Y\cdot L+dQ_Y$ and naturality of $Q$, one gets
 $\delta H_K[\cL_Yg]=-\oint(Q_{[Y,K]}+Q_{[K,Y]})=0$. Since $h_1=(\cL_{\partial_t})^{k-1}h_0$ with $k\ge2$, we have
 $\delta H_K[h_1]=\frac{d}{d\tau}\delta H_K[(\cL_{\partial_t})^{k-2}h_0]|_{\{t_*=\tau\}}=0$, because the charge of a
 solution does not depend on $\tau$. Hence $\delta H_K[c_M\partial_Mg+c_a\partial_ag]=0$. Since
 $(E,J)=(M/\Xi^2,aM/\Xi^2)$ has Jacobian $M/\Xi^4\ne0$ with respect to $(M,a)$, it follows that $c_M=c_a=0$.
-\item Put $Z=\frac{t_*^{k-1}}{(k-1)!}X_0+\frac{t_*^{k}}{k!}K$, which is smooth since $t_*$ is regular. Because
+
+Put $Z=\frac{t_*^{k-1}}{(k-1)!}X_0+\frac{t_*^{k}}{k!}K$, which is smooth since $t_*$ is regular. Because
 $[\partial_{t_*},X_0]=[\partial_{t_*},K]=0$ and $\partial_{t_*}t_*=1$, we get $(\mathrm{ad}_{\partial_{t_*}})^{k-1}Z=X_0+t_*K=X$. Hence
 $(\cL_{\partial_t})^{k-1}(h_0-\cL_Zg)=h_1-\cL_Xg=0$, so $h_0-\cL_Zg$ has order $k-1$, and the induction proceeds.
-\end{itemize}
 \end{proof}
 
 \appendix
