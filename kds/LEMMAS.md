@@ -2807,3 +2807,10 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   T1 (1−x leading): stuck on the edge λ = 0, u2 = 0, i.e. 1−τ ≪ 1−x ≪ 1 (with v/(1−x) ≈ 0.47). This needs a
   sub-blow-up (λ, u2) inside T1, probably because α = a/T behaves like (1−τ)/(1−x) there.
 * S_β remaining = this sub-edge of T1 and the rest of T3 (both at the triple corner).
+* Sub-blow-up of T1 along (λ, u2): T1b closed (18 boxes). T1a still stuck at s = w = 0, u1 ≈ 0.47, i.e. the face
+  τ = 1 exactly, extremal, at v/(1−x) ≈ 0.47. [N] There ρ2 crosses 0 (−0.29 at u1 = 0.3, +0.12 at 0.47) while
+  Z' ≈ γ ≈ 1.06 stays positive (α ~ 1e-16, ι ~ 1e-9). So Z' > 0 is robust physically, and the covering failure is
+  representational: the cleared numerators/denominators of α = a/T and ι = 1/T vanish together at the corner.
+  T3: open vol 8e-4, slowly closing.
+  NEXT: write Z' with T cleared EXPLICITLY (multiply through by T²: γT²(T+a) − (4ρ+2ρ²)(a+1)T ≥ 0, using that
+  Γ = γT is the natural window quantity), or pick a chart variable equal to α itself.

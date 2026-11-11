@@ -5,7 +5,20 @@ RES,TG,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2].split(','),sys.argv[3],float(sys.a
 CH=sys.argv[6] if len(sys.argv)>6 else ''
 ctx4=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau'),'lex'); c3=flint.fmpz_mpoly_ctx.get(('x','v','t'),'lex')
 X,V,T3=c3.gens(); one3=c3.from_dict({(0,0,0):1}); N=4 if CH in ('EA','EB') else 8
+def blow02(q,lead):
+    # q(l,u1,u2): lead='a': l=s, u2=s*w ; lead='b': u2=s, l=s*w ; vars (s,u1,w) in slots (0,1,2)
+    out=0*one3
+    for e,cc in q.to_dict().items():
+        a,b_,t_=[int(z) for z in e]
+        if lead=='a': out+=int(cc)*X**(a+t_)*V**b_*T3**t_
+        else: out+=int(cc)*(X*T3)**a*V**b_*X**t_
+    dd=out.to_dict(); k=min(int(e[0]) for e in dd)
+    return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):v for e,v in dd.items()})
+CH0=CH
 def tocube(f):
+    global CH
+    if CH0 in ('T1a','T1b') and CH!='T1':
+        CH='T1'; q=tocube(f); CH=CH0; return blow02(q,CH0[-1])
     d=f.to_dict(); n2=max(int(e[1]) for e in d); q=c3.from_dict({(int(e[0]),n2-int(e[1]),int(e[3])):int(c) for e,c in d.items()})
     if not CH: return q
     D=sum(int(z) for z in q.degrees()); out=0*one3
