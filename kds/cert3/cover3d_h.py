@@ -51,32 +51,31 @@ else:
         ITEMS[k]=(s0,its)
     
     pickle.dump((S,ITEMS),open(CACHE,'wb'))
-ALT=os.environ.get('ALT')
+ALT=os.environ.get('ALT'); ALTS=[]
 if ALT:
-    altres,alttg=ALT.split(':'); alttg=alttg.split(',')
-    _S,_I,_TG,_R2=S,ITEMS,TG,RES2
-    RES2=pickle.load(open(altres,'rb')); TG=alttg; NAME0=NAME; NAME=NAME+'ALT'
-CACHE=f'margin/cache_{NAME}{CH}_'+'-'.join(TG)+'.pkl'
-if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
-else:
-    S={}; ITEMS={}
-    for k in TG:
-        s0,facs=RES2[k]; its=[]
-        for j,(kind,dat) in enumerate(facs):
-            if kind=='plain':
-                sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
-            else:
-                for nm,i in (('F1',0),('Y',1),('P',2)):
-                    sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
-                its.append(('b',j))
-        ITEMS[k]=(s0,its)
-    
-    pickle.dump((S,ITEMS),open(CACHE,'wb'))
-
-if ALT:
-    S2,ITEMS2=S,ITEMS; S,ITEMS,TG,RES2,NAME=_S,_I,_TG,_R2,NAME0
-    S=dict(S)
-    for k,v in S2.items(): S[('ALT',)+k]=v
+    _S,_I,_TG,_R2,NAME0=S,ITEMS,TG,RES2,NAME; SS=dict(S)
+    for ai,spec in enumerate(ALT.split(';')):
+        altres,alttg=spec.split(':'); TG=alttg.split(','); RES2=pickle.load(open(altres,'rb')); NAME=NAME0+'ALT'+str(ai)+os.path.basename(altres)
+        CACHE=f'margin/cache_{NAME}{CH}_'+'-'.join(TG)+'.pkl'
+        if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
+        else:
+            S={}; ITEMS={}
+            for k in TG:
+                s0,facs=RES2[k]; its=[]
+                for j,(kind,dat) in enumerate(facs):
+                    if kind=='plain':
+                        sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
+                    else:
+                        for nm,i in (('F1',0),('Y',1),('P',2)):
+                            sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
+                        its.append(('b',j))
+                ITEMS[k]=(s0,its)
+            
+            pickle.dump((S,ITEMS),open(CACHE,'wb'))
+        
+        for k,v in S.items(): SS[('A%d'%ai,)+k]=v
+        ALTS.append((TG,ITEMS,('A%d'%ai,)))
+    S,ITEMS,TG,RES2,NAME=SS,_I,_TG,_R2,NAME0
 t0=time.time()
 def bsg(ps,k,dep):
     s=S[k][0]
@@ -94,8 +93,12 @@ def bval(ps,kk,j,dep):
     if p<0 and y!=0: return -y
     return 0
 def closed(ps,dep):
+    if os.environ.get('PERM'):
+        (tgK,itK,pK),(tgL,itL,pL)=ALTS[0],ALTS[1]
+        if closed1(ps,dep,tgK,itK,pK): return True
+        return all(closed1(ps,dep,[w],ITEMS,()) or closed1(ps,dep,[l],itL,pL) for w,l in zip(TG,tgL))
     if closed1(ps,dep,TG,ITEMS,()): return True
-    return bool(ALT) and closed1(ps,dep,alttg,ITEMS2,('ALT',))
+    return any(closed1(ps,dep,tg,it,pre) for tg,it,pre in ALTS)
 def closed1(ps,dep,TGx,IT,pre):
     for k in TGx:
         s0,its=IT[k]; s=s0

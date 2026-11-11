@@ -2604,3 +2604,15 @@ expansion of G_α with the scaling w − Ω1 = β·s.
   vanishes to leading face order ON the curve. So boxes straddling the curve can never be closed by the sign rule. What
   is needed is the next-order term in β along the curve, i.e. a genuine blow-up τ = τ*(σ) + β·s, with τ*(σ) algebraic
   (implicit in the face polynomial). Not attempted.
+
+## 203. S_α pocket: a gate-only shortcut via S_C (math OK), covering still stalls
+* [P] S_α ⇐ S_C ∧ (2 + 4a + T ≤ 3T) ⇔ S_C ∧ (t−1)(1 − 3zf) ≥ 1. In window terms (u, et < 0):
+  K := (t−1)(2f1 − t·f2) + f1 + t·f2 > 0 (positive factor 2Ξ/λ̃ removed; m- and a-free). kal_build.py.
+* [N] On the pocket's gate points (44k, m = 2): (t−1)(1 − 3zf) ≥ 2.1. Off the gate K can be very negative (fine:
+  S_α is only needed on the gate).
+* Per-m OR-closure (cover3d_h.py, PERM=1): a box closes if K > 0, OR [for m = 1, 2: (W_α(m) > 0 or L(t, m) > 0)];
+  Q2 > 0 holds globally (item 200).
+* Result: EB open vol 4.48e-4 → 4.40e-4; ~1k boxes per run. The pocket boxes still touch the β = 0 face (r0 = r1,
+  where t → ∞); presumably K's cleared form degenerates there too.
+REALISTIC STATUS: the remaining S_α pocket needs either the curve blow-up (item 202) or a direct near-extremal
+hand argument (t → ∞ as r0 → r1, so (t−1)(1 − 3zf) → ∞ unless zf → 1/3; the gate forces zf ≤ 1/2 only).
