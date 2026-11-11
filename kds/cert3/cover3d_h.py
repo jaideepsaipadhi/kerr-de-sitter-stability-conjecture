@@ -174,16 +174,22 @@ def bplus(x,v):
     E2=sum(rs[i]*rs[jj] for i in range(4) for jj in range(i+1,4)); E4=r0*r2*r3
     return 2*E4/(E2-math.sqrt(E2*E2-4*E4))
 import numpy as _np
+from mpmath import iv
+iv.dps=30
+def bplus_iv(x,v):
+    # x=r0, v=1/r2 intervals; smooth at v=0
+    e4v=-x*(1+v*(1+x)); e2v=v*v*x+v+x*v-(v*(1+x)+1)**2
+    Dv=e2v*e2v-4*v*v*e4v
+    return 2*e4v/(e2v-iv.sqrt(Dv))
 def unred(ps,kk,j,dep):
     if kk+(j,'c0') not in S and kk+(j,'c1') not in S: return 0
-    bx=BOX[0]; vals=[]
-    for c0 in bx[0]:
-        for c1 in bx[1]:
-            for c2 in bx[2]:
-                x,v=xv_of((max(c0,1e-9),max(c1,1e-9),max(c2,1e-9))); x=min(x,1-1e-15); v=max(v,1e-300)
-                try: vals.append(bplus(x,v))
-                except Exception: return 0
-    blo=min(vals)*(1-1e-6); bhi=max(vals)*(1+1e-6)
+    bx=BOX[0]
+    cb=[iv.mpf([lo,hi]) for lo,hi in bx]
+    try:
+        x,v=xv_of(tuple(cb))
+        bb=bplus_iv(x,v); blo=float(bb.a)*(1-1e-12); bhi=float(bb.b)*(1+1e-12)
+    except Exception: return 0
+    if not (blo>0): return 0
     lo=hi=0.0
     for q in range(60):
         key=kk+(j,'c%d'%q)

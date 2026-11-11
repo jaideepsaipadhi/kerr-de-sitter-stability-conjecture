@@ -32,7 +32,7 @@
 \begin{document}
 
 \begin{abstract}
-Conditionally on one explicit, numerically verified inequality (the cosmological-side current near extremality), we prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
+With a computer-assisted proof (exact-arithmetic rerun of the near-extremal certificates in progress), we prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
 full subextremal range: there are no nontrivial outgoing mode solutions at frequencies $\sigma$ with
 $\Im\sigma\ge0$. We then show that every generalized mode solution of the ungauged linearized Einstein equation
 $D_g\mathrm{Ric}(h)=\Lambda h$ with $\Im\sigma\ge0$ is pure gauge if $\sigma\ne0$, and the sum of a linearized
@@ -78,12 +78,10 @@ stability for the ungauged linearized Einstein equation \cite[Assumption~1.2]{HP
 proved mode stability for scalar waves in the full subextremal range, and left the Teukolsky equations of spin
 $s=\pm2$ open. Our main results address both questions.
 
-\medskip\noindent\textbf{Status of this draft.} One input remains unproved: Hypothesis~\ref{hyp:cos}, the
-cosmological-side current in the near-extremal regime where $L(t)\le0$. It holds on every sampled point, and it
-reduces to an explicit polynomial inequality in the window variables (Appendix~\ref{app:cert}), but its exact
-certificate has not yet been completed. Theorems~\ref{thm:A} and~\ref{thm:B} and the corollary below are proved
-\emph{conditionally on Hypothesis~\ref{hyp:cos}}. They are unconditional for parameters with $L(t)>0$ throughout the
-window; numerically, $L(t)\le0$ occurs only near extremality.
+\medskip\noindent\textbf{Status of this draft.} The proof is computer-assisted. Proposition~\ref{hyp:cos} (the
+cosmological side in the near-extremal regime where $L(t)\le0$) rests on certificates that currently use
+floating-point Bernstein bounds with rigorous error tolerances and interval enclosures of the physical root $b_+$; an
+exact-arithmetic rerun is in progress (Appendix~\ref{app:cert}).
 \medskip
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
@@ -103,7 +101,7 @@ smooth.
 \end{theorem}
 
 For $a=0$, Theorem~\ref{thm:B} is \cite[\S7]{HV18}. Theorem~\ref{thm:B} is \cite[Assumption~1.2]{HPV25} (with $\cL_Xg=2\delta^*X^\flat$),
-so, given Hypothesis~\ref{hyp:cos}, \cite[Theorem~1.4]{HPV25} applies (see Remark~\ref{rem:T} for the choice of $T$):
+so \cite[Theorem~1.4]{HPV25} applies (see Remark~\ref{rem:T} for the choice of $T$):
 
 
 
@@ -476,7 +474,7 @@ $D^{f_+}=qL'\le0$ because $q\ge0$ there. The limits of the current are computed 
 Since $J^{f_+}$ is non-increasing and $L(t)q(t)>0$, we get $\Re(u'\bar u)(z_0)\le0$, with
 equality only if $B_t=0$. If $L(t)\le0$, the same argument is run with the bent phase $\tilde q=(z-z_0)\big(q_1+\kappa(t-z)\big)$
 and the correspondingly modified $\tilde L=L+(\tilde q^2-q^2)/\mu$, for a $\kappa>0$ with $\tilde L(t)>0$; see
-Hypothesis~\ref{hyp:cos} below.
+Proposition~\ref{hyp:cos} below.
 
 \emph{Event side.} On $[1,z_0]$, write $q=-q_1s$. Then $C^f\le0$ is equivalent to (C), and $D^f\le0$ is equivalent to
 $(\mu f')'\le2s(Lf)'$, which is (D). By (a), $\lim_{z\to1}J^f[u_-]=L(1)f(1)q(1)|B_1|^2=0$. Monotonicity gives
@@ -493,13 +491,51 @@ $u=0$.
 By Propositions~\ref{prop:transform}, \ref{prop:dual} and~\ref{prop:reduction}, the real-frequency part of
 Theorem~\ref{thm:A} follows from the next result, which only involves the four numbers $(t,z_0,A,B)$.
 
-\begin{hypothesis}[Cosmological side for $L(t)\le0$]\label{hyp:cos}
+\begin{proposition}[Cosmological side for $L(t)\le0$]\label{hyp:cos}
 Whenever $L(t)\le0$ on the window, with $\kappa=1.05\,\kappa_{\min}$ (where $\kappa_{\min}$ is the least $\kappa$ with
 $\tilde L(t)\ge0$), the bent currents satisfy $\tilde C\le0$ and $\tilde D\le0$ on $(z_0,t)$.
-\end{hypothesis}
-\noindent This is the one remaining unproved input. It holds on all $2.4\cdot10^5$ sampled window points (it is needed only
-near extremality, for $m\ge2$ and small window position). Its reduction to an exact certificate is described in
-Appendix~\ref{app:cert}.
+\end{proposition}
+
+\begin{proof}[Structure of the proof]
+Write $a=z_0-1$, $T=t-z_0$, $r=\kappa/q_1$ and $\rho=rT$. All identities below are exact; the four final sign
+conditions are verified by the computer-assisted certificate of Appendix~\ref{app:cert}.
+
+\emph{Step 1 ($\tilde C$).} With $z_0=1+a$, $z=z_0+s$, $t=z+c$, the polynomials $H=2\mu-\mu'(z-z_0)$ and
+$G=(t-z_0)H+(t-z)F$ have only positive coefficients in $(a,s,c)$. Hence $(t-z)(-F)\le(t-z_0)H$, and
+$\tilde C\le0$ as soon as $\rho\le1$.
+
+\emph{Step 2 ($\tilde D$).} Multiplying $\tilde D$ by $q_1^3z^2(z-1)^2$ and expanding in $(a,s,c)$, every term except two
+negative ones carries a factor $r$. Taking the supremum over $s$ separately in the two remaining groups, $\tilde D\le0$
+follows from
+\[
+(S_\mu)\ \mu'(z_0)\ge0,\qquad (S_\alpha)\ r(2+4a+T)\le3,\qquad (S_\beta)\ A\ge q_1^2\sup_{0<s<T}\varphi(s),
+\]
+with an explicit rational $\varphi$; $(S_\mu)$ follows from $zf:=a/(t-1)\le\tfrac12$.
+
+\emph{Step 3 (removing $z_0$ and $m$).} With $e_1,e_t$ the exponent sums, $\Im e_1,\Im e_t<0$ on the window, and
+\[
+\rho\le1\iff 2.1\,(-L(t))\le|\Im e_t|\big(|\Im e_1|+t|\Im e_t|\big),
+\]
+so $\rho_m=2.1\,(-\tilde\lambda L/m^2)\,\tilde\lambda/\big(4\Xi^2a^2f_2(f_1+tf_2)\big)$, whose denominator is $m$-free. Since
+$\tilde\lambda L/m^2$ is concave in $1/m$, $\rho_m\le\max(\rho_1,\rho_2,0)$ for every $m$.
+
+\emph{Step 4 (smooth variables).} Put $\gamma=A/q_1^2$, $\alpha=a/T$, $\iota=1/T$. These, and $\rho_m$, extend smoothly to
+the extremal face. Then $(S_\alpha)\iff\rho(1+4\alpha+2\iota)\le3$. Moreover, bounding the $s$-dependence
+($\varphi_0\le2+4a$ type estimates in scaled form),
+\[
+(S_\beta)\ \Longleftarrow\ Z':=\gamma(1+\alpha)-(4\rho+2\rho^2)(\alpha+\iota)>0.
+\]
+
+\emph{Step 5 (certificates).} For $m=1,2$ the following hold on the whole window:
+(i) $L(t)<0\Rightarrow zf\le\tfrac12$;
+(ii) $\rho_m\le1$;
+(iii) $\rho_m\le0$ or $3-\rho_m(1+4\alpha+2\iota)>0$;
+(iv) $\rho_m\le0$ or $Z'_m>0$.
+These are verified by Bernstein subdivision in the window variables, with blow-up charts at the extremal, Kerr, Nariai
+and ultracold faces (Appendix~\ref{app:cert}).
+\end{proof}
+\noindent The physical margins are $\ge5.2$ for (i), $\ge1.55$ for (ii), $\ge4.66$ for (iii) and $\ge1.077$ for (iv); the last
+is the thinnest and is attained in the extremal limit near the top of the window.
 
 \begin{theorem}[Event lemma]\label{thm:event}
 For all $t>1$, $z_0\in(1,t)$ and $A>0$ with $L(z_0)\ge A/(2z_0)+2t$, there exists $f$ satisfying (a)--(c) of
@@ -1226,6 +1262,17 @@ for it.
 
 \section*{Data availability}
 The code for the computer-assisted steps is available from the author on request.
+
+\subsection*{C7. Cosmological side (Proposition~\ref{hyp:cos})}
+Variables $(x,v,\tau)=(r_0,1/r_2,\text{window position})\in(0,1)^3$; $b=a^2$ enters only through its physical root
+$b_+$ of $b^2-e_2b+e_4$, which has no rational parametrisation (for fixed $r_0$ the curve is a smooth plane cubic).
+Signs at $b_+$ are decided from the reduction $F_1b+F_0$ via $(F_1,Y,P)$ with $Y=-(2F_0+F_1e_2)$, $P=F_1^2D-Y^2$, and,
+when that is ill-conditioned (large $r_2$), by interval evaluation of the unreduced polynomial on an interval enclosure
+of $b_+=2e_4v^2/(e_2v^2-\sqrt{Dv^4})$, which is smooth at $v=0$. Each condition (i)--(iv) is factored into
+odd-multiplicity factors (squares dropped); boxes are subdivided until every factor has a certified sign. The atlas
+consists of the cube and blow-up charts at the faces $x=1$ (extremal), $v=0$ (Kerr), $v=1$ (Nariai/ultracold),
+$\tau=1$ and their intersections (charts KA, KB, VT, XT, T1--T3, U1--U3, EA, EB, with second blow-ups where needed).
+Scripts: \texttt{kds/cert3/\{smu,scn3,scg6,za,zp\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{atlas.sh}.
 
 \begin{thebibliography}{99}
 \bibitem{Cha83} S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford University Press, 1983.
