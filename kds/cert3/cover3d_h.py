@@ -15,9 +15,21 @@ def blow02(q,lead,strip=True):
     if not strip: return out
     dd=out.to_dict(); k=min(int(e[0]) for e in dd)
     return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):v for e,v in dd.items()})
+def blow12(q,lead,strip=True):
+    # q(l,a1,a2): lead 'a': a1=s, a2=s*w ; 'b': a2=s, a1=s*w ; new vars (l,s,w)
+    out=0*one3
+    for e,cc in q.to_dict().items():
+        a,b_,t_=[int(z) for z in e]
+        if lead=='a': out+=int(cc)*X**a*V**(b_+t_)*T3**t_
+        else: out+=int(cc)*X**a*(V*T3)**b_*V**t_
+    if not strip: return out
+    dd=out.to_dict(); k=min(int(e[1]) for e in dd)
+    return c3.from_dict({(int(e[0]),int(e[1])-k,int(e[2])):v for e,v in dd.items()})
 CH0=CH
 def tocube(f,n2=None,D=None,strip=True):
     global CH
+    if CH0 in ('T3a','T3b') and CH!='T3':
+        CH='T3'; q=tocube(f,n2,D,strip); CH=CH0; return blow12(q,CH0[-1],strip)
     if CH0 in ('T1a','T1b') and CH!='T1':
         CH='T1'; q=tocube(f,n2,D,strip); CH=CH0; return blow02(q,CH0[-1],strip)
     d=f.to_dict()
@@ -30,6 +42,9 @@ def tocube(f,n2=None,D=None,strip=True):
         a,b_,t_=[int(z) for z in e]
         if CH=='EA': out+=int(c)*(N-X)**a*(N-X*V)**b_*T3**t_*N**(D-a-b_)
         elif CH=='EB': out+=int(c)*(N-X*V)**a*(N-X)**b_*T3**t_*N**(D-a-b_)
+        elif CH=='U1': out+=int(c)*(N-X)**a*(N-X*V)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
+        elif CH=='U2': out+=int(c)*(N-X*V)**a*(N-X)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
+        elif CH=='U3': out+=int(c)*(N-X*V)**a*(N-X*T3)**b_*(N-X)**t_*N**(D-a-b_-t_)
         elif CH=='T1': out+=int(c)*(N-X)**a*(X*V)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
         elif CH=='T2': out+=int(c)*(N-X*V)**a*(X)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
         elif CH=='T3': out+=int(c)*(N-X*V)**a*(X*T3)**b_*(N-X)**t_*N**(D-a-b_-t_)
@@ -58,6 +73,11 @@ def add_raw(S,k,j,dat):
         if dk: CK[kk]=tocube(ctx4.from_dict(dk),n2,D,False)
     if CH:
         sl=1 if CH.startswith('VT') else 0
+        if CH0 in ('T3a','T3b'):
+            for sl_ in (0,1):
+                km_=min(min(int(e[sl_]) for e in q.to_dict()) for q in CK.values())
+                CK={kk:c3.from_dict({tuple(int(e[w])-(km_ if w==sl_ else 0) for w in range(3)):v for e,v in q.to_dict().items()}) for kk,q in CK.items()}
+            sl=2
         km=min(min(int(e[sl]) for e in q.to_dict()) for q in CK.values())
         CK={kk:c3.from_dict({tuple(int(e[w])-(km if w==sl else 0) for w in range(3)):v for e,v in q.to_dict().items()}) for kk,q in CK.items()}
     for kk,q in CK.items(): S[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
@@ -127,12 +147,17 @@ def xv_of(cb):
     # cb: chart coords (c0,c1,c2) -> (x,v)
     a0,a1,a2=cb
     if not CH0: return a0,a1
+    if CH0=='U1': return 1-a0/N, 1-a0*a1/N
+    if CH0=='U2': return 1-a0*a1/N, 1-a0/N
+    if CH0=='U3': return 1-a0*a1/N, 1-a0*a2/N
     if CH0=='T1': return 1-a0/N, a0*a1/N
     if CH0 in ('T1a','T1b'):
         lam=a0 if CH0=='T1a' else a0*a2
         return 1-lam/N, lam*a1/N
     if CH0=='T2': return 1-a0*a1/N, a0/N
     if CH0=='T3': return 1-a0*a1/N, a0*a2/N
+    if CH0=='T3a': return 1-a0*a1/N, a0*a1*a2/N
+    if CH0=='T3b': return 1-a0*a1*a2/N, a0*a1/N
     if CH0=='VT1' or CH0=='VT2': return a0, (a1/N if CH0=='VT1' else a1*a2/N)
     if CH0=='XT1': return 1-a0/N, a1
     if CH0=='XT2': return 1-a0*a2/N, a1
@@ -204,7 +229,7 @@ def descend(lev,idx):
     return cur
 PK=f'margin/c3f_{NAME}{CH}.json'
 todo=[tuple(map(tuple,z)) for z in json.load(open(PK))] if os.path.exists(PK) else [((0,0,0),(0,0,0))]
-todo=todo if os.environ.get('NOEX') else [z for z in todo if not (CH in ('XT1','XT2') and (z[1][1]*4>=3*2**z[0][1] or (z[1][1]+1)*8<=2**z[0][1]))]
+todo=todo if os.environ.get('NOEX') else [z for z in todo if not (CH in ('XT1','XT2') and not os.environ.get('XTFULL') and (z[1][1]*8>=7*2**z[0][1] or (z[1][1]+1)*8<=2**z[0][1]))]
 todo=todo if os.environ.get('NOEX') else [z for z in todo if CH or not ((z[1][0]*8>=7*2**z[0][0] and z[1][2]*8>=7*2**z[0][2]) or ((z[1][1]+1)*8<=2**z[0][1] and z[1][2]*8>=7*2**z[0][2]) or all(z[1][k]*8>=7*2**z[0][k] for k in (0,1)) or (z[1][0]*8>=7*2**z[0][0] and (z[1][1]+1)*8<=2**z[0][1]))]
 todo.sort(key=lambda z:-sum(z[0])); nc=0; rest=[]
 while (todo or rest) and time.time()-t0<TMAX:
@@ -219,7 +244,7 @@ while (todo or rest) and time.time()-t0<TMAX:
         BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in range(3)]
         if os.environ.get('NOEX') and closed(ps,sum(lev)): nc+=1; continue
         if os.environ.get('NOEX'): pass
-        elif (CH in ('XT1','XT2') and (idx[1]*4>=3*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
+        elif (CH in ('XT1','XT2') and not os.environ.get('XTFULL') and (idx[1]*8>=7*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=9: rest.append((lev,idx)); continue
         kk=min(range(3),key=lambda i:lev[i])
         ch=[{},{}]

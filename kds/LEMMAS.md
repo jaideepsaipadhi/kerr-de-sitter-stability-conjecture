@@ -2829,3 +2829,16 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   sign). Needs only more depth, or the exact corner limit (Z' ≈ γ ≈ 1.06 there).
 * T3 (1−τ leading): open vol 6.6e-4, stuck at the sub-corner a1, a2 → 0, i.e. 1−x ≪ 1−τ and v ≪ 1−τ (a further
   sub-blow-up is needed).
+
+## 219. S_β PROVED (float-engine certificate) via Z' (item 216)
+Certificate: for m = 1, 2, ρ_m ≤ 0 ∨ Z'_m > 0 on the whole window (zp_build.py + cover3d_h.py, PERM2, unreduced
+b₊ fallback). Coverage:
+* main cube: everything outside the chart regions below closed (NOEX run; uncovered remainder = 0);
+* Kerr strip x ≥ 7/8, v ≤ 1/8: KA/KB, stuck only for τ ≥ 7/8, which is covered by VT (all x) and the triple-corner charts;
+* (x, v, τ) → (1, 0, 1) triple cube [7/8,1]×[0,1/8]×[7/8,1]: T2 closed; T1 = T1a ∪ T1b closed; T3 = T3a ∪ T3b closed;
+* (x, τ) → (1, 1), v ∈ (1/8, 7/8): XT1, XT2 closed;
+* (x, v, τ) → (1, 1, 1) cube [7/8,1]³: U1, U2, U3 closed (1 box each);
+* ultracold square x, v ∈ [3/4, 1]: EA closed; EB's leftovers all lie in XT ∪ U (checked).
+CAVEATS: float engine (rigorous tolerances but not exact arithmetic); the b₊ enclosure from box corners assumes
+monotonicity (to be certified via the sign of q(b) = b² − e2 b + e4 at the ends); min physical margin ≈ 1.077.
+STATUS hyp:cos: S_μ ✔, S_C ✔ (incl. ρ ≤ 0.7), S_β ✔, S_α ✔ except the extremal boundary layer (items 202–203).
