@@ -5,23 +5,27 @@ RES,TG,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2].split(','),sys.argv[3],float(sys.a
 CH=sys.argv[6] if len(sys.argv)>6 else ''
 ctx4=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau'),'lex'); c3=flint.fmpz_mpoly_ctx.get(('x','v','t'),'lex')
 X,V,T3=c3.gens(); one3=c3.from_dict({(0,0,0):1}); N=4 if CH in ('EA','EB') else 8
-def blow02(q,lead):
+def blow02(q,lead,strip=True):
     # q(l,u1,u2): lead='a': l=s, u2=s*w ; lead='b': u2=s, l=s*w ; vars (s,u1,w) in slots (0,1,2)
     out=0*one3
     for e,cc in q.to_dict().items():
         a,b_,t_=[int(z) for z in e]
         if lead=='a': out+=int(cc)*X**(a+t_)*V**b_*T3**t_
         else: out+=int(cc)*(X*T3)**a*V**b_*X**t_
+    if not strip: return out
     dd=out.to_dict(); k=min(int(e[0]) for e in dd)
     return c3.from_dict({(int(e[0])-k,int(e[1]),int(e[2])):v for e,v in dd.items()})
 CH0=CH
-def tocube(f):
+def tocube(f,n2=None,D=None,strip=True):
     global CH
     if CH0 in ('T1a','T1b') and CH!='T1':
-        CH='T1'; q=tocube(f); CH=CH0; return blow02(q,CH0[-1])
-    d=f.to_dict(); n2=max(int(e[1]) for e in d); q=c3.from_dict({(int(e[0]),n2-int(e[1]),int(e[3])):int(c) for e,c in d.items()})
+        CH='T1'; q=tocube(f,n2,D,strip); CH=CH0; return blow02(q,CH0[-1],strip)
+    d=f.to_dict()
+    if n2 is None: n2=max(int(e[1]) for e in d)
+    q=c3.from_dict({(int(e[0]),n2-int(e[1]),int(e[3])):int(c) for e,c in d.items()})
     if not CH: return q
-    D=sum(int(z) for z in q.degrees()); out=0*one3
+    if D is None: D=sum(int(z) for z in q.degrees())
+    out=0*one3
     for e,c in q.to_dict().items():
         a,b_,t_=[int(z) for z in e]
         if CH=='EA': out+=int(c)*(N-X)**a*(N-X*V)**b_*T3**t_*N**(D-a-b_)
@@ -35,11 +39,28 @@ def tocube(f):
         elif CH=='VT2': out+=int(c)*(N*X)**a*(V*T3)**b_*(N-V)**t_*N**(D-a-b_-t_)
         elif CH=='KA': out+=int(c)*(N-X)**a*(X*V)**b_*T3**t_*N**(D-a-b_)
         else: out+=int(c)*(N-X*V)**a*(X)**b_*T3**t_*N**(D-a-b_)
+    if not strip: return out
     dd=out.to_dict(); sl=1 if CH.startswith('VT') else 0; k=min(int(e[sl]) for e in dd)
     sh=[0,0,0]; sh[sl]=k
     for q in range(3):
         if q!=sl: sh[q]=min(int(e[q]) for e in dd)
     return c3.from_dict({tuple(int(e[q])-sh[q] for q in range(3)):c for e,c in dd.items()})
+def add_raw(S,k,j,dat):
+    if len(dat)<4 or dat[3] is None: return
+    raw=dat[3]; n2=max(int(e[1]) for e in raw); kmax=max(int(e[2]) for e in raw)
+    fr=ctx4.from_dict(raw)
+    D=None
+    if CH:
+        q0=c3.from_dict({(int(e[0]),n2-int(e[1]),int(e[3])):1 for e in raw}); D=sum(int(z) for z in q0.degrees())
+    CK={}
+    for kk in range(kmax+1):
+        dk={e:cc for e,cc in raw.items() if int(e[2])==kk}
+        if dk: CK[kk]=tocube(ctx4.from_dict(dk),n2,D,False)
+    if CH:
+        sl=1 if CH.startswith('VT') else 0
+        km=min(min(int(e[sl]) for e in q.to_dict()) for q in CK.values())
+        CK={kk:c3.from_dict({tuple(int(e[w])-(km if w==sl else 0) for w in range(3)):v for e,v in q.to_dict().items()}) for kk,q in CK.items()}
+    for kk,q in CK.items(): S[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
 def sgnw(p):
     mn,mx,_=bern_signs(p); return 1 if (mn>=0 and mx>0) else (-1 if (mx<=0 and mn<0) else 0)
 RES2=pickle.load(open(RES,'rb'))
@@ -63,7 +84,7 @@ else:
             else:
                 for nm,i in (('F1',0),('Y',1),('P',2)):
                     sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
-                its.append(('b',j))
+                add_raw(S,k,j,dat); its.append(('b',j))
         ITEMS[k]=(s0,its)
     
     pickle.dump((S,ITEMS),open(CACHE,'wb'))
@@ -84,7 +105,7 @@ if ALT:
                     else:
                         for nm,i in (('F1',0),('Y',1),('P',2)):
                             sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
-                        its.append(('b',j))
+                        add_raw(S,k,j,dat); its.append(('b',j))
                 ITEMS[k]=(s0,its)
             
             pickle.dump((S,ITEMS),open(CACHE,'wb'))
@@ -92,7 +113,8 @@ if ALT:
         for k,v in S.items(): SS[('A%d'%ai,)+k]=v
         ALTS.append((TG,ITEMS,('A%d'%ai,)))
     S,ITEMS,TG,RES2,NAME=SS,_I,_TG,_R2,NAME0
-t0=time.time()
+t0=time.time(); BOX=[None]
+BOX=[None]
 def bsg(ps,k,dep):
     s=S[k][0]
     for A in ps[k]:
@@ -100,7 +122,53 @@ def bsg(ps,k,dep):
         if g==0: return 0
         s*=g
     return s
+import math
+def xv_of(cb):
+    # cb: chart coords (c0,c1,c2) -> (x,v)
+    a0,a1,a2=cb
+    if not CH0: return a0,a1
+    if CH0=='T1': return 1-a0/N, a0*a1/N
+    if CH0 in ('T1a','T1b'):
+        lam=a0 if CH0=='T1a' else a0*a2
+        return 1-lam/N, lam*a1/N
+    if CH0=='T2': return 1-a0*a1/N, a0/N
+    if CH0=='T3': return 1-a0*a1/N, a0*a2/N
+    if CH0=='VT1' or CH0=='VT2': return a0, (a1/N if CH0=='VT1' else a1*a2/N)
+    if CH0=='XT1': return 1-a0/N, a1
+    if CH0=='XT2': return 1-a0*a2/N, a1
+    if CH0=='KA': return 1-a0/N, a0*a1/N
+    if CH0=='KB': return 1-a0*a1/N, a0/N
+    if CH0=='EA': return 1-a0/N, 1-a0*a1/N
+    if CH0=='EB': return 1-a0*a1/N, 1-a0/N
+def bplus(x,v):
+    r0=x; r2=1/v; r3=-(r0+1+r2); rs=[r0,1,r2,r3]
+    E2=sum(rs[i]*rs[jj] for i in range(4) for jj in range(i+1,4)); E4=r0*r2*r3
+    return 2*E4/(E2-math.sqrt(E2*E2-4*E4))
+import numpy as _np
+def unred(ps,kk,j,dep):
+    if kk+(j,'c0') not in S and kk+(j,'c1') not in S: return 0
+    bx=BOX[0]; vals=[]
+    for c0 in bx[0]:
+        for c1 in bx[1]:
+            for c2 in bx[2]:
+                x,v=xv_of((max(c0,1e-9),max(c1,1e-9),max(c2,1e-9))); x=min(x,1-1e-15); v=max(v,1e-300)
+                try: vals.append(bplus(x,v))
+                except Exception: return 0
+    blo=min(vals)*(1-1e-6); bhi=max(vals)*(1+1e-6)
+    lo=hi=0.0
+    for q in range(60):
+        key=kk+(j,'c%d'%q)
+        if key not in S: continue
+        A=ps[key][0]; M=_np.abs(A).max(); tol=1e-13*(dep+4)*M
+        cl,ch=A.min()-tol,A.max()+tol; pl,ph=blo**q,bhi**q
+        cand=[cl*pl,cl*ph,ch*pl,ch*ph]; lo+=min(cand); hi+=max(cand)
+    if lo>0: return 1
+    if hi<0: return -1
+    return 0
 def bval(ps,kk,j,dep):
+    r=bval0(ps,kk,j,dep)
+    return r if r else unred(ps,kk,j,dep)
+def bval0(ps,kk,j,dep):
     f=bsg(ps,kk+(j,'F1'),dep); y=bsg(ps,kk+(j,'Y'),dep)
     if f>0 and y<0: return 1
     if f<0 and y>0: return -1
@@ -148,6 +216,7 @@ while (todo or rest) and time.time()-t0<TMAX:
     while st:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
+        BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in range(3)]
         if os.environ.get('NOEX') and closed(ps,sum(lev)): nc+=1; continue
         if os.environ.get('NOEX'): pass
         elif (CH in ('XT1','XT2') and (idx[1]*4>=3*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue

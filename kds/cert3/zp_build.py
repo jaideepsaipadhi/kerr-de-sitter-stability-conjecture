@@ -17,7 +17,7 @@ for k,e in ex.items():
         if f.degrees()[2]==0: facs.append(('plain',f.to_dict()))
         else:
             F1c,F0c=reduce_b(f); Y=-(2*F0c+F1c*e2); D=e2*e2-4*e4; P=F1c*F1c*D-Y*Y
-            facs.append(('b',(F1c.to_dict(),Y.to_dict(),P.to_dict())))
+            facs.append(('b',(F1c.to_dict(),Y.to_dict(),P.to_dict(),f.to_dict())))
         print(k,f.degrees(),m,facs[-1][0],flush=True)
     res[k]=(sgn0,facs)
 pickle.dump(res,open('margin/zp_res.pkl','wb'))

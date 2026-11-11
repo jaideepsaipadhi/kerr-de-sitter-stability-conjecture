@@ -2820,3 +2820,12 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   100 digits are not enough. FIX (as in cover4d for S_β-4D): evaluate the UNREDUCED b-factor at a b₊ enclosure,
   i.e. port cover4d's unred() to cover3d_h, with chart-aware (x, v) box mapping and a common stripping of the
   c_k. Not done yet.
+
+## 218. Unreduced b₊ evaluation ported to the 3D charts; triple corner nearly closed
+* cover3d_h.py: raw b-factors are stored (zp_build.py), with c_k arrays built with COMMON n2, D and chart stripping
+  (tocube(..., strip=False) + global strip). The fallback unred() takes a b₊ enclosure from box corners mapped by
+  xv_of() (chart-aware; s clipped at 1e-9; monotonicity CAVEAT as before).
+* T1a: open vol 2e-6 → 3e-9; 201 boxes left at max depth on the edge s = w = 0, u1 ∈ [0.46, 0.49] (where ρ2 changes
+  sign). Needs only more depth, or the exact corner limit (Z' ≈ γ ≈ 1.06 there).
+* T3 (1−τ leading): open vol 6.6e-4, stuck at the sub-corner a1, a2 → 0, i.e. 1−x ≪ 1−τ and v ≪ 1−τ (a further
+  sub-blow-up is needed).
