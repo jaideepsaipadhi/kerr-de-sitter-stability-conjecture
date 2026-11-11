@@ -2592,3 +2592,9 @@ Interpretation: as r0 → r1, D'(r1) → 0, so Im e1 ~ (w − Ω1)/D'(r1) domina
 locus where the leading (w − Ω1)/β term cancels. So S_α at the pocket is a two-scale problem
 (β → 0 with w − Ω1 = O(β)). Plan: blow up along w = Ω1 (i.e. τ = τ*(σ) + β·s) in the EB chart, or do the hand
 expansion of G_α with the scaling w − Ω1 = β·s.
+* [N] Physically W_α is smooth and hugely positive straight across the face curve: at r2 = 1/(1−0.0375), τ ∈ [0.78, 0.88],
+  r0 = 1 − ε: W ~ 6–8e10 (ε = 1e-3, m = 1) and 6–8e16 (ε = 1e-5), with no dip near τ* ≈ 0.83. So the face-curve
+  sign change of the core is a representation artifact of the order-mixing kind: the true leading behaviour of n near
+  r0 = r1 is not captured by "strip the minimal β-power per monomial" (W ~ ε⁻², d ~ ε³). The right fix is to expand n
+  in β exactly at b₊ (the b-reduction mixes orders), i.e. b-reduce AFTER the chart substitution and β-expansion,
+  not before.
