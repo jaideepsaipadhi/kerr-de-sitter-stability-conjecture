@@ -27,7 +27,7 @@ else:
             if kind=='plain':
                 sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
             else:
-                for nm,i in (('F1',0),('Y',1),('P',2)):
+                for nm,i in (('F1',0),('Y',1),('P',2),('F1a',3),('Ya',4),('Pa',5)):
                     sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
                 its.append(('b',j))
         ITEMS[k]=(s0,its)
@@ -40,14 +40,18 @@ def bsg(ps,k,dep):
         if g==0: return 0
         s*=g
     return s
-def bval(ps,k,j,dep):
-    f=bsg(ps,(k,j,'F1'),dep); y=bsg(ps,(k,j,'Y'),dep)
+def rule(ps,k,j,dep,F,Yn,Pn):
+    f=bsg(ps,(k,j,F),dep); y=bsg(ps,(k,j,Yn),dep)
     if f>0 and y<0: return 1
     if f<0 and y>0: return -1
-    p=bsg(ps,(k,j,'P'),dep)
+    p=bsg(ps,(k,j,Pn),dep)
     if p>0 and f!=0: return f
     if p<0 and y!=0: return -y
     return 0
+def bval(ps,k,j,dep):
+    r=rule(ps,k,j,dep,'F1','Y','P')
+    if r: return r
+    return -rule(ps,k,j,dep,'F1a','Ya','Pa')
 def val(ps,k,dep):
     s0,its=ITEMS[k]; s=s0
     for kind,j in its:

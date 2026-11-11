@@ -2683,3 +2683,15 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   (x ≈ 0.97, any τ, σ). mpmath at v = 1e-2…1e-4: F1, Y < 0, P < 0, so the value is > 0, but |F1|√D and |Y| agree to
   1e-25…1e-44 relative. This is a scale separation (b₋ ~ −r2² ≫ b₊), so the (F1, Y, P) rule cannot resolve it. Needs a
   VT-type chart at v → 0 (with the extra σ variable) or a b-reduction rescaled for r2 → ∞.
+
+## 208. S_β Kerr face (v → 0): both b₊-representations are ill-conditioned
+* [N] The gate persists at large r2 (gate fraction ~14% / 11% / 7% / 1.4% for r2 ∈ 10^[1,1.5] / [1.5,2] / [2,3] / [3,5]),
+  so S_β is genuinely needed near the Kerr face.
+* Tried the alternative root form b₊ = 2e4/(e2 − √D) (well-conditioned at large r2), i.e. sign f(b₊) = −sign(F1a√D − Ya)
+  with F1a = −F0, Ya = −(2e4F1 + F0e2) (sbe3_build.py; the cover4d rule falls back to it). It is correct (values agree
+  to 80 digits) but EQUALLY ill-conditioned: rel Pa ≈ 7e-8 / 9e-21 / 3e-36 at v = 0.3 / 1e-2 / 1e-4.
+* Diagnosis: in the reduced linear form F1·b + F0 there is the cancellation F0 ≈ −F1·b₊, i.e. f(b₊) is tiny relative to
+  the reduced coefficients in EITHER root representation. The reduction b^k → (e2 b − e4)-combinations
+  (e2, e4 ~ r2²) inflates the coefficients by powers of r2. A fix must avoid reducing high powers of b at large r2:
+  e.g. an interval evaluation of the UNREDUCED f(b) at an enclosure of b₊ = 2e4/(e2 − √D) (bounded as r2 → ∞), or a
+  Kerr chart where b is expanded around its Λ = 0 value.
