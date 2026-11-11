@@ -2504,3 +2504,14 @@ Remaining for hyp:cos: S_α and S_β.
 * NEXT: avoid the b-reduction near this surface. Options: (i) a parametrisation in which a² is polynomial (e.g. use
   (r0, a) or (λ̃, a) as coordinates and solve for r2 rationally, if possible); (ii) scale out the factor making n(b₊)
   small (find the polynomial relation responsible); (iii) interval evaluation of n at b₊ with a tight √D enclosure.
+
+## 196. Rational parametrisation attempt for b = a² (to kill the b₊ cancellation): NEGATIVE so far
+* For fixed r0, the relation b² − e2·b + e4 = 0 is a CUBIC curve in (b, r2). The rational point (b, r2) = (0, 0) and
+  the lines r2 = s·b leave a residual quadratic in b with discriminant (s−1)(r0s−1)(r0s² + 3r0s + 3s + 1) (sympy),
+  so this pencil does not rationalise it.
+* With coordinates (r0, r1 = 1, a), λ̃ and M come out rational (Δ(r0) = Δ(1) = 0 is linear in them), but r2 then
+  solves a quadratic. Some square root is unavoidable in any parametrisation by two horizons plus one physical
+  parameter.
+* Open options: a singular point of the cubic (if it is singular for every r0, the curve is rational and a
+  parametrisation exists); or work at b₊ with a 4th variable z = √D and an interval enclosure. The cancellation
+  needs an enclosure of z of relative width ~1e-5 near the stuck surface (τ ≈ 1).
