@@ -2616,3 +2616,7 @@ expansion of G_α with the scaling w − Ω1 = β·s.
   where t → ∞); presumably K's cleared form degenerates there too.
 REALISTIC STATUS: the remaining S_α pocket needs either the curve blow-up (item 202) or a direct near-extremal
 hand argument (t → ∞ as r0 → r1, so (t−1)(1 − 3zf) → ∞ unless zf → 1/3; the gate forces zf ≤ 1/2 only).
+* [N, NEGATIVE] The K-route (item 203) FAILS near extremality: on gate points with r0 = 1−ε, v ∈ [0.75, 0.995]:
+  max zf = 0.319 / 0.339 / 0.346 for ε ∈ [1e-2, 1e-1] / [1e-3, 1e-2] / [1e-5, 1e-3], and (t−1)(1−3zf) reaches −925.
+  So the gate does NOT keep zf below 1/3 near r0 = r1; K is useless there. The pocket genuinely needs W_α (or G_α) at
+  the two-scale limit (w − Ω1 = O(β)), i.e. the curve blow-up.
