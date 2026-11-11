@@ -42,7 +42,7 @@ For real frequencies, the Teukolsky part follows Hintz's two-current method for 
 radial equation obtained from an Euler integral transform. The upper half plane is reached by a continuity argument
 in which high-frequency control is borrowed from the gauge-fixed Einstein operator through metric reconstruction.
 The passage from the Teukolsky scalars to the metric uses a linearized Goldberg--Sachs argument and the two Killing
-fields built from the Killing spinor. Several steps are computer-assisted, using exact arithmetic.
+fields built from the Killing spinor. Several steps are computer-assisted, using exact arithmetic or floating-point arithmetic with rigorous error bounds.
 \end{abstract}
 
 \maketitle
@@ -82,7 +82,7 @@ $s=\pm2$ open. Our main results address both questions.
 cosmological side in the near-extremal regime where $L(t)\le0$) rests partly on verified floating-point
 computations: Bernstein coefficients are computed exactly, rounded once, and subdivided in double precision with an
 a priori bound on the accumulated rounding error carried entrywise, and the physical root $b_+$ is enclosed by
-interval arithmetic (Appendix~\ref{app:cert}, C7).
+interval arithmetic (Appendix~\ref{app:cert}, C9).
 \medskip
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
@@ -169,7 +169,7 @@ stationary axisymmetric sector reduces to Carter's separable ansatz, on which th
 
 \subsection*{Computer assistance}
 Some steps rely on exact symbolic computation or on certificates in exact rational arithmetic. They are listed in
-Appendix~\ref{app:cert}. The certificates in item C7 use floating-point arithmetic with rigorous a priori error bounds
+Appendix~\ref{app:cert}. The certificates in item C9 use floating-point arithmetic with rigorous a priori error bounds
 (verified numerics); no step relies on unverified numerical evidence.
 
 \subsection*{Acknowledgments}
@@ -209,7 +209,7 @@ K(r)=\Xi\big((r^2+a^2)\sigma-am\big),\qquad \kappa_j=\frac{iK(r_j)}{\Delta_r'(r_
 \]
 The residue theorem applied to $\rho/\Delta_r$, $1/\Delta_r$ and $r^k/\Delta_r$ gives
 \begin{equation}\label{eq:residues}
-\sum_j\kappa_j=0,\qquad\sum_jr_j\kappa_j=-i\Xi\sigma,\qquad\sum_jr_j^2\kappa_j=0,
+\sum_j\kappa_j=0,\qquad\sum_jr_j\kappa_j=-\frac{3i\Xi\sigma}{\Lambda},\qquad\sum_jr_j^2\kappa_j=0,
 \end{equation}
 together with $P_1+P_3=P_0+P_2$ and $D_1^{-1}+D_3^{-1}=D_0^{-1}+D_2^{-1}$.
 
@@ -241,7 +241,7 @@ C_0=\frac{3}{\Lambda(r_1-r_0)(r_2-r_3)},\qquad c_1=1+t+3(1-\alpha)C_0.
 \section{Real frequencies: the radial problem}\label{sec:radial}
 
 Throughout this section $\sigma\in\R\setminus\{0\}$. We fix a separated outgoing mode with eigenvalue $\lambda$. By
-the symmetry $(\sigma,m,a)\mapsto(-\sigma,-m,a)$ we may assume $m\ge0$.
+the symmetries $(\sigma,m,a)\mapsto(-\sigma,-m,a)$ and $(m,a)\mapsto(-m,-a)$ (reflection $\varphi\mapsto-\varphi$) we may assume $m\ge0$ and $a\ge0$. For $a=0$ the window below is empty ($w_1=w_2=0$), so in the window $a>0$.
 
 \subsection{The superradiant window}
 Set $e_1=2(\kappa_1+\kappa_3)$ and $e_t=2(\kappa_2+\kappa_3)$. For real $\sigma$ the $\kappa_j$ are purely imaginary.
@@ -405,7 +405,7 @@ item~C2).
 \end{proof}
 
 \begin{proposition}[Crude angular bound]\label{prop:angular}
-For $s=\pm2$, $m\ge1$, $\alpha\ge0$ and $\xi=a\sigma\ge0$ (in particular on the window), $\lambda\ge\lambda_{\rm cr}$.
+For $s=\pm2$, $m\ge0$, $\alpha\ge0$ and $\xi=a\sigma\ge0$ (in particular on the window), $\lambda\ge\lambda_{\rm cr}$.
 \end{proposition}
 \begin{proof}
 In the variable $x=\cos\theta$, the angular operator of \cite[(2.3)]{STU98} is $H=H_0+K_\alpha+V$, where
@@ -494,47 +494,90 @@ By Propositions~\ref{prop:transform}, \ref{prop:dual} and~\ref{prop:reduction}, 
 Theorem~\ref{thm:A} follows from the next result, which only involves the four numbers $(t,z_0,A,B)$.
 
 \begin{proposition}[Cosmological side for $L(t)\le0$]\label{hyp:cos}
-Whenever $L(t)\le0$ on the window, with $\kappa=1.05\,\kappa_{\min}$ (where $\kappa_{\min}$ is the least $\kappa$ with
-$\tilde L(t)\ge0$), the bent currents satisfy $\tilde C\le0$ and $\tilde D\le0$ on $(z_0,t)$.
+Let $w$ lie in the open window and suppose $L(t)\le0$. Then there is $\kappa>0$ such that the bent phase
+$\tilde q=(z-z_0)\big(q_1+\kappa(t-z)\big)$ and $\tilde L=L+(\tilde q^2-q^2)/\mu$ satisfy $\tilde L(t)>0$,
+$\tilde C:=\mu'\tilde q-2\mu\tilde q'\le0$ and $\tilde D:=\tilde q\tilde L'-\kappa\mu'\le0$ on $(z_0,t)$.
 \end{proposition}
 
-\begin{proof}[Structure of the proof]
-Write $a=z_0-1$, $T=t-z_0$, $r=\kappa/q_1$ and $\rho=rT$. All identities below are exact; the four final sign
-conditions are verified by the computer-assisted certificate of Appendix~\ref{app:cert}.
+With $f_+=1$, the current argument of \cite[Lemma~4.1, \S7]{Hin26} applies verbatim to the phase $\tilde q$: the
+derivative of the current is $\tilde C|u_+'|^2+\tilde D|u_+|^2$, where $\tilde D=\tilde q\tilde L'+\frac12(\mu\tilde q'')'$
+and $\tilde q''=-2\kappa$. Since $\tilde q(t)=q(t)$, the boundary limit at $t$ is $\tilde L(t)q(t)|B_t|^2$. At $z_0$ the
+current equals $-\mu(z_0)\tilde q'(z_0)\Re(u'\bar u)(z_0)$ with $\tilde q'(z_0)=q_1+\kappa(t-z_0)>0$. So
+Proposition~\ref{hyp:cos} gives the cosmological half of Proposition~\ref{prop:reduction} when $L(t)\le0$.
 
-\emph{Step 1 ($\tilde C$).} With $z_0=1+a$, $z=z_0+s$, $t=z+c$, the polynomials $H=2\mu-\mu'(z-z_0)$ and
-$G=(t-z_0)H+(t-z)F$ have only positive coefficients in $(a,s,c)$. Hence $(t-z)(-F)\le(t-z_0)H$, and
-$\tilde C\le0$ as soon as $\rho\le1$.
+\begin{proof}
+Write $\delta=z_0-1>0$ and $\theta=t-z_0>0$. Note $\tilde L(t)=L(t)+2\kappa q_1\theta^2/(t(t-1))$.
 
-\emph{Step 2 ($\tilde D$).} Multiplying $\tilde D$ by $q_1^3z^2(z-1)^2$ and expanding in $(a,s,c)$, every term except two
-negative ones carries a factor $r$. Taking the supremum over $s$ separately in the two remaining groups, $\tilde D\le0$
-follows from
+\emph{Step 0 (the crude eigenvalue suffices).} Let $L_{\rm cr}$ be $L$ with $\lambda$ replaced by $\lambda_{\rm cr}\le\lambda$
+(Proposition~\ref{prop:angular}). Then $L\ge L_{\rm cr}$, while $q_1,z_0,A$ and the expressions $\tilde C,\tilde D$
+do not involve $\lambda$ ($\tilde L'=L'+((\tilde q^2-q^2)/\mu)'$ and $L'=-A/z^2-3$). Hence it suffices to find $\kappa>0$
+with $\tilde L_{\rm cr}(t)>0$, $\tilde C\le0$ and $\tilde D\le0$. In what follows $L(t)$ means $L_{\rm cr}(t)$, and we may
+assume $L(t)\le0$. If $L(t)<0$ we take $\kappa=1.05\,\kappa_{\min}$ with $\kappa_{\min}=-L(t)t(t-1)/(2q_1\theta^2)$. If
+$L(t)=0$ we take $\kappa>0$ small; every condition below is then satisfied for small $\kappa$ by inspection, given
+(i) of Step~6.
+
+\emph{Step 1 ($\tilde C$).} One computes $\tilde C=-q_1H-\kappa(t-z)F$, with $H$ as in Lemma~\ref{lem:H} and
+$F=z_0(2tz-t-z^2)-tz-z^3+2z^2$. Substituting $z_0=1+\delta$, $z=z_0+y$, $t=z+c$ ($\delta,y,c>0$), the polynomial
+$\theta H+(t-z)F$ has only positive coefficients, so $(t-z)(-F)\le\theta H$. Hence
+$\tilde C\le-H(q_1-\kappa\theta)\le0$ as soon as $k\theta\le1$, where $k:=\kappa/q_1$. Write $\varpi:=k\theta$.
+
+\emph{Step 2 ($\tilde D$).} Multiply $\tilde D$ by $q_1^{-3}z^2(z-1)^2>0$ and expand in $(\delta,y,c)$ (an exact polynomial
+identity). Apart from $-A\,y(z-1)^2(1+ck)$ and $-3yz^2(z-1)^2$, every term carries the factor $k$. Grouping, $\tilde D\le0$
+on $(z_0,t)$ is equivalent to $A\ge P_1(y)+q_1^2P_2(y)$ for $y\in(0,\theta)$, where, with $c=\theta-y$,
 \[
-(S_\mu)\ \mu'(z_0)\ge0,\qquad (S_\alpha)\ r(2+4a+T)\le3,\qquad (S_\beta)\ A\ge q_1^2\sup_{0<s<T}\varphi(s),
+P_1=\frac{z^2(g k-3y)}{y(1+ck)},\quad g=y(2+4\delta+y-5c)-M_0,\quad M_0=\theta(1+2\delta)-\delta(1+\delta),\qquad
+P_2=\frac{yk\big[(2\delta z+y)(2+ck)-kyz(z-1)\big]}{(z-1)^2}.
 \]
-with an explicit rational $\varphi$; $(S_\mu)$ follows from $zf:=a/(t-1)\le\tfrac12$.
-
-\emph{Step 3 (removing $z_0$ and $m$).} With $e_1,e_t$ the exponent sums, $\Im e_1,\Im e_t<0$ on the window, and
+Note $M_0=\mu'(z_0)$. If $M_0\ge0$ then $g\le y(2+4\delta+\theta)$, so $P_1\le0$ provided
 \[
-\rho\le1\iff 2.1\,(-L(t))\le|\Im e_t|\big(|\Im e_1|+t|\Im e_t|\big),
+(S_\alpha)\quad k(2+4\delta+\theta)\le3 .
 \]
-so $\rho_m=2.1\,(-\tilde\lambda L/m^2)\,\tilde\lambda/\big(4\Xi^2a^2f_2(f_1+tf_2)\big)$, whose denominator is $m$-free. Since
-$\tilde\lambda L/m^2$ is concave in $1/m$, $\rho_m\le\max(\rho_1,\rho_2,0)$ for every $m$.
+So $\tilde D\le0$ follows from $(S_\mu)$: $M_0\ge0$, together with $(S_\alpha)$ and $(S_\beta)$: $A\ge q_1^2\sup_{0<y<\theta}P_2(y)$.
 
-\emph{Step 4 (smooth variables).} Put $\gamma=A/q_1^2$, $\alpha=a/T$, $\iota=1/T$. These, and $\rho_m$, extend smoothly to
-the extremal face. Then $(S_\alpha)\iff\rho(1+4\alpha+2\iota)\le3$. Moreover, bounding the $s$-dependence
-($\varphi_0\le2+4a$ type estimates in scaled form),
+\emph{Step 3 ($z_0$-free form of $\varpi$).} By Proposition~\ref{prop:window}, $\Im e_1<0$ and $\Im e_t<0$ in the window.
+Matching exponents in Proposition~\ref{prop:dual} gives $q_1=(t-1)|\Im e_1|/(2\delta)$ and
+$z_0=1+(t-1)\,|\Im e_1|/(|\Im e_1|+t|\Im e_t|)$. Substituting into $\varpi=1.05\,(-L(t))t(t-1)/(2q_1^2\theta)$ gives the
+exact identity
 \[
-(S_\beta)\ \Longleftarrow\ Z':=\gamma(1+\alpha)-(4\rho+2\rho^2)(\alpha+\iota)>0.
+\varpi=\frac{2.1\,(-L(t))}{|\Im e_t|\,\big(|\Im e_1|+t|\Im e_t|\big)} .
+\]
+Write $\tilde\lambda=\Lambda/3$ and use $\Im e_1=2\Xi amf_1(w)/\tilde\lambda$, $\Im e_t=2\Xi amf_2(w)/\tilde\lambda$
+(Proposition~\ref{prop:window}, with $\Lambda$ restored), where here $a$ is the rotation parameter. Then
+$\varpi=\varpi_m:=2.1\,(-H_m)\tilde\lambda/\big(4\Xi^2a^2f_2(f_1+tf_2)\big)$ with $H_m:=\tilde\lambda L(t)/m^2$.
+The denominator is positive and independent of $m$. Moreover $H_m=\ell_2+\ell_1u+\ell_0u^2$ with $u=1/m$, where
+$\ell_0=-K(1+7\alpha)+\tilde\lambda(1-2t)<0$ ($K>0$ explicit) and $\ell_2>0$ on the whole window (certificate, item~C9).
+So $\varpi_m$ is convex in $u$, and $\varpi_m\le\max(\varpi_2,\varpi_\infty)\le\max(\varpi_2,0)$ for $m\ge2$. For $m=1$ the
+$m$-dependence of $\lambda_{\rm cr}$ differs, and $\varpi_1$ is treated separately. Hence $\varpi\le\bar\varpi:=\max(\varpi_1,\varpi_2,0)$.
+
+\emph{Step 4 (smooth variables).} Put $\gamma=A/q_1^2$, $\eta=\delta/\theta$ and $\iota=1/\theta$. These, and $\varpi_m$, are
+rational in the window variables, independent of $m$ (except $\varpi_m$), and extend smoothly to the extremal face
+$r_0=r_1$. Then $(S_\alpha)\iff\varpi(1+4\eta+2\iota)\le3$. With $y=\theta v$, $v\in(0,1)$, and using
+$z-1=\theta(\eta+v)$ and $z=\theta(\iota+\eta+v)$, $(S_\beta)$ becomes: for all $v\in(0,1)$,
+\[
+W(v):=\gamma(\eta+v)^2-2\varpi vP-\varpi^2vE\ \ge0,\qquad P=2\eta(\eta+v)+(2\eta+v)\iota,\quad
+E=P(1-v)-v(\eta+v)(\eta+v+\iota).
 \]
 
-\emph{Step 5 (certificates).} For $m=1,2$ the following hold on the whole window:
-(i) $L(t)<0\Rightarrow zf\le\tfrac12$;
-(ii) $\rho_m\le1$;
-(iii) $\rho_m\le0$ or $3-\rho_m(1+4\alpha+2\iota)>0$;
-(iv) $\rho_m\le0$ or $Z'_m>0$.
-These are verified by Bernstein subdivision in the window variables, with blow-up charts at the extremal, Kerr, Nariai
-and ultracold faces (Appendix~\ref{app:cert}).
+\emph{Step 5 (eliminating $v$).} Let $\varpi>0$. Since $E\le P(1-v)$ and $P\le2(\eta+v)(\eta+\iota)$,
+\[
+W(v)\ge(\eta+v)\big[\gamma(\eta+v)-(4\varpi+2\varpi^2)v(\eta+\iota)\big]=(\eta+v)\big[(1-v)\gamma\eta+v\,Z(\varpi)\big],\qquad
+Z(\varpi):=\gamma(1+\eta)-(4\varpi+2\varpi^2)(\eta+\iota).
+\]
+The bracket is affine in $v$, so $W>0$ on $(0,1)$ if $Z(\varpi)>0$ (recall $\gamma\eta>0$). Both $Z$ and
+$\varpi\mapsto3-\varpi(1+4\eta+2\iota)$ are decreasing for $\varpi\ge0$, and $\varpi\le\bar\varpi$. So $(S_\alpha)$ and
+$(S_\beta)$ follow from: for $m=1,2$, either $\varpi_m\le0$, or $Z(\varpi_m)>0$ and $3-\varpi_m(1+4\eta+2\iota)>0$.
+
+\emph{Step 6 (certificates).} The following are proved on the whole window by Bernstein subdivision in the variables
+$(r_0,1/r_2,\tau)$, with blow-up charts at the extremal, Kerr, Nariai and ultracold faces (Appendix~\ref{app:cert},
+item~C9):
+(i) $L(t)\le0\Rightarrow z_f:=\delta/(t-1)<\frac12$;
+(ii) $\varpi_m\le1$ for $m=1,2$;
+(iii) for $m=1,2$: $\varpi_m\le0$ or $3-\varpi_m(1+4\eta+2\iota)>0$;
+(iv) for $m=1,2$: $\varpi_m\le0$ or $Z(\varpi_m)>0$;
+(v) $f_1<0$, $f_2<0$ and $\ell_2>0$.
+From (i), $z_0<(1+t)/2$; since $\mu'$ is a concave quadratic with $\mu'(1)=t-1>0$ and
+$\mu'((1+t)/2)=(t-1)^2/4>0$, we get $M_0=\mu'(z_0)>0$. By Steps 1--5, (i)--(v) give $\tilde C\le0$, $\tilde D\le0$ and
+$\tilde L(t)>0$.
 \end{proof}
 \noindent The physical margins are $\ge5.2$ for (i), $\ge1.55$ for (ii), $\ge4.66$ for (iii) and $\ge1.077$ for (iv); the last
 is the thinnest and is attained in the extremal limit near the top of the window.
@@ -686,8 +729,8 @@ $V=-2\Lambda r^2-2(1-\alpha)-\lambda$. Put $g=\Delta_r^2R''''$. The Teukolsky--S
 that $g$ solves the same equation. Moreover $g$ vanishes like $\Delta_r^2$ at both horizons, so the energy identity
 $\int\Delta_r^{-1}|g'|^2=\int V\Delta_r^{-2}|g|^2\le0$ gives $g=0$. Thus $R$ is a cubic polynomial. Inserting a cubic into the equation gives a $4\times4$ linear system for its
 coefficients, with determinant $[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^2]^2$. Both roots of the quadratic
-are negative, and $\lambda\ge2-6\alpha>0$ at $m=\xi=0$ by the perturbation bound in the proof of
-Proposition~\ref{prop:angular}. Hence the determinant is positive and $R=0$.
+are negative, and $\lambda\ge\lambda_{\rm cr}=2-4\alpha>0$ at $m=\xi=0$ by
+Proposition~\ref{prop:angular} and Lemma~\ref{lem:alpha}. Hence the determinant is positive and $R=0$.
 
 \emph{Case $m=0$, $s=+2$.} The function $\Delta_r^2R_{+2}$ solves the $s=-2$ equation, so we may repeat the argument.
 
@@ -928,7 +971,7 @@ Proposition~\ref{prop:zero} and invertibility is open. And $\sigma_0\notin\R$ by
 Corollary~\ref{cor:outside}. Hence $\Im\sigma_0>0$.
 \item $0\notin S$, by Lemma~\ref{lem:sds}.
 \end{itemize}
-Hence $S=\emptyset$. Generalized modes reduce to modes, since their top coefficient is a mode.
+Here (F2), (F3) and Lemma~\ref{lem:compact} are applied in finitely many neighborhoods $U$ covering the compact path. Hence $S=\emptyset$. Generalized modes reduce to modes, since their top coefficient is a mode.
 \end{proof}
 
 \section{Ungauged linearized Einstein mode stability}\label{sec:B}
@@ -1217,7 +1260,7 @@ $(\cL_{\partial_t})^{k-1}(h_0-\cL_Zg)=h_1-\cL_Xg=0$, so $h_0-\cL_Zg$ has order $
 
 \appendix
 \section{Computer-assisted steps}\label{app:cert}\sloppy
-Except in item C7, all computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$. The code is in the repository accompanying this paper; the script names are given in brackets.
+Except in item C9, all computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$. The code is available from the author; the script names are given in brackets.
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
 \item \emph{Dual potential} [\texttt{step39\_c1\_symbolic.py}, \texttt{step89\_c1\_kappa.py}]. After Vieta
 elimination, the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are divisible by $s^2-4$ as polynomials.
@@ -1249,6 +1292,33 @@ $\Delta_R(R)$ and $\Delta_I(I)$, and the solution of the resulting linear equati
 first is an operator identity. The second is checked by reducing modulo the radial equation; the remainder
 coefficient of $R'$ vanishes identically, and the coefficient of $R$ is the constant $\mathcal C_\ell$. That this
 coefficient is independent of $r$ is also a consistency check on the radial potential used.
+\item \emph{Cosmological side} (Proposition~\ref{hyp:cos}).
+Variables $(x,v,\tau)=(r_0,1/r_2,\text{window position})\in(0,1)^3$; $b=a^2$ enters only through its physical root
+$b_+$ of $b^2-e_2b+e_4$, which has no rational parametrisation (for fixed $r_0$ the curve is a smooth plane cubic).
+Signs at $b_+$ are decided from the reduction $F_1b+F_0$ via $(F_1,Y,P)$ with $Y=-(2F_0+F_1e_2)$, $P=F_1^2D-Y^2$, and,
+when that is ill-conditioned (large $r_2$), by interval evaluation of the unreduced polynomial on an interval enclosure
+of $b_+=2e_4v^2/(e_2v^2-\sqrt{Dv^4})$, which is smooth at $v=0$. Each condition (i)--(v) of Step~6 is factored into
+odd-multiplicity factors (squares dropped); boxes are subdivided until every factor has a certified sign. The atlas
+consists of the cube and blow-up charts at the faces $x=1$ (extremal), $v=0$ (Kerr), $v=1$ (Nariai/ultracold),
+$\tau=1$ and their intersections (charts KA, KB, VT, XT, T1--T3, U1--U3, EA, EB, with second blow-ups where needed).
+\emph{Which certificate proves what.} (i): $L(t)$ (with $\lambda_{\rm cr}$) at $m=1,2$ and its $m^2$-coefficient are certified positive wherever
+$2\delta\ge t-1$ (so, by the concavity in Step~3, $L(t)>0$ there for every $m$) [\texttt{smu\_build.py}, \texttt{smu\_cover7.py}, \texttt{smu\_corner.py}]. (ii): the gate-free form
+$W_C:=2q_1^2\theta-1.05\,t(t-1)(-L(t))\ge0$ in $z_0$-free form (Step~3), for $m=1,2$ and the $m^2$-coefficient, on the cube
+outside the corner square $\{r_0,1/r_2\ge7/8\}$; inside it, (i) and $A\ge0$ reduce (ii) to a quadratic inequality in
+$\tau$, certified on charts EA, EB [\texttt{sca\_build.py}, \texttt{gcover.py} (exact), \texttt{scg\_tau.py}, \texttt{cover2d\_f.py}]. (iii)
+[\texttt{za\_build.py}] and (iv) [\texttt{zp\_build.py}]: full atlas, with the closure ``$\varpi_m\le0$'' allowed on each
+box. (v): one box on the whole cube [\texttt{aux\_build.py}, \texttt{cover3d\_g.py}].
+\emph{Arithmetic.} The polynomial cores and the condition (i), $S_\mu$, are handled in exact integer Bernstein
+arithmetic. For the remaining conditions the Bernstein coefficients are computed exactly in $\mathbb Q$, divided by
+their maximum modulus and rounded once to double precision. Subdivision uses de Casteljau midpoints. Alongside each
+array $A$ we carry the array $B$ obtained by applying the same subdivisions to $|A_{\rm root}|$. Each midpoint step
+adds an error of at most $u$ times the average of the moduli of its inputs, with $u=2^{-53}$. So after subdivisions
+whose degrees sum to $\Sigma$, every entry satisfies $|A_{\rm float}-A_{\rm exact}|\le u(1+\Sigma)B$, up to a factor
+$1+O(u\Sigma)$. A sign is accepted only if $A>c\,B$ (or $A<-c\,B$) entrywise, with $c=10^{-13}(k+4)$ at depth $k$. Since
+every per-axis degree is at most $122$, $c$ exceeds $u(1+\Sigma)$ by a factor of at least $7$. The root $b_+$ is
+enclosed with interval arithmetic (\texttt{mpmath.iv}) evaluated directly in chart coordinates.
+Scripts: \texttt{kds/cert3/\{smu,sca,scg,za,zp,aux\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{cover3d\_f.py},
+\texttt{cover3d\_g.py}, \texttt{cover2d\_f.py}, \texttt{atlas.sh}.
 \end{enumerate}
 The Bernstein enclosure routine was tested against random polynomials and random subdivisions
 [\texttt{cert2/test\_bern.py}].
@@ -1263,28 +1333,7 @@ No human expert has yet checked the argument. I have reviewed and edited the con
 for it.
 
 \section*{Data availability}
-The code for the computer-assisted steps is available from the author on request.
-
-\subsection*{C7. Cosmological side (Proposition~\ref{hyp:cos})}
-Variables $(x,v,\tau)=(r_0,1/r_2,\text{window position})\in(0,1)^3$; $b=a^2$ enters only through its physical root
-$b_+$ of $b^2-e_2b+e_4$, which has no rational parametrisation (for fixed $r_0$ the curve is a smooth plane cubic).
-Signs at $b_+$ are decided from the reduction $F_1b+F_0$ via $(F_1,Y,P)$ with $Y=-(2F_0+F_1e_2)$, $P=F_1^2D-Y^2$, and,
-when that is ill-conditioned (large $r_2$), by interval evaluation of the unreduced polynomial on an interval enclosure
-of $b_+=2e_4v^2/(e_2v^2-\sqrt{Dv^4})$, which is smooth at $v=0$. Each condition (i)--(iv) is factored into
-odd-multiplicity factors (squares dropped); boxes are subdivided until every factor has a certified sign. The atlas
-consists of the cube and blow-up charts at the faces $x=1$ (extremal), $v=0$ (Kerr), $v=1$ (Nariai/ultracold),
-$\tau=1$ and their intersections (charts KA, KB, VT, XT, T1--T3, U1--U3, EA, EB, with second blow-ups where needed).
-\emph{Arithmetic.} The polynomial cores and the condition (i), $S_\mu$, are handled in exact integer Bernstein
-arithmetic. For the remaining conditions the Bernstein coefficients are computed exactly in $\mathbb Q$, divided by
-their maximum modulus and rounded once to double precision. Subdivision uses de Casteljau midpoints. Alongside each
-array $A$ we carry the array $B$ obtained by applying the same subdivisions to $|A_{\rm root}|$. Each midpoint step
-adds an error of at most $u$ times the average of the moduli of its inputs, with $u=2^{-53}$. So after subdivisions
-whose degrees sum to $\Sigma$, every entry satisfies $|A_{\rm float}-A_{\rm exact}|\le u(1+\Sigma)B$, up to a factor
-$1+O(u\Sigma)$. A sign is accepted only if $A>c\,B$ (or $A<-c\,B$) entrywise, with $c=10^{-13}(k+4)$ at depth $k$. Since
-every per-axis degree is at most $122$, $c$ exceeds $u(1+\Sigma)$ by a factor of at least $7$. The root $b_+$ is
-enclosed with interval arithmetic (\texttt{mpmath.iv}) evaluated directly in chart coordinates.
-Scripts: \texttt{kds/cert3/\{smu,scn3,scg6,za,zp\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{cover3d\_f.py},
-\texttt{cover2d\_f.py}, \texttt{cover2d\_f6.py}, \texttt{atlas.sh}.
+The code for the computer-assisted steps is available from the author on request; script names are given in Appendix~\ref{app:cert}.
 
 \begin{thebibliography}{99}
 \bibitem{Cha83} S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford University Press, 1983.

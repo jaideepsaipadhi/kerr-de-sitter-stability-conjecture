@@ -2904,3 +2904,29 @@ variables there is no layer.
   and the abstract no longer say "rerun in progress". C7 now describes the verified-float method and its error bound.
 => Proposition hyp:cos is certified with verified numerics (exact cores, rigorous float rounding bounds, interval b₊).
 Remaining: the hostile end-to-end re-referee of the paper.
+
+## 224. Hostile end-to-end referee pass of writeup/kds_mode_stability.tex (Nov 11)
+FIXED in the paper:
+* Prop hyp:cos: the old "structure of the proof" was a sketch, with undefined F, G and φ, the vague phrase
+  "φ0 ≤ 2+4a type estimates", and notation clashes (a, α, T, s, r reused). It is rewritten as a full proof
+  (Steps 0–6) with fresh notation δ, θ, k, ϖ, η, ι, γ, v. It now includes:
+  - Step 0: the crude λ_cr suffices (C̃ and D̃ are λ-free; L̃(t) is increasing in λ);
+  - the EDGE CASE L(t) = 0, previously not covered (κ_min = 0 would give no bend): take κ > 0 small;
+  - the explicit identities from items 172–175, 187, 205, 214, 216;
+  - (i) restated as certified ("L(t) ≤ 0 ⇒ z_f < 1/2") plus a one-line proof that z_f < 1/2 ⇒ μ'(z0) > 0
+    (μ' is a concave quadratic, positive at 1 and at (1+t)/2), with M0 = μ'(z0) exactly;
+  - Step 5 corrected: the affine bound is (1−v)γη + vZ (endpoints γη and Z), matching item 216;
+  - NEW explicit dependency (v): f1 < 0, f2 < 0 and ℓ2 = LQ2' > 0 (item 200's aux certificate). It is needed for
+    ϖ_∞ < 0 in the convexity step. It was re-run under the per-entry tolerance: aux closed in 1 box.
+* Residue identity: Σ r_j κ_j = −3iΞσ/Λ (the paper had −iΞσ, which is only right at Λ = 3).
+* Prop angular: valid for m ≥ 0 (the proof's terms are nonnegative for m ≥ 0). Zero frequency now cites
+  λ ≥ λ_cr = 2 − 4α (it previously said 2 − 6α "by the perturbation bound", outside the proposition's stated range).
+* WLOG a ≥ 0 stated (window empty at a = 0).
+* Abstract: no longer says "exact arithmetic" only. Appendix: the cosmological-side certificate was a stray "C7"
+  subsection after the AI statement, clashing with enumerate item C7 (Carter ansatz). It is now item C9, with a
+  "which certificate proves what" map. Data availability made consistent ("from the author").
+* Continuity argument: a finite cover of the compact path by neighborhoods U is now stated.
+SOFT SPOTS (not wrong, but terse; a human referee may ask for more):
+  Euler-transform threshold case (loop around w = z alone: vanishing of boundary terms only asserted); Lemma bc
+  (tetrad boost); Prop stationary Step 1 (rests on the C6 nonlinear check for the acceleration tangent); Collars
+  lemma energy estimate (citation-level).
