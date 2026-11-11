@@ -2881,7 +2881,7 @@ variables there is no layer.
   charts closed. That remains valid.
 * zp3 (S_β): main, KA, T1a, T1b, T2, T3a, T3b closed under the absolute tolerance. XT1, XT2, U1, U2, U3, EA closed
   under the per-entry tolerance. Leftovers:
-  - EB: 3054 tiny boxes, all inside XT ∪ U (x ≥ 7/8 and (v ≤ 7/8 or v ≥ 7/8), checked box by box).
+  - EB: 3054 tiny boxes, all with x ≥ 7/8, so inside XT ∪ U (each box checked to lie in one of them).
   - KB: 3078 boxes, all with τ ≥ 7/8, which is the triple cube (T charts closed).
   - VT1: 7791 boxes with x ≥ 0.998 and v ≤ 1/8; VT2: 1015 boxes with x ≥ 0.984 and v ≤ 1/8. Both lie inside
     {x ≥ 7/8, v ≤ 1/8} = KA ∪ KB. KA is closed, and KB's leftovers are in the triple cube. No cycle: T is closed
