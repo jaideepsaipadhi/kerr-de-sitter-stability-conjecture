@@ -2671,3 +2671,15 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   W2' := W1 − 0.7·ρ·s·E' of W1-size degree instead of the ρ² monster. Cost: prove ρ ≤ 0.7, i.e. S_C with 2.1 → 3.0 in
   item 187's identity. Physically max ρ ≈ 0.64, so only a ~9% margin: the S_C certificate must be re-run with the
   tighter constant (main cube + corner charts).
+
+## 207. ρ ≤ 0.7 PROVED (S_C with constant 3.0); S_β 4D covering started
+* ρ ≤ 0.7 ⇔ 3.0·(−L(t)) ≤ |Im et|(|Im e1| + t|Im et|) on the gate (item 187 identity, 2.1 → 3.0).
+  scn3_build.py (exact form): main cube closed (float engine, 33 boxes), KA and KB closed (1 box each).
+  Corner square via the S_μ route, G_C': F² ≥ 6.0·t(3t−B) (scg6_build.py, scg6_tau.py, cover2d_f6.py): EA closed,
+  EB closed. Sanity check: the same pipeline with the FALSE constant 10 does not close (open vol 1e-2).
+  ⇒ ρ ≤ 0.7 on the gate (float-engine caveat as before).
+* S_β with ρ² ≤ 0.7ρ: W2' := W1 − 0.7·ρ·s·E' (sbe2_build.py); max core 106k terms, but Bernstein conversion takes
+  < 1 s per core. cover4d.py: open vol 0.087 → 0.0705 after 2 runs. Stuck at the Kerr face v = 1/r2 → 0
+  (x ≈ 0.97, any τ, σ). mpmath at v = 1e-2…1e-4: F1, Y < 0, P < 0, so the value is > 0, but |F1|√D and |Y| agree to
+  1e-25…1e-44 relative. This is a scale separation (b₋ ~ −r2² ≫ b₊), so the (F1, Y, P) rule cannot resolve it. Needs a
+  VT-type chart at v → 0 (with the extra σ variable) or a b-reduction rescaled for r2 → ∞.
