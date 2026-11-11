@@ -81,7 +81,7 @@ generalized modes $\sum_{j<k}t_*^je^{-i\sigma t_*}v_j$.
 Let $(\Lambda,M,a)$ be subextremal with $a\neq0$, and let $T=\partial_{t_*}+\frac{a}{r_2^2+a^2}\partial_{\varphi_*}$.
 Let $h$ be a smooth symmetric 2-tensor with $D_g\mathrm{Ric}(h)=\Lambda h$.
 \begin{enumerate}[label=(\arabic*)]
-\item If $(\cL_T+i\sigma)h=0$ with $\sigma\ne0$ and $\Im\sigma\ge0$, then $h=\cL_Xg$ for a smooth vector field $X$.
+\item If $(\cL_T+i\sigma)^kh=0$ for some $k\ge1$, with $\sigma\ne0$ and $\Im\sigma\ge0$, then $h=\cL_Xg$ for a smooth vector field $X$.
 \item If $(\cL_T)^kh=0$ for some $k\ge1$, then $h=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$ with $c_M,c_a\in\C$ and $X$
 smooth.
 \end{enumerate}
@@ -195,8 +195,9 @@ The M\"obius map $z$ with $z(r_0,r_1,r_2,r_3)=(0,1,t,\infty)$, where
 t=\frac{(r_1-r_3)(r_2-r_0)}{(r_1-r_0)(r_2-r_3)}>1,
 \]
 turns the radial Teukolsky equation into a Heun equation with singular points $0,1,t,\infty$. We write
-$\mu(z)=z(z-1)(t-z)$. At $z_j$ ($j=0,1,t$) the exponents are those of Lemma~\ref{lem:bc}, and at $\infty$ they are
-$\{1+2s,\,1+s-2\kappa_3\}$. Two constants will appear repeatedly:
+$\mu(z)=z(z-1)(t-z)$. The Heun-form function is $y=\prod_{j\in\{0,1,t\}}(z-z_j)^{-\kappa_j}R$ (up to a constant factor).
+By Lemma~\ref{lem:bc} an outgoing mode has $y\in(z-1)^{-2\kappa_1-s}C^\infty$ near $z=1$ and $y$ smooth at $z=t$; the
+exponents at $\infty$ are $\{1+2s,\,1+s-2\kappa_3\}$. Two constants will appear repeatedly:
 \begin{equation}\label{eq:C0}
 C_0=\frac{3}{\Lambda(r_1-r_0)(r_2-r_3)},\qquad c_1=1+t+3(1-\alpha)C_0.
 \end{equation}
@@ -222,9 +223,11 @@ $\Im e_1\cdot\Im e_t>0$ exactly on the open interval $(w_2,w_1)$, the \emph{wind
 The formulas follow from the definition of $\kappa_j$ and the signs of $\Delta_r'(r_j)$. The slope of $f_1$ is
 $P_1+P_3>0$, and by the residue identities that of $f_2$ is $P_3-P_2=P_0-P_1$. Now $D_0/D_1=f(r_0)/f(r_1)$ for the
 concave parabola $f(x)=(x-r_3)(r_2-x)$, whose vertex $-(r_0+r_1)/2$ lies left of $r_0$; so $D_0>D_1$, and as
-$\rho_1>\rho_0$, $P_1>P_0$. The same comparison gives $w_2=a(D_1^{-1}-D_0^{-1})/(P_1-P_0)>0$. Finally, $D_0D_1D_3(w_1-w_2)$
-(in which the $a^2$ terms cancel) factors as $2(r_0-r_1)(r_0-r_3)(r_1-r_3)(r_0r_3-r_1r_2)$, a product of four negative
-numbers.
+$\rho_1>\rho_0$, $P_1>P_0$. The same comparison gives $w_2=a(D_1^{-1}-D_0^{-1})/(P_1-P_0)>0$. Finally, a direct computation gives
+\[
+w_1-w_2=\frac{2a(r_2-r_1)(r_0-r_3)}{(2a^2-r_2r_3-r_0r_1)(2a^2-r_1r_3-r_0r_2)},
+\]
+and every factor is positive, since $-r_2r_3=r_2(r_0+r_1+r_2)>r_0r_1$ and $-r_1r_3=r_1(r_0+r_1+r_2)>r_0r_2$.
 \end{proof}
 
 For every real $\sigma\ne0$, Proposition~\ref{prop:dual} below puts the dual equation in the real form
@@ -243,31 +246,32 @@ Off the closed window the same holds by Proposition~\ref{prop:window}, so \eqref
 $B_1=B_t=0$. At the endpoints exactly one of $\Im e_1,\Im e_t$ vanishes, since $w_1\ne w_2$, and
 \eqref{eq:wronskian} gives $B_t=0$ or $B_1=0$ at the other end. In each case the indicial roots at that end differ by
 the non-integer $e_t$ or $e_1$, so $u=0$ as after \cite[(3.6)]{Hin26}. Then $\tilde y=0$, which contradicts
-Proposition~\ref{prop:transform}. The excluded case $s=+2$, $\sigma=m\Omega_1$ follows from the case $s=-2$ by
-Lemma~\ref{lem:TSthr}.
+Proposition~\ref{prop:transform}. The cases excluded there, $s=+2$ with $\sigma\in\{m\Omega_1,m\Omega_3\}$, follow from the case $s=-2$ by
+Lemma~\ref{lem:TSthr}, since $\Omega_1,\Omega_3\ne\Omega_2$.
 \end{proof}
 
 \subsection{The dual equation}\label{subsec:dual}
-Spin $+2$ at the event-horizon threshold is reduced to spin $-2$ first.
+Two exceptional frequencies of spin $+2$ are first reduced to spin $-2$.
 
-\begin{lemma}[Threshold modes of spin $+2$]\label{lem:TSthr}
-Let $\sigma=m\Omega_1\ne0$, so that $\kappa_1=0$. If outgoing $s=-2$ modes at $(\sigma,m,\lambda)$ vanish, so do outgoing
-$s=+2$ modes.
+\begin{lemma}[Reduction of spin $+2$ to spin $-2$]\label{lem:TSthr}
+Let $\sigma\in\R$ with $\kappa_2\ne0$, i.e.\ $\sigma\ne m\Omega_2$. If outgoing $s=-2$ modes at $(\sigma,m,\lambda)$ vanish, so do
+outgoing $s=+2$ modes.
 \end{lemma}
 \begin{proof}
 Let $D^\dagger=\partial_r+iK/\Delta_r$ and $\psi=\Delta_r^2(D^\dagger)^4(\Delta_r^2R)$. This maps solutions of the $s=+2$
 radial equation to solutions of the $s=-2$ radial equation with the same $\lambda$ (an exact identity, item~C10; the
 spin $\pm2$ angular eigenvalues agree because the angular operator is invariant under $(s,\cos\theta)\mapsto(-s,-\cos\theta)$).
-Since $K(r_1)=0$, $D^\dagger$ is regular at $r_1$, and $\Delta_r^2R$ is analytic there by Lemma~\ref{lem:bc}; so
-$\psi\in\Delta_r^2C^\omega$, the $s=-2$ outgoing condition. Near $r_2$, $iK/\Delta_r=-\kappa_2/(r_2-r)+O(1)$, so
+Near $r_1$, $iK/\Delta_r=\kappa_1/(r-r_1)+O(1)$, so $D^\dagger$ maps $(r-r_1)^{-\kappa_1}C^\infty$ to itself; since
+$\Delta_r^2R\in(r-r_1)^{-\kappa_1}C^\infty$ by Lemma~\ref{lem:bc}, $\psi\in(r-r_1)^{2-\kappa_1}C^\infty$, the $s=-2$ outgoing
+condition. Near $r_2$, $iK/\Delta_r=-\kappa_2/(r_2-r)+O(1)$, so
 $D^\dagger$ maps $(r_2-r)^\beta C^\infty$ into $(r_2-r)^{\beta-1}C^\infty$, and $\psi\in(r_2-r)^{\kappa_2}C^\infty$ is
 outgoing. Hence $\psi=0$, i.e.\ $\Delta_r^2R=e^{-i\int K/\Delta_r}p$ with $p$ a cubic polynomial. Near $r_2$ this lies
 in $(r_2-r)^{-\kappa_2}C^\omega$, which meets $(r_2-r)^{\kappa_2+2}C^\infty$ only in $0$ unless $2\kappa_2\in\Z$. But
-$\kappa_2\in i\R\setminus\{0\}$, since $K(r_2)=\Xi m\rho_2(\Omega_1-\Omega_2)\ne0$. So $R=0$.
+$\kappa_2\in i\R\setminus\{0\}$. So $R=0$.
 \end{proof}
 
 \begin{proposition}[Euler transform]\label{prop:transform}
-Let $\sigma\in\R\setminus\{0\}$, and exclude $s=+2$, $\kappa_1=0$. Let $y\ne0$ be the Heun-form radial function of an
+Let $\sigma\in\R$ with $\sigma\ne0$ or $am\ne0$, and if $s=+2$ assume $\kappa_1\kappa_3\ne0$. Let $y\ne0$ be the Heun-form radial function of an
 outgoing mode, normalized so that it is analytic at $z=t$ and lies in $(z-1)^{\rho_1}C^\omega$ near $z=1$, where
 $\rho_1=-2\kappa_1-s$. Put $\nu=s-1-2\kappa_3$. Then $\tilde y(z)=\int_\gamma(z-w)^\nu y(w)\,dw$, for a suitable contour
 $\gamma$, is a nonzero solution of a Heun equation $\widetilde{\mathcal H}\tilde y=0$ such that:
@@ -286,8 +290,9 @@ K\,\mathcal Hy-y\,\mathcal H_w^\dagger K=\partial_w\mathcal B,\qquad\mathcal B=P
 \]
 so $\widetilde{\mathcal H}\tilde y=0$ whenever the boundary contribution of $\mathcal B$ along $\gamma$ vanishes. We
 take $\gamma$ inside a neighborhood of $[1,z]$ on which $y$ is analytic ($z$ near $t$); then $\tilde y$ is analytic in
-$z$, in particular at $t$. In the window $\kappa_3\notin\R$, so $\nu\notin\Z$; and for $\beta=\rho_1+k$ we have
-$\beta+\nu+2=k+1-e_1$ with $e_1\in i\R\setminus\{0\}$.
+$z$, in particular at $t$. Here $\nu\notin\Z_{\ge0}$: for $s=+2$, $\nu=1-2\kappa_3$ with
+$\kappa_3\in i\R\setminus\{0\}$, and for $s=-2$, $\Re\nu=-3$. For $\beta=\rho_1+k$ we have $\beta+\nu+2=k+1-e_1$ with
+$e_1\in i\R$.
 
 \emph{$\kappa_1\ne0$.} Take the Pochhammer loop $\gamma=[1^+,z^+,1^-,z^-]$; it is closed, so $\mathcal B$ contributes
 nothing. On powers, $\oint_\gamma(z-w)^\nu(w-1)^\beta dw=c(\beta)(z-1)^{\beta+\nu+1}$ with
@@ -295,7 +300,7 @@ $c(\beta)=\pm(2\pi i)^2e^{i\pi(\beta+\nu)}/\big(\Gamma(-\beta)\Gamma(-\nu)\Gamma
 $\beta\in\Z_{\ge0}$, $\nu\in\Z_{\ge0}$ or $\beta+\nu+2\in\Z_{\le0}$. Since $\rho_1\notin\R$, none occurs for
 $\beta=\rho_1+k$, and termwise integration gives $\tilde y=(z-1)^{-e_1}\sum_kc(\rho_1+k)a_k(z-1)^k\ne0$.
 
-\emph{$\kappa_1=0$, $s=-2$.} Now $\rho_1=2$ and $y=O((w-1)^2)$, so $\mathcal B(1)=0$ (as $P_2(1)=0$). Take $\gamma$ a
+\emph{$\kappa_1=0$, $s=-2$.} Then $\kappa_3\ne0$ (as $\Omega_1\ne\Omega_3$), so $\nu\notin\Z$. Now $\rho_1=2$ and $y=O((w-1)^2)$, so $\mathcal B(1)=0$ (as $P_2(1)=0$). Take $\gamma$ a
 loop based at $w=1$ encircling $w=z$ once; the integrand returns multiplied by $e^{2\pi i\nu}$, so the boundary
 contribution is $(e^{2\pi i\nu}-1)\mathcal B(1)=0$. On powers the loop gives a nonzero multiple of
 $(1-e^{2\pi i\nu})\Gamma(\beta+1)\Gamma(\nu+1)/\Gamma(\beta+\nu+2)$, nonzero for $\beta=2+k$; termwise integration again
@@ -303,12 +308,12 @@ gives $\tilde y\in(z-1)^{-e_1}C^\omega\setminus\{0\}$.
 \end{proof}
 
 \begin{proposition}[The real dual]\label{prop:dual}
-For real $\sigma\ne0$, after multiplication by an explicit nonvanishing gauge factor, the equation
+For real $\sigma$ with $\sigma\ne0$ or $am\ne0$, after multiplication by an explicit nonvanishing gauge factor, the equation
 $\widetilde{\mathcal H}\tilde y=0$ becomes
 \begin{equation}\label{eq:dual}
 -(\mu u')'-\frac{q(z)^2}{\mu}u+L(z)u=0,\qquad q(z)=q_1(z-z_0),\qquad L(z)=\frac{A}{z}+B-3z,
 \end{equation}
-with real coefficients, $q$ affine, and $q(1)$, $q(t)$ proportional (with a common sign) to
+with real coefficients, $q$ affine, and $q(1)$, $q(t)$ equal, up to a common sign, to
 $\frac12(t-1)\Im e_1$ and $-\frac12t(t-1)\Im e_t$. If $w$ lies in the open window, then moreover:
 $q=q_1(z-z_0)$ with $q_1>0$ and $z_0\in(1,t)$, after replacing $u$ by $\bar u$ and $q$ by $-q$ if necessary;
 
@@ -326,7 +331,7 @@ real parts. The resulting operator is formally real, and writing it in the form 
 $q(t)$ from the exponents at $z=1$ and $z=t$. We take $q$ to be linear. By Proposition~\ref{prop:window},
 $q(1)q(t)<0$, so $q$ has a unique zero $z_0\in(1,t)$, and the sign of $q_1$ is fixed by replacing $u$ with $\bar u$
 if necessary. The remaining claims are as follows.
-\emph{Form of $L$.} The function $L:=(q^2-\mu^2V)/\mu$ is then rational, and $L=n_0/z+n_1+n_2z$. Expanding at
+\emph{Form of $L$.} Writing the gauged operator as $-(\mu u')'-\mu Vu$, the function $L:=(q^2-\mu^2V)/\mu$ is rational, and $L=n_0/z+n_1+n_2z$. Expanding at
 $z=\infty$ with the exponents $\{1+2s,1+s-2\kappa_3\}$ gives $n_2=-3$, since the exponent difference there is $\pm4$.
 
 \emph{The coefficient $n_0$.} Expanding at $z=0$ gives $n_0=t(X_0^2-(X_1+X_t)^2)$. In the window
@@ -471,7 +476,7 @@ $\theta H+(t-z)F$ has only positive coefficients, so $(t-z)(-F)\le\theta H$. Hen
 $\tilde C\le-H(q_1-\kappa\theta)\le0$ as soon as $k\theta\le1$, where $k:=\kappa/q_1$. Write $\varpi:=k\theta$.
 
 \emph{Step 2 ($\tilde D$).} Multiply $\tilde D$ by $q_1^{-3}z^2(z-1)^2>0$ and expand in $(\delta,y,c)$ (an exact polynomial
-identity). Apart from $-A\,y(z-1)^2(1+ck)$ and $-3yz^2(z-1)^2$, every term carries the factor $k$. Grouping, $\tilde D\le0$
+identity). Apart from $-A\,y(z-1)^2(1+ck)/q_1^2$ and $-3yz^2(z-1)^2$, every term carries the factor $k$. Grouping, $\tilde D\le0$
 on $(z_0,t)$ is equivalent to $A\ge P_1(y)+q_1^2P_2(y)$ for $y\in(0,\theta)$, where, with $c=\theta-y$,
 \[
 P_1=\frac{z^2(g k-3y)}{y(1+ck)},\quad g=y(2+4\delta+y-5c)-M_0,\quad M_0=\theta(1+2\delta)-\delta(1+\delta),\qquad
@@ -490,9 +495,8 @@ exact identity
 \[
 \varpi=\frac{2.1\,(-L(t))}{|\Im e_t|\,\big(|\Im e_1|+t|\Im e_t|\big)} .
 \]
-Write $\tilde\lambda=\Lambda/3$ and use $\Im e_1=2\Xi amf_1(w)/\tilde\lambda$, $\Im e_t=2\Xi amf_2(w)/\tilde\lambda$
-(Proposition~\ref{prop:window}, with $\Lambda$ restored), where here $a$ is the rotation parameter. Then
-$\varpi=\varpi_m:=2.1\,(-H_m)\tilde\lambda/\big(4\Xi^2a^2f_2(f_1+tf_2)\big)$ with $H_m:=\tilde\lambda L(t)/m^2$.
+Write $\tilde\lambda=\Lambda/3$. By Proposition~\ref{prop:window}, $\Im e_1=2\Xi mf_1(w)$ and $\Im e_t=2\Xi mf_2(w)$, so
+$\varpi=\varpi_m:=2.1\,(-H_m)/\big(4\tilde\lambda\Xi^2f_2(f_1+tf_2)\big)$ with $H_m:=\tilde\lambda L(t)/m^2$.
 The denominator is positive and independent of $m$. Moreover $H_m=\ell_2+\ell_1u+\ell_0u^2$ with $u=1/m$, where
 $\ell_0=-K(1+7\alpha)+\tilde\lambda(1-2t)<0$ ($K>0$ explicit) and $\ell_2>0$ on the whole window (certificate, item~C9).
 So $\varpi_m$ is convex in $u$, and $\varpi_m\le\max(\varpi_2,\varpi_\infty)\le\max(\varpi_2,0)$ for $m\ge2$. For $m=1$ the
@@ -534,6 +538,8 @@ Proposition~\ref{prop:reduction}.
 \end{theorem}
 
 \section{Proof of the event lemma}\label{sec:event}
+In this section and in Proposition~\ref{prop:reduction}, $s$ denotes $z_0-z$; the spin plays no role here.
+
 
 In terms of $f$, condition (C) reads $f'/f\le h_C:=H/(s\mu)=2/s+\mu'/\mu$. Condition (D) reads
 $\widetilde Df:=(\mu f')'-2s(Lf)'\le0$. Put $x_0=z_0-1$ and
@@ -663,10 +669,11 @@ This completes the proof of Theorem~\ref{thm:event}, and with it Theorem~\ref{th
 There are no nontrivial outgoing modes at $\sigma=0$, for $s=\pm2$.
 \end{proposition}
 \begin{proof}
-\emph{Case $m\ne0$.} Then $w=0<w_2$ lies outside the window, and Corollary~\ref{cor:outside} applies, since
-$\Im\kappa_1$ and $\Im\kappa_3$ are nonzero because $am\ne0$.
+\emph{Case $am\ne0$.} Then $\kappa_1,\kappa_2,\kappa_3$ are nonzero and $w=0<w_2$ lies outside the window; the proof of
+Corollary~\ref{cor:outside} applies verbatim. If $a=0$, the radial equation at $\sigma=0$ does not involve $m$, and the
+argument below applies with $\lambda=\ell(\ell+1)-4\ge2$.
 
-\emph{Case $m=0$, $s=-2$.} The radial equation is $(\Delta_r^{-1}R')'+V\Delta_r^{-2}R=0$, with
+\emph{Case $m=0$ or $a=0$, $s=-2$.} The radial equation is $(\Delta_r^{-1}R')'+V\Delta_r^{-2}R=0$, with
 $V=-2\Lambda r^2-2(1-\alpha)-\lambda$. Put $g=\Delta_r^2R''''$. The Teukolsky--Starobinsky identity at $K=0$ shows
 that $g$ solves the same equation. Moreover $g$ vanishes like $\Delta_r^2$ at both horizons, so the energy identity
 $\int\Delta_r^{-1}|g'|^2=\int V\Delta_r^{-2}|g|^2\le0$ gives $g=0$. Thus $R$ is a cubic polynomial. Inserting a cubic into the equation gives a $4\times4$ linear system for its
@@ -674,7 +681,7 @@ coefficients, with determinant $[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^
 are negative, and $\lambda\ge\lambda_{\rm cr}=2-4\alpha>0$ at $m=\xi=0$ by
 Proposition~\ref{prop:angular} and Lemma~\ref{lem:alpha}. Hence the determinant is positive and $R=0$.
 
-\emph{Case $m=0$, $s=+2$.} The function $\Delta_r^2R_{+2}$ solves the $s=-2$ equation, so we may repeat the argument.
+\emph{Case $m=0$ or $a=0$, $s=+2$.} The function $\Delta_r^2R_{+2}$ solves the $s=-2$ equation, so we may repeat the argument.
 
 The two identities used are exact symbolic identities (Appendix~\ref{app:cert}, item~C5).
 \end{proof}
@@ -1061,7 +1068,7 @@ vanishing average, hence zero.
 \subsection{The stationary axisymmetric sector}
 \begin{proposition}\label{prop:stationary}
 If $\cL_{\partial_t}h=\cL_{\partial_\varphi}h=0$ and $\delta\Psi_0=\delta\Psi_4=0$, then
-$h=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$, with $X$ affine in $(t,\varphi)$.
+$h=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$, with $X=X_0+t_*K$, $X_0$ stationary and $K$ a Killing field.
 \end{proposition}
 
 \begin{proof}
@@ -1117,15 +1124,16 @@ Iyer--Wald charge $\delta H_K[h]$ is the integral of a closed form smooth on $M$
 $\{t_*=\tau,r=\rho\}$; it vanishes on pure gauge terms (proof of Theorem~\ref{thm:B}), and $(E,J)$ has nonzero Jacobian
 in $(M,a)$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$ and equals $\cL_{X^{(i)}}g$ on each region.
 
-To glue, write $X=X^r\partial_r+X^\theta\partial_\theta+Y$ with $Y=Y^t\partial_{t_*}+Y^\varphi\partial_{\varphi_*}$. Since
-$R=\Re\phi$, $I=\Im\phi$ are natural, $X(R)=\delta R[k]$ and $X(I)=\delta I[k]$ are given by one local formula in $k$, so
-$X^r,X^\theta$ are smooth on $M$. Then $k_1:=k-\cL_{X^r\partial_r+X^\theta\partial_\theta}g=\cL_Yg
-=2\,dY^t\odot\partial_{t_*}^\flat+2\,dY^\varphi\odot\partial_{\varphi_*}^\flat$ is smooth. Off the axis this determines
-$(dY^t,dY^\varphi)$ uniquely: if $\alpha\odot\partial_{t_*}^\flat+\beta\odot\partial_{\varphi_*}^\flat=0$ with
-$\alpha(\partial_{\varphi_*})=\beta(\partial_{\varphi_*})=0$, then $\alpha=y\,\partial_{\varphi_*}^\flat$, so
-$y\,g_{\varphi\varphi}=0$ and $y=0$. Hence $dY$ is a single smooth expression in $k_1$ off the axis, $Y$ is smooth
-there up to Killing constants, and it extends across the axis and the horizons by Killing transport ($(Y,\nabla Y)$ solves
-a linear ODE with coefficients smooth in $(g,k_1)$). So $X$ is smooth and $k=\cL_Xg$ on $M$. The same applies to the
+To glue, let $S$ be the intersection of the axis with the horizons (codimension three). Away from the axis, write
+$X=X^r\partial_r+X^\theta\partial_\theta+Y$ with $Y=Y^t\partial_{t_*}+Y^\varphi\partial_{\varphi_*}$. Since $R=\Re\phi$ and
+$I=\Im\phi$ are natural, $X(R)=\delta R[k]$ and $X(I)=\delta I[k]$ are given by one local formula in $k$, which fixes
+$X^r,X^\theta$. Then $\cL_Yg=k-\cL_{X^r\partial_r+X^\theta\partial_\theta}g=2\,dY^t\odot\partial_{t_*}^\flat+2\,dY^\varphi\odot\partial_{\varphi_*}^\flat$,
+and this determines $(dY^t,dY^\varphi)$: if $\alpha\odot\partial_{t_*}^\flat+\beta\odot\partial_{\varphi_*}^\flat=0$ with
+$\alpha(\partial_{\varphi_*})=0$, then $\alpha=y\,\partial_{\varphi_*}^\flat$ and $y\,g_{\varphi\varphi}=0$. So off the axis the
+$X^{(i)}$ are restrictions of a single smooth field, up to Killing fields, which we absorb. Near the axis but off $S$,
+$X=X^{(i)}$ is smooth on each region. Hence $X$ is smooth on $M\setminus S$ with $\cL_Xg=k$. Finally, $\cL_Xg=k$ implies
+the Killing transport system: $(X,\nabla X)$ satisfies, along any curve, a linear ODE with coefficients smooth in $g$,
+$k$ and $\nabla k$. Transporting from points off $S$ extends $X$ smoothly across $S$. So $k=\cL_Xg$ on $M$. The same applies to the
 $t_*$-linear parts in the generalized-mode induction below.
 \end{proof}
 
@@ -1189,7 +1197,7 @@ cube with projective blow-up charts at the faces $x=1$, $v=0$, $v=1$, $\tau=1$ a
 (iii), (iv) with the alternative ``$\varpi_m\le0$'' on each box; (v) on a single box.
 \emph{Rounding.} Outside (i) and the exact part of (ii), coefficients are computed exactly, normalized, rounded once to
 double precision, and subdivided by de Casteljau midpoints. Carrying alongside each array $A$ the array $B$ obtained by
-the same subdivisions of $|A_{\rm root}|$, each entry satisfies $|A_{\rm float}-A_{\rm exact}|\le(1+O(u\Sigma))\,u(1+\Sigma)B$,
+the same subdivisions of $|A_{\rm root}|$, each entry satisfies $|A_{\rm float}-A_{\rm exact}|\le(1+u)^{1+\Sigma}u(1+\Sigma)B\le1.01\,u(1+\Sigma)B$ (as $u\Sigma<10^{-10}$),
 where $u=2^{-53}$ and $\Sigma$ is the sum of the degrees subdivided. A sign is accepted only if $\pm A>10^{-13}(k+4)B$
 entrywise at depth $k$; since all degrees are at most $122$, this exceeds the error bound by a factor of at least $7$.
 \item \emph{Threshold Teukolsky--Starobinsky map} (Lemma~\ref{lem:TSthr}). With
@@ -1210,7 +1218,6 @@ for it.
 The code for the computer-assisted steps is available from the author on request.
 
 \begin{thebibliography}{99}
-\bibitem{Cha83} S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford University Press, 1983.
 \bibitem{GHP73} R.~Geroch, A.~Held and R.~Penrose, A space-time calculus based on pairs of null directions,
 \emph{J. Math. Phys.} \textbf{14} (1973), 874--881.
 \bibitem{Hor85} L.~H\"ormander, \emph{The Analysis of Linear Partial Differential Operators III}, Springer, 1985.
@@ -1234,8 +1241,6 @@ horizon, \emph{Phys. Rev. D} \textbf{28} (1983), 1291--1297.
 equations, \emph{Prog. Theor. Phys.} \textbf{100} (1998), 491--505.
 \bibitem{Tak03} K.~Takemura, Integral representation of solutions to Fuchsian system and Heun's equation,
 \emph{J. Math. Anal. Appl.} \textbf{342} (2008), 52--69.
-\bibitem{Vas13} A.~Vasy, Microlocal analysis of asymptotically hyperbolic and Kerr--de Sitter spaces,
-\emph{Invent. Math.} \textbf{194} (2013), 381--513.
 \bibitem{Wal78} R.~M.~Wald, Construction of solutions of gravitational, electromagnetic, or other perturbation
 equations from solutions of decoupled equations, \emph{Phys. Rev. Lett.} \textbf{41} (1978), 203--206.
 \end{thebibliography}
