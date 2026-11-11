@@ -2515,3 +2515,7 @@ Remaining for hyp:cos: S_α and S_β.
 * Open options: a singular point of the cubic (if it is singular for every r0, the curve is rational and a
   parametrisation exists); or work at b₊ with a 4th variable z = √D and an interval enclosure. The cancellation
   needs an enclosure of z of relative width ~1e-5 near the stuck surface (τ ≈ 1).
+* [P] UPDATE: for each fixed r0 the cubic b² − e2·b + e4 = 0 is NONSINGULAR, both affine and at infinity (gradients at
+  (0:1:0) and (1:0:0) are nonzero). So it is a smooth plane cubic, of genus 1: no rational parametrisation exists.
+  The b₊ square root cannot be removed by a change of coordinates; the cancellation must be handled with a √D
+  enclosure.
