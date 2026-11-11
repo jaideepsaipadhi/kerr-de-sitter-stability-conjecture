@@ -2752,3 +2752,15 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   * better: derive the ε → 0 limit problem analytically (a, T, t ~ 1/ε; scaled variables), certify the limit with
     margin 1.11, and bound the O(ε) remainder;
   * also re-check S_α and S_C margins in this same corner (ε → 0, τ → 1) at the same resolution.
+
+## 214. Extremal limit of S_β: the right variables are SMOOTH at r0 = r1
+* [N] As r0 = 1−ε → 1: t, a, T, L(t), q1 ~ 1/ε; A ~ 1/ε²; Γ = AT/q1² ~ 1/ε; ρ = O(1) (exponents 1, 1, 1, 1, 1, 2, 1, 0).
+* [P] γ := Γ/T, α := a/T, ι := 1/T and ρ_m are rational in the window variables with numerator and denominator
+  nonzero at r0 = 1 (ext_build.py: evaluation at r0 = 1 is nonzero for all of them), so they extend smoothly to the
+  extremal face. Dividing S_β by T gives the exact identity
+    W1 = γ(α+σ)² − 2ρσP,  W2 = W1 − ρ²σE,  P = 2α(α+σ) + (2α+σ)ι,  E = P(1−σ) − σ(α+σ)(α+σ+ι),
+  and S_β ⇔ for m = 1, 2: ρ_m ≤ 0 ∨ Z_m > 0 ∨ (W1 > 0 ∧ W2 > 0 ∀σ) with the EXACT ρ² (the cap is not needed).
+  The extremal limit is ι = 0 and has margin ≈ 1.11 (item 213).
+* sbe5_build.py builds this (the cores are the same size as before: 255k terms for W2); per-target cache.
+  cover4d: open vol 1 → 0.031 in 3 runs, but only ~270 boxes per run (big cores). It is still stuck at the x = 1
+  corners with v → 0 (Kerr) and v → 1 (ultracold).

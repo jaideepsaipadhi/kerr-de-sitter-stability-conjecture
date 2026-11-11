@@ -4,7 +4,7 @@ from fbern3 import exact_bern, split, fsign
 RES,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2],float(sys.argv[3]),int(sys.argv[4])
 CH=sys.argv[5] if len(sys.argv)>5 else ''
 ctx5=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau','sg'),'lex'); c4=flint.fmpz_mpoly_ctx.get(('x','v','t','s'),'lex')
-RES2=pickle.load(open(RES,'rb'))
+RES2=pickle.load(open(RES,'rb')); T00=time.time()
 X4,V4,T4,S4=c4.gens(); one4=c4.from_dict({(0,0,0,0):1}); NN=8
 def chart4(q,strip=True):
     if not CH: return q
@@ -41,34 +41,27 @@ def _scale(q):
         val=abs(flint.fmpq(int(cc),den))
         if val>best: best=val
     return float(best)
-CACHE=f'margin/cache4_{NAME}{CH}.pkl'
-if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
-else:
-    S={}; ITEMS={}
-    for k,(s0,facs) in RES2.items():
-        its=[]
-        for j,(kind,dat) in enumerate(facs):
-            if kind=='plain':
-                sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
-            else:
-                for nm,i in (('F1',0),('Y',1),('P',2)):
-                    sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
-                raw=dat[6]; n2=max(int(e[1]) for e in raw); kmax=max(int(e[2]) for e in raw)
-                CK={}
-                for kk in range(kmax+1):
-                    dk={(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(cc) for e,cc in raw.items() if int(e[2])==kk}
-                    if dk: CK[kk]=chart4(c4.from_dict(dk),False)
-                kmin=min(min(int(e[2]) for e in q.to_dict()) for q in CK.values()) if CH else 0
-                for kk,q0 in CK.items():
-                    if True:
-                        q=c4.from_dict({(int(e[0]),int(e[1]),int(e[2])-kmin,int(e[3])):v for e,v in q0.to_dict().items()})
-                        from fbern3 import exact_bern as _eb
-                        import flint as _fl
-                        # recompute true scale: exact_bern normalizes by max |bern coeff|; recover via one coefficient
-                        S[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
-                its.append(('b',j))
-        ITEMS[k]=(s0,its)
-    pickle.dump((S,ITEMS),open(CACHE,'wb'))
+S={}; ITEMS={}
+for k,(s0,facs) in RES2.items():
+    CF=f'margin/cache4_{NAME}{CH}_{k}.pkl'
+    if os.path.exists(CF):
+        Sk,It=pickle.load(open(CF,'rb')); S.update(Sk); ITEMS[k]=It; continue
+    if time.time()-T00>float(os.environ.get('CT','40')): print('cache incomplete; rerun'); sys.exit(0)
+    Sk={}; its=[]
+    for j,(kind,dat) in enumerate(facs):
+        if kind=='plain':
+            sg,cs=prep(dat); Sk[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
+        else:
+            for nm,i in (('F1',0),('Y',1),('P',2)):
+                sg,cs=prep(dat[i]); Sk[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
+            raw=dat[6]; n2=max(int(e[1]) for e in raw); kmax=max(int(e[2]) for e in raw)
+            CK={}
+            for kk in range(kmax+1):
+                dk={(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(cc) for e,cc in raw.items() if int(e[2])==kk}
+                if dk: CK[kk]=c4.from_dict(dk)
+            for kk,q in CK.items(): Sk[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
+            its.append(('b',j))
+    It=(s0,its); pickle.dump((Sk,It),open(CF,'wb')); S.update(Sk); ITEMS[k]=It
 t0=time.time()
 BOX=[None]
 def bsg(ps,k,dep):
