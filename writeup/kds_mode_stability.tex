@@ -79,7 +79,7 @@ generalized modes $\sum_{j<k}t_*^je^{-i\sigma t_*}v_j$.
 \end{theorem}
 
 \begin{theorem}[Ungauged linearized Einstein mode stability]\label{thm:B}
-Let $(\Lambda,M,a)$ be subextremal with $a\neq0$, and let $T=\partial_{t_*}+\frac{a}{r_2^2+a^2}\partial_{\varphi_*}$.
+Let $(\Lambda,M,a)$ be subextremal with $a\neq0$, let $\Omega\in\R$, and let $T=\partial_{t_*}+\Omega\,\partial_{\varphi_*}$.
 Let $h$ be a smooth symmetric 2-tensor with $D_g\mathrm{Ric}(h)=\Lambda h$.
 \begin{enumerate}[label=(\arabic*)]
 \item If $(\cL_T+i\sigma)^kh=0$ for some $k\ge1$, with $\sigma\ne0$ and $\Im\sigma\ge0$, then $h=\cL_Xg$ for a smooth vector field $X$.
@@ -88,8 +88,8 @@ smooth.
 \end{enumerate}
 \end{theorem}
 
-For $a=0$, Theorem~\ref{thm:B} is \cite[\S7]{HV18}. Theorem~\ref{thm:B} is \cite[Assumption~1.2]{HPV25} (see
-Remark~\ref{rem:T}). Combined with \cite[Theorem~1.4]{HPV25}, it gives our main result:
+For $a=0$ the corresponding statement is \cite[\S7]{HV18}. With $\Omega=a/(r_0^2+a^2)$ as in \cite{HPV25},
+Theorem~\ref{thm:B} together with \cite[\S7]{HV18} is \cite[Assumption~1.2]{HPV25} (see Remark~\ref{rem:T}). Combined with \cite[Theorem~1.4]{HPV25}, it gives our main result:
 
 \begin{theorem}[Stability of Kerr--de Sitter]\label{thm:C}
 Every subextremal Kerr--de Sitter black hole is nonlinearly stable as a solution of the Einstein vacuum equations with
@@ -97,18 +97,18 @@ positive cosmological constant: initial data close to Kerr--de Sitter data evolv
 exponentially to a nearby member of the Kerr--de Sitter family, in the sense of \cite[Theorem~1.4]{HPV25}.
 \end{theorem}
 \begin{proof}
-By Theorem~\ref{thm:B} and Remark~\ref{rem:T}, \cite[Assumption~1.2]{HPV25} holds for every subextremal Kerr--de Sitter
+By Theorem~\ref{thm:B} (with $\Omega=a/(r_0^2+a^2)$) and \cite[\S7]{HV18} for $a=0$, \cite[Assumption~1.2]{HPV25} holds for every subextremal Kerr--de Sitter
 metric; \cite[Theorem~1.4]{HPV25} then applies.
 \end{proof}
 This settles the black hole stability problem for $\Lambda>0$ in the full subextremal range; the case of small $a/M$
 is \cite{HV18}.
 
-\begin{remark}[Choice of $T$]\label{rem:T}
-\cite{HPV25} use $T'=T+c\,\partial_{\varphi_*}$ for some $c\in\R$. Since $\partial_{\varphi_*}$ commutes with $T$, $T'$ and
-$D_g\mathrm{Ric}-\Lambda$, a generalized $T'$-mode $h$ at $\sigma'$ can be put in the gauge of \cite[(23)]{HPV25}
-\cite[\S10]{HV18} and then lies in a finite-dimensional, $\partial_{\varphi_*}$-invariant space of resonant states. So
-$h=\sum_{|m|\le m_0}h_m$ with each $h_m$ a generalized $T$-mode at $\sigma'-cm$, which has the same imaginary part.
-Theorem~\ref{thm:B} applies to each $h_m$; if $\sigma'=cm$ with $m\ne0$, the linearized KdS part vanishes by axisymmetry.
+\begin{remark}[Conventions]\label{rem:T}
+\cite{HPV25} use the domain $\R_{t_*}\times(r_1-2\epsilon,r_2+2\epsilon)\times S^2$ and regular coordinates that may differ
+from ours by $t_*\mapsto t_*+F_1(r)$, $\varphi_*\mapsto\varphi_*+F_2(r)$ with $F_j$ smooth; this multiplies modes by smooth
+nonvanishing factors and changes nothing. Their $\delta^*\omega$ is $\frac12\cL_{\omega^\sharp}g$. Their parameter space
+includes the direction of the rotation axis; its tangent directions are of the form $\cL_Xg$ with $X$ a rotation
+generator, so $c_M\partial_Mg+c_a\partial_ag$ suffices.
 \end{remark}
 
 \subsection{Outline}
@@ -862,7 +862,8 @@ principally scalar operators satisfying the assumptions of \cite[\S5.1]{HV18}, i
 (by \cite[Theorem~3.1]{HPV25}). By \cite[\S5.1.2]{HV18}, these assumptions then hold uniformly near $b_0$, and the
 high-energy estimates \cite[(5.7), (5.8)]{HV18} hold with constants uniform in $b\in U$. In particular there is $R_0$
 such that every QNM of $L_b$ with $\Im\ge0$ has $|\sigma_T|\le R_0$ for all $b\in U$. Here $\sigma_T$
-is the $T$-frequency, which differs from the $\partial_t$-frequency by $m'\Omega_T$ on the sector $m'$.
+is the frequency with respect to the vector field $T'=\partial_{t_*}+\Omega'\partial_{\varphi_*}$ of \cite{HPV25}, which differs
+from the $\partial_{t_*}$-frequency by $m'\Omega'$ on the sector $m'$.
 
 Let $\Psi$ be a QNM in the sector $m$. By Theorem~\ref{thm:A} on the real axis and (F2), $0<\Im\sigma\le C_0$, so
 ladder points satisfy $|\sigma|\le|m|\max(\Omega_1,\Omega_2)+C_0$. Otherwise Proposition~\ref{prop:transfer} gives
@@ -870,8 +871,8 @@ $\tilde h$ at $-\bar\sigma$ with $\Psi_4[\tilde h]\ne0$, and we gauge-fix it. Th
 is a principally scalar wave operator on 1-forms, hence Fredholm of index $0$ (F1). If it is invertible at
 $-\bar\sigma$, then $h'=\tilde h+\delta^*\omega$ with $D\Upsilon(h')=0$ is a QNM of $L_b$, nonzero since
 $\Psi_4[h']=\Psi_4[\tilde h]$. If not, a nonzero $\omega$ in its kernel gives the QNM $\delta^*\omega$ of $L_b$, nonzero
-because KdS has no Killing modes with $\Im\ne0$. Either way $L_b$ has a QNM at $T$-frequency $-\bar\sigma+m\Omega_T$, so
-$|\sigma|\le R_0+|m|\Omega_T$. Take $R_m=\max\big(R_0+|m|\Omega_T,\ |m|\max(\Omega_1,\Omega_2)+C_0\big)$.
+because KdS has no Killing modes with $\Im\ne0$. Either way $L_b$ has a QNM at $T$-frequency $-\bar\sigma+m\Omega'$, so
+$|\sigma|\le R_0+|m||\Omega'|$. Take $R_m=\max\big(R_0+|m||\Omega'|,\ |m|\max(\Omega_1,\Omega_2)+C_0\big)$.
 \end{proof}
 
 \subsection{The base case}
@@ -918,9 +919,10 @@ Here (F2), (F3) and Lemma~\ref{lem:compact} are applied in finitely many neighbo
 
 \section{Ungauged linearized Einstein mode stability}\label{sec:B}
 
-Throughout this section $a\ne0$, and $\Omega_T=a/(r_2^2+a^2)$, so that $T=\partial_t+\Omega_T\partial_\varphi$ in
-Boyer--Lindquist coordinates. Let $h$ be as in Theorem~\ref{thm:B}. Its Fourier components in $\varphi_*$ are
-generalized $(\partial_t,\partial_\varphi)$-modes of type $(\sigma+m\Omega_T,m)$, whose imaginary part is $\Im\sigma\ge0$. The linearized
+Throughout this section $a\ne0$ and $\Omega\in\R$ is fixed, so that $T=\partial_t+\Omega\,\partial_\varphi$ in
+Boyer--Lindquist coordinates. Only the following properties of $T$ are used: it is a constant combination of
+$\partial_t,\partial_\varphi$ (hence of $\xi,\zeta$), $\cL_T$ annihilates every Killing field of KdS, and $Tt_*=1$. Let $h$ be as in Theorem~\ref{thm:B}. Its Fourier components in $\varphi_*$ are
+generalized $(\partial_t,\partial_\varphi)$-modes of type $(\sigma+m\Omega,m)$, whose imaginary part is $\Im\sigma\ge0$. The linearized
 Teukolsky scalars $\delta\Psi_0$ and $\delta\Psi_4$ are gauge and tetrad invariant on type D, and they are outgoing
 generalized Teukolsky modes. By Theorem~\ref{thm:A}, applied to each Fourier component of $h$ and of $\bar h$, the scalars $\delta\Psi_0$ and
 $\delta\Psi_4$ vanish on the exterior $r_1<r<r_2$. The next lemma extends this to all of $M$:
@@ -929,21 +931,29 @@ $\delta\Psi_4$ vanish on the exterior $r_1<r<r_2$. The next lemma extends this t
 \]
 
 \begin{lemma}[Collars]\label{lem:collar}
-Let $w$ be a smooth generalized mode on $M$ of a stationary, principally scalar operator with smooth coefficients
-and principal symbol $\frac12G$, for instance the Teukolsky operator of Lemma~\ref{lem:regframe}. If $w=0$ on
+Let $P$ be a stationary operator on $M$ with smooth coefficients and principal symbol $\frac12G$ (for instance the
+Teukolsky operator of Lemma~\ref{lem:regframe}), and let $w$ be a smooth generalized mode with $Pw=0$. If $w=0$ on
 $r_1<r<r_2$, then $w=0$ on $M$.
 \end{lemma}
 
 \begin{proof}
-Consider the collar $r_1-\delta<r<r_1$. There $dr$ is timelike, and $r$ decreases towards the future. Let $p$ lie in
-the collar. Every past-directed causal curve from $p$ has strictly increasing $r$. The set
-$D_p=J^-(p)\cap\{r\le r_1\}$ is compact, since in ingoing coordinates the past cone of $p$ meets the event horizon
-in a compact set. Its boundary consists of a compact piece of the event horizon and a piece of the past light cone
-of $p$. Since $w$ is smooth and vanishes for $r>r_1$, it vanishes to infinite order on the horizon. The standard
-energy estimate on $D_p$ involves fluxes through a null boundary that are tangential and hence vanish, and fluxes
-through the cone of $p$ that are nonnegative \cite[\S23.2]{Hor85}. It gives $w=0$ near $p$. The collar
-$r_2<r<r_2+\delta$ is treated in the same way, with time reversed relative to $r$ and the cosmological horizon in
-place of the event horizon.
+The top coefficient of a generalized mode is a mode, and subtracting it lowers the order, so it suffices to treat a
+mode $w=e^{-i\sigma t_*}v$. Then $P(\sigma)v=0$ on $X=[r_1-\delta,r_2+\delta]\times S^2$, where $P(\sigma)$ has principal
+symbol the restriction of $\frac12G$ to covectors annihilating $\partial_{t_*}$. Consider the collar $r_1-\delta<r\le r_1$.
+There $G(dr,dr)=\Delta_r/\varrho^2\le0$, with equality only at $r=r_1$, and for $\delta$ small $\partial_{t_*}$ is spacelike,
+so $P(\sigma)$ is hyperbolic on $X\cap\{r<r_1\}$ with time function $r$. In coordinates $(r,\theta,\varphi_*)$,
+\[
+\varrho^2P(\sigma)=\partial_r\Delta_r\partial_r+\mathcal A+\mathcal B\,\partial_r+\mathcal C,
+\]
+where $\mathcal A$ is a second-order operator on $S^2$, elliptic modulo $\partial_{\varphi_*}$-terms, and $\mathcal B,\mathcal C$
+have smooth coefficients (of order $\le1$ and $\le2$ in the angular variables, respectively). Let
+$E(r)=\int_{S^2}\big(|\Delta_r||\partial_rv|^2+|\nabla_{S^2}v|^2+|v|^2\big)$. The standard energy identity for this
+hyperbolic operator gives, for $r_1-\delta<r<r_1$,
+$|E'(r)|\le C\,E(r)/(r_1-r)$, the factor $(r_1-r)^{-1}\sim|\Delta_r|^{-1}$ coming from the first-order terms. Hence
+$E(r)\le E(r_1-\epsilon)\,\big(\epsilon/(r_1-r)\big)^{-C}$ for $r<r_1-\epsilon$. Since $v$ is smooth and vanishes for
+$r>r_1$, it vanishes to infinite order at $r=r_1$, so $E(r_1-\epsilon)=O(\epsilon^N)$ for every $N$. Letting
+$\epsilon\to0$ gives $E\equiv0$, i.e.\ $v=0$ in the collar. The collar beyond $r_2$ is treated in the same way, with
+$r$ increasing to the future.
 \end{proof}
 
 \subsection{Linearized Goldberg--Sachs}
@@ -989,9 +999,10 @@ statement holds to first order whenever they do.
 The Bianchi identities $\Th\Psi_2=3\rho\Psi_2$, $\eth\Psi_2=3\tau\Psi_2$ and their primes give $\Th\phi=-\rho\phi$,
 $\eth\phi=-\tau\phi$, $\Th'\phi=-\rho'\phi$, $\eth'\phi=-\tau'\phi$. Together with $\kappa=\sigma=\kappa'=\sigma'=0$, these are
 the GHP components of the Killing spinor equation $\nabla_{A'(A}\kappa_{BC)}=0$ for $\kappa_{AB}=\phi\,o_{(A}\iota_{B)}$
-\cite{AA13}. Expanding $\nabla^B{}_{A'}\kappa_{AB}$ in the tetrad gives $\xi$ up to a constant factor. The divergence of a
-Killing spinor is Killing whenever the trace-free Ricci spinor vanishes \cite{HS73,AA13}, in particular for
-$\mathrm{Ric}=\Lambda g$. The value on KdS is a direct computation (item~C6).
+\cite{AA13}. Expanding $\nabla^B{}_{A'}\kappa_{AB}$ in the tetrad gives $\xi$ up to a constant factor. For the divergence $\xi$ of a
+Killing spinor, $\nabla_{(a}\xi_{b)}$ is a contraction of $\kappa_{AB}$ with the trace-free Ricci spinor
+$\Phi_{ABA'B'}$ (the scalar curvature term cancels by symmetry), so $\xi$ is Killing when $\mathrm{Ric}=\Lambda g$
+\cite{HS73,AA13}. The value on KdS is a direct computation (item~C6).
 \end{proof}
 
 Linearizing Lemma~\ref{lem:xi} gives $\cL_\xi h+\cL_{\delta\xi}g=0$, where $\delta\xi=\delta\xi[h]$.
@@ -1119,7 +1130,7 @@ $\xi(\Delta_R)=0$ forces $d\Delta_R\parallel Bl-An\parallel dR$. Likewise $\Delt
 $(\tilde t,\psi,R,I)$ adapted to the commuting fields $\xi=\partial_{\tilde t}$, $\zeta=\partial_\psi$, these inner products give,
 to first order, Carter's separable ansatz
 \[
-\frac{S}{\Delta_R}dR^2+\frac{S}{\Delta_I}dI^2+\frac{\Delta_I(d\tilde t+R^2d\psi)^2-\Delta_R(d\tilde t-I^2d\psi)^2}{S},\qquad S=R^2+I^2.
+\frac{S}{\Delta_R}dR^2+\frac{S}{\Delta_I}dI^2+\frac{\Delta_I(d\tilde t-R^2d\psi)^2-\Delta_R(d\tilde t+I^2d\psi)^2}{S},\qquad S=R^2+I^2.
 \]
 
 \emph{Step 3: the field equations.} On this ansatz the $\Lambda$-vacuum equations are linear in $(\Delta_R,\Delta_I)$,
@@ -1134,7 +1145,7 @@ variation $\delta\mathfrak n$, together with the acceleration removed in Step 1.
 $\tilde\lambda=\Lambda/3$ and $c>0$, so the axes are the roots $I=\pm a$ and $\Delta_I'(\pm a)=\mp2a(c+\tilde\lambda a^2)$.
 
 \emph{(i) Misner string.} At a simple root $I_0$ of $\Delta_I$, the Killing field that vanishes on the axis is
-$\partial_\psi+I_0^2\partial_{\tilde t}$, as one reads off from the ansatz. Under $\delta\Delta_I=2\,\delta\mathfrak n\,I$
+$\partial_\psi-I_0^2\partial_{\tilde t}$, as one reads off from the ansatz. Under $\delta\Delta_I=2\,\delta\mathfrak n\,I$
 both roots move by the same amount: $\delta I_\pm=-2\delta\mathfrak n\,I_\pm/\Delta_I'(I_\pm)=\delta\mathfrak n/(c+\tilde\lambda a^2)$,
 since $\Delta_I'$ is odd. So the two axis generators differ by $4a\,\delta I_+\,\partial_{\tilde t}$. Because $\tilde t$ is not
 periodic on $M$, both axes are regular only if the generators coincide, which forces $\delta\mathfrak n=0$ (as
@@ -1157,6 +1168,11 @@ $h=c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag+\cL_{X^{(i)}}g$. The constants agre
 Iyer--Wald charge $\delta H_K[h]$ is the integral of a closed form smooth on $M$, hence the same on every sphere
 $\{t_*=\tau,r=\rho\}$; it vanishes on pure gauge terms (proof of Theorem~\ref{thm:B}), and $(E,J)$ has nonzero Jacobian
 in $(M,a)$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$ and equals $\cL_{X^{(i)}}g$ on each region.
+
+On each region $X^{(i)}$ may be taken axisymmetric and of the form $X_0+t_*K$: since $\cL_{\partial_t}k=\cL_{\partial_\varphi}k=0$,
+the fields $[\partial_t,X^{(i)}]$ and $[\partial_\varphi,X^{(i)}]$ are Killing, hence constant combinations of $\partial_t,\partial_\varphi$;
+the second has zero $\varphi$-average because $X^{(i)}$ is single-valued, so it vanishes, and integrating the first in
+$t_*$ gives $X^{(i)}=X_0+t_*K$ with $X_0$ stationary and $K$ Killing.
 
 To glue, let $S$ be the intersection of the axis with the horizons (codimension three). Away from the axis, write
 $X=X^r\partial_r+X^\theta\partial_\theta+Y$ with $Y=Y^t\partial_{t_*}+Y^\varphi\partial_{\varphi_*}$. Since $R=\Re\phi$ and

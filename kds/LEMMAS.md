@@ -2963,3 +2963,17 @@ SOFT SPOTS (not wrong, but terse; a human referee may ask for more):
   P(θ), ratio 1 + 4Mα/(1−α)); Fredholm threshold for the spin-weighted operator (Vasy 2013); SdS conjugation (at a = 0,
   n and γ are real, so Th' commutes with conjugation).
 * NOT closable by me: public archival of the certificate code (the user's decision).
+
+## 227. Second referee (Theorem B vs HPV Assumption 1.2) and fixes
+* FIXED, serious: Lemma lem:collar. The old D_p was not compact (past curves run along the horizon as t* → −∞). New
+  proof: reduce to the mode P(σ)v = 0 on (r, θ, φ*). It is hyperbolic with time function r inside the horizon, and the
+  energy has |E'| ≤ C E/(r1 − r), so the loss is polynomial, while v vanishes to infinite order at r1. Hence v = 0.
+* FIXED, serious: Remark rem:T was unjustified (gauge-solvability, circular use of HPV Thm 2.7) and had a sign slip.
+  Replaced: Theorem B is now stated for every T = ∂t* + Ω∂φ*, Ω ∈ R. §B uses only that T is a constant combination of
+  ξ, ζ, that L_T kills Killing fields, and that T t* = 1. With Ω = a/(r0²+a²) and HV18 §7 for a = 0, this is exactly
+  HPV Assumption 1.2. The Remark now records only conventions (domain, δ*ω = ½L g, axis-tilt directions are gauge).
+* FIXED, minor: the sign of the Carter cross term (ψ → −ψ; the axis generator is ∂ψ − I0²∂t̃); the axisymmetry of X and
+  X = X0 + t*K derived; the Λ-independence of "divergence of a Killing spinor is Killing"; the compactness lemma now uses
+  HPV's own T' frequency.
+* STILL SOFT: Prop stationary Steps 1 and 4 (the PD acceleration tangent): its explicit δξ, δΔ_I and P(θ) are not
+  written out; the paper relies on C6 and GP06.
