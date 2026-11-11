@@ -2792,3 +2792,8 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   KA/KB charts: open vol 9e-7 / 7e-6, stuck at max depth on the chart's extremal Kerr corner, where physically there
   is no gate (r2 ≥ 100). So this is a representation degeneracy; still to fix (e.g. close by "L(t) > 0 for m = 1, 2"
   there, which is the S_μ machinery).
+* Z'/ρ covering, follow-up: rescaling the "ρ_m ≤ 0" test to H_m/T changes nothing. KA/KB are stuck only for τ ≥ 7/8,
+  so they are covered by VT. VT1/VT2 for Z' leave 5e-6 / 3e-4 open vol, all at the TRIPLE corner
+  (x, v, τ) → (1, 0, 1): extremal × Kerr × window top. Physically there is no gate there (r2 ≥ 100 ⇒ L(t) > 0 in all
+  samples), so the needed fact is a lemma "L(t) > 0 near the triple corner", which needs a weighted 3-variable
+  blow-up or a hand argument (Kerr-limit L(t) asymptotics). Remaining open set for S_β: this triple corner only.

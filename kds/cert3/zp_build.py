@@ -7,7 +7,7 @@ Hm={1:LQ2p+LQ1+LQ0p+4*K, 2:LQ2p+LQ1*F(1,2*one)+LQ0p*F(1,4*one)}
 ex={}
 for m,H in Hm.items():
     rho=F(21,10*one)*(-H)*lamv/den
-    ex[f'Zp{m}']=gam*(1+alp)-(F(4*one)*rho+F(2*one)*rho*rho)*(alp+io); ex[f'NR{m}']=H
+    ex[f'Zp{m}']=gam*(1+alp)-(F(4*one)*rho+F(2*one)*rho*rho)*(alp+io); ex[f'NR{m}']=H*io
 res={}
 for k,e in ex.items():
     cd,fld=e.d.factor(); cn,fln=e.n.factor(); sgn0=(1 if cn>0 else -1)*(1 if cd>0 else -1)
