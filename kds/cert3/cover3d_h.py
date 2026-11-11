@@ -13,6 +13,9 @@ def tocube(f):
         a,b_,t_=[int(z) for z in e]
         if CH=='EA': out+=int(c)*(N-X)**a*(N-X*V)**b_*T3**t_*N**(D-a-b_)
         elif CH=='EB': out+=int(c)*(N-X*V)**a*(N-X)**b_*T3**t_*N**(D-a-b_)
+        elif CH=='T1': out+=int(c)*(N-X)**a*(X*V)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
+        elif CH=='T2': out+=int(c)*(N-X*V)**a*(X)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
+        elif CH=='T3': out+=int(c)*(N-X*V)**a*(X*T3)**b_*(N-X)**t_*N**(D-a-b_-t_)
         elif CH=='XT1': out+=int(c)*(N-X)**a*(N*V)**b_*(N-X*T3)**t_*N**(D-a-b_-t_)
         elif CH=='XT2': out+=int(c)*(N-X*T3)**a*(N*V)**b_*(N-X)**t_*N**(D-a-b_-t_)
         elif CH=='VT1': out+=int(c)*(N*X)**a*(V)**b_*(N-V*T3)**t_*N**(D-a-b_-t_)*N**0

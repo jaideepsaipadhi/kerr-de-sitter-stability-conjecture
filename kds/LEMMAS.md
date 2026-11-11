@@ -2797,3 +2797,13 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   (x, v, τ) → (1, 0, 1): extremal × Kerr × window top. Physically there is no gate there (r2 ≥ 100 ⇒ L(t) > 0 in all
   samples), so the needed fact is a lemma "L(t) > 0 near the triple corner", which needs a weighted 3-variable
   blow-up or a hand argument (Kerr-limit L(t) asymptotics). Remaining open set for S_β: this triple corner only.
+
+## 217. Triple corner (x, v, τ) → (1, 0, 1) for S_β
+* CORRECTION to item 216: the gate is NOT absent near the triple corner. With ε, v, 1−τ ∈ [1e-8, 0.13]³, L(t) < 0 at
+  48% of samples. But Z' holds there with min ratio 2.29 (95k gate points, max ρ = 0.656).
+* Projective charts of the corner cube [7/8,1] × [0,1/8] × [7/8,1] (cover3d_h CH = T1/T2/T3; the scale variable is
+  the leading one of 1−x, v, 1−τ):
+  T2 (v leading): CLOSED in 1 box. T3 (1−τ leading): open vol 0.018 after 60 s, still progressing.
+  T1 (1−x leading): stuck on the edge λ = 0, u2 = 0, i.e. 1−τ ≪ 1−x ≪ 1 (with v/(1−x) ≈ 0.47). This needs a
+  sub-blow-up (λ, u2) inside T1, probably because α = a/T behaves like (1−τ)/(1−x) there.
+* S_β remaining = this sub-edge of T1 and the rest of T3 (both at the triple corner).
