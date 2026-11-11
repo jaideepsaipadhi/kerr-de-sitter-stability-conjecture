@@ -1,6 +1,6 @@
 import flint,pickle,time,sys,os
 from fastbern import bern_signs, half
-from fbern2 import exact_bern, split as fsplit, fsign
+from fbern2 import exact_bern, split as fsplit, fsign, fsign2
 ctx4=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau'),'lex'); c2=flint.fmpz_mpoly_ctx.get(('x','v'),'lex')
 T=pickle.load(open('margin/scg6_tau.pkl','rb')); CH=sys.argv[1]; TMAX=float(sys.argv[2]); DMAX=int(sys.argv[3])
 X,V=c2.gens(); one=c2.from_dict({(0,0):1}); N=8
@@ -58,7 +58,7 @@ print('bern built',round(time.time()-t0,1),flush=True)
 def bsg(ps,k,dep):
     s=FS[k][0]
     for A in ps[k]:
-        g=fsign(A,1e-13*(dep+4))
+        g=fsign2(A,1e-13*(dep+4))
         if g==0: return 0
         s*=g
     return s
@@ -75,7 +75,8 @@ def closed(ps,dep):
         return False
     return True
 import json
-root={k:v[1] for k,v in FS.items()}
+import numpy as _np
+root={k:[_np.stack([A,_np.abs(A)],-1) for A in v[1]] for k,v in FS.items()}
 def descend(lev,idx):
     cur=root
     for ax in (0,1):

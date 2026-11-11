@@ -32,7 +32,7 @@
 \begin{document}
 
 \begin{abstract}
-With a computer-assisted proof (exact-arithmetic rerun of the near-extremal certificates in progress), we prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
+With a computer-assisted proof, we prove mode stability for the Teukolsky equations of spin $s=\pm2$ on Kerr--de Sitter black hole spacetimes in the
 full subextremal range: there are no nontrivial outgoing mode solutions at frequencies $\sigma$ with
 $\Im\sigma\ge0$. We then show that every generalized mode solution of the ungauged linearized Einstein equation
 $D_g\mathrm{Ric}(h)=\Lambda h$ with $\Im\sigma\ge0$ is pure gauge if $\sigma\ne0$, and the sum of a linearized
@@ -79,9 +79,10 @@ proved mode stability for scalar waves in the full subextremal range, and left t
 $s=\pm2$ open. Our main results address both questions.
 
 \medskip\noindent\textbf{Status of this draft.} The proof is computer-assisted. Proposition~\ref{hyp:cos} (the
-cosmological side in the near-extremal regime where $L(t)\le0$) rests on certificates that currently use
-floating-point Bernstein bounds with rigorous error tolerances and interval enclosures of the physical root $b_+$; an
-exact-arithmetic rerun is in progress (Appendix~\ref{app:cert}).
+cosmological side in the near-extremal regime where $L(t)\le0$) rests partly on verified floating-point
+computations: Bernstein coefficients are computed exactly, rounded once, and subdivided in double precision with an
+a priori bound on the accumulated rounding error carried entrywise, and the physical root $b_+$ is enclosed by
+interval arithmetic (Appendix~\ref{app:cert}, C7).
 \medskip
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
@@ -168,7 +169,8 @@ stationary axisymmetric sector reduces to Carter's separable ansatz, on which th
 
 \subsection*{Computer assistance}
 Some steps rely on exact symbolic computation or on certificates in exact rational arithmetic. They are listed in
-Appendix~\ref{app:cert}. No step relies on floating-point evidence.
+Appendix~\ref{app:cert}. The certificates in item C7 use floating-point arithmetic with rigorous a priori error bounds
+(verified numerics); no step relies on unverified numerical evidence.
 
 \subsection*{Acknowledgments}
 I thank the authors of \cite{Hin26,HPV25} for making their work publicly available.
@@ -1215,7 +1217,7 @@ $(\cL_{\partial_t})^{k-1}(h_0-\cL_Zg)=h_1-\cL_Xg=0$, so $h_0-\cL_Zg$ has order $
 
 \appendix
 \section{Computer-assisted steps}\label{app:cert}\sloppy
-All computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$. The code is in the repository accompanying this paper; the script names are given in brackets.
+Except in item C7, all computations use exact arithmetic over $\mathbb Q$ or $\mathbb Q(i)$. The code is in the repository accompanying this paper; the script names are given in brackets.
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
 \item \emph{Dual potential} [\texttt{step39\_c1\_symbolic.py}, \texttt{step89\_c1\_kappa.py}]. After Vieta
 elimination, the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are divisible by $s^2-4$ as polynomials.
@@ -1272,7 +1274,17 @@ of $b_+=2e_4v^2/(e_2v^2-\sqrt{Dv^4})$, which is smooth at $v=0$. Each condition 
 odd-multiplicity factors (squares dropped); boxes are subdivided until every factor has a certified sign. The atlas
 consists of the cube and blow-up charts at the faces $x=1$ (extremal), $v=0$ (Kerr), $v=1$ (Nariai/ultracold),
 $\tau=1$ and their intersections (charts KA, KB, VT, XT, T1--T3, U1--U3, EA, EB, with second blow-ups where needed).
-Scripts: \texttt{kds/cert3/\{smu,scn3,scg6,za,zp\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{atlas.sh}.
+\emph{Arithmetic.} The polynomial cores and the condition (i), $S_\mu$, are handled in exact integer Bernstein
+arithmetic. For the remaining conditions the Bernstein coefficients are computed exactly in $\mathbb Q$, divided by
+their maximum modulus and rounded once to double precision. Subdivision uses de Casteljau midpoints. Alongside each
+array $A$ we carry the array $B$ obtained by applying the same subdivisions to $|A_{\rm root}|$. Each midpoint step
+adds an error of at most $u$ times the average of the moduli of its inputs, with $u=2^{-53}$. So after subdivisions
+whose degrees sum to $\Sigma$, every entry satisfies $|A_{\rm float}-A_{\rm exact}|\le u(1+\Sigma)B$, up to a factor
+$1+O(u\Sigma)$. A sign is accepted only if $A>c\,B$ (or $A<-c\,B$) entrywise, with $c=10^{-13}(k+4)$ at depth $k$. Since
+every per-axis degree is at most $122$, $c$ exceeds $u(1+\Sigma)$ by a factor of at least $7$. The root $b_+$ is
+enclosed with interval arithmetic (\texttt{mpmath.iv}) evaluated directly in chart coordinates.
+Scripts: \texttt{kds/cert3/\{smu,scn3,scg6,za,zp\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{cover3d\_f.py},
+\texttt{cover2d\_f.py}, \texttt{cover2d\_f6.py}, \texttt{atlas.sh}.
 
 \begin{thebibliography}{99}
 \bibitem{Cha83} S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford University Press, 1983.

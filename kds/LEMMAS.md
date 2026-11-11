@@ -2889,3 +2889,18 @@ variables there is no layer.
   ⇒ S_β certified with rigorous floating-point error control.
 * STILL OPEN on this front: the earlier float certificates S_μ (item 182) and S_C / ρ ≤ 0.7 (items 194, 207) used
   cover3d_f / cover2d_f6 with the old relative tolerance. They need the same per-entry rerun.
+
+## 223. All float certificates now under per-entry rigorous rounding control; hyp:cos fully certified
+* Per-entry error tracking (item 222) ported to cover2d_f, cover2d_f6, cover3d_f (fsign2 in fbern2/fbern3).
+  Old state files moved to cert3/margin/old_reltol/; everything was re-run from scratch.
+  - S_C corner (cover2d_f, all τ-conditions): EA closed (2 runs), EB closed (2 runs).
+  - ρ ≤ 0.7 corner (cover2d_f6): EA closed, EB closed. Main cube (cover3d_f, scn3): closed (33 boxes); KA, KB closed.
+  - S_α (za3) and S_β (zp3): item 222.
+  - S_μ (item 182) and the S_C main cube (item 183) were always exact integer Bernstein (fastbern.bern_signs): no
+    rerun needed.
+* Error-bound check: max per-axis degree is 122 (3D atlases), 58 (2D corner τ-polys) and 118 (scn3). The constant
+  c = 1e-13(k+4) exceeds u(1+Σdeg) ≤ u(1+122k) by a factor of at least 7 at every depth k.
+* Paper: the false claims "no floating-point evidence" and "all computations exact" are removed. The status paragraph
+  and the abstract no longer say "rerun in progress". C7 now describes the verified-float method and its error bound.
+=> Proposition hyp:cos is certified with verified numerics (exact cores, rigorous float rounding bounds, interval b₊).
+Remaining: the hostile end-to-end re-referee of the paper.

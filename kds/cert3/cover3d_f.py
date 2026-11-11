@@ -1,6 +1,6 @@
 import flint,pickle,time,sys,os,json
 from fastbern import bern_signs
-from fbern3 import exact_bern, split, fsign
+from fbern3 import exact_bern, split, fsign, fsign2
 RES,TG,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2].split(','),sys.argv[3],float(sys.argv[4]),int(sys.argv[5])
 CH=sys.argv[6] if len(sys.argv)>6 else ''
 ctx4=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau'),'lex'); c3=flint.fmpz_mpoly_ctx.get(('x','v','t'),'lex')
@@ -35,7 +35,7 @@ t0=time.time()
 def bsg(ps,k,dep):
     s=S[k][0]
     for A in ps[k]:
-        g=fsign(A,1e-13*(dep+4))
+        g=fsign2(A,1e-13*(dep+4))
         if g==0: return 0
         s*=g
     return s
@@ -47,7 +47,8 @@ def closed(ps,dep):
         if (p>0 and f>0) or (p<0 and bsg(ps,(k,'Y'),dep)<0): continue
         return False
     return True
-root={k:v[1] for k,v in S.items()}
+import numpy as _np
+root={k:[_np.stack([A,_np.abs(A)],-1) for A in v[1]] for k,v in S.items()}
 def descend(lev,idx):
     cur=root
     for ax in range(3):

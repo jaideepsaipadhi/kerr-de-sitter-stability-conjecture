@@ -23,3 +23,10 @@ def fsign(A,err):
     if A.min()>tol: return 1
     if A.max()<-tol: return -1
     return 0
+
+def fsign2(A,err):
+    # A[...,0]: value, A[...,1]: same splits applied to |A_root|; float error <= (d+2)u*A[...,1]
+    v=A[...,0]; t=err*A[...,1]+1e-300
+    if (v>t).all(): return 1
+    if (v<-t).all(): return -1
+    return 0
