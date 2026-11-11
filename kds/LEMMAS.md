@@ -2706,3 +2706,15 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   the interval), x ≈ 0.7–0.9, τ ≈ 0.9–1, where R2 = −λ̃L(m = 2)/m² is undecided (the gate boundary for m = 2) and
   W1/W2's main b-factor is undecided. At s = 0, W1 = Γa² with Γ ∝ U0U3 = A-part, so if A → 0 there as K → 0, both sides
   of S_β vanish together. Needs a check of whether A and K vanish simultaneously at the gate boundary on τ → 1.
+
+## 210. S_β stall at (s, a) → (0, 0): genuine double degeneracy at the window top
+* [N] At the stuck boxes, τ → 1 gives zf → 0 (Im e1 → 0 at the window top), so a = z0 − 1 → 0. Simultaneously
+  ρ2 ≈ 0 (m = 2 gate boundary). E.g. (x, v) = (0.72, 0.22): a = 0.113 at τ = 0.97 and 3.7e-3 at τ = 0.999;
+  W1(s = 0) = Γa² → 0. At a = 0, W1 = s²(Γ − 2ρ) + …, so W1 vanishes to SECOND order at (s, a) = (0, 0), while
+  physically Γ ≈ 8.4 ≫ ρ ≈ 0.01 there.
+* Chart (σ, 1−τ) → 0 (ST1/ST2 in cover4d.py) implemented, with consistent stripping across the unreduced
+  b-coefficients. But the exact chart expansion of the 100k-term cores did not finish in 300 s; too heavy.
+* Crude 3D sufficient form Γ ≥ 5.4·t·ρ̄ (from φ0 ≤ 4z, 0.7·φ1 ≤ 1.4z) FAILS (min 4e-4; holds at only 18% of points).
+  The factor t is too lossy.
+NEXT: a sharper s-free bound valid for small a (e.g. sup_s φ0 ≤ 2 + O(a/s) when a ≪ T), giving a 3D
+"Γ ≥ ρ̄(2 + C a + …)" closure near τ = 1. Or a cheaper chart via a floating expansion of the cores.

@@ -2,11 +2,23 @@ import flint,pickle,time,sys,os,json
 from fastbern import bern_signs
 from fbern3 import exact_bern, split, fsign
 RES,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2],float(sys.argv[3]),int(sys.argv[4])
+CH=sys.argv[5] if len(sys.argv)>5 else ''
 ctx5=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau','sg'),'lex'); c4=flint.fmpz_mpoly_ctx.get(('x','v','t','s'),'lex')
 RES2=pickle.load(open(RES,'rb'))
+X4,V4,T4,S4=c4.gens(); one4=c4.from_dict({(0,0,0,0):1}); NN=8
+def chart4(q,strip=True):
+    if not CH: return q
+    D=sum(int(z) for z in q.degrees()); out=0*one4
+    for e,cc in q.to_dict().items():
+        a0,a1,a2,a3=[int(z) for z in e]
+        if CH=='ST1': out+=int(cc)*X4**a0*V4**a1*(NN-T4)**a2*(T4*S4)**a3*NN**(D-a2-a3)
+        else: out+=int(cc)*X4**a0*V4**a1*(NN-T4*S4)**a2*(T4)**a3*NN**(D-a2-a3)
+    if not strip: return out
+    dd=out.to_dict(); k=min(int(e[2]) for e in dd)
+    return c4.from_dict({(int(e[0]),int(e[1]),int(e[2])-k,int(e[3])):v for e,v in dd.items()})
 def tocube(f):
     d=f.to_dict(); n2=max(int(e[1]) for e in d)
-    return c4.from_dict({(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(c) for e,c in d.items()})
+    return chart4(c4.from_dict({(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(c) for e,c in d.items()}))
 def sgnw(p):
     mn,mx,_=bern_signs(p); return 1 if (mn>=0 and mx>0) else (-1 if (mx<=0 and mn<0) else 0)
 def prep(d):
@@ -29,7 +41,7 @@ def _scale(q):
         val=abs(flint.fmpq(int(cc),den))
         if val>best: best=val
     return float(best)
-CACHE=f'margin/cache4_{NAME}.pkl'
+CACHE=f'margin/cache4_{NAME}{CH}.pkl'
 if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
 else:
     S={}; ITEMS={}
@@ -42,10 +54,14 @@ else:
                 for nm,i in (('F1',0),('Y',1),('P',2)):
                     sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
                 raw=dat[6]; n2=max(int(e[1]) for e in raw); kmax=max(int(e[2]) for e in raw)
+                CK={}
                 for kk in range(kmax+1):
                     dk={(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(cc) for e,cc in raw.items() if int(e[2])==kk}
-                    if dk:
-                        q=c4.from_dict(dk)
+                    if dk: CK[kk]=chart4(c4.from_dict(dk),False)
+                kmin=min(min(int(e[2]) for e in q.to_dict()) for q in CK.values()) if CH else 0
+                for kk,q0 in CK.items():
+                    if True:
+                        q=c4.from_dict({(int(e[0]),int(e[1]),int(e[2])-kmin,int(e[3])):v for e,v in q0.to_dict().items()})
                         from fbern3 import exact_bern as _eb
                         import flint as _fl
                         # recompute true scale: exact_bern normalizes by max |bern coeff|; recover via one coefficient
@@ -118,7 +134,7 @@ def descend(lev,idx):
         for j in range(lev[ax]-1,-1,-1):
             bit=(idx[ax]>>j)&1; cur={k:[split(A,ax)[bit] for A in v] for k,v in cur.items()}
     return cur
-PK=f'margin/c4_{NAME}.json'
+PK=f'margin/c4_{NAME}{CH}.json'
 todo=[tuple(map(tuple,z)) for z in json.load(open(PK))] if os.path.exists(PK) else [((0,)*4,(0,)*4)]
 nc=0; rest=[]
 while (todo or rest) and time.time()-t0<TMAX:
@@ -130,7 +146,7 @@ while (todo or rest) and time.time()-t0<TMAX:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
         BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in (0,1)]
-        if closed(ps,sum(lev)): nc+=1; continue
+        if (not CH and idx[2]*8>=7*2**lev[2] and (idx[3]+1)*8<=2**lev[3]) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=10: rest.append((lev,idx)); continue
         kk=min(range(4),key=lambda i:lev[i])
         ch=[{},{}]
