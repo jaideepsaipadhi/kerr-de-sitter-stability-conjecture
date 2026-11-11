@@ -2930,3 +2930,20 @@ SOFT SPOTS (not wrong, but terse; a human referee may ask for more):
   Euler-transform threshold case (loop around w = z alone: vanishing of boundary terms only asserted); Lemma bc
   (tetrad boost); Prop stationary Step 1 (rests on the C6 nonlinear check for the acceleration tangent); Collars
   lemma energy estimate (citation-level).
+
+## 225. Euler-transform threshold case κ1 = 0: made rigorous; a hidden gap (s = +2) found and CLOSED
+* Boundary term of the transform (step2_euler.py, formal adjoint with no weight):
+  K·Hy − y·H†K = ∂_w B, with B = P2(K y' − K_w y) + (P1 − P2')K y. At w = 1: B(1) = (δ_H − 1)(1−t)K(1)y(1).
+* s = −2: y = O((w−1)²), so B(1) = 0 and the loop based at 1 around z works. The power-wise constant is nonzero.
+  Rigorous now.
+* s = +2 with y ANALYTIC at 1 (a0 = a1 = 0): B(1) ≠ 0 in general, so the old "loop around w = z alone" claim was
+  WRONG there. This sub-case is generic when the exponent −2 Frobenius solution has a log. It is not in the window
+  (σ = mΩ1 > w1·m), but Corollary outside needs it.
+* FIX (Lemma TSthr): ψ = Δ²(D†)⁴(Δ²R) maps s = +2 radial solutions to s = −2 radial solutions with the same λ.
+  This is an EXACT symbolic identity on KdS (step180_ts_kds.py, polynomial arithmetic over Q(i), symbolic in
+  Λ, M, a, σ, m, λ; 145 s). At κ1 = 0, K/Δ is analytic at r1, so ψ ∈ Δ²C^ω is s = −2 outgoing at r1. At r2, D† lowers
+  the exponent by 1, so ψ ∈ (r2−r)^{κ2}C^∞ is outgoing. The s = −2 result gives ψ = 0. Then Δ²R = e^{−i∫K/Δ}·cubic,
+  which is incompatible with outgoing at r2 since κ2 ∈ iR∖{0}. Hence R = 0. No circularity: the s = −2 case uses only
+  the rigorous s = −2 threshold transform.
+* Paper: Prop transform threshold case rewritten; Lemma lem:TSthr added; new appendix item C10; the status caveat
+  removed.

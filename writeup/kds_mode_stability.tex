@@ -330,21 +330,64 @@ $e_1\in i\R$, so the last condition fails for $k\ge0$.
 of $y=(z-1)^{\rho_1}\sum_ka_k(z-1)^k$ gives $\tilde y=(z-1)^{-e_1}\sum_kc(\rho_1+k)a_k(z-1)^k$, which is nonzero.
 
 \emph{Threshold case} $\kappa_1=0$. Then $\rho_1=-s$ is an integer, and $c(\beta)$ vanishes on the analytic part
-($\beta\in\Z_{\ge0}$). For $s=-2$, $\rho_1=2$, so $y$ is analytic with leading power $(z-1)^2$. Use the
-Hankel-type contour from the side, i.e. $\tilde y=\Gamma(-\nu)^{-1}$-normalised $\int_1^z$, which converges at $w=1$;
-the divergence at $w=z$ ($\Re\nu=-3$) is removed by the loop around $w=z$ alone. On powers this gives
-$\Gamma(\beta+1)/\Gamma(\beta+\nu+2)$ up to a nonzero factor, and this is nonzero for $\beta=2+k$. For $s=+2$,
-$\rho_1=-2$: write $y=(z-1)^{-2}(a_0+a_1(z-1))+y_{\rm an}$. If $(a_0,a_1)\ne0$, the Pochhammer transform kills
-$y_{\rm an}$ and maps $(z-1)^{-2},(z-1)^{-1}$ to nonzero multiples of $(z-1)^{\nu-1},(z-1)^{\nu}$, since
-$c(-2),c(-1)\neq0$. If $a_0=a_1=0$, $y$ is analytic and we use the loop around $w=z$ alone, as for $s=-2$. In all cases
-$\tilde y\ne0$ and $\tilde y\in(z-1)^{-e_1}C^\omega$.
+($\beta\in\Z_{\ge0}$). We use the boundary term of the transform. Write the Heun operator as
+$\mathcal H=P_2\partial_w^2+P_1\partial_w+(\cdots)$ with $P_2(w)=w(w-1)(w-t)$ and
+$P_1=\gamma_H(w-1)(w-t)+\delta_Hw(w-t)+\epsilon_Hw(w-1)$, so that the exponents at $w=1$ are $0$ and $1-\delta_H=\rho_1$.
+The kernel $K=(z-w)^\nu$ satisfies $\widetilde{\mathcal H}_zK=\mathcal H_w^\dagger K$ (formal adjoint, no weight), and
+\[
+K\,\mathcal Hy-y\,\mathcal H_w^\dagger K=\partial_w\mathcal B,\qquad
+\mathcal B=P_2\,(Ky'-\partial_wK\,y)+(P_1-P_2')\,Ky .
+\]
+At $w=1$ this gives $\mathcal B(1)=(\delta_H-1)(1-t)\,K(1)\,y(1)$.
+
+\emph{$s=-2$.} Here $\rho_1=2$, so $y=O((w-1)^2)$ and $\mathcal B(1)=0$. Let $\ell_z$ be a loop based at $w=1$ that
+encircles $w=z$ once inside the region where $y$ is analytic, and put $\tilde y(z)=\int_{\ell_z}(z-w)^\nu y(w)\,dw$.
+Along $\ell_z$ the integrand returns multiplied by $e^{2\pi i\nu}$, so
+$\widetilde{\mathcal H}\tilde y=-\int_{\ell_z}\partial_w\mathcal B=-(e^{2\pi i\nu}-1)\mathcal B(1)=0$. On powers,
+$\int_{\ell_z}(z-w)^\nu(w-1)^{\beta}dw$ is a nonzero multiple of
+$(1-e^{2\pi i\nu})\Gamma(\beta+1)\Gamma(\nu+1)\Gamma(\beta+\nu+2)^{-1}(z-1)^{\beta+\nu+1}$. For $\beta=2+k$ this is nonzero, since
+$\nu\notin\Z$ and $\beta+\nu+2=k+1-e_1$ with $e_1=2\kappa_3\in i\R\setminus\{0\}$. Termwise integration on a disc
+about $1$ gives $\tilde y=(z-1)^{-e_1}\sum_kc_ka_k(z-1)^k\ne0$.
+
+\emph{$s=+2$.} Here $\rho_1=-2$. Write $y=(z-1)^{-2}(a_0+a_1(z-1))+y_{\rm an}$. If $(a_0,a_1)\ne0$, the Pochhammer transform
+kills $y_{\rm an}$ and maps $(z-1)^{-2},(z-1)^{-1}$ to nonzero multiples of $(z-1)^{\nu-1}=(z-1)^{-e_1}$ and
+$(z-1)^{\nu}$, since $c(-2),c(-1)\ne0$. If $a_0=a_1=0$, then $y$ is analytic at $1$ and in general $y(1)\ne0$, so $\mathcal B(1)\ne0$ and the
+argument above does not apply. This sub-case is excluded directly by Lemma~\ref{lem:TSthr} below, so it never
+occurs. In all other cases $\tilde y\ne0$ and $\tilde y\in(z-1)^{-e_1}C^\omega$.
 
 \emph{Analyticity at $z=t$ and the equation.} The integrand is analytic on the contour and depends analytically on
 $z$, and the contour can be deformed locally as $z$ moves, so $\tilde y$ is analytic near $z=t$. The Euler
 transform intertwines the two Heun operators up to an exact derivative
 $\partial_w[(\cdots)(z-w)^{\nu}\cdots]$; this integrates to zero over a closed (Pochhammer) contour, and for a loop
-around $w=z$ alone the integrand returns to its starting value. So $\widetilde{\mathcal H}\tilde y=0$.
+around $w=z$ based at $w=1$ the boundary term vanishes as shown above. So $\widetilde{\mathcal H}\tilde y=0$.
 \end{proof}
+
+\begin{lemma}[Threshold modes of spin $+2$]\label{lem:TSthr}
+Let $\sigma\in\R\setminus\{0\}$ with $\sigma=m\Omega_1$ (so $\kappa_1=0$). Every outgoing separated $s=+2$ mode whose
+radial function $R$ is analytic at $r_1$ vanishes, provided outgoing $s=-2$ modes at $(\sigma,m,\lambda)$ vanish.
+\end{lemma}
+\begin{proof}
+Let $D^\dagger=\partial_r+iK/\Delta_r$ and $\psi=\Delta_r^2(D^\dagger)^4(\Delta_r^2R)$. On KdS this operator maps
+solutions of the $s=+2$ radial equation to solutions of the $s=-2$ radial equation with the same $\lambda$ (an exact
+identity; Appendix~\ref{app:cert}, item~C10). The angular eigenvalues of spin $\pm2$ agree, since the angular operator
+is invariant under $(s,\cos\theta)\mapsto(-s,-\cos\theta)$.
+\begin{itemize}
+\item \emph{At $r_1$.} Since $K(r_1)=0$, $K/\Delta_r$ is analytic at $r_1$. So $\psi=\Delta_r^2\cdot(\text{analytic})\in
+(r-r_1)^{2}C^\omega$, which is the outgoing condition of Lemma~\ref{lem:bc} for $s=-2$ and $\kappa_1=0$.
+\item \emph{At $r_2$.} Near $r_2$, $iK/\Delta_r=-\kappa_2/(r_2-r)+(\text{analytic})$. Hence $D^\dagger$ maps
+$(r_2-r)^{\beta}C^\infty$ into $(r_2-r)^{\beta-1}C^\infty$. Starting from $\Delta_r^2R\in(r_2-r)^{\kappa_2+2}C^\infty$, we get
+$\psi\in(r_2-r)^{\kappa_2}C^\infty$, which is outgoing.
+\end{itemize}
+So $\psi$ is an outgoing $s=-2$ mode, hence $\psi=0$. Then $\Delta_r^2R=e^{-i\int K/\Delta_r}p$ with $p$ a cubic
+polynomial, and $e^{-i\int K/\Delta_r}\in(r_2-r)^{-\kappa_2}C^\omega$ with nonvanishing analytic factor near $r_2$. If
+$p\ne0$, then $R$ has a leading term $c(r_2-r)^{-\kappa_2-2+j}$ with $c\ne0$ and $j\ge0$. Lying in $(r_2-r)^{\kappa_2}C^\infty$
+would force $2\kappa_2\in\Z$. But $\kappa_2=iK(r_2)/\Delta_r'(r_2)\in i\R$, and $K(r_2)=\Xi m\rho_2(\Omega_1-\Omega_2)\ne0$.
+So $p=0$ and $R=0$.
+\end{proof}
+
+\noindent The hypothesis on $s=-2$ is supplied by Corollary~\ref{cor:outside} for $s=-2$, whose proof uses
+Proposition~\ref{prop:transform} only in cases already established; at $\sigma=m\Omega_1$ we have $\Omega_1>w_1$, so
+this is outside the window.
 
 \begin{proposition}[The real dual]\label{prop:dual}
 For real $\sigma\ne0$, after multiplication by an explicit nonvanishing gauge factor, the equation
@@ -1319,6 +1362,10 @@ every per-axis degree is at most $122$, $c$ exceeds $u(1+\Sigma)$ by a factor of
 enclosed with interval arithmetic (\texttt{mpmath.iv}) evaluated directly in chart coordinates.
 Scripts: \texttt{kds/cert3/\{smu,sca,scg,za,zp,aux\}\_build.py}, \texttt{cover3d\_h.py}, \texttt{cover3d\_f.py},
 \texttt{cover3d\_g.py}, \texttt{cover2d\_f.py}, \texttt{atlas.sh}.
+\item \emph{Threshold Teukolsky--Starobinsky map} [\texttt{step180\_ts\_kds.py}]. With
+$\Delta_rR''+(s+1)\Delta_r'R'+Q_sR=0$ and $Q_s$ as in \cite{STU98} (normalization of \texttt{step1\_radial.py}), the
+function $\Delta_r^2(D^\dagger)^4(\Delta_r^2R)$ satisfies the $s=-2$ equation, for symbolic $(\Lambda,M,a,\sigma,m,\lambda)$,
+after reduction modulo the $s=+2$ equation.
 \end{enumerate}
 The Bernstein enclosure routine was tested against random polynomials and random subdivisions
 [\texttt{cert2/test\_bern.py}].
