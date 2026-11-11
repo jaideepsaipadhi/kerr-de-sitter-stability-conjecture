@@ -2584,3 +2584,11 @@ STATUS hyp:cos: S_μ ✔, S_C ✔, S_α ✔ except this pocket (float engine), S
   r0 = r1) vanishes along a curve in (σ, τ) near τ ≈ 0.68–1. Next: compute that face curve explicitly (the restriction
   of the H2/H1 cores to β = 0) and blow up along it, or prove the pocket by hand via G_α (ratio ≥ 7.2) with the
   extremal-limit expansion.
+
+## 202. The S_α pocket face curve located
+On the EB-chart face β = 0 (extremal r0 = r1), the H2 main core's F1, Y, P all vanish TOGETHER along a curve
+τ*(σ): none for τ ≥ 0.6 at σ = 0.05; τ* ≈ 0.83 at σ = 0.15; τ* ≈ 0.99 at σ = 0.3 (face11.py).
+Interpretation: as r0 → r1, D'(r1) → 0, so Im e1 ~ (w − Ω1)/D'(r1) dominates unless w ≈ Ω1, and the curve is the
+locus where the leading (w − Ω1)/β term cancels. So S_α at the pocket is a two-scale problem
+(β → 0 with w − Ω1 = O(β)). Plan: blow up along w = Ω1 (i.e. τ = τ*(σ) + β·s) in the EB chart, or do the hand
+expansion of G_α with the scaling w − Ω1 = β·s.
