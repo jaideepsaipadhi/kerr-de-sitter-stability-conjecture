@@ -5,17 +5,22 @@ RES,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2],float(sys.argv[3]),int(sys.argv[4])
 CH=sys.argv[5] if len(sys.argv)>5 else ''
 ctx5=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau','sg'),'lex'); c4=flint.fmpz_mpoly_ctx.get(('x','v','t','s'),'lex')
 RES2=pickle.load(open(RES,'rb')); T00=time.time()
+if os.environ.get('ONLY'): RES2={k:v for k,v in RES2.items() if k[0] in os.environ['ONLY'].split(',')}
 X4,V4,T4,S4=c4.gens(); one4=c4.from_dict({(0,0,0,0):1}); NN=8
 def chart4(q,strip=True):
     if not CH: return q
     D=sum(int(z) for z in q.degrees()); out=0*one4
     for e,cc in q.to_dict().items():
         a0,a1,a2,a3=[int(z) for z in e]
-        if CH=='ST1': out+=int(cc)*X4**a0*V4**a1*(NN-T4)**a2*(T4*S4)**a3*NN**(D-a2-a3)
+        if CH=='KA': out+=int(cc)*(NN-X4)**a0*(X4*V4)**a1*T4**a2*S4**a3*NN**(D-a0-a1)
+        elif CH=='KB': out+=int(cc)*(NN-X4*V4)**a0*(X4)**a1*T4**a2*S4**a3*NN**(D-a0-a1)
+        elif CH=='EA': out+=int(cc)*(4-X4)**a0*(4-X4*V4)**a1*T4**a2*S4**a3*4**(D-a0-a1)
+        elif CH=='EB': out+=int(cc)*(4-X4*V4)**a0*(4-X4)**a1*T4**a2*S4**a3*4**(D-a0-a1)
+        elif CH=='ST1': out+=int(cc)*X4**a0*V4**a1*(NN-T4)**a2*(T4*S4)**a3*NN**(D-a2-a3)
         else: out+=int(cc)*X4**a0*V4**a1*(NN-T4*S4)**a2*(T4)**a3*NN**(D-a2-a3)
     if not strip: return out
-    dd=out.to_dict(); k=min(int(e[2]) for e in dd)
-    return c4.from_dict({(int(e[0]),int(e[1]),int(e[2])-k,int(e[3])):v for e,v in dd.items()})
+    dd=out.to_dict(); sl=0 if CH in ('KA','KB','EA','EB') else 2; k=min(int(e[sl]) for e in dd)
+    return c4.from_dict({tuple(int(e[q])-(k if q==sl else 0) for q in range(4)):v for e,v in dd.items()})
 def tocube(f):
     d=f.to_dict(); n2=max(int(e[1]) for e in d)
     return chart4(c4.from_dict({(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(c) for e,c in d.items()}))
@@ -58,7 +63,11 @@ for k,(s0,facs) in RES2.items():
             CK={}
             for kk in range(kmax+1):
                 dk={(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(cc) for e,cc in raw.items() if int(e[2])==kk}
-                if dk: CK[kk]=c4.from_dict(dk)
+                if dk: CK[kk]=chart4(c4.from_dict(dk),False)
+            if CH:
+                sl=0 if CH in ('KA','KB','EA','EB') else 2
+                kmin=min(min(int(e[sl]) for e in q.to_dict()) for q in CK.values())
+                CK={kk:c4.from_dict({tuple(int(e[w])-(kmin if w==sl else 0) for w in range(4)):v for e,v in q.to_dict().items()}) for kk,q in CK.items()}
             for kk,q in CK.items(): Sk[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
             its.append(('b',j))
     It=(s0,its); pickle.dump((Sk,It),open(CF,'wb')); S.update(Sk); ITEMS[k]=It
@@ -118,7 +127,7 @@ def closed(ps,dep):
     for m in (1,2):
         if val(ps,f'R{m}',dep)<0: continue
         if f'Z_{m}' in ITEMS and val(ps,f'Z_{m}',dep)>0: continue
-        if val(ps,f'W1_{m}',dep)>0 and val(ps,f'W2_{m}',dep)>0: continue
+        if f'W1_{m}' in ITEMS and val(ps,f'W1_{m}',dep)>0 and val(ps,f'W2_{m}',dep)>0: continue
         return False
     return True
 root={k:v[1] for k,v in S.items()}
@@ -140,7 +149,7 @@ while (todo or rest) and time.time()-t0<TMAX:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
         BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in (0,1)]
-        if closed(ps,sum(lev)): nc+=1; continue
+        if (not CH and ((idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]) or (idx[0]*4>=3*2**lev[0] and idx[1]*4>=3*2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=10: rest.append((lev,idx)); continue
         kk=min(range(4),key=lambda i:lev[i])
         ch=[{},{}]

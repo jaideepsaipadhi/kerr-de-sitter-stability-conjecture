@@ -2764,3 +2764,14 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
 * sbe5_build.py builds this (the cores are the same size as before: 255k terms for W2); per-target cache.
   cover4d: open vol 1 → 0.031 in 3 runs, but only ~270 boxes per run (big cores). It is still stuck at the x = 1
   corners with v → 0 (Kerr) and v → 1 (ultracold).
+
+## 215. S_β 4D covering: chart status
+* Z/R-only charts (ONLY=R,Z; the 3D closure suffices there): KA, KB (extremal-Kerr strip x ≥ 7/8, v ≤ 1/8) and
+  EA (ultracold, x−1 dominant): CLOSED in 1 box each. EB: stalls at β = 0 (x = 1 inside the ultracold square),
+  τ ≈ 0.95, where Z fails in the extremal limit; it needs W there.
+* Main cube (exact W, smooth-ratio form) with those regions excluded: open vol 0.0085, all at the corner
+  (x, τ) → (1, 1) with v ∈ [0.1, 0.4], i.e. extremal × window top, again a place where only W works.
+* BLOCKER: the W cores (60k–255k terms) must be EXACTLY expanded in the chart substitutions (EB, and an XT-type
+  chart in 4D). A single core did not finish in ~2 min (background run killed). Next options: (a) float/interval
+  chart substitution (evaluate Bernstein coefficients of the substituted polynomial numerically with error bounds);
+  (b) a hand argument at the extremal face using ι = 1/T → 0, where W reduces to the explicit limit with margin 1.11.
