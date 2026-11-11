@@ -124,6 +124,7 @@ def val(ps,k,dep):
 def closed(ps,dep):
     for m in (1,2):
         if val(ps,f'R{m}',dep)<0: continue
+        if f'Z_{m}' in ITEMS and val(ps,f'Z_{m}',dep)>0: continue
         if val(ps,f'W1_{m}',dep)>0 and val(ps,f'W2_{m}',dep)>0: continue
         return False
     return True
@@ -146,7 +147,7 @@ while (todo or rest) and time.time()-t0<TMAX:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
         BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in (0,1)]
-        if (not CH and idx[2]*8>=7*2**lev[2] and (idx[3]+1)*8<=2**lev[3]) or closed(ps,sum(lev)): nc+=1; continue
+        if closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=10: rest.append((lev,idx)); continue
         kk=min(range(4),key=lambda i:lev[i])
         ch=[{},{}]

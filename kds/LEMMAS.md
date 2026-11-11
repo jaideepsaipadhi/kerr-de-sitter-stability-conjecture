@@ -2718,3 +2718,14 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   The factor t is too lossy.
 NEXT: a sharper s-free bound valid for small a (e.g. sup_s φ0 ≤ 2 + O(a/s) when a ≪ T), giving a 3D
 "Γ ≥ ρ̄(2 + C a + …)" closure near τ = 1. Or a cheaper chart via a floating expansion of the cores.
+
+## 211. S_β: an s-free 3D closure (proved inequality) handles the window top; 4D covering down to the x = 1 corners
+* [P] φ0 = 2s(2az+s)/c² ≤ 2 + 4a, because 2s(2az+s) − 2c² = 4as(z−1) − 2a² ≤ 4as·c and s ≤ c.
+  φ1 ≤ (φ0/2)(1−σ) ≤ 1 + 2a (drop −σzc ≤ 0). With ρ² ≤ 0.7ρ (item 207):
+     S_β ⇐ for m = 1, 2:  ρ_m ≤ 0  OR  Z_m := Γ − ρ_m(2.7 + 5.4a) > 0  OR  [W1_m > 0 ∧ W2_m > 0 ∀σ].
+  [N] Z alone holds at 97% of gate points (min 0.89), and for a < 0.05 its min is 2.06, so it covers the (s, a) → (0, 0)
+  degeneracy of item 210 without any chart.
+* sbe4_build.py; cover4d.py with the Z closure; main exclusion removed. Open vol 0.044 → 0.0066 in 3 runs.
+  The remaining boxes sit on x → 1 (extremal) at v → 0 (Kerr) and v → 1 (ultracold), plus the
+  (x, τ) → (1, 1) edge: the same degenerate corners as for S_α/S_C. These need the KA/KB/EA/EB/XT-type charts in 4D.
+  Exact 4D chart expansion of the 100k-term W cores is too slow, but Z (3D) may suffice there. To test next.
