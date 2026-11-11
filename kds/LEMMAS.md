@@ -2519,3 +2519,18 @@ Remaining for hyp:cos: S_α and S_β.
   (0:1:0) and (1:0:0) are nonzero). So it is a smooth plane cubic, of genus 1: no rational parametrisation exists.
   The b₊ square root cannot be removed by a change of coordinates; the cancellation must be handled with a √D
   enclosure.
+
+## 197. S_α covering: per-factor b₊ signs remove the cancellation; edge charts; one degenerate point left
+* FIX for item 195: instead of b-reducing the PRODUCT n·d (which creates the 1e-5 cancellation), factor n and d,
+  keep the odd-multiplicity factors, and decide the sign of EACH b-dependent factor at b₊ separately with the
+  (F1, Y, P) rule; b-free factors are signed directly. cert3/sal_build2.py, cover3d_g.py.
+* Main cube: CLOSED (float engine). Excluded regions are each handled by blow-up charts:
+  VT (v → 0, τ → 1; Kerr limit at the top of the window): both charts closed in 1 box.
+  XT (x → 1, τ → 1; extremal at the top of the window): closes except near the edge point
+     (x, τ) = (1, 1), v ≈ 0.86, where on the chart face σ = 0 the main numerator core (14, 16, 9, 3) has F1, Y, P all
+     changing sign in v. This suggests the value of the Q2 (m²) coefficient of W_α vanishes in the limit at an isolated
+     edge point v = v*.
+  EA/EB (ultracold) and KA/KB (extremal-Kerr strip): not yet run for S_α.
+* OPEN QUESTION before more covering: is the Q2 coefficient of W_α genuinely → 0 at (x, v, τ) → (1, v*, 1)? It is
+  3t(t−1)b·ê²F̂λ̃ + 2.1·LQ2'·G', with both terms ≥ 0, so this requires ê → 0 AND LQ2' → 0 there. If genuine, near
+  that point S_α relies on the lower-order m-terms, and a point blow-up (with algebraic v*) is needed.
