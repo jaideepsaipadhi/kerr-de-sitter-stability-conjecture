@@ -32,17 +32,22 @@ def prep(d):
         if w!=0: sg*=w; continue
         cores.append(q)
     return sg,cores
-S={}; ITEMS={}
-for k in TG:
-    s0,facs=RES2[k]; its=[]
-    for j,(kind,dat) in enumerate(facs):
-        if kind=='plain':
-            sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
-        else:
-            for nm,i in (('F1',0),('Y',1),('P',2)):
-                sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
-            its.append(('b',j))
-    ITEMS[k]=(s0,its)
+CACHE=f'margin/cache_{NAME}{CH}_'+'-'.join(TG)+'.pkl'
+if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
+else:
+    S={}; ITEMS={}
+    for k in TG:
+        s0,facs=RES2[k]; its=[]
+        for j,(kind,dat) in enumerate(facs):
+            if kind=='plain':
+                sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
+            else:
+                for nm,i in (('F1',0),('Y',1),('P',2)):
+                    sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
+                its.append(('b',j))
+        ITEMS[k]=(s0,its)
+    
+    pickle.dump((S,ITEMS),open(CACHE,'wb'))
 t0=time.time()
 def bsg(ps,k,dep):
     s=S[k][0]
@@ -77,8 +82,8 @@ def descend(lev,idx):
     return cur
 PK=f'margin/c3f_{NAME}{CH}.json'
 todo=[tuple(map(tuple,z)) for z in json.load(open(PK))] if os.path.exists(PK) else [((0,0,0),(0,0,0))]
-todo=[z for z in todo if not (CH in ('XT1','XT2') and (z[1][1]*4>=3*2**z[0][1] or (z[1][1]+1)*8<=2**z[0][1]))]
-todo=[z for z in todo if CH or not ((z[1][0]*8>=7*2**z[0][0] and z[1][2]*8>=7*2**z[0][2]) or ((z[1][1]+1)*8<=2**z[0][1] and z[1][2]*8>=7*2**z[0][2]) or all(z[1][k]*8>=7*2**z[0][k] for k in (0,1)) or (z[1][0]*8>=7*2**z[0][0] and (z[1][1]+1)*8<=2**z[0][1]))]
+todo=todo if os.environ.get('NOEX') else [z for z in todo if not (CH in ('XT1','XT2') and (z[1][1]*4>=3*2**z[0][1] or (z[1][1]+1)*8<=2**z[0][1]))]
+todo=todo if os.environ.get('NOEX') else [z for z in todo if CH or not ((z[1][0]*8>=7*2**z[0][0] and z[1][2]*8>=7*2**z[0][2]) or ((z[1][1]+1)*8<=2**z[0][1] and z[1][2]*8>=7*2**z[0][2]) or all(z[1][k]*8>=7*2**z[0][k] for k in (0,1)) or (z[1][0]*8>=7*2**z[0][0] and (z[1][1]+1)*8<=2**z[0][1]))]
 todo.sort(key=lambda z:-sum(z[0])); nc=0; rest=[]
 while (todo or rest) and time.time()-t0<TMAX:
     if not todo:
@@ -89,7 +94,9 @@ while (todo or rest) and time.time()-t0<TMAX:
     while st:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
-        if (CH in ('XT1','XT2') and (idx[1]*4>=3*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
+        if os.environ.get('NOEX') and closed(ps,sum(lev)): nc+=1; continue
+        if os.environ.get('NOEX'): pass
+        elif (CH in ('XT1','XT2') and (idx[1]*4>=3*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=9: rest.append((lev,idx)); continue
         kk=min(range(3),key=lambda i:lev[i])
         ch=[{},{}]

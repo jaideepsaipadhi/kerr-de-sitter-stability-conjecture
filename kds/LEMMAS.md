@@ -2556,3 +2556,15 @@ STATUS of hyp:cos: S_μ ✔, S_C ✔ (float caveat), S_α: main cube ✔, VT ✔
    - A-free W_α has min ~1e-10 (τ → 0).
   So the corner needs the exact W_α plus sub-blow-ups of the ultracold face, as for S_C (items 183–194).
 STATUS hyp:cos: S_μ ✔; S_C ✔; S_α ✔ outside the ultracold square [3/4, 1]² (all float-engine); S_β not started.
+
+## 200. S_α ultracold square: progress and the last stuck pocket
+* [P, cert] The m² coefficient of W_α is positive on the WHOLE window, for free: f1 < 0, f2 < 0 and LQ2' > 0 are each
+  certified on the full cube in ONE box (cert3/aux_build.py, cover3d_g NOEX). Then Q2 = 3t(t−1)b·ê²F̂λ̃ +
+  2.1·LQ2'·G' > 0 (F̂ > 0, G' > 0 follow from f1, f2 < 0 and t > 1). So only H2 (m = 2) and H1 (m = 1) remain.
+* OR-closure (cover3d_h.py, env ALT): a box closes if W_α's H2, H1 > 0 OR an alternative sufficient set holds:
+  (a) L(t) > 0 at m = 1, 2 (smu2_res; then W_α ≥ 0 trivially), or (b) the A-free form (salB2_res).
+  Chart EA (x − 1 dominant, scale 1/4): CLOSED in 1 box via (a).
+  Chart EB: open vol 0.026 → 4.7e-4. The remaining pocket is EB σ ∈ [0.047, 0.30], β ∈ [0, 0.46], τ ≥ 0.68, i.e. r2 ≈
+  r1 + (1–8)%, r0 much closer to 1 than r2, upper window. There the main numerator core of H1/H2 is ill-conditioned
+  at b₊ (F1, Y, P all undetermined at level 27) and neither (a) nor (b) closes.
+STATUS hyp:cos: S_μ ✔, S_C ✔, S_α ✔ except this pocket (float engine), S_β not started.
