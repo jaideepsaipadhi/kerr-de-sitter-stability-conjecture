@@ -8,6 +8,8 @@ This repository contains the manuscript
 
 and the code for its computer-assisted steps.
 
+Preprint (v1): Zenodo, [doi:10.5281/zenodo.24146364](https://doi.org/10.5281/zenodo.24146364).
+
 ## Results
 
 - **Theorem A.** The Teukolsky equations of spin ±2 on every subextremal Kerr–de Sitter spacetime have no nontrivial
