@@ -2740,3 +2740,15 @@ NEXT: a sharper s-free bound valid for small a (e.g. sup_s φ0 ≤ 2 + O(a/s) wh
 * So near the extremal face, S_β needs the 4D W-covering with an extremal chart. Exact 4D chart expansion of the
   W cores (≈1e5 terms) exceeds the time budget. Options: (i) rescaled variables a/T, s/T in the extremal limit
   (scale-invariant reformulation of W), or (ii) a float/interval chart substitution instead of exact expansion.
+
+## 213. IMPORTANT: the ρ²≤0.7ρ (cap) form of S_β is FALSE at the extremal corner; exact S_β has thin margin there
+[N] r0 = 1−ε, v ∈ [0.5, 0.65], τ → 1, m = 2:
+  ε = 1e-3: exact 1.95–2.68, cap 1.59–2.20.
+  ε = 1e-6: exact 1.12–1.32, cap 0.92–1.04 (FAILS).
+  Exact min margin over the grid: 1.252 / 1.163 / 1.128 / 1.112 / 1.111 at ε = 1e-4 … 1e-8, converging to ≈ 1.11.
+So S_β itself holds in the extremal limit with only ~11% room, and the cap shortcut of items 206–207 fails there.
+The item-205 global min (1.29) missed this corner. CONSEQUENCES:
+  * near (r0 → r1, τ → 1) the certificate must use the exact ρ² (W2 with ρ², 255k-term cores);
+  * better: derive the ε → 0 limit problem analytically (a, T, t ~ 1/ε; scaled variables), certify the limit with
+    margin 1.11, and bound the O(ε) remainder;
+  * also re-check S_α and S_C margins in this same corner (ε → 0, τ → 1) at the same resolution.
