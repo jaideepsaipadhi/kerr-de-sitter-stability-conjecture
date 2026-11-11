@@ -2814,3 +2814,9 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   T3: open vol 8e-4, slowly closing.
   NEXT: write Z' with T cleared EXPLICITLY (multiply through by T²: γT²(T+a) − (4ρ+2ρ²)(a+1)T ≥ 0, using that
   Γ = γT is the natural window quantity), or pick a chart variable equal to α itself.
+* T1a stuck point, diagnosed exactly (mpmath, 100 dps): for Z'_2's main b-factor at (1−x, v/(1−x), (1−τ)/(1−x)) =
+  (1e-3, 0.486, 1e-2): F1 = −1.4e131, Y = −5.8e137, value at b₊ = +2.2e86, so rel P ≈ 1e-51. This is the large-r2
+  scale separation of item 208 (b₋ ~ −r2² with r2 = 1/v ~ 1e3–1e6), now in the triple corner; at ε = 1e-6 even
+  100 digits are not enough. FIX (as in cover4d for S_β-4D): evaluate the UNREDUCED b-factor at a b₊ enclosure,
+  i.e. port cover4d's unred() to cover3d_h, with chart-aware (x, v) box mapping and a common stripping of the
+  c_k. Not done yet.
