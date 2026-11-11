@@ -2568,3 +2568,14 @@ STATUS hyp:cos: S_μ ✔; S_C ✔; S_α ✔ outside the ultracold square [3/4, 1
   r1 + (1–8)%, r0 much closer to 1 than r2, upper window. There the main numerator core of H1/H2 is ill-conditioned
   at b₊ (F1, Y, P all undetermined at level 27) and neither (a) nor (b) closes.
 STATUS hyp:cos: S_μ ✔, S_C ✔, S_α ✔ except this pocket (float engine), S_β not started.
+
+## 201. S_α pocket: a well-margined sufficient form exists, but certificates stay ill-conditioned there
+* [N] In the pocket (r2 = 1/(1−σ/4), r0 = 1−σβ/4, σ ∈ [0.04, 0.31], β ∈ [0, 0.47], τ ≥ 0.67, m = 1, 2):
+  G_α: 3(t−1)F² ≥ 8.4·t(3t−B)(4t−2) holds with min ratio 7.2 (125k points; 25% of them on the gate).
+  G_α ⇒ S_α on the gate, using S_μ (t|Im et| ≥ F/2), |Im e1| ≤ F and A ≥ 0. Polys: gal_build.py, validated (gal_chk) to 1e-13.
+* As an OR-alternative in chart EB it closes almost nothing (open vol 4.63e-4 → 4.58e-4).
+* Diagnosis: at a pocket point the H2 main numerator core is small at b₊ (rel 5e-3), while the factors (r0 − 1) and
+  (r0 − r2)-type are small (rel 4e-3, 2e-2). The core carries a HIDDEN power of the distance to r0 = 1 (the β = 0 face
+  of chart EB, i.e. extremal r0 → r1) that is not stripped by the σ-blow-up. So the β = 0 face of EB is degenerate
+  for τ ≳ 0.68. That needs a second blow-up (β, 1−τ) → 0 inside EB, or stripping the β-power by a weighted chart
+  (x = 1 − σβ/4 with β = ρ^k).

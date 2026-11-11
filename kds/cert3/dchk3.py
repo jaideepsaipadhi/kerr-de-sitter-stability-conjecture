@@ -1,7 +1,7 @@
 exec(open("sal_build.py").read().split("\nres={}")[0])
 import mpmath as mp
-e=ex['Q2']
-pts=[(mp.mpf('0.9858'),1/mp.mpf('0.8643'),mp.mpf('0.9763'))]
+e=ex['H2']
+pts=[(1-mp.mpf('0.15')*mp.mpf('0.2')/4, 1/(1-mp.mpf('0.15')/4), mp.mpf('0.9'))]
 for r0v,r2v,tv in pts:
     r3v=-(r0v+1+r2v); rs=[r0v,1,r2v,r3v]
     E2=mp.fsum(rs[i]*rs[j] for i in range(4) for j in range(i+1,4)); E4=r0v*r2v*r3v
