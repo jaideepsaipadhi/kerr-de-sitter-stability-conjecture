@@ -2620,3 +2620,17 @@ hand argument (t → ∞ as r0 → r1, so (t−1)(1 − 3zf) → ∞ unless zf �
   max zf = 0.319 / 0.339 / 0.346 for ε ∈ [1e-2, 1e-1] / [1e-3, 1e-2] / [1e-5, 1e-3], and (t−1)(1−3zf) reaches −925.
   So the gate does NOT keep zf below 1/3 near r0 = r1; K is useless there. The pocket genuinely needs W_α (or G_α) at
   the two-scale limit (w − Ω1 = O(β)), i.e. the curve blow-up.
+
+## 204. S_β: first look
+S_β (item 175): A ≥ Q2·sup_{0<s<T} s·r[(2az+s)(2+r(T−s)) − r s z(z−1)]/(z−1)², with z = z0+s, a = z0−1, T = t−z0,
+r = κ/q1. Since Q2·r = K := 1.05(−L(t))t(t−1)/(2T²): S_β ⇔ A ≥ K·Φ, Φ := sup_s φ(s),
+φ(s) = s[(2az+s)(2+r(T−s)) − r s z c]/c², c = z−1 = a+s.
+[N] 1398 gate points: min A/(KΦ) = 1.338. The argmax over s is interior and widely spread (median s/T ≈ 0.19,
+10% at 0.018, 10% at s = T).
+[N, NEGATIVE] Closed-form bounds of Φ all fail badly: using 2az + s ≤ 2zc gives min ratio 5.8e-4; t(4+2rT) gives
+4.3e-4; 6t gives 3.5e-4. The cancellation between (2az+s)(2+r(T−s)) and r s z c is essential (the loss is ~t when
+a ≪ s).
+PLAN: S_β ⇔ the QUARTIC in s, Ψ(s) := A·c² − K·s[(2az+s)(2+r(T−s)) − r s z c] ≥ 0 on [0, T] (on the gate). Certify
+it in 4D (x, v, τ, s/T) with OR-closure "L(t) > 0" for off-gate boxes. This needs a 5th variable in the F-class /
+b-reduction pipeline (currently fixed at (r0, r2, b, τ)). Alternatively, eliminate s through quartic-nonnegativity
+conditions on an interval (Sturm/discriminant), which is heavy.
