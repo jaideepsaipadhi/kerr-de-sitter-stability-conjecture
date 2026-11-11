@@ -2775,3 +2775,20 @@ The item-205 global min (1.29) missed this corner. CONSEQUENCES:
   chart in 4D). A single core did not finish in ~2 min (background run killed). Next options: (a) float/interval
   chart substitution (evaluate Bernstein coefficients of the substituted polynomial numerically with error bounds);
   (b) a hand argument at the extremal face using ι = 1/T → 0, where W reduces to the explicit limit with margin 1.11.
+
+## 216. S_β REDUCED TO A 3D s-FREE INEQUALITY (proved reduction), margin ≥ 1.077
+[P] In the smooth variables (γ = Γ/T, α = a/T, ι = 1/T; item 214), for ρ = ρ_m > 0:
+  W1 = (α+σ)[γ(α+σ) − 4ρασ] − 2ρσ(2α+σ)ι ≥ (α+σ)[γ(α+σ) − 4ρσ(α+ι)]   (since 2α+σ ≤ 2(α+σ));
+  E ≤ P(1−σ) and P ≤ 2(α+σ)(α+ι), so W2 ≥ (α+σ)·g(σ) with
+  g(σ) = γ(α+σ) − 4ρσ(α+ι) − 2ρ²σ(1−σ)(α+ι) ≥ γα + σ[γ − (4ρ+2ρ²)(α+ι)].
+  Over σ ∈ [0, 1] the linear lower bound is ≥ min(γα, Z'), where
+      Z'_m := γ(1+α) − (4ρ_m + 2ρ_m²)(α + ι).
+  The same bound covers W1, since 4ρ ≤ 4ρ + 2ρ². HENCE
+      S_β ⇐ for m = 1, 2:  ρ_m ≤ 0  ∨  Z'_m > 0.     (no σ, no cap, exact ρ²)
+[N] 33864 gate samples with r0 = 1−ε, ε ∈ [1e-7, 1]: min Z'-ratio 1.077 (at ε ≈ 1e-7, τ ≈ 0.999), never < 1.
+  Near the Kerr-extremal corner: ratio ≈ 2.9 at r2 = 10, and no gate at all for r2 ≥ 100 (ε down to 1e-7).
+[cert, float] zp_build.py + cover3d_h (PERM2, OR with ρ_m ≤ 0): the main cube closes everywhere except the strip
+  {x ≥ 7/8, v ≤ 1/8} (Kerr-extremal) plus ~1e-6 vol of pending boxes at (x, τ) → 1 inside the ultracold square.
+  KA/KB charts: open vol 9e-7 / 7e-6, stuck at max depth on the chart's extremal Kerr corner, where physically there
+  is no gate (r2 ≥ 100). So this is a representation degeneracy; still to fix (e.g. close by "L(t) > 0 for m = 1, 2"
+  there, which is the S_μ machinery).

@@ -13,7 +13,7 @@ for m,H in Hm.items():
     rho=F(21,10*one)*(-H)*lamv/den
     W1=gam*(alp+Sg)*(alp+Sg)-two*rho*Sg*P
     ex[f'R{m}']=-H; ex[f'W1_{m}']=W1; ex[f'W2_{m}']=W1-rho*rho*Sg*E
-    ex[f'Z_{m}']=gam*T-rho*(F(27,10*one)+F(54,10*one)*aa)
+    ex[f'Z_{m}']=gam-rho*(F(27,10*one)*io+F(54,10*one)*alp)
 res={}
 for k,e in ex.items():
     cd,fld=e.d.factor(); cn,fln=e.n.factor(); sgn0=(1 if cn>0 else -1)*(1 if cd>0 else -1)
