@@ -132,6 +132,19 @@ perturbation is algebraically special to first order, and the Killing spinor fie
 stay Killing. This makes $h$ pure gauge with an explicit gauge vector, except in the stationary axisymmetric sector,
 where Carter's separable ansatz linearizes the field equations.
 
+\subsection{How the pieces fit}
+The argument runs as follows.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+\item Real $\sigma\ne0$: the event lemma (Theorem~\ref{thm:event}) and the cosmological condition
+(Proposition~\ref{hyp:cos}) give Theorem~\ref{thm:A} on the real axis (\S\S\ref{sec:radial}--\ref{sec:event}).
+\item $\sigma=0$: Proposition~\ref{prop:zero}.
+\item $\Im\sigma>0$: (1), (2) and a continuity argument from Schwarzschild--de Sitter (\S\ref{sec:uhp}).
+\item Theorem~\ref{thm:A} implies Theorem~\ref{thm:B} (\S\ref{sec:B}).
+\item Theorem~\ref{thm:B} and \cite[Theorem~1.4]{HPV25} give Theorem~\ref{thm:C}.
+\end{enumerate}
+A reader interested only in the passage from Teukolsky to Einstein can read \S\ref{sec:B} directly after the statement of Theorem~\ref{thm:A}; a reader interested only in the radial analysis
+can stop after \S\ref{sec:event}.
+
 \subsection*{Computer assistance}
 The computer-assisted steps are listed in Appendix~\ref{app:cert}. All are exact except C9, which uses floating-point
 arithmetic with rigorous error bounds. The code is available on request.
@@ -140,6 +153,20 @@ arithmetic with rigorous error bounds. The code is available on request.
 I thank the authors of \cite{Hin26,HPV25} for making their work publicly available.
 
 \section{Preliminaries}\label{sec:prelim}
+For quick reference, the main notation is collected here; each item is defined again where it first appears.
+\begin{center}\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.36\textwidth}p{0.58\textwidth}}
+$r_3<0\le r_0<r_1<r_2$ & roots of $\Delta_r$: inner, Cauchy, event, cosmological horizons\\
+$\kappa_j=iK(r_j)/\Delta_r'(r_j)$ & exponent at the horizon $r_j$ (purely imaginary for real $\sigma$)\\
+$\Omega_j=a/(r_j^2+a^2)$, $w=\sigma/m$ & horizon angular velocities; frequency per unit azimuthal number\\
+$(w_2,w_1)$ & the superradiant window (Proposition~\ref{prop:window})\\
+$z$, $t$ & Heun variable with horizons at $z=0,1,t$; $\mu(z)=z(z-1)(t-z)$\\
+$q=q_1(z-z_0)$, $L=A/z+B-3z$ & phase and potential of the real dual equation \eqref{eq:dual}\\
+$s$ & spin $\pm2$ (in \S\ref{sec:event}: the distance $z_0-z$)
+\end{tabular}
+\end{center}
+
 
 \subsection{Parameters}
 By Vieta's formulas,
@@ -210,11 +237,17 @@ C_0=\frac{3}{\Lambda(r_1-r_0)(r_2-r_3)},\qquad c_1=1+t+3(1-\alpha)C_0.
 \end{equation}
 
 \section{Real frequencies: the radial problem}\label{sec:radial}
+For real $\sigma$ the problem separates into ODEs. The difficulty is superradiance: in a window of frequencies the
+energy flux through the two horizons has no sign, so the usual Wronskian argument fails. We first locate this
+window (\S\ref{subsec:window}), then trade the complex radial equation for a real one by an integral transform
+(\S\ref{subsec:dual}), and finally reduce mode stability to two one-dimensional inequalities using two currents,
+one near each horizon (\S\ref{subsec:currents}).
+
 
 Throughout this section $\sigma\in\R\setminus\{0\}$. We fix a separated outgoing mode with eigenvalue $\lambda$. By
 the symmetries $(\sigma,m,a)\mapsto(-\sigma,-m,a)$ and $(m,a)\mapsto(-m,-a)$ (reflection $\varphi\mapsto-\varphi$) we may assume $m\ge0$ and $a\ge0$. For $a=0$ the window below is empty ($w_1=w_2=0$), so in the window $a>0$.
 
-\subsection{The superradiant window}
+\subsection{The superradiant window}\label{subsec:window}
 Set $e_1=2(\kappa_1+\kappa_3)$ and $e_t=2(\kappa_2+\kappa_3)$. For real $\sigma$ the $\kappa_j$ are purely imaginary.
 
 \begin{proposition}[The window]\label{prop:window}
@@ -288,6 +321,11 @@ $\gamma$, is a nonzero solution of a Heun equation $\widetilde{\mathcal H}\tilde
 \end{enumerate}
 \end{proposition}
 
+\noindent\emph{Idea.} The radial Teukolsky equation is complex even for real $\sigma$, so it has no conserved energy.
+Integrating against $(z-w)^\nu$ produces a solution of another Heun equation whose exponents at the horizons are
+purely imaginary, and which after a gauge factor is real. The only issue is that the integral might vanish; we show
+it does not by computing it on the power series of $y$ at $z=1$.
+
 \begin{proof}
 Write $\mathcal H=P_2\partial_w^2+P_1\partial_w+P_0$ with $P_2=w(w-1)(w-t)$. Since $\nu+2$ is an exponent at $\infty$, there
 is a Heun operator $\widetilde{\mathcal H}$ with $\widetilde{\mathcal H}_z(z-w)^\nu=\mathcal H_w^\dagger(z-w)^\nu$
@@ -303,7 +341,10 @@ $e_1\in i\R$.
 
 \emph{$\kappa_1\ne0$.} Take the Pochhammer loop $\gamma=[1^+,z^+,1^-,z^-]$; it is closed, so $\mathcal B$ contributes
 nothing. On powers, $\oint_\gamma(z-w)^\nu(w-1)^\beta dw=c(\beta)(z-1)^{\beta+\nu+1}$ with
-$c(\beta)=\pm(2\pi i)^2e^{i\pi(\beta+\nu)}/\big(\Gamma(-\beta)\Gamma(-\nu)\Gamma(\beta+\nu+2)\big)$, which vanishes only if
+\[
+c(\beta)=\pm\frac{(2\pi i)^2e^{i\pi(\beta+\nu)}}{\Gamma(-\beta)\Gamma(-\nu)\Gamma(\beta+\nu+2)},
+\]
+which vanishes only if
 $\beta\in\Z_{\ge0}$, $\nu\in\Z_{\ge0}$ or $\beta+\nu+2\in\Z_{\le0}$. Since $\rho_1\notin\R$, none occurs for
 $\beta=\rho_1+k$, and termwise integration gives $\tilde y=(z-1)^{-e_1}\sum_kc(\rho_1+k)a_k(z-1)^k\ne0$.
 
@@ -383,23 +424,23 @@ and $\lambda$ is the lowest eigenvalue of $H$ in the sector $(m,s)$. On that sec
 $\ell_0=\max(|m|,|s|)$. An exact computation gives
 $V=\frac{\alpha(m+s)^2}{2(1-x)}+\frac{\alpha(m-s)^2}{2(1+x)}+\frac{\mathcal N}{1+\alpha x^2}$, where the first two terms are
 nonnegative and
-\[
-\mathcal N=\alpha^2m^2-2\alpha^2msx+2\alpha^2x^4+\alpha m^2-2\alpha msx+\alpha s^2x^2-\alpha s^2+2\alpha x^2
-+\xi^2(1+\alpha)^2(1-x^2)-2\xi(1+\alpha)^2(m-sx).
-\]
+\begin{align*}
+\mathcal N={}&\alpha^2m^2-2\alpha^2msx+2\alpha^2x^4+\alpha m^2-2\alpha msx+\alpha s^2x^2-\alpha s^2+2\alpha x^2\\
+&+\xi^2(1+\alpha)^2(1-x^2)-2\xi(1+\alpha)^2(m-sx).
+\end{align*}
 Let $T=-4\alpha-4\alpha m(1+\alpha)-2(1+\alpha)^2\xi(m+2)$. With $s^2=4$,
 \begin{align*}
 \mathcal N-T(1+\alpha x^2)={}&(2\alpha^2x^4+4\alpha^2x^2+6\alpha x^2)+(\alpha^2+\alpha)m^2\\
 &+m\big(4\alpha^3x^2+4\alpha^2x^2+4(\alpha^2+\alpha)(1-\tfrac{s}{2}x)\big)+\xi^2(1+\alpha)^2(1-x^2)\\
-&+\xi\big(2\alpha^3mx^2+4\alpha^3x^2+4\alpha^2mx^2+8\alpha^2x^2+2\alpha mx^2+4\alpha x^2
-+2(1+\alpha)^2(2+sx)\big).
+&+\xi\big(2\alpha^3mx^2+4\alpha^3x^2+4\alpha^2mx^2+8\alpha^2x^2+2\alpha mx^2+4\alpha x^2\big)\\
+&+2\xi(1+\alpha)^2(2+sx).
 \end{align*}
 Every term is nonnegative for $|x|\le1$, $|s|=2$, $m,\alpha,\xi\ge0$. Hence $V\ge T$, and
 $\lambda\ge\ell_0(\ell_0+1)-4+T=\lambda_{\rm cr}$.
 \end{proof}
 
 
-\subsection{Currents}
+\subsection{Currents}\label{subsec:currents}
 On the dual equation \eqref{eq:dual} we use the currents of \cite[Lemma~4.1]{Hin26}, in the form with variable
 potential from \cite[\S7]{Hin26}. Let $u_\pm=\exp(\mp i\int_{z_0}^zq/\mu)\,u$; these are smooth down to $z=t$ and
 $z=1$, respectively. For a real function $f$, define
@@ -430,6 +471,11 @@ Suppose there is a function $f\in C^2((1,z_0])\cap C^0([1,z_0])$ with the follow
 \end{enumerate}
 Then every outgoing solution of \eqref{eq:dual} vanishes.
 \end{proposition}
+
+\noindent\emph{Idea.} A current is a quadratic quantity $J^f$ in $u$ whose derivative has a sign. One current, built
+from $f_+$, runs from $z_0$ to the cosmological horizon; the other, built from $f$, runs from the event horizon to
+$z_0$. Each forces a sign on $\Re(u'\bar u)(z_0)$, the two signs are opposite, and so both currents must vanish, which
+kills the boundary data.
 
 \begin{proof}
 \emph{Cosmological side.} If $L(t)>0$, take $f_+=1$ on $[z_0,t]$. Then $C^{f_+}=-q_1H\le0$ by Lemma~\ref{lem:H}, and
@@ -469,33 +515,38 @@ and $\tilde q''=-2\kappa$. Since $\tilde q(t)=q(t)$, the boundary limit at $t$ i
 current equals $-\mu(z_0)\tilde q'(z_0)\Re(u'\bar u)(z_0)$ with $\tilde q'(z_0)=q_1+\kappa(t-z_0)>0$. So
 Proposition~\ref{hyp:cos} gives the cosmological half of Proposition~\ref{prop:reduction} when $L(t)\le0$.
 
+\noindent\emph{Idea.} When $L(t)\le0$ the plain current has the wrong sign at the cosmological horizon. Bending the
+phase $q$ near $t$ adds a positive term to $\tilde L(t)$, at the cost of new terms in $\tilde C$ and $\tilde D$. The proof
+shows that the cost is controlled by a single number $\varpi$ (how far we bend, relative to $q_1$), and reduces
+everything to five polynomial inequalities in the black hole parameters, which are then certified.
+
 \begin{proof}
 Write $\delta=z_0-1>0$ and $\theta=t-z_0>0$. Note $\tilde L(t)=L(t)+2\kappa q_1\theta^2/(t(t-1))$.
 
-\emph{Step 0.} Since $\tilde C,\tilde D$ do not involve $\lambda$ ($L'=-A/z^2-3$) and $L$ increases with $\lambda$, we may
+\smallskip\noindent\textbf{Step 0.} Since $\tilde C,\tilde D$ do not involve $\lambda$ ($L'=-A/z^2-3$) and $L$ increases with $\lambda$, we may
 replace $\lambda$ by $\lambda_{\rm cr}$ (Proposition~\ref{prop:angular}) throughout; $L(t)$ now means this value. If $L(t)<0$ we take $\kappa=1.05\,\kappa_{\min}$ with $\kappa_{\min}=-L(t)t(t-1)/(2q_1\theta^2)$. If
 $L(t)=0$ we take $\kappa>0$ small; every condition below is then satisfied for small $\kappa$ by inspection, given
 (i) of Step~6.
 
-\emph{Step 1 ($\tilde C$).} One computes $\tilde C=-q_1H-\kappa(t-z)F$, with $H$ as in Lemma~\ref{lem:H} and
+\smallskip\noindent\textbf{Step 1 ($\tilde C$).} One computes $\tilde C=-q_1H-\kappa(t-z)F$, with $H$ as in Lemma~\ref{lem:H} and
 $F=z_0(2tz-t-z^2)-tz-z^3+2z^2$. Substituting $z_0=1+\delta$, $z=z_0+y$, $t=z+c$ ($\delta,y,c>0$), the polynomial
 $\theta H+(t-z)F$ has only positive coefficients, so $(t-z)(-F)\le\theta H$. Hence
 $\tilde C\le-H(q_1-\kappa\theta)\le0$ as soon as $k\theta\le1$, where $k:=\kappa/q_1$. Write $\varpi:=k\theta$.
 
-\emph{Step 2 ($\tilde D$).} Multiply $\tilde D$ by $q_1^{-3}z^2(z-1)^2>0$ and expand in $(\delta,y,c)$ (an exact polynomial
+\smallskip\noindent\textbf{Step 2 ($\tilde D$).} Multiply $\tilde D$ by $q_1^{-3}z^2(z-1)^2>0$ and expand in $(\delta,y,c)$ (an exact polynomial
 identity). Apart from $-A\,y(z-1)^2(1+ck)/q_1^2$ and $-3yz^2(z-1)^2$, every term carries the factor $k$. Grouping, $\tilde D\le0$
 on $(z_0,t)$ is equivalent to $A\ge P_1(y)+q_1^2P_2(y)$ for $y\in(0,\theta)$, where, with $c=\theta-y$,
-\[
-P_1=\frac{z^2(g k-3y)}{y(1+ck)},\quad g=y(2+4\delta+y-5c)-M_0,\quad M_0=\theta(1+2\delta)-\delta(1+\delta),\qquad
-P_2=\frac{yk\big[(2\delta z+y)(2+ck)-kyz(z-1)\big]}{(z-1)^2}.
-\]
+\begin{gather*}
+P_1=\frac{z^2(g k-3y)}{y(1+ck)},\qquad P_2=\frac{yk\big[(2\delta z+y)(2+ck)-kyz(z-1)\big]}{(z-1)^2},\\
+g=y(2+4\delta+y-5c)-M_0,\qquad M_0=\theta(1+2\delta)-\delta(1+\delta).
+\end{gather*}
 Note $M_0=\mu'(z_0)$. If $M_0\ge0$ then $g\le y(2+4\delta+\theta)$, so $P_1\le0$ provided
 \[
 (S_\alpha)\quad k(2+4\delta+\theta)\le3 .
 \]
 So $\tilde D\le0$ follows from $(S_\mu)$: $M_0\ge0$, together with $(S_\alpha)$ and $(S_\beta)$: $A\ge q_1^2\sup_{0<y<\theta}P_2(y)$.
 
-\emph{Step 3 ($z_0$-free form of $\varpi$).} By Proposition~\ref{prop:window}, $\Im e_1<0$ and $\Im e_t<0$ in the window.
+\smallskip\noindent\textbf{Step 3 ($z_0$-free form of $\varpi$).} By Proposition~\ref{prop:window}, $\Im e_1<0$ and $\Im e_t<0$ in the window.
 Matching exponents in Proposition~\ref{prop:dual} gives $q_1=(t-1)|\Im e_1|/(2\delta)$ and
 $z_0=1+(t-1)\,|\Im e_1|/(|\Im e_1|+t|\Im e_t|)$. Substituting into $\varpi=1.05\,(-L(t))t(t-1)/(2q_1^2\theta)$ gives the
 exact identity
@@ -509,25 +560,25 @@ $\ell_0=-K(1+7\alpha)+\tilde\lambda(1-2t)<0$ ($K>0$ explicit) and $\ell_2>0$ on 
 So $\varpi_m$ is convex in $u$, and $\varpi_m\le\max(\varpi_2,\varpi_\infty)\le\max(\varpi_2,0)$ for $m\ge2$. For $m=1$ the
 $m$-dependence of $\lambda_{\rm cr}$ differs, and $\varpi_1$ is treated separately. Hence $\varpi\le\bar\varpi:=\max(\varpi_1,\varpi_2,0)$.
 
-\emph{Step 4 (smooth variables).} Put $\gamma=A/q_1^2$, $\eta=\delta/\theta$ and $\iota=1/\theta$. These, and $\varpi_m$, are
+\smallskip\noindent\textbf{Step 4 (smooth variables).} Put $\gamma=A/q_1^2$, $\eta=\delta/\theta$ and $\iota=1/\theta$. These, and $\varpi_m$, are
 rational in the window variables, independent of $m$ (except $\varpi_m$), and extend smoothly to the extremal face
 $r_0=r_1$. Then $(S_\alpha)\iff\varpi(1+4\eta+2\iota)\le3$. With $y=\theta v$, $v\in(0,1)$, and using
 $z-1=\theta(\eta+v)$ and $z=\theta(\iota+\eta+v)$, $(S_\beta)$ becomes: for all $v\in(0,1)$,
-\[
-W(v):=\gamma(\eta+v)^2-2\varpi vP-\varpi^2vE\ \ge0,\qquad P=2\eta(\eta+v)+(2\eta+v)\iota,\quad
-E=P(1-v)-v(\eta+v)(\eta+v+\iota).
-\]
+\begin{gather*}
+W(v):=\gamma(\eta+v)^2-2\varpi vP-\varpi^2vE\ \ge0,\\
+P=2\eta(\eta+v)+(2\eta+v)\iota,\qquad E=P(1-v)-v(\eta+v)(\eta+v+\iota).
+\end{gather*}
 
-\emph{Step 5 (eliminating $v$).} Let $\varpi>0$. Since $E\le P(1-v)$ and $P\le2(\eta+v)(\eta+\iota)$,
-\[
-W(v)\ge(\eta+v)\big[\gamma(\eta+v)-(4\varpi+2\varpi^2)v(\eta+\iota)\big]=(\eta+v)\big[(1-v)\gamma\eta+v\,Z(\varpi)\big],\qquad
-Z(\varpi):=\gamma(1+\eta)-(4\varpi+2\varpi^2)(\eta+\iota).
-\]
+\smallskip\noindent\textbf{Step 5 (eliminating $v$).} Let $\varpi>0$. Since $E\le P(1-v)$ and $P\le2(\eta+v)(\eta+\iota)$,
+\begin{align*}
+W(v)&\ge(\eta+v)\big[\gamma(\eta+v)-(4\varpi+2\varpi^2)v(\eta+\iota)\big]=(\eta+v)\big[(1-v)\gamma\eta+v\,Z(\varpi)\big],\\
+Z(\varpi)&:=\gamma(1+\eta)-(4\varpi+2\varpi^2)(\eta+\iota).
+\end{align*}
 The bracket is affine in $v$, so $W>0$ on $(0,1)$ if $Z(\varpi)>0$ (recall $\gamma\eta>0$). Both $Z$ and
 $\varpi\mapsto3-\varpi(1+4\eta+2\iota)$ are decreasing for $\varpi\ge0$, and $\varpi\le\bar\varpi$. So $(S_\alpha)$ and
 $(S_\beta)$ follow from: for $m=1,2$, either $\varpi_m\le0$, or $Z(\varpi_m)>0$ and $3-\varpi_m(1+4\eta+2\iota)>0$.
 
-\emph{Step 6 (certificates).} The following are proved on the whole window by Bernstein subdivision in the variables
+\smallskip\noindent\textbf{Step 6 (certificates).} The following are proved on the whole window by Bernstein subdivision in the variables
 $(r_0,1/r_2,\tau)$, with blow-up charts at the extremal, Kerr, Nariai and ultracold faces (Appendix~\ref{app:cert},
 item~C9):
 (i) $L(t)\le0\Rightarrow z_f:=\delta/(t-1)<\frac12$;
@@ -545,6 +596,12 @@ Proposition~\ref{prop:reduction}.
 \end{theorem}
 
 \section{Proof of the event lemma}\label{sec:event}
+The event lemma asks for a single positive function $f$ on $[1,z_0]$ satisfying two differential inequalities.
+When the potential is mild (regimes R1, R2) an explicit solution works. In the remaining regime we follow Hintz:
+take the function that makes the first inequality an equality, keep it as long as the second inequality holds, and
+switch to a solution of the second with equality afterwards. All the work is in showing that the switch happens
+exactly once and that the resulting function still has the right sign at $z_0$.
+
 In this section and in Proposition~\ref{prop:reduction}, $s$ denotes $z_0-z$; the spin plays no role here.
 
 
@@ -672,6 +729,9 @@ So (b) holds, and $f>0$.
 This completes the proof of Theorem~\ref{thm:event}, and with it Theorem~\ref{thm:A} for real $\sigma\ne0$.
 
 \section{Zero frequency}\label{sec:zero}
+At $\sigma=0$ the window argument degenerates, but the radial equation becomes simple enough for a direct energy
+argument.
+
 \begin{proposition}\label{prop:zero}
 There are no nontrivial outgoing modes at $\sigma=0$, for $s=\pm2$.
 \end{proposition}
@@ -694,6 +754,12 @@ The two identities used are exact symbolic identities (Appendix~\ref{app:cert}, 
 \end{proof}
 
 \section{The upper half plane}\label{sec:uhp}
+We now move off the real axis by continuity in the black hole parameters. Quasinormal modes can only enter the
+upper half plane through the real axis, which we have just excluded, or from infinity, which a high-frequency
+estimate must rule out. No such estimate is known for Teukolsky directly; the substitute is to convert a Teukolsky
+mode into a mode of the gauge-fixed Einstein operator, for which \cite{HPV25} provides it. The conversion must not
+produce zero, and this is where the cosmological horizon is used (\S\ref{subsec:kernel}).
+
 
 \subsection{Fredholm theory}
 \begin{lemma}[Regular frame]\label{lem:regframe}
@@ -773,7 +839,7 @@ computation uses only $\Th'$ and the Ricci identities $\Th'\rho'=\rho'^2$, $\Th'
 or $\Lambda$-term, so it is literally the Kerr computation \cite{Wal78,KSFK03}.
 \end{proof}
 
-\subsection{The kernel lemma}
+\subsection{The kernel lemma}\label{subsec:kernel}
 Let $\kappa_2^\sharp=|\Delta_r'(r_2)|/(2\Xi\rho_2)$ be the normalized surface gravity of the cosmological horizon,
 and define the \emph{cosmological ladder}
 \[
@@ -850,8 +916,10 @@ At $a=0$ the angular operator is independent of $\sigma$ and $\Lambda$, so modes
 $\lambda_\ell=\ell(\ell+1)-4$, $\ell\ge2$. In the Kinnersley tetrad, with $D^\dagger=\partial_r+i\sigma r^2/\Delta_r$ and
 $D=\partial_r-i\sigma r^2/\Delta_r$, one has (item~C8)
 \begin{equation}\label{eq:sdsTS}
-(\Th')^4(r^4R)=\frac{\Delta_r^2(D^\dagger)^4\Delta_r^2R}{16r^4},\qquad D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
-\qquad\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2,
+\begin{gathered}
+(\Th')^4(r^4R)=\frac{\Delta_r^2(D^\dagger)^4\Delta_r^2R}{16r^4},\qquad D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,\\
+\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2,
+\end{gathered}
 \end{equation}
 the second for every solution of the $s=+2$ radial equation. At $a=0$ the Kinnersley vector $n$ is real and $\gamma$ is real, so on a quantity of type $(p,q)$
 $\Th'=n-(p+q)\gamma$ commutes with complex conjugation. As $P\propto r^4$ is real,
@@ -882,6 +950,13 @@ Here (F2), (F3) and Lemma~\ref{lem:compact} are applied in finitely many neighbo
 \end{proof}
 
 \section{Ungauged linearized Einstein mode stability}\label{sec:B}
+Knowing that the Teukolsky scalars of a mode vanish, we must show that the metric perturbation itself is trivial. The
+mechanism is symmetry. Vanishing of $\delta\Psi_0,\delta\Psi_4$ keeps the perturbed spacetime algebraically special, so
+the constructions that produce the Killing fields $\partial_t,\partial_\varphi$ of KdS from its curvature still produce
+Killing fields of the perturbed metric. A mode cannot carry a genuinely new Killing field, and this forces $h$ to be
+a Lie derivative of $g$, except in the stationary axisymmetric sector, where the perturbed metric is again of Carter's
+form and the field equations become linear.
+
 
 Throughout this section $a\ne0$ and $\Omega\in\R$ is fixed, so that $T=\partial_t+\Omega\,\partial_\varphi$ in
 Boyer--Lindquist coordinates. Only the following properties of $T$ are used: it is a constant combination of
@@ -1072,7 +1147,7 @@ $h=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$, with $X=X_0+t_*K$, $X_0$ stationary an
 \end{proposition}
 
 \begin{proof}
-\emph{Step 1: restoring reality.} Here $J[h]=A'\partial_t+B'\partial_\varphi$ need not vanish. A constant phase change of
+\textbf{Step 1: restoring reality.} Here $J[h]=A'\partial_t+B'\partial_\varphi$ need not vanish. A constant phase change of
 $\phi$ removes $A'$. Subtracting a multiple of the tangent to the Pleba\'nski--Demia\'nski family in the direction of
 the acceleration removes $B'$: this is the only Pleba\'nski--Demia\'nski tangent that makes $\xi$ complex, and its
 $J$ has nonzero $\partial_\varphi$-part (exact nonlinear check, item~C6). After this, reality holds, and $\xi$ and
@@ -1080,14 +1155,14 @@ $\zeta$ are first-order Killing fields. They commute, since $\delta\xi$ and $\de
 fields. Steps 1--3 are local and are carried out away from the axis; regularity of $h$ at the axis enters only in
 Step 4, which shows that the subtracted multiple is zero.
 
-\emph{Step 2: Carter's ansatz.} Write $\nabla f=n(f)l+l(f)n-\bar m(f)m-m(f)\bar m$ and $S=|\phi|^2=R^2+I^2$. By the
+\smallskip\noindent\textbf{Step 2: Carter's ansatz.} Write $\nabla f=n(f)l+l(f)n-\bar m(f)m-m(f)\bar m$ and $S=|\phi|^2=R^2+I^2$. By the
 relations for $R,I$ above, $\nabla R=Bl-An$ and $\nabla I$ lies in the span of $m,\bar m$. Put $\Delta_R:=-2AB\,S$ and
 $\Delta_I:=-2CD\,S$. Then, with $l\cdot n=1$ and $m\cdot\bar m=-1$,
-\[
-|\nabla R|^2=\frac{\Delta_R}{S},\quad|\nabla I|^2=\frac{\Delta_I}{S},\quad\nabla R\cdot\nabla I=0,\quad
-\xi\cdot\xi=\frac{\Delta_I-\Delta_R}{S},\quad\xi\cdot\zeta=-\frac{I^2\Delta_R+R^2\Delta_I}{S},\quad
+\begin{gather*}
+|\nabla R|^2=\frac{\Delta_R}{S},\qquad|\nabla I|^2=\frac{\Delta_I}{S},\qquad\nabla R\cdot\nabla I=0,\\
+\xi\cdot\xi=\frac{\Delta_I-\Delta_R}{S},\qquad\xi\cdot\zeta=-\frac{I^2\Delta_R+R^2\Delta_I}{S},\qquad
 \zeta\cdot\zeta=\frac{R^4\Delta_I-I^4\Delta_R}{S},
-\]
+\end{gather*}
 and $\xi,\zeta$ are orthogonal to $\nabla R,\nabla I$ (as $\xi(R)=\xi(I)=\zeta(R)=\zeta(I)=0$). Moreover $\Delta_R$ depends on
 $R$ alone: $\eth(AB\,S)=0$ by reality, and the $(l,n)$-parts of $\xi$ and $\zeta$ are both proportional to $Bl+An$, so
 $\xi(\Delta_R)=0$ forces $d\Delta_R\parallel Bl-An\parallel dR$. Likewise $\Delta_I$ depends on $I$ alone. In coordinates
@@ -1097,7 +1172,7 @@ to first order, Carter's separable ansatz
 \frac{S}{\Delta_R}dR^2+\frac{S}{\Delta_I}dI^2+\frac{\Delta_I(d\tilde t-R^2d\psi)^2-\Delta_R(d\tilde t+I^2d\psi)^2}{S},\qquad S=R^2+I^2.
 \]
 
-\emph{Step 3: the field equations.} On this ansatz the $\Lambda$-vacuum equations are linear in $(\Delta_R,\Delta_I)$,
+\smallskip\noindent\textbf{Step 3: the field equations.} On this ansatz the $\Lambda$-vacuum equations are linear in $(\Delta_R,\Delta_I)$,
 with general solution
 \[
 \Delta_R=-\tfrac\Lambda3R^4+\varepsilon R^2-2\mathfrak mR+\gamma,\qquad \Delta_I=-\tfrac\Lambda3I^4-\varepsilon I^2+2\mathfrak nI+\gamma
@@ -1105,7 +1180,7 @@ with general solution
 (exact computation, item~C7). Modulo the rescaling gauge, the variations are $\delta M$, $\delta a$ and the NUT
 variation $\delta\mathfrak n$, together with the acceleration removed in Step 1.
 
-\emph{Step 4: axis regularity.} Write the background as $\Delta_I=(a^2-I^2)(c+\tilde\lambda I^2)$ with
+\smallskip\noindent\textbf{Step 4: axis regularity.} Write the background as $\Delta_I=(a^2-I^2)(c+\tilde\lambda I^2)$ with
 $\tilde\lambda=\Lambda/3$ and $c>0$, so the axes are the roots $I=\pm a$ and $\Delta_I'(\pm a)=\mp2a(c+\tilde\lambda a^2)$.
 
 \emph{(i) Misner string.} At a simple root $I_0$ of $\Delta_I$, the Killing field that vanishes on the axis is
@@ -1125,7 +1200,7 @@ $P(\pi)/P(0)=1+4M\alpha_{\rm acc}/(1+c_2)+O(\alpha_{\rm acc}^2)$ and $1+c_2=1-\a
 So both variations vanish. The gauge vector $X$ generates the change from
 the background to the perturbed adapted coordinates, together with the rescalings of $\xi$ and $\zeta$.
 
-\emph{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg,\partial_ag$ are the parameter derivatives in the
+\smallskip\noindent\textbf{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg,\partial_ag$ are the parameter derivatives in the
 regular coordinates $(t_*,r,\theta,\varphi_*)$ \cite{HPV25}. By Lemma~\ref{lem:collar}, Steps 1--4 apply on each of the
 three components of $M\setminus\{r=r_1,r_2\}$ (where $\Psi_2\ne0$, $\Delta_R\ne0$), giving
 $h=c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag+\cL_{X^{(i)}}g$. The constants agree: for $K\in\{\partial_t,\zeta\}$ the
