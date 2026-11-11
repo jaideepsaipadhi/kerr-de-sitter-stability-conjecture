@@ -28,6 +28,8 @@ def blow12(q,lead,strip=True):
 CH0=CH
 def tocube(f,n2=None,D=None,strip=True):
     global CH
+    if CH0 in ('U3a','U3b') and CH!='U3':
+        CH='U3'; q=tocube(f,n2,D,strip); CH=CH0; return blow12(q,CH0[-1],strip)
     if CH0 in ('T3a','T3b') and CH!='T3':
         CH='T3'; q=tocube(f,n2,D,strip); CH=CH0; return blow12(q,CH0[-1],strip)
     if CH0 in ('T1a','T1b') and CH!='T1':
@@ -73,7 +75,7 @@ def add_raw(S,k,j,dat):
         if dk: CK[kk]=tocube(ctx4.from_dict(dk),n2,D,False)
     if CH:
         sl=1 if CH.startswith('VT') else 0
-        if CH0 in ('T3a','T3b'):
+        if CH0 in ('T3a','T3b','U3a','U3b'):
             for sl_ in (0,1):
                 km_=min(min(int(e[sl_]) for e in q.to_dict()) for q in CK.values())
                 CK={kk:c3.from_dict({tuple(int(e[w])-(km_ if w==sl_ else 0) for w in range(3)):v for e,v in q.to_dict().items()}) for kk,q in CK.items()}
@@ -150,6 +152,8 @@ def xv_of(cb):
     if CH0=='U1': return 1-a0/N, 1-a0*a1/N
     if CH0=='U2': return 1-a0*a1/N, 1-a0/N
     if CH0=='U3': return 1-a0*a1/N, 1-a0*a2/N
+    if CH0=='U3a': return 1-a0*a1/N, 1-a0*a1*a2/N
+    if CH0=='U3b': return 1-a0*a1*a2/N, 1-a0*a1/N
     if CH0=='T1': return 1-a0/N, a0*a1/N
     if CH0 in ('T1a','T1b'):
         lam=a0 if CH0=='T1a' else a0*a2

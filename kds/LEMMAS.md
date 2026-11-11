@@ -2842,3 +2842,17 @@ b₊ fallback). Coverage:
 CAVEATS: float engine (rigorous tolerances but not exact arithmetic); the b₊ enclosure from box corners assumes
 monotonicity (to be certified via the sign of q(b) = b² − e2 b + e4 at the ends); min physical margin ≈ 1.077.
 STATUS hyp:cos: S_μ ✔, S_C ✔ (incl. ρ ≤ 0.7), S_β ✔, S_α ✔ except the extremal boundary layer (items 202–203).
+
+## 220. S_α PROVED in the smooth variables, so hyp:cos is fully certified (float engine)
+[P] S_α ⇔ r(2+4a+T) ≤ 3 ⇔ ρ(1 + 4α + 2ι) ≤ 3, with ρ = rT, α = a/T, ι = 1/T (all smooth at r0 = r1). The left side
+is increasing in ρ ≥ 0, and ρ_m ≤ max(ρ1, ρ2) for every m (convexity in 1/m, item 205). So
+   S_α for all m ⇐ for m = 1, 2: ρ_m ≤ 0 ∨ Z_α,m := 3 − ρ_m(1 + 4α + 2ι) > 0.
+[cert, float] za_build.py + cover3d_h with the same atlas as item 219: main cube (uncovered remainder 0), KA, KB, VT1,
+VT2, T1a, T1b, T2, T3a, T3b, XT1, XT2, U1, U2, U3a, U3b (new sub-blow-up of U3; U3 itself stalled at
+1−x, 1−v ≪ 1−τ), EA, EB: ALL CLOSED. This also removes the "extremal boundary layer" of items 197–203: in the smooth
+variables there is no layer.
+=> hyp:cos holds on the whole window, modulo the common caveats:
+   (1) float-engine certificates (rigorous tolerances, but should be re-run in exact or interval arithmetic);
+   (2) the b₊ enclosure from box corners (monotonicity) must be certified;
+   (3) S_μ (item 182) and S_C/ρ ≤ 0.7 (items 194, 207) were certified with earlier tooling; items 216–219 rely on
+       ρ ≤ 0.7 only through the earlier cap route, which Z' no longer needs (Z' uses the exact ρ²).
