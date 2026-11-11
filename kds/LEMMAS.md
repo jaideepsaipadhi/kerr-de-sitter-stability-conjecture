@@ -2667,3 +2667,7 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   exceeds a 1-min run. Cheaper variant ρ² → ρ (from ρ ≤ 1) FAILS (margin 0.96). Options: a proven cap ρ ≤ 0.7 (then
   ρ² ≤ 0.7ρ; numerically max ρ = 0.64), which needs S_C with 1.05 → ~0.735, i.e. a re-run of the S_C certificate
   with a tighter constant; or longer-running exact conversion.
+* [N] Using ρ² ≤ c·ρ (valid if ρ ≤ c): margins 1.057 / 1.022 / 0.990 for c = 0.7 / 0.8 / 0.9. So c = 0.7 works, with
+  W2' := W1 − 0.7·ρ·s·E' of W1-size degree instead of the ρ² monster. Cost: prove ρ ≤ 0.7, i.e. S_C with 2.1 → 3.0 in
+  item 187's identity. Physically max ρ ≈ 0.64, so only a ~9% margin: the S_C certificate must be re-run with the
+  tighter constant (main cube + corner charts).
