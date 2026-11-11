@@ -1,2 +1,17 @@
-kds/cert3/margin/*.tmp
-kds/cert3/margin/cache*.pkl
+# LaTeX build files
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.synctex.gz
+# Python
+__pycache__/
+*.pyc
+# regenerated certificate intermediates
+certificates/cert3/margin/*.pkl
+certificates/cert3/margin/*.tmp
+certificates/*.pkl
+archive/kds/cert3/margin/*.tmp
+archive/kds/cert3/margin/cache*.pkl

@@ -1,4 +1,0 @@
-exact mode coefficients 131 s
-exact 4D assembly 2100 x 980 260 s
-exact rank C = 776 328 s
-J=3: n_L=350, rank C=776, rank C_H=708, rank_P G_L=278  =>  d_J <= 4  (RIGOROUS)  [388 s]

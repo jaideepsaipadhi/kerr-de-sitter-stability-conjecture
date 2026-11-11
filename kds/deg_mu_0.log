@@ -1,4 +1,0 @@
-  C: size 66, reversed T_2 deficiency 71 => deg_mu det <= 61  [534s]
-  G1: size 24, reversed T_2 deficiency 41 => deg_mu det <= 7  [537s]
-  G2: size 40, reversed T_2 deficiency 70 => deg_mu det <= 10  [550s]
-pt 0: deg_mu E <= 78  (mod-p value 29; grid 40 needs <= 39)

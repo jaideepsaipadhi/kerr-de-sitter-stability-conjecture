@@ -1,4 +1,0 @@
-assembled 3300 1764 518 s
-mod-P ranks: C 1318 G_L 502 520 s
-integer C_H built 5200 x 3528 maxrss MB 700 521 s
-J=4: n_L=700 rank_P C=1318 rank_Q C_H=1124 rank_P G_L=502 => d_J <= 4 (RIGOROUS)  maxrss MB 5731  [1135 s]

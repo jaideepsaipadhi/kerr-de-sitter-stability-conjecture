@@ -1,3 +1,0 @@
-pt0 C mu0=1 K=4: deficiency 111 => deg_sigma <= 21  [64s]
-pt0 G1 mu0=1 K=4: deficiency 40 => deg_sigma <= 8  [64s]
-pt0 G2 mu0=1 K=4: deficiency 62 => deg_sigma <= 18  [64s]
