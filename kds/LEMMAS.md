@@ -2654,3 +2654,16 @@ Each bracket is a 4D statement in (x, v, τ, σ): Γ·c² ≥ ρφ0c² + ρ²φ1
 OR-closure "ρ_m ≤ 0" (that m is off the gate).
 [N] Exact margin min 1.287 (1406 gate points). The crude ρ := 1 substitute FAILS (2.3e-4), so ρ_m must be kept.
 NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D float covering for m = 1 and m = 2.
+
+## 206. S_β: rigorous reduced form, 5-symbol pipeline built, certificate too heavy for <1-min runs
+* [P] Avoid the monotonicity-in-ρ claim: since φ0 ≥ 0 and ρ ≤ ρ̄ = max(ρ1, ρ2), we have ρφ0 + ρ²φ1 ≤ ρ̄φ0 + ρ̄²φ1⁺.
+  So S_β ⇐ for m = 1, 2:  ρ_m ≤ 0, OR [W1 := Γc² − 2ρ_m s(2az+s) > 0 AND W2 := W1 − ρ_m²·s·E' > 0] for all
+  σ ∈ [0, 1]. (W1 > 0 handles E' ≤ 0; W2 handles E' ≥ 0.)
+  [N] margin of this form: 1.208 (20384 geometries with ρ̄ > 0).
+* Pipeline: win5.py / smu5.py / margin_red5.py (5th symbol sg); sbe_build.py builds R_m, W1_m, W2_m.
+  Γ = 4U0U3·T·z0²/(t(f1+f2)²) and ρ_m validated against direct numerics (sbe_chk.py) to 1e-13. cover4d.py = 4D
+  OR-covering.
+* BLOCKER: the W2 cores are huge: P-part degree (70, 74, τ12, σ8), 255k terms. The exact Bernstein conversion alone
+  exceeds a 1-min run. Cheaper variant ρ² → ρ (from ρ ≤ 1) FAILS (margin 0.96). Options: a proven cap ρ ≤ 0.7 (then
+  ρ² ≤ 0.7ρ; numerically max ρ = 0.64), which needs S_C with 1.05 → ~0.735, i.e. a re-run of the S_C certificate
+  with a tighter constant; or longer-running exact conversion.
