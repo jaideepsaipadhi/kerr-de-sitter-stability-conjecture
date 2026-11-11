@@ -220,9 +220,15 @@ R\in(r-r_1)^{-\kappa_1-s}\,C^\infty([r_1,r_2))\cap(r_2-r)^{\kappa_2}\,C^\infty((
 \]
 \end{lemma}
 \begin{proof}
-This follows by writing $t=t_*+T(r)$ and $\varphi=\varphi_*+\Phi(r)$, with the singular parts of $T$ and $\Phi$ at
-$r_1$ and $r_2$ as in \cite[(3.4)]{Hin26}. The additional factor $\Delta_r^{-s}$ at $r_1$ comes from the boost
-relating the Kinnersley tetrad to a tetrad that is regular across the event horizon. The Kinnersley tetrad is
+Write $t=t_*+T(r)$ and $\varphi=\varphi_*+\Phi(r)$ as in \cite[(3.4)]{Hin26}. Near $r_j$ ($j=1,2$) the singular parts are
+$T'=\mp\Xi\rho_j/\Delta_r+O(1)$ and $\Phi'=\mp\Xi a/\Delta_r+O(1)$, with the sign chosen so that $t_*,\varphi_*$ are regular
+across the future horizon (upper sign at $r_1$, lower at $r_2$). A mode is
+$e^{-i\sigma t_*+im\varphi_*}v=e^{-i\sigma t+im\varphi}\,e^{i\sigma T-im\Phi}v$, so its radial part is
+$R=e^{i\sigma T-im\Phi}v$ (after separating the angular part), and
+$i\sigma T-im\Phi=\mp\,\frac{i\,\Xi(\rho_j\sigma-am)}{\Delta_r'(r_j)}\log|r-r_j|+(\text{smooth})=\mp\kappa_j\log|r-r_j|+(\text{smooth})$.
+Hence $v$ smooth gives $R\in|r-r_1|^{-\kappa_1}C^\infty$ at $r_1$ and $R\in|r-r_2|^{\kappa_2}C^\infty$ at $r_2$, for $s=0$. The additional factor $\Delta_r^{-s}$ at $r_1$ comes from the boost
+$l=\Delta_rl_K$, $n=\Delta_r^{-1}n_K$ of Lemma~\ref{lem:regframe}, which is regular across the event horizon: the Teukolsky
+scalar of spin $s$ has boost weight $s$, so its Kinnersley component is $\Delta_r^{-s}$ times the regular one. The Kinnersley tetrad is
 already regular across the future cosmological horizon in outgoing coordinates.
 \end{proof}
 
