@@ -2856,3 +2856,16 @@ variables there is no layer.
    (2) the b₊ enclosure from box corners (monotonicity) must be certified;
    (3) S_μ (item 182) and S_C/ρ ≤ 0.7 (items 194, 207) were certified with earlier tooling; items 216–219 rely on
        ρ ≤ 0.7 only through the earlier cap route, which Z' no longer needs (Z' uses the exact ρ²).
+
+## 221. b₊ enclosure now RIGOROUS (interval arithmetic); S_α and S_β atlases re-run and closed
+* cover3d_h.unred() now encloses b₊ with mpmath interval arithmetic, using the v-scaled closed form
+  b₊ = 2(v²e4)/((v²e2) − √(v⁴D)): v²e4 = −r0(1+v(1+r0)), v²e2 = v²r0 + v + r0v − (v(1+r0)+1)², which is smooth at v = 0
+  (b₊ → r0). Chart coordinates are mapped to (x, v) by the same formulas evaluated on intervals. NO monotonicity
+  assumption. The old corner-sampling enclosure is gone.
+* Full re-run (names zp2, za2; atlas.sh): S_α (za2): main cube (uncovered remainder 0) and every chart closed.
+  S_β (zp2): main (uncovered 0); KA closed; KB leftovers ⊂ {τ ≥ 7/8} (covered by VT); VT1/VT2 leftovers ⊂ triple cube
+  (covered by T); T1a, T1b, T2, T3a, T3b closed; XT1, XT2 closed; U1, U2, U3 closed; EA closed; EB leftovers ⊂ XT ∪ U.
+* The cosmological-side proposition is now certified modulo the float engine (rigorous tolerance bookkeeping, not
+  exact arithmetic). S_C/S_μ certificates did not use the b₊ fallback.
+* Paper: Hypothesis → Proposition (with proof structure, Steps 1–5); abstract and status paragraph updated;
+  Appendix C7 added.
