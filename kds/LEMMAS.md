@@ -2634,3 +2634,9 @@ PLAN: S_β ⇔ the QUARTIC in s, Ψ(s) := A·c² − K·s[(2az+s)(2+r(T−s)) �
 it in 4D (x, v, τ, s/T) with OR-closure "L(t) > 0" for off-gate boxes. This needs a 5th variable in the F-class /
 b-reduction pipeline (currently fixed at (r0, r2, b, τ)). Alternatively, eliminate s through quartic-nonnegativity
 conditions on an interval (Sturm/discriminant), which is heavy.
+* m-structure of S_β (worked out): with q := Q2/m², α := A/m² (both m-free) and κ̂ := K/m² = c_K(k2 + k1u + k0u²)
+  (u = 1/m, k0 < 0, so concave in u),
+    Q2·Ψ/m⁴ = g(κ̂) := q·α·c² − 2q·κ̂·s(2az+s) − κ̂²·s·E,   E := (2az+s)(T−s) − s z c.
+  S_β is g(κ̂) ≥ 0 for all s ∈ [0, T] and all κ̂ ∈ (0, κ̂_max(geometry)] that occur (gate ⇔ κ̂ > 0). Since g is a
+  concave/convex quadratic in κ̂ depending on the sign of E, the natural certificate is in (x, v, τ, s/T, κ̂/κ̂_max): 5D,
+  with a b-reduction. This is the largest certificate of the four; not started.
