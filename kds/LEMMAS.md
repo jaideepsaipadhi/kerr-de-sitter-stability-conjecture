@@ -2869,3 +2869,23 @@ variables there is no layer.
   exact arithmetic). S_C/S_μ certificates did not use the b₊ fallback.
 * Paper: Hypothesis → Proposition (with proof structure, Steps 1–5); abstract and status paragraph updated;
   Appendix C7 added.
+
+## 222. Float Bernstein engine: rigorous rounding bookkeeping; S_α and S_β atlases re-run (za3, zp3)
+* Error model. Coefficients come from exact rational Bernstein conversion and are rounded once (relative error ≤ u).
+  Each de Casteljau midpoint step adds at most u·(average of the |·| of its inputs). So after any sequence of splits
+  of total depth d, every entry e satisfies |e_float − e_exact| ≤ (d+2)u·B_e. Here B is the same split sequence applied
+  to |A_root| (nonnegative weights, so B dominates every |partial sum|). cover3d_h now carries B alongside A (stacked
+  last axis) and accepts a sign only if A > c·B or A < −c·B entrywise, with c = 1e-13(d+4) ≫ (d+2)u. unred() uses the
+  same per-entry widening before the interval b₊ step.
+* za3 (S_α) was run under the stricter absolute tolerance (arrays normalized to max|b| = 1, so B ≤ 1): main + all
+  charts closed. That remains valid.
+* zp3 (S_β): main, KA, T1a, T1b, T2, T3a, T3b closed under the absolute tolerance. XT1, XT2, U1, U2, U3, EA closed
+  under the per-entry tolerance. Leftovers:
+  - EB: 3054 tiny boxes, all inside XT ∪ U (x ≥ 7/8 and (v ≤ 7/8 or v ≥ 7/8), checked box by box).
+  - KB: 3078 boxes, all with τ ≥ 7/8, which is the triple cube (T charts closed).
+  - VT1: 7791 boxes with x ≥ 0.998 and v ≤ 1/8; VT2: 1015 boxes with x ≥ 0.984 and v ≤ 1/8. Both lie inside
+    {x ≥ 7/8, v ≤ 1/8} = KA ∪ KB. KA is closed, and KB's leftovers are in the triple cube. No cycle: T is closed
+    outright.
+  ⇒ S_β certified with rigorous floating-point error control.
+* STILL OPEN on this front: the earlier float certificates S_μ (item 182) and S_C / ρ ≤ 0.7 (items 194, 207) used
+  cover3d_f / cover2d_f6 with the old relative tolerance. They need the same per-entry rerun.

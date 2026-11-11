@@ -19,7 +19,7 @@ def split(A,ax):
     L=np.array(L); R=np.array(R[::-1])
     return np.moveaxis(L,0,ax),np.moveaxis(R,0,ax)
 def fsign(A,err):
-    tol=err*np.abs(A).max()+1e-300
+    tol=err+1e-300  # absolute: arrays are normalized to max|b|=1 at conversion; fp error <= u(1+sum deg) per item 222
     if A.min()>tol: return 1
     if A.max()<-tol: return -1
     return 0

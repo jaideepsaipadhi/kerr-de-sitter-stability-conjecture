@@ -140,7 +140,7 @@ BOX=[None]
 def bsg(ps,k,dep):
     s=S[k][0]
     for A in ps[k]:
-        g=fsign(A,1e-13*(dep+4))
+        g=fsign2(A,1e-13*(dep+4))
         if g==0: return 0
         s*=g
     return s
@@ -181,6 +181,12 @@ def bplus_iv(x,v):
     e4v=-x*(1+v*(1+x)); e2v=v*v*x+v+x*v-(v*(1+x)+1)**2
     Dv=e2v*e2v-4*v*v*e4v
     return 2*e4v/(e2v-iv.sqrt(Dv))
+def fsign2(A,err):
+    v=A[...,0]; t=err*A[...,1]+1e-300
+    if (v>t).all(): return 1
+    if (v<-t).all(): return -1
+    return 0
+M0={}
 def unred(ps,kk,j,dep):
     if kk+(j,'c0') not in S and kk+(j,'c1') not in S: return 0
     bx=BOX[0]
@@ -190,15 +196,15 @@ def unred(ps,kk,j,dep):
         bb=bplus_iv(x,v); blo=float(bb.a)*(1-1e-12); bhi=float(bb.b)*(1+1e-12)
     except Exception: return 0
     if not (blo>0): return 0
-    lo=hi=0.0
+    lo=hi=ab=0.0
     for q in range(60):
         key=kk+(j,'c%d'%q)
         if key not in S: continue
-        A=ps[key][0]; M=_np.abs(A).max(); tol=1e-13*(dep+4)*M
-        cl,ch=A.min()-tol,A.max()+tol; pl,ph=blo**q,bhi**q
-        cand=[cl*pl,cl*ph,ch*pl,ch*ph]; lo+=min(cand); hi+=max(cand)
-    if lo>0: return 1
-    if hi<0: return -1
+        A=ps[key][0]; tl=1e-13*(dep+4)*A[...,1]
+        cl,ch=(A[...,0]-tl).min(),(A[...,0]+tl).max(); pl,ph=blo**q,bhi**q
+        cand=[cl*pl,cl*ph,ch*pl,ch*ph]; lo+=min(cand); hi+=max(cand); ab+=max(abs(x) for x in cand)
+    if lo>1e-12*ab: return 1
+    if hi<-1e-12*ab: return -1
     return 0
 def bval(ps,kk,j,dep):
     r=bval0(ps,kk,j,dep)
@@ -230,7 +236,7 @@ def closed1(ps,dep,TGx,IT,pre):
             s*=g
         if s<=0: return False
     return True
-root={k:v[1] for k,v in S.items()}
+root={k:[_np.stack([A,_np.abs(A)],-1) for A in v[1]] for k,v in S.items()}
 def descend(lev,idx):
     cur=root
     for ax in range(3):
@@ -252,7 +258,9 @@ while (todo or rest) and time.time()-t0<TMAX:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
         BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in range(3)]
-        if os.environ.get('NOEX') and closed(ps,sum(lev)): nc+=1; continue
+        if os.environ.get('NOEX'):
+            ge=lambda k,a,b: idx[k]*b>=a*2**lev[k]; le=lambda k,a,b: (idx[k]+1)*b<=a*2**lev[k]
+            if (ge(0,7,8) and le(1,1,8)) or (ge(0,7,8) and ge(2,7,8)) or (le(1,1,8) and ge(2,7,8)) or (ge(0,3,4) and ge(1,3,4)) or closed(ps,sum(lev)): nc+=1; continue
         if os.environ.get('NOEX'): pass
         elif (CH in ('XT1','XT2') and not os.environ.get('XTFULL') and (idx[1]*8>=7*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=9: rest.append((lev,idx)); continue
