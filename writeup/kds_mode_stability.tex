@@ -627,14 +627,10 @@ $p_*=\mu\exp(-\int2sL/\mu)$, the function $W=p_*(F_Cf'-F_C'f)$ is non-increasing
 and $w$ can cross $0$ only downward. A function $k$ with $\mu k'\le R(k)$ in the Dini sense and $k(\hat z)\le\hat w$
 stays below $w$. We use $k=\min(\hat w,sL)$.
 
-\emph{(i) $sL$ is a strict subsolution on all of $(1,z_0)$.} Since $(sL)'=-L-s|L'|$, we have
-$R(sL)-\mu(sL)'=g:=s^2L^2+\mu(L-s|L'|)$. Write $\ell=L(z_0)$ and $a=A/(2z^2z_0)$. Exactly,
-$L=\ell+s(A/(zz_0)+3)$ and $L-s|L'|=\ell-As^2/(z^2z_0)$. By \eqref{eq:margin},
-$L-s|L'|\ge a(z^2-2s^2)+2t$ and $L\ge az(z+2s)+2t$. By AM--GM, $(az(z+2s)+2t)^2\ge8t\,az(z+2s)$, so
-\[
-g\ \ge\ 8t\,az(z+2s)s^2-2\mu as^2+2t\mu\ \ge\ 2t\mu>0,
-\]
-because $4t(z+2s)\ge(z-1)(t-z)$.
+\emph{(i) $sL$ is a strict subsolution on $(1,z_0)$.} Since $(sL)'=-L-s|L'|$,
+$R(sL)-\mu(sL)'=g:=s^2L^2+\mu(L-s|L'|)$, and $L-s|L'|=\ell-As^2/(z^2z_0)$ exactly, where $\ell=L(z_0)$. As $L$ is
+decreasing, \eqref{eq:margin} gives $L\ge\ell\ge A/(2z_0)+2t$, hence $L^2\ge4At/z_0\ge\mu A/(z^2z_0)$ (because
+$\mu<tz^2$). Therefore $g\ge\mu\ell>0$.
 
 \emph{(ii) The constant $\hat w$ is a subsolution until $sL$ falls below it.} On the interval where $sL\ge\hat w$ we have
 $\hat w\le sL<k_+$, where $k_\pm=sL\pm\sqrt{s^2L^2-2\mu s|L'|}$ are the roots of $R$. So $R(\hat w)>0$ follows from
@@ -656,7 +652,7 @@ these are two polynomial implications of degree at most $(10,3,10,4)$, plus the 
 $z=\hat z$. We certify them by an exact Bernstein covering (Appendix~\ref{app:cert}, item~C4).
 
 By (i) and (ii), $k=\min(\hat w,sL)$ is a subsolution on $[\hat z,z_0)$ with $k(\hat z)\le\hat w$. Hence $w>0$
-there. As $z\to z_0$ the defect $g\to\mu(z_0)\ell>0$, which gives $w(z_0)>0$, i.e. $f'(z_0)>0$.
+there. Since $g\ge\mu\ell$ stays positive up to $z_0$, we get $w(z_0)>0$, i.e. $f'(z_0)>0$.
 So (b) holds, and $f>0$.
 \end{proof}
 
@@ -851,23 +847,14 @@ high-energy estimates \cite[(5.7), (5.8)]{HV18} hold with constants uniform in $
 such that every QNM of $L_b$ with $\Im\ge0$ has $|\sigma_T|\le R_0$ for all $b\in U$. Here $\sigma_T$
 is the $T$-frequency, which differs from the $\partial_t$-frequency by $m'\Omega_T$ on the sector $m'$.
 
-Let $\Psi$ be a QNM in the sector $m$ with $\Im\sigma\ge0$. If $\Im\sigma=0$ there is nothing to prove, by
-Theorem~\ref{thm:A} on the real axis. By (F2), $\Im\sigma\le C_0$, so the ladder points in the strip
-$0<\Im\sigma\le C_0$ satisfy $|\sigma|\le|m|\Omega_2+C_0$, or $|\sigma|\le|m|\Omega_1+C_0$ for the event-horizon ladder. If $\sigma$ is not a ladder point,
-Proposition~\ref{prop:transfer} gives $\tilde h$ at frequency $-\bar\sigma$ with $\Psi_4[\tilde h]\ne0$.
-
-Next we gauge-fix $\tilde h$: put $h'=\tilde h+\delta^*\omega$, where $\omega$ solves the linearized gauge condition
-$D\Upsilon(\delta^*\omega)=-D\Upsilon(\tilde h)$ at frequency $-\bar\sigma$. The operator $\omega\mapsto D\Upsilon(\delta^*\omega)$
-is a principally scalar wave operator on 1-forms, so it is Fredholm of index $0$ by (F1) in its version for
-1-forms.
-If it is invertible at $-\bar\sigma$, then $h'$ is a QNM of $L_b$, and $h'\ne0$ since $\Psi_4[h']=\Psi_4[\tilde h]\ne0$.
-
-If it is not invertible, there is $\omega\ne0$ with $D\Upsilon(\delta^*\omega)=0$. Then
-$L_b(\delta^*\omega)=0$, and $\delta^*\omega\ne0$ because KdS has no Killing modes with $\Im\ne0$. So
-$\delta^*\omega$ is a QNM of $L_b$ at frequency $-\bar\sigma$.
-In either case $L_b$ has a QNM at $T$-frequency $-\bar\sigma-(-m)\Omega_T$, so
-$|\sigma|\le R_0+|m|\Omega_T$. For $s=-2$ the event-horizon ladder enters instead. Hence we can take
-$R_m=\max(R_0+|m|\Omega_T,\ |m|\Omega_1+C_0,\ |m|\Omega_2+C_0)$.
+Let $\Psi$ be a QNM in the sector $m$. By Theorem~\ref{thm:A} on the real axis and (F2), $0<\Im\sigma\le C_0$, so
+ladder points satisfy $|\sigma|\le|m|\max(\Omega_1,\Omega_2)+C_0$. Otherwise Proposition~\ref{prop:transfer} gives
+$\tilde h$ at $-\bar\sigma$ with $\Psi_4[\tilde h]\ne0$, and we gauge-fix it. The map $\omega\mapsto D\Upsilon(\delta^*\omega)$
+is a principally scalar wave operator on 1-forms, hence Fredholm of index $0$ (F1). If it is invertible at
+$-\bar\sigma$, then $h'=\tilde h+\delta^*\omega$ with $D\Upsilon(h')=0$ is a QNM of $L_b$, nonzero since
+$\Psi_4[h']=\Psi_4[\tilde h]$. If not, a nonzero $\omega$ in its kernel gives the QNM $\delta^*\omega$ of $L_b$, nonzero
+because KdS has no Killing modes with $\Im\ne0$. Either way $L_b$ has a QNM at $T$-frequency $-\bar\sigma+m\Omega_T$, so
+$|\sigma|\le R_0+|m|\Omega_T$. Take $R_m=\max\big(R_0+|m|\Omega_T,\ |m|\max(\Omega_1,\Omega_2)+C_0\big)$.
 \end{proof}
 
 \subsection{The base case}
@@ -877,28 +864,19 @@ $\Im\sigma>0$.
 \end{lemma}
 
 \begin{proof}
-Let $a=0$. The angular operator then does not depend on $\sigma$ or $\Lambda$, so modes separate into spin-weighted
-spherical harmonics for every $\sigma\in\C$, with a discrete real spectrum $\{\lambda_\ell=\ell(\ell+1)-4\}_{\ell\ge2}$ (in the convention of Proposition~\ref{prop:angular}) independent of $\Lambda$. Two
-exact computations hold on separated modes, in the Kinnersley tetrad with $D^\dagger=\partial_r+i\sigma r^2/\Delta_r$
-and $D=\partial_r-i\sigma r^2/\Delta_r$ (Appendix~\ref{app:cert}, item~C8):
+At $a=0$ the angular operator is independent of $\sigma$ and $\Lambda$, so modes separate for every $\sigma\in\C$, with
+$\lambda_\ell=\ell(\ell+1)-4$, $\ell\ge2$. In the Kinnersley tetrad, with $D^\dagger=\partial_r+i\sigma r^2/\Delta_r$ and
+$D=\partial_r-i\sigma r^2/\Delta_r$, one has (item~C8)
 \begin{equation}\label{eq:sdsTS}
-(\Th')^4(r^4R)=\frac{1}{16r^4}\,\Delta_r^2(D^\dagger)^4\Delta_r^2R,\qquad
-D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
+(\Th')^4(r^4R)=\frac{\Delta_r^2(D^\dagger)^4\Delta_r^2R}{16r^4},\qquad D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
+\qquad\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2,
 \end{equation}
-where $\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2$, the second identity holds for every solution
-$R$ of the $s=+2$ radial equation, and $\Lambda$ drops out. Since $P\propto r^4$ at $a=0$, the first identity shows
-that $(\Th')^4(P\Psi)$ vanishes only if $\Delta_r^2(D^\dagger)^4\Delta_r^2R=0$, hence only if $\mathcal C_\ell(\sigma)=0$, that is,
-$\sigma=\sigma_\ell:=i(\lambda_\ell+2)(\lambda_\ell+4)/(12M)$.
-
-By Lemma~\ref{lem:kernel} (with $\Omega_2=0$), this can happen for a mode regular at both horizons only if
-$\sigma_\ell=iN\kappa_2^\sharp$ for some integer $N\ge1$, that is, only if $M\kappa_2^\sharp\in\{(\lambda_\ell+2)(\lambda_\ell+4)/(12N)\}$.
-The right-hand side is a countable set independent of $\Lambda$. On the other hand, $M\kappa_2^\sharp$ is a nonconstant real-analytic function of
-$\Lambda M^2\in(0,1/9)$, so this happens only for countably many values of $\Lambda M^2$.
-
-Off this set, Lemma~\ref{lem:recon} and the argument of Proposition~\ref{prop:transfer} produce, from a QNM with
-$\Im\sigma>0$, a linearized Einstein mode with $\Im>0$ and $\Psi_4\ne0$. By \cite[\S7]{HV18}, every such mode on SdS
-is pure gauge, and pure gauge modes have $\Psi_4=0$. This is a contradiction. The case $s=-2$ is the same, using the
-ingoing gauge, $\Th^4$, and the event horizon.
+the second for every solution of the $s=+2$ radial equation. As $P\propto r^4$, $(\Th')^4(P\Psi)=0$ forces
+$\mathcal C_\ell(\sigma)=0$, i.e.\ $\sigma=i(\lambda_\ell+2)(\lambda_\ell+4)/(12M)$, and by Lemma~\ref{lem:kernel} also
+$\sigma=iN\kappa_2^\sharp$ with $N\ge1$. Since $M\kappa_2^\sharp$ is a nonconstant analytic function of $\Lambda M^2$, the two
+coincide only for countably many $\Lambda M^2$. Off these, every QNM with $\Im\sigma>0$ yields, by Lemma~\ref{lem:recon},
+a linearized Einstein mode with $\Im>0$ and $\Psi_4\ne0$; but on SdS such modes are pure gauge \cite[\S7]{HV18}, so
+$\Psi_4=0$. For $s=-2$ use the ingoing gauge, $\Th^4$ and the event horizon.
 \end{proof}
 
 \subsection{Conclusion}
@@ -1113,15 +1091,13 @@ variation $\delta\mathfrak n$, together with the acceleration removed in Step 1.
 
 \emph{Step 4: axis regularity.} Write the background as $\Delta_I=(a^2-I^2)(c+\tilde\lambda I^2)$ with
 $\tilde\lambda=\Lambda/3$ and $c>0$, so the axes are the roots $I=\pm a$ and $\Delta_I'(\pm a)=\mp2a(c+\tilde\lambda a^2)$.
-Two conditions are needed.
 
 \emph{(i) Misner string.} At a simple root $I_0$ of $\Delta_I$, the Killing field that vanishes on the axis is
 $\partial_\psi+I_0^2\partial_{\tilde t}$, as one reads off from the ansatz. Under $\delta\Delta_I=2\,\delta\mathfrak n\,I$
 both roots move by the same amount: $\delta I_\pm=-2\delta\mathfrak n\,I_\pm/\Delta_I'(I_\pm)=\delta\mathfrak n/(c+\tilde\lambda a^2)$,
 since $\Delta_I'$ is odd. So the two axis generators differ by $4a\,\delta I_+\,\partial_{\tilde t}$. Because $\tilde t$ is not
-periodic on $M$, both axes are regular only if the generators coincide. For $a\ne0$ this forces $\delta\mathfrak n=0$.
-For $a=0$ this is the classical Misner-string condition on Schwarzschild--NUT--de~Sitter, with the same conclusion. The
-acceleration tangent does not move the axis generators at first order, since its $\delta\Delta_I$ is even in $I$
+periodic on $M$, both axes are regular only if the generators coincide, which forces $\delta\mathfrak n=0$ (as
+$a\ne0$). The acceleration tangent does not move the axis generators at first order, since its $\delta\Delta_I$ is even in $I$
 after the conformal rescaling.
 
 \emph{(ii) Conical regularity.} With $\delta\mathfrak n=0$, the ratio of the two conical periods along the acceleration
@@ -1130,8 +1106,7 @@ C-metric condition $P(0)=P(\pi)$ in Griffiths--Podolsk\'y form, $P=1-2\alpha M\c
 where the $\cos^2\theta$ term is even. A single period of $\varphi$ regularizes both axes only if
 $\delta\alpha_{\rm acc}=0$.
 
-The system for $(\delta\mathfrak n,\delta\alpha_{\rm acc})$ is triangular, with diagonal entries
-$4a/(c+\tilde\lambda a^2)$ and $4M$, both nonzero, so both variations vanish. The gauge vector $X$ generates the change from
+So both variations vanish. The gauge vector $X$ generates the change from
 the background to the perturbed adapted coordinates, together with the rescalings of $\xi$ and $\zeta$.
 
 \emph{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg,\partial_ag$ are the parameter derivatives in the
