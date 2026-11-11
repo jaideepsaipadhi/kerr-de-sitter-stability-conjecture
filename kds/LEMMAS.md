@@ -2579,3 +2579,8 @@ STATUS hyp:cos: S_μ ✔, S_C ✔, S_α ✔ except this pocket (float engine), S
   of chart EB, i.e. extremal r0 → r1) that is not stripped by the σ-blow-up. So the β = 0 face of EB is degenerate
   for τ ≳ 0.68. That needs a second blow-up (β, 1−τ) → 0 inside EB, or stripping the β-power by a weighted chart
   (x = 1 − σβ/4 with β = ρ^k).
+* [N] Stripping monomial powers of β (and of τ) after the EB chart substitution changes nothing (open vol
+  4.56e-4 → 4.54e-4). The degeneracy is not a monomial factor; most likely the face polynomial on {β = 0} (extremal
+  r0 = r1) vanishes along a curve in (σ, τ) near τ ≈ 0.68–1. Next: compute that face curve explicitly (the restriction
+  of the H2/H1 cores to β = 0) and blow up along it, or prove the pocket by hand via G_α (ratio ≥ 7.2) with the
+  extremal-limit expansion.

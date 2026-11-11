@@ -20,7 +20,10 @@ def tocube(f):
         elif CH=='KA': out+=int(c)*(N-X)**a*(X*V)**b_*T3**t_*N**(D-a-b_)
         else: out+=int(c)*(N-X*V)**a*(X)**b_*T3**t_*N**(D-a-b_)
     dd=out.to_dict(); sl=1 if CH.startswith('VT') else 0; k=min(int(e[sl]) for e in dd)
-    return c3.from_dict({tuple(int(e[q])-(k if q==sl else 0) for q in range(3)):c for e,c in dd.items()})
+    sh=[0,0,0]; sh[sl]=k
+    for q in range(3):
+        if q!=sl: sh[q]=min(int(e[q]) for e in dd)
+    return c3.from_dict({tuple(int(e[q])-sh[q] for q in range(3)):c for e,c in dd.items()})
 def sgnw(p):
     mn,mx,_=bern_signs(p); return 1 if (mn>=0 and mx>0) else (-1 if (mx<=0 and mn<0) else 0)
 RES2=pickle.load(open(RES,'rb'))
