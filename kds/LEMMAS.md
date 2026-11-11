@@ -2534,3 +2534,15 @@ Remaining for hyp:cos: S_α and S_β.
 * OPEN QUESTION before more covering: is the Q2 coefficient of W_α genuinely → 0 at (x, v, τ) → (1, v*, 1)? It is
   3t(t−1)b·ê²F̂λ̃ + 2.1·LQ2'·G', with both terms ≥ 0, so this requires ê → 0 AND LQ2' → 0 there. If genuine, near
   that point S_α relies on the lower-order m-terms, and a point blow-up (with algebraic v*) is needed.
+
+## 198. S_α near the edge x = τ = 1: the degenerate point is an artifact; it persists in an A-free variant
+* [N] Physically W_α/m³ at m = 1000 near (x, τ) → (1, 1), v ∈ [0.84, 0.87] is ~1e8 / 1e11 / 1e14 at ε = 1e-2 / 1e-3 /
+  1e-4, dominated by 3t(t−1)(Im et)²F. There is NO genuine zero; the chart-face zero is an ORDER-MIXING artifact
+  (the leading σ-orders of F1 and Y differ, and the dominant one's leading coefficient vanishes along a curve v*(γ),
+  v* ≈ 0.8175 at γ = 0.5).
+* A-free variant (salB): W_α ≥ 3t(t−1)(Im et)²F − 2.1(3t−B)·G. Physical margin ≥ 4.03 on the whole XT region
+  (118k points). Built (salB_build*.py), but its XT-chart covering stalls in the same band v ≈ 0.83–0.87, which
+  borders the ultracold square (v ≥ 7/8).
+* So the XT charts need either the ultracold exclusion pushed down to v ≥ 0.8 (with EA/EB covering more), or a
+  curve blow-up along v*(γ). Not done.
+STATUS of hyp:cos: S_μ ✔, S_C ✔ (float caveat), S_α: main cube ✔, VT ✔, XT/EA/EB/KA/KB open; S_β not started.
