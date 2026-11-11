@@ -24,6 +24,6 @@ for k,e in ex.items():
         else:
             F1c,F0c=reduce_b(f); Y=-(2*F0c+F1c*e2); D=e2*e2-4*e4; P=F1c*F1c*D-Y*Y
             F1a=-F0c; Ya=-(2*e4*F1c+F0c*e2); Pa=F1a*F1a*D-Ya*Ya
-            facs.append(('b',(F1c.to_dict(),Y.to_dict(),P.to_dict(),F1a.to_dict(),Ya.to_dict(),Pa.to_dict())))
+            facs.append(('b',(F1c.to_dict(),Y.to_dict(),P.to_dict(),F1a.to_dict(),Ya.to_dict(),Pa.to_dict(),f.to_dict())))
     res[k]=(sgn0,facs); print(k,[f[0] for f in facs],round(time.time()-t0,1),flush=True)
 pickle.dump(res,open('margin/sbe3_res.pkl','wb'))

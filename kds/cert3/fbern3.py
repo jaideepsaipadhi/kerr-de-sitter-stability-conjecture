@@ -1,7 +1,7 @@
 import numpy as np, flint, itertools
 from math import comb
 from fastbern import rev
-def exact_bern(p):
+def exact_bern(p,keep=False):
     ctx=p.context(); g=ctx.gens(); one=ctx.from_dict({(0,)*len(g):1})
     r=rev(p,ctx); s=r.compose(*[x+one for x in g],ctx=ctx); d=[int(z) for z in p.degrees()]
     B={}
@@ -13,7 +13,7 @@ def exact_bern(p):
     M=max(abs(x) for x in B.values())
     A=np.zeros(tuple(n+1 for n in d))
     for idx,x in B.items(): A[idx]=float(x/M)
-    return A
+    return A*float(M) if keep else A
 def split(A,ax):
     A=np.moveaxis(A,ax,0); n=A.shape[0]-1; L=[A[0]]; R=[A[-1]]; T=A.copy()
     for k in range(1,n+1):

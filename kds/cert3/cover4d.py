@@ -17,6 +17,18 @@ def prep(d):
         if w!=0: sg*=w; continue
         cores.append(q)
     return sg,cores
+def _scale(q):
+    from fastbern import rev
+    from math import comb
+    ctx=q.context(); g=ctx.gens(); one=ctx.from_dict({(0,)*len(g):1})
+    r=rev(q,ctx); s=r.compose(*[x+one for x in g],ctx=ctx); d=[int(z) for z in q.degrees()]
+    best=0
+    for ex,cc in s.to_dict().items():
+        idx=[n-int(e) for n,e in zip(d,ex)]; den=1
+        for n,i in zip(d,idx): den*=comb(n,i)
+        val=abs(flint.fmpq(int(cc),den))
+        if val>best: best=val
+    return float(best)
 CACHE=f'margin/cache4_{NAME}.pkl'
 if os.path.exists(CACHE): S,ITEMS=pickle.load(open(CACHE,'rb'))
 else:
@@ -27,12 +39,22 @@ else:
             if kind=='plain':
                 sg,cs=prep(dat); S[(k,j,'v')]=(sg,[exact_bern(q) for q in cs]); its.append(('plain',j))
             else:
-                for nm,i in (('F1',0),('Y',1),('P',2),('F1a',3),('Ya',4),('Pa',5)):
+                for nm,i in (('F1',0),('Y',1),('P',2)):
                     sg,cs=prep(dat[i]); S[(k,j,nm)]=(sg,[exact_bern(q) for q in cs])
+                raw=dat[6]; n2=max(int(e[1]) for e in raw); kmax=max(int(e[2]) for e in raw)
+                for kk in range(kmax+1):
+                    dk={(int(e[0]),n2-int(e[1]),int(e[3]),int(e[4])):int(cc) for e,cc in raw.items() if int(e[2])==kk}
+                    if dk:
+                        q=c4.from_dict(dk)
+                        from fbern3 import exact_bern as _eb
+                        import flint as _fl
+                        # recompute true scale: exact_bern normalizes by max |bern coeff|; recover via one coefficient
+                        S[(k,j,'c%d'%kk)]=(1,[exact_bern(q,True)])
                 its.append(('b',j))
         ITEMS[k]=(s0,its)
     pickle.dump((S,ITEMS),open(CACHE,'wb'))
 t0=time.time()
+BOX=[None]
 def bsg(ps,k,dep):
     s=S[k][0]
     for A in ps[k]:
@@ -48,10 +70,34 @@ def rule(ps,k,j,dep,F,Yn,Pn):
     if p>0 and f!=0: return f
     if p<0 and y!=0: return -y
     return 0
+import numpy as np, math
+def bplus(x,v):
+    r0=x; r2=1/v; r3=-(r0+1+r2); rs=[r0,1,r2,r3]
+    E2=sum(rs[i]*rs[j] for i in range(4) for j in range(i+1,4)); E4=r0*r2*r3
+    return 2*E4/(E2-math.sqrt(E2*E2-4*E4))
+def unred(ps,k,j,dep,box):
+    (xl,xh),(vl,vh)=box
+    if vl<=0: vl=1e-300
+    if xh>=1: xh=1-1e-15
+    vals=[bplus(x,v) for x in (xl,xh) for v in (vl,vh)]
+    blo=min(vals)*(1-1e-6); bhi=max(vals)*(1+1e-6)
+    # rigor of [blo,bhi] assumed via monotonic b+ (TODO certify with q-sign)
+    lo=hi=0.0; kk=0
+    while (k,j,'c%d'%kk) in S or kk<2:
+        if (k,j,'c%d'%kk) in S:
+            A=ps[(k,j,'c%d'%kk)][0]; M=np.abs(A).max(); tol=1e-13*(dep+4)*M
+            cl,ch=A.min()-tol,A.max()+tol
+            pl,ph=blo**kk,bhi**kk
+            cand=[cl*pl,cl*ph,ch*pl,ch*ph]; lo+=min(cand); hi+=max(cand)
+        kk+=1
+        if kk>40: break
+    if lo>0: return 1
+    if hi<0: return -1
+    return 0
 def bval(ps,k,j,dep):
     r=rule(ps,k,j,dep,'F1','Y','P')
     if r: return r
-    return -rule(ps,k,j,dep,'F1a','Ya','Pa')
+    return unred(ps,k,j,dep,BOX[0])
 def val(ps,k,dep):
     s0,its=ITEMS[k]; s=s0
     for kind,j in its:
@@ -83,6 +129,7 @@ while (todo or rest) and time.time()-t0<TMAX:
     while st:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
+        BOX[0]=[(idx[q]/2**lev[q],(idx[q]+1)/2**lev[q]) for q in (0,1)]
         if closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=10: rest.append((lev,idx)); continue
         kk=min(range(4),key=lambda i:lev[i])

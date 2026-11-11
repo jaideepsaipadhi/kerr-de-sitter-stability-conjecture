@@ -2695,3 +2695,14 @@ NEXT: extend the polynomial pipeline to a 5th symbol s (σ), then run the 4D flo
   (e2, e4 ~ r2²) inflates the coefficients by powers of r2. A fix must avoid reducing high powers of b at large r2:
   e.g. an interval evaluation of the UNREDUCED f(b) at an enclosure of b₊ = 2e4/(e2 − √D) (bounded as r2 → ∞), or a
   Kerr chart where b is expanded around its Λ = 0 value.
+
+## 209. S_β: unreduced interval evaluation fixes the Kerr face; new stall at σ → 0 near the gate boundary
+* [N] The UNREDUCED b-polynomial is well-conditioned at b₊ (rel f(b₊)/max term ≈ 1.5 at v = 1e-2, 0.63 at v = 1e-4).
+  cover4d.py now falls back to interval evaluation Σ_k [c_k]·[b₊]^k with Bernstein ranges of the c_k (true scale
+  kept: fbern3.exact_bern(·, keep=True)) and a b₊ enclosure from the box corners via b₊ = 2e4/(e2 − √D).
+  CAVEAT: the b₊ enclosure assumes b₊ is monotone in (r0, r2) on boxes. It must be certified (sign of
+  q(b) = b² − e2 b + e4 at b_lo, b_hi via Bernstein) before this counts as rigorous.
+* Result: the Kerr face closes. Open vol 0.087 → 0.032 in 4 runs. The new stall is at σ → 0 (s → 0, the start of
+  the interval), x ≈ 0.7–0.9, τ ≈ 0.9–1, where R2 = −λ̃L(m = 2)/m² is undecided (the gate boundary for m = 2) and
+  W1/W2's main b-factor is undecided. At s = 0, W1 = Γa² with Γ ∝ U0U3 = A-part, so if A → 0 there as K → 0, both sides
+  of S_β vanish together. Needs a check of whether A and K vanish simultaneously at the gate boundary on τ → 1.
