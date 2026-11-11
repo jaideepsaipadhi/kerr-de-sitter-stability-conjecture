@@ -2947,3 +2947,19 @@ SOFT SPOTS (not wrong, but terse; a human referee may ask for more):
   the rigorous s = −2 threshold transform.
 * Paper: Prop transform threshold case rewritten; Lemma lem:TSthr added; new appendix item C10; the status caveat
   removed.
+
+## 226. Independent referee pass (agent, Nov 11) and fixes
+* FIXED, serious: s = +2 at σ = mΩ3 (κ3 = 0 ⇒ ν = 1 ∈ Z≥0, so the Pochhammer transform vanishes). Lemma lem:TSthr is
+  generalized to every real σ with κ2 ≠ 0: (D†)⁴ preserves (r−r1)^{−κ1}C^∞, so the image is outgoing for s = −2.
+  The transform's hypotheses are now: σ ≠ 0 or am ≠ 0; and for s = +2, κ1κ3 ≠ 0.
+* FIXED: the window identity. Correct form:
+  w1 − w2 = 2a(r2−r1)(r0−r3)/[(2a² − r2r3 − r0r1)(2a² − r1r3 − r0r2)] (sympy).
+* FIXED: zero frequency with a = 0, m ≠ 0; the Step 3 normalization (Im e1 = 2Ξ m f1); the missing 1/q1² in Step 2;
+  the definition of V; Theorem B(1) for generalized modes; the stationary statement X = X0 + t*K; axis gluing via Killing
+  transport of X (source k smooth); the Heun gauge factor; the explicit rounding constant 1.01; the meaning of s in §4.
+* Closed with derivations and citations: Lemma xi (Killing spinor κ = φ o ι, GHP form, divergence is Killing for
+  Ric = Λg; Hughston–Sommers 1973, Aksteiner–Andersson 2013); Lemma zeta (ζ = K·ξ; nm component derived:
+  ðρ' = 2τρ' from reality); stationary Step 2 (all inner products computed: Carter form); Step 4(ii) (Griffiths–Podolský
+  P(θ), ratio 1 + 4Mα/(1−α)); Fredholm threshold for the spin-weighted operator (Vasy 2013); SdS conjugation (at a = 0,
+  n and γ are real, so Th' commutes with conjugation).
+* NOT closable by me: public archival of the certificate code (the user's decision).

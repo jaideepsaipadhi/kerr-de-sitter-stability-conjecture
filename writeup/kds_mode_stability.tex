@@ -718,8 +718,11 @@ modes, together with Lemma~\ref{lem:bc}.
 Fix $m\in\Z$, and let $P_b(\sigma)$ be the spectral family of this operator on $\ker(\partial_{\varphi_*}-im)$, at
 parameters $b=(\Lambda,M,a)$. The dynamical hypotheses of \cite[\S5.1]{HV18} concern only the principal symbol $G$
 (radial sets at the horizons, and the global null-bicharacteristic flow). They were verified in the full
-subextremal range by Petersen--Vasy \cite{PV25,PV24}; see \cite[Remark~2.12]{HPV25}. The subprincipal part enters
-only through the threshold regularity at the radial sets. The trapping hypothesis of \cite[\S5.1]{HV18} is needed
+subextremal range by Petersen--Vasy \cite{PV25,PV24}; see \cite[Remark~2.12]{HPV25}. The Teukolsky operator acts on sections of a line bundle with scalar principal
+symbol, which is the setting of \cite{Vas13,HV18}. Its subprincipal part enters only through the threshold regularity
+at the radial sets: Fredholm estimates hold on $H^{\mathsf s}$ for $\mathsf s>\mathsf s_0+\beta\Im\sigma$, with $\mathsf s_0,\beta$
+depending on the subprincipal symbol there (hence on $s$). Taking $\mathsf s$ large handles any strip $\Im\sigma>-c$, and
+the kernel then consists of smooth, i.e.\ outgoing, modes. The trapping hypothesis of \cite[\S5.1]{HV18} is needed
 only for high-energy estimates near the real axis, not for the Fredholm property \cite[Theorem~5.4 and the remark
 in its proof]{HV18}. We therefore have:
 \begin{enumerate}[label=(F\arabic*)]
@@ -878,7 +881,9 @@ $D=\partial_r-i\sigma r^2/\Delta_r$, one has (item~C8)
 (\Th')^4(r^4R)=\frac{\Delta_r^2(D^\dagger)^4\Delta_r^2R}{16r^4},\qquad D^4\Delta_r^2(D^\dagger)^4\Delta_r^2R=\mathcal C_\ell(\sigma)R,
 \qquad\mathcal C_\ell(\sigma)=[(\lambda_\ell+2)(\lambda_\ell+4)]^2+144M^2\sigma^2,
 \end{equation}
-the second for every solution of the $s=+2$ radial equation. As $P\propto r^4$, $(\Th')^4(P\Psi)=0$ forces
+the second for every solution of the $s=+2$ radial equation. At $a=0$ the Kinnersley vector $n$ is real and $\gamma$ is real, so on a quantity of type $(p,q)$
+$\Th'=n-(p+q)\gamma$ commutes with complex conjugation. As $P\propto r^4$ is real,
+$(\Th')^4(\bar P\bar\Psi)=\overline{(\Th')^4(P\Psi)}$, and it suffices to consider $(\Th')^4(P\Psi)$. Now $(\Th')^4(P\Psi)=0$ forces
 $\mathcal C_\ell(\sigma)=0$, i.e.\ $\sigma=i(\lambda_\ell+2)(\lambda_\ell+4)/(12M)$, and by Lemma~\ref{lem:kernel} also
 $\sigma=iN\kappa_2^\sharp$ with $N\ge1$. Since $M\kappa_2^\sharp$ is a nonconstant analytic function of $\Lambda M^2$, the two
 coincide only for countably many $\Lambda M^2$. Off these, every QNM with $\Im\sigma>0$ yields, by Lemma~\ref{lem:recon},
@@ -970,9 +975,17 @@ A=\phi\rho,\quad B=-\phi\rho',\quad C=\phi\tau,\quad D=-\phi\tau',\qquad \xi=Bl+
 \]
 
 \begin{lemma}\label{lem:xi}
-The ten Killing equations for $\xi$ are algebraic consequences of the identities above. On KdS,
-$\xi=-\Xi\,\partial_t$.
+$\xi$ is a Killing field, and on KdS $\xi=-\Xi\,\partial_t$. The proof uses only the identities above, so the
+statement holds to first order whenever they do.
 \end{lemma}
+\begin{proof}
+The Bianchi identities $\Th\Psi_2=3\rho\Psi_2$, $\eth\Psi_2=3\tau\Psi_2$ and their primes give $\Th\phi=-\rho\phi$,
+$\eth\phi=-\tau\phi$, $\Th'\phi=-\rho'\phi$, $\eth'\phi=-\tau'\phi$. Together with $\kappa=\sigma=\kappa'=\sigma'=0$, these are
+the GHP components of the Killing spinor equation $\nabla_{A'(A}\kappa_{BC)}=0$ for $\kappa_{AB}=\phi\,o_{(A}\iota_{B)}$
+\cite{AA13}. Expanding $\nabla^B{}_{A'}\kappa_{AB}$ in the tetrad gives $\xi$ up to a constant factor. The divergence of a
+Killing spinor is Killing whenever the trace-free Ricci spinor vanishes \cite{HS73,AA13}, in particular for
+$\mathrm{Ric}=\Lambda g$. The value on KdS is a direct computation (item~C6).
+\end{proof}
 
 Linearizing Lemma~\ref{lem:xi} gives $\cL_\xi h+\cL_{\delta\xi}g=0$, where $\delta\xi=\delta\xi[h]$.
 
@@ -1016,7 +1029,9 @@ Define
 To first order, $\zeta$ is Killing. On KdS, $\zeta=-\Xi(a^2\partial_t+a\partial_\varphi)$.
 \end{lemma}
 \begin{proof}
-The $ll$, $nn$, $mm$ and $\bar m\bar m$ components are immediate from those of $\xi$.
+Structurally, reality makes $\kappa_{AB}$ define a Killing--Yano tensor $Y$, $K=Y\cdot Y=I^2(l\otimes n+n\otimes l)+R^2(m\otimes\bar m+\bar m\otimes m)$
+is a Killing tensor, and $\zeta=K\cdot\xi$ \cite{HS73,AA13}. We verify the Killing equation directly. The $ll$, $nn$, $mm$ and
+$\bar m\bar m$ components are $I^2$ resp.\ $R^2$ times those of $\xi$, because $\Th I=\Th'I=\eth R=\eth'R=0$.
 The $ln$ component equals $-|\phi|^2\phi(\tau\bar\tau-\tau'\bar\tau')=0$, since by reality
 $\tau\bar\tau=\tau'\bar\tau'$.
 
@@ -1024,8 +1039,11 @@ The $m\bar m$ component equals $|\phi|^2\phi(\rho\bar\rho'-\rho'\bar\rho)=0$, ag
 
 The $lm$ component equals $2AC\phi+|\phi|^2(\eth A+\bar\tau'A)=0$, using $\eth A=-\phi\bar\rho\tau$.
 
-The $nm$ component equals $-2BC\bar\phi+|\phi|^2(\eth B+\tau B)$. Differentiating the first-order reality
-relation $\phi\rho'=\bar\phi\bar\rho'$ along $m$ gives $\eth B+\tau B=2\tau B$, and the sum vanishes.
+The $nm$ component equals $-2BC\bar\phi+|\phi|^2(\eth B+\tau B)$. Apply $\eth$ to the reality relation
+$\phi\rho'=\bar\phi\bar\rho'$. The right side gives $\eth(\bar\phi\bar\rho')=-\bar\tau'\bar\phi\bar\rho'+\bar\phi(\bar\rho'-\rho')\bar\tau'=-\bar\phi\bar\tau'\rho'=\phi\tau\rho'$,
+using $\eth'\phi=-\tau'\phi$, $\eth'\rho'=(\rho'-\bar\rho')\tau'$ and $\phi\tau=-\bar\phi\bar\tau'$. The left side is
+$-\tau\phi\rho'+\phi\,\eth\rho'$. Hence $\eth\rho'=2\tau\rho'$, so $\eth B=\tau B$ and the $nm$ component is
+$-2BC\bar\phi+2|\phi|^2\tau B=0$, as $|\phi|^2\tau=\bar\phi C$.
 The remaining components are complex conjugates. The value on KdS is an exact computation (item~C6).
 \end{proof}
 
@@ -1077,12 +1095,21 @@ $\phi$ removes $A'$. Subtracting a multiple of the tangent to the Pleba\'nski--D
 the acceleration removes $B'$: this is the only Pleba\'nski--Demia\'nski tangent that makes $\xi$ complex, and its
 $J$ has nonzero $\partial_\varphi$-part (exact nonlinear check, item~C6). After this, reality holds, and $\xi$ and
 $\zeta$ are first-order Killing fields. They commute, since $\delta\xi$ and $\delta\zeta$ are background Killing
-fields.
+fields. Steps 1--3 are local and are carried out away from the axis; regularity of $h$ at the axis enters only in
+Step 4, which shows that the subtracted multiple is zero.
 
-\emph{Step 2: Carter's ansatz.} One has $\nabla R\perp\nabla I$. Put $\Delta_R:=-2AB|\phi|^2$ and
-$\Delta_I:=-2CD|\phi|^2$. Then $\Delta_R$ depends on $R$ alone and $\Delta_I$ on $I$ alone, since
-$\eth(AB|\phi|^2)=0$ by reality and $\xi(\Delta_R)=0$. All the inner products of $\xi$, $\zeta$, $\nabla R$ and $\nabla I$ are
-functions of $(R,I,\Delta_R,\Delta_I)$. In coordinates adapted to $(\xi,\zeta,R,I)$, the perturbed metric is therefore,
+\emph{Step 2: Carter's ansatz.} Write $\nabla f=n(f)l+l(f)n-\bar m(f)m-m(f)\bar m$ and $S=|\phi|^2=R^2+I^2$. By the
+relations for $R,I$ above, $\nabla R=Bl-An$ and $\nabla I$ lies in the span of $m,\bar m$. Put $\Delta_R:=-2AB\,S$ and
+$\Delta_I:=-2CD\,S$. Then, with $l\cdot n=1$ and $m\cdot\bar m=-1$,
+\[
+|\nabla R|^2=\frac{\Delta_R}{S},\quad|\nabla I|^2=\frac{\Delta_I}{S},\quad\nabla R\cdot\nabla I=0,\quad
+\xi\cdot\xi=\frac{\Delta_I-\Delta_R}{S},\quad\xi\cdot\zeta=-\frac{I^2\Delta_R+R^2\Delta_I}{S},\quad
+\zeta\cdot\zeta=\frac{R^4\Delta_I-I^4\Delta_R}{S},
+\]
+and $\xi,\zeta$ are orthogonal to $\nabla R,\nabla I$ (as $\xi(R)=\xi(I)=\zeta(R)=\zeta(I)=0$). Moreover $\Delta_R$ depends on
+$R$ alone: $\eth(AB\,S)=0$ by reality, and the $(l,n)$-parts of $\xi$ and $\zeta$ are both proportional to $Bl+An$, so
+$\xi(\Delta_R)=0$ forces $d\Delta_R\parallel Bl-An\parallel dR$. Likewise $\Delta_I$ depends on $I$ alone. In coordinates
+$(\tilde t,\psi,R,I)$ adapted to the commuting fields $\xi=\partial_{\tilde t}$, $\zeta=\partial_\psi$, these inner products give,
 to first order, Carter's separable ansatz
 \[
 \frac{S}{\Delta_R}dR^2+\frac{S}{\Delta_I}dI^2+\frac{\Delta_I(d\tilde t+R^2d\psi)^2-\Delta_R(d\tilde t-I^2d\psi)^2}{S},\qquad S=R^2+I^2.
@@ -1107,11 +1134,11 @@ periodic on $M$, both axes are regular only if the generators coincide, which fo
 $a\ne0$). The acceleration tangent does not move the axis generators at first order, since its $\delta\Delta_I$ is even in $I$
 after the conformal rescaling.
 
-\emph{(ii) Conical regularity.} With $\delta\mathfrak n=0$, the ratio of the two conical periods along the acceleration
-tangent is $1+4M\,\delta\alpha_{\rm acc}+O(\delta^2)$. This is the first-order expansion of the
-C-metric condition $P(0)=P(\pi)$ in Griffiths--Podolsk\'y form, $P=1-2\alpha M\cos\theta+O(a^2,\Lambda a^2)\cos^2\theta$,
-where the $\cos^2\theta$ term is even. A single period of $\varphi$ regularizes both axes only if
-$\delta\alpha_{\rm acc}=0$.
+\emph{(ii) Conical regularity.} With $\delta\mathfrak n=0$, the remaining direction is the acceleration $\alpha_{\rm acc}$. In
+the form of \cite{GP06}, the angular function of the accelerating Kerr--de Sitter metric is
+$P(\theta)=1-2\alpha_{\rm acc}M\cos\theta+c_2\cos^2\theta$ with $c_2=-\Lambda a^2/3+O(\alpha_{\rm acc}^2)$, and the axes
+$\theta=0,\pi$ are regular for one period of $\varphi$ only if $P(0)=P(\pi)$. Since
+$P(\pi)/P(0)=1+4M\alpha_{\rm acc}/(1+c_2)+O(\alpha_{\rm acc}^2)$ and $1+c_2=1-\alpha>0$, this forces $\delta\alpha_{\rm acc}=0$.
 
 So both variations vanish. The gauge vector $X$ generates the change from
 the background to the perturbed adapted coordinates, together with the rescalings of $\xi$ and $\zeta$.
@@ -1243,6 +1270,14 @@ equations, \emph{Prog. Theor. Phys.} \textbf{100} (1998), 491--505.
 \emph{J. Math. Anal. Appl.} \textbf{342} (2008), 52--69.
 \bibitem{Wal78} R.~M.~Wald, Construction of solutions of gravitational, electromagnetic, or other perturbation
 equations from solutions of decoupled equations, \emph{Phys. Rev. Lett.} \textbf{41} (1978), 203--206.
+\bibitem{AA13} S.~Aksteiner and L.~Andersson, Charges for linearized gravity, \emph{Class. Quantum Grav.} \textbf{30}
+(2013), 155016.
+\bibitem{GP06} J.~B.~Griffiths and J.~Podolsk\'y, A new look at the Pleba\'nski--Demia\'nski family of solutions,
+\emph{Int. J. Mod. Phys. D} \textbf{15} (2006), 335--369.
+\bibitem{HS73} L.~P.~Hughston and P.~Sommers, The symmetries of Kerr black holes, \emph{Comm. Math. Phys.} \textbf{33}
+(1973), 129--133.
+\bibitem{Vas13} A.~Vasy, Microlocal analysis of asymptotically hyperbolic and Kerr--de Sitter spaces, \emph{Invent.
+Math.} \textbf{194} (2013), 381--513.
 \end{thebibliography}
 
 \end{document}
