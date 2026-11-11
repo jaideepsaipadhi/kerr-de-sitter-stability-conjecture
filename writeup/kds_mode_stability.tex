@@ -23,7 +23,7 @@
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{Re}}
 
-\title[Gravitational mode stability of Kerr--de Sitter]{Mode stability for gravitational perturbations of subextremal Kerr--de Sitter black holes}
+\title[Stability of Kerr--de Sitter black holes]{Gravitational mode stability and the nonlinear stability of Kerr--de Sitter black holes in the full subextremal range}
 \author{Jaideep Sai Padhi}
 \address{Purdue University, West Lafayette, IN, USA}
 \email{jpadhi@purdue.edu}
@@ -32,12 +32,12 @@
 \begin{document}
 
 \begin{abstract}
-A Kerr--de Sitter black hole is mode stable if no linear perturbation grows exponentially or oscillates without decay.
-Hintz proved this for scalar waves in the full subextremal range. We prove it for the Teukolsky equations of spin
-$\pm2$, and deduce that every generalized mode of the ungauged linearized Einstein equation with $\Im\sigma\ge0$ is
-pure gauge, up to a linearized Kerr--de Sitter metric when $\sigma=0$. This is the hypothesis under which Hintz,
-Petersen and Vasy proved the nonlinear stability of Kerr--de Sitter in the full subextremal range. Part of the proof
-is computer-assisted.
+We prove that subextremal Kerr--de Sitter black holes are nonlinearly stable as solutions of the Einstein vacuum
+equations with positive cosmological constant, in the full subextremal range. Hintz, Petersen and Vasy reduced this to
+mode stability of the ungauged linearized Einstein equation; we prove that statement. The main step is mode stability
+of the Teukolsky equations of spin $\pm2$: there are no nontrivial outgoing modes with $\Im\sigma\ge0$. From it we deduce
+that every generalized mode of the linearized Einstein equation with $\Im\sigma\ge0$ is pure gauge, up to a linearized
+Kerr--de Sitter metric when $\sigma=0$. Part of the proof is computer-assisted.
 \end{abstract}
 
 \maketitle
@@ -69,7 +69,8 @@ $e^{-i\sigma t_*}v$ with $v$ independent of $t_*$ and smooth on $[r_1-\delta,r_2
 Hintz and Vasy proved in 2018 that the KdS family is nonlinearly stable for small $a/M$ \cite{HV18}. Hintz, Petersen
 and Vasy extended this to the full subextremal range, conditional on mode stability of the ungauged linearized
 Einstein equation \cite[Assumption~1.2]{HPV25}. Hintz then proved mode stability for scalar waves in the same range
-\cite{Hin26}, and left spin $\pm2$ open. We settle that case.
+\cite{Hin26}, and left spin $\pm2$ open. We settle that case, and with it the stability of Kerr--de Sitter
+black holes in the full subextremal range.
 
 \begin{theorem}[Teukolsky mode stability]\label{thm:A}
 On every subextremal KdS spacetime, the Teukolsky equations of spin $s=+2$ and $s=-2$ have no nontrivial outgoing
@@ -88,20 +89,26 @@ smooth.
 \end{theorem}
 
 For $a=0$, Theorem~\ref{thm:B} is \cite[\S7]{HV18}. Theorem~\ref{thm:B} is \cite[Assumption~1.2]{HPV25} (see
-Remark~\ref{rem:T}), so \cite[Theorem~1.4]{HPV25} gives:
+Remark~\ref{rem:T}). Combined with \cite[Theorem~1.4]{HPV25}, it gives our main result:
 
-\begin{corollary}
-Subextremal Kerr--de Sitter black holes are nonlinearly stable as solutions of the Einstein vacuum equations with
-positive cosmological constant, in the sense of \cite[Theorem~1.4]{HPV25}.
-\end{corollary}
+\begin{theorem}[Stability of Kerr--de Sitter]\label{thm:C}
+Every subextremal Kerr--de Sitter black hole is nonlinearly stable as a solution of the Einstein vacuum equations with
+positive cosmological constant: initial data close to Kerr--de Sitter data evolve into a spacetime converging
+exponentially to a nearby member of the Kerr--de Sitter family, in the sense of \cite[Theorem~1.4]{HPV25}.
+\end{theorem}
+\begin{proof}
+By Theorem~\ref{thm:B} and Remark~\ref{rem:T}, \cite[Assumption~1.2]{HPV25} holds for every subextremal Kerr--de Sitter
+metric; \cite[Theorem~1.4]{HPV25} then applies.
+\end{proof}
+This settles the black hole stability problem for $\Lambda>0$ in the full subextremal range; the case of small $a/M$
+is \cite{HV18}.
 
 \begin{remark}[Choice of $T$]\label{rem:T}
 \cite{HPV25} use $T'=T+c\,\partial_{\varphi_*}$ for some $c\in\R$. Since $\partial_{\varphi_*}$ commutes with $T$, $T'$ and
 $D_g\mathrm{Ric}-\Lambda$, a generalized $T'$-mode $h$ at $\sigma'$ can be put in the gauge of \cite[(23)]{HPV25}
 \cite[\S10]{HV18} and then lies in a finite-dimensional, $\partial_{\varphi_*}$-invariant space of resonant states. So
 $h=\sum_{|m|\le m_0}h_m$ with each $h_m$ a generalized $T$-mode at $\sigma'-cm$, which has the same imaginary part.
-Theorem~\ref{thm:B} applies to each $h_m$ (for generalized modes with $\sigma\ne0$, via the reduction in
-\cite[Theorem~2.7]{HPV25}); if $\sigma'=cm$ with $m\ne0$, the linearized KdS part vanishes by axisymmetry.
+Theorem~\ref{thm:B} applies to each $h_m$; if $\sigma'=cm$ with $m\ne0$, the linearized KdS part vanishes by axisymmetry.
 \end{remark}
 
 \subsection{Outline}
