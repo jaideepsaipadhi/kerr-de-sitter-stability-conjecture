@@ -2546,3 +2546,13 @@ Remaining for hyp:cos: S_α and S_β.
 * So the XT charts need either the ultracold exclusion pushed down to v ≥ 0.8 (with EA/EB covering more), or a
   curve blow-up along v*(γ). Not done.
 STATUS of hyp:cos: S_μ ✔, S_C ✔ (float caveat), S_α: main cube ✔, VT ✔, XT/EA/EB/KA/KB open; S_β not started.
+
+## 199. S_α: ultracold region pushed to [3/4, 1]²; everything closes except the ultracold charts
+* XT charts (x ≥ 7/8, τ ≥ 7/8) with v ∈ (1/8, 3/4): CLOSED (the v ≤ 1/8 part is covered by VT, the v ≥ 3/4 part by EA/EB).
+* KA/KB (extremal-Kerr strip x ≥ 7/8, v ≤ 1/8): closed in 1 box each. VT: closed.
+* EA/EB at scale 1/4 (the square [3/4, 1]²): open vol 0.030 / 0.044, stuck at small σ (the ultracold face), β ∈ [0.88, 1].
+* Sufficient forms that would avoid the face degeneracy FAIL on [3/4, 1]²:
+   - via S_μ and |u| ≤ F: 3(t−1)F² ≥ 8.4t(3t−B)(4t−2) has min 1.7e-3 (Nariai side, v → 1);
+   - A-free W_α has min ~1e-10 (τ → 0).
+  So the corner needs the exact W_α plus sub-blow-ups of the ultracold face, as for S_C (items 183–194).
+STATUS hyp:cos: S_μ ✔; S_C ✔; S_α ✔ outside the ultracold square [3/4, 1]² (all float-engine); S_β not started.

@@ -4,7 +4,7 @@ from fbern3 import exact_bern, split, fsign
 RES,TG,NAME,TMAX,DMAX=sys.argv[1],sys.argv[2].split(','),sys.argv[3],float(sys.argv[4]),int(sys.argv[5])
 CH=sys.argv[6] if len(sys.argv)>6 else ''
 ctx4=flint.fmpz_mpoly_ctx.get(('r0','r2','b','tau'),'lex'); c3=flint.fmpz_mpoly_ctx.get(('x','v','t'),'lex')
-X,V,T3=c3.gens(); one3=c3.from_dict({(0,0,0):1}); N=8
+X,V,T3=c3.gens(); one3=c3.from_dict({(0,0,0):1}); N=4 if CH in ('EA','EB') else 8
 def tocube(f):
     d=f.to_dict(); n2=max(int(e[1]) for e in d); q=c3.from_dict({(int(e[0]),n2-int(e[1]),int(e[3])):int(c) for e,c in d.items()})
     if not CH: return q
@@ -77,7 +77,7 @@ def descend(lev,idx):
     return cur
 PK=f'margin/c3f_{NAME}{CH}.json'
 todo=[tuple(map(tuple,z)) for z in json.load(open(PK))] if os.path.exists(PK) else [((0,0,0),(0,0,0))]
-todo=[z for z in todo if not (CH in ('XT1','XT2') and z[1][1]*8>=7*2**z[0][1])]
+todo=[z for z in todo if not (CH in ('XT1','XT2') and (z[1][1]*4>=3*2**z[0][1] or (z[1][1]+1)*8<=2**z[0][1]))]
 todo=[z for z in todo if CH or not ((z[1][0]*8>=7*2**z[0][0] and z[1][2]*8>=7*2**z[0][2]) or ((z[1][1]+1)*8<=2**z[0][1] and z[1][2]*8>=7*2**z[0][2]) or all(z[1][k]*8>=7*2**z[0][k] for k in (0,1)) or (z[1][0]*8>=7*2**z[0][0] and (z[1][1]+1)*8<=2**z[0][1]))]
 todo.sort(key=lambda z:-sum(z[0])); nc=0; rest=[]
 while (todo or rest) and time.time()-t0<TMAX:
@@ -89,7 +89,7 @@ while (todo or rest) and time.time()-t0<TMAX:
     while st:
         if time.time()-t0>TMAX: rest+=[(l,i) for _,l,i in st]; break
         ps,lev,idx=st.pop()
-        if (CH in ('XT1','XT2') and idx[1]*8>=7*2**lev[1]) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
+        if (CH in ('XT1','XT2') and (idx[1]*4>=3*2**lev[1] or (idx[1]+1)*8<=2**lev[1])) or (not CH and ((idx[0]*8>=7*2**lev[0] and idx[2]*8>=7*2**lev[2]) or ((idx[1]+1)*8<=2**lev[1] and idx[2]*8>=7*2**lev[2]) or all(idx[k]*8>=7*2**lev[k] for k in (0,1)) or (idx[0]*8>=7*2**lev[0] and (idx[1]+1)*8<=2**lev[1]))) or closed(ps,sum(lev)): nc+=1; continue
         if sum(lev)>=DMAX or sum(lev)-base>=9: rest.append((lev,idx)); continue
         kk=min(range(3),key=lambda i:lev[i])
         ch=[{},{}]
