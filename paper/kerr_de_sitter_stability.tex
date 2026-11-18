@@ -773,14 +773,39 @@ $\mathfrak t_0=6z_0^3(z_0-t)^2x_0^2>0$ and $\mathfrak t_1=6z_0^2(z_0-t)x_0^2(3z_
 
 $\mathfrak t_6=z_0N|_{z=1}=-z_0(t-1)^2x_0^2(p-1)<0$ in R3, by an exact factorization.
 
-For $k=3,4,5$, $\mathfrak t_k$ is affine in $(A,\beta)$ with strictly negative coefficients, and $\mathfrak t_{k-1}$ is affine with
-nonpositive coefficients. In R3 the admissible set is the quadrant $\{A\ge a_0,\beta\ge0\}$ with
-$a_0=\max(0,z_0((t-1)/(2x_0^2)-3))$, since the line $p=1$ passes through its corner. So $\{\mathfrak t_k\ge0\}$ meets the quadrant in
-a triangle at the corner, and $\mathfrak t_{k-1}>0$ on it if two explicit combinations $g_1,g_2$ of corner values and
-coefficients are positive. These are rational functions of $(t,z_0)$; we certify $g_1,g_2>0$ unconditionally for
-$k-1=2,3,4$ (Appendix~\ref{app:cert}, item~C3).
-Hence $\mathfrak t_k\le0\Rightarrow \mathfrak t_{k+1}<0$ for $k=2,\dots,5$, so the sign pattern changes exactly once. By Descartes' rule,
-$N$ has exactly one root in $(0,x_0)$.
+It remains to show that, for $k=3,4,5$,
+\begin{equation}\label{eq:implication}
+\mathfrak t_{k-1}\le0\ \Longrightarrow\ \mathfrak t_k<0 .
+\end{equation}
+Granting this, the sequence $\mathfrak t_0,\dots,\mathfrak t_6$ starts with two positive terms, ends with a negative one,
+and once a term is $\le0$ all later terms are negative. So it has exactly one sign change, and by Descartes' rule the
+sextic has exactly one positive root. Since $\varsigma=x_0v/(1+v)$ maps $(0,\infty)$ onto $(0,x_0)$ and the cleared
+denominator is positive, $N$ has exactly one zero in $(0,x_0)$, and it is simple.
+
+To prove \eqref{eq:implication}, first describe the region R3 in the variables $(A,\beta)$. Since $L(1)=Ax_0/z_0+3x_0+\beta$,
+we have $p=2x_0(Ax_0/z_0+3x_0+\beta)/(t-1)$. The second condition defining R2 reads $A<a_0':=z_0\big((t-1)/(2x_0^2)-3\big)$, and
+at $\beta=0$ the condition $p\le1$ reads $A\le a_0'$ as well. Hence, with $a_0=\max(0,a_0')$, R3 is contained in the
+quadrant
+\[
+\mathcal K=\{(A,\beta):A\ge a_0,\ \beta\ge0\}.
+\]
+Fix $k\in\{3,4,5\}$ and $(t,z_0)$. An exact expansion shows that $\mathfrak t_k$ is affine in $(A,\beta)$ with both
+coefficients strictly negative, and $\mathfrak t_{k-1}$ is affine with both coefficients $\le0$. If
+$\mathfrak t_k(a_0,0)<0$, then $\mathfrak t_k<0$ on all of $\mathcal K$ and there is nothing to prove. Otherwise
+$\{\mathfrak t_k\ge0\}\cap\mathcal K$ is the closed triangle with vertices
+\[
+(a_0,0),\qquad (a_0+\mathfrak t_k(a_0,0)/|\partial_A\mathfrak t_k|,\,0),\qquad (a_0,\,\mathfrak t_k(a_0,0)/|\partial_\beta\mathfrak t_k|).
+\]
+An affine function is positive on a triangle if it is positive at the vertices. Since $\mathfrak t_{k-1}$ does not
+increase in $A$ or $\beta$, its value at the corner $(a_0,0)$ is at least its values at the other two vertices. So
+$\mathfrak t_{k-1}>0$ on the triangle, which is the contrapositive of \eqref{eq:implication}, follows from
+\[
+g_1:=\mathfrak t_{k-1}\big(a_0+\mathfrak t_k(a_0,0)/|\partial_A\mathfrak t_k|,\,0\big)>0,\qquad
+g_2:=\mathfrak t_{k-1}\big(a_0,\,\mathfrak t_k(a_0,0)/|\partial_\beta\mathfrak t_k|\big)>0
+\]
+whenever $\mathfrak t_k(a_0,0)\ge0$. These are rational functions of $(t,z_0)$ alone. We certify $g_1,g_2>0$ on the
+whole range $t>z_0>1$, without using the side condition, for $k=3,4,5$ and in both cases $a_0=0$ and $a_0=a_0'$
+(Appendix~\ref{app:cert}, item~C3).
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:R3}]
@@ -813,10 +838,27 @@ $\hat w>k_-=2\mu \varsigma|L'|/k_+$, which in turn follows from
 \begin{equation}\label{eq:bprime}
 \hat wL(z)>2\mu(z)|L'(z)|\qquad(z\in[\hat z,z_0)).
 \end{equation}
-To prove \eqref{eq:bprime}, note that $\mathcal G:=\hat wL-2\mu|L'|$ is affine and increasing in $B$. At the true value
-$B=B_*(\hat \varsigma)$ (the root condition $N(\hat \varsigma)=0$), \eqref{eq:margin} gives $B_*\ge B_m(A):=3z_0-A/(2z_0)+2t$. Since
-$N$ is decreasing in $B$, this is the condition $g_N:=N(\hat \varsigma;A,B_m)\ge0$, and
-$\mathcal G(B_*)=\mathcal G(B_m)+\hat w\,g_N/|\partial_BN|$. Hence it suffices to prove: for $t>z_0>1$, $A\ge0$, $\hat \varsigma\in(0,x_0)$
+To prove \eqref{eq:bprime} we eliminate $B$, which is the one parameter not under direct control. Fix
+$(t,z_0,A)$, the point $\hat\varsigma$ and $z\in[\hat z,z_0)$, and regard everything as a function of $B$. The quantity
+$\hat w=\hat H/\hat\varsigma$ does not involve $B$, because $H$ involves only $\mu$. Since $L'=-A/z^2-3$ does not involve
+$B$ and $\partial_BL=1$, the function
+\[
+\mathcal G(B):=\hat wL(z)-2\mu(z)|L'(z)|
+\]
+is affine in $B$ with slope $\hat w>0$. The sextic $N$ is also affine in $B$, and an exact computation from
+\eqref{eq:N} gives
+\[
+\partial_BN(\varsigma)=-2\varsigma^2H(z_0-\varsigma)<0
+\]
+by Lemma~\ref{lem:H}. The true value $B_*$ of $B$ is the one for which $N(\hat\varsigma;A,B_*)=0$. The margin
+\eqref{eq:margin} says exactly that $B_*\ge B_m(A):=3z_0-A/(2z_0)+2t$. Put $g_N:=N(\hat\varsigma;A,B_m)$. Because $N$ is
+affine and decreasing in $B$,
+\[
+g_N=|\partial_BN|\,(B_*-B_m)\ge0,\qquad\text{and}\qquad
+\mathcal G(B_*)=\mathcal G(B_m)+\hat w\,(B_*-B_m)=\mathcal G(B_m)+\hat w\,\frac{g_N}{|\partial_BN|}\ge\mathcal G(B_m).
+\]
+So it is enough to show that $\mathcal G(B_m)>0$ whenever $g_N\ge0$. This no longer involves $B_*$. Precisely, it
+suffices to prove: for $t>z_0>1$, $A\ge0$, $\hat \varsigma\in(0,x_0)$
 and $z\in[z_0-\hat \varsigma,z_0)$,
 \[
 N(\hat \varsigma;A,B_m(A))\ge0\ \Longrightarrow\ \mathcal G(B_m)>0 .
@@ -937,12 +979,41 @@ $c_0\neq0$; its value depends on normalizations and plays no role, only $c_0\ne0
 
 \begin{proof}
 From $\mathcal S'\mathcal E=\mathcal O'\mathcal T'$ and $\mathcal E^\dagger=\mathcal E$ we get
-$\mathcal E\mathcal S'^\dagger=\mathcal T'^\dagger\mathcal O'^\dagger$, and $\mathcal O'^\dagger(\mathcal Q\Psi)=\mathcal Q\mathcal O\Psi=0$. Next,
-$\mathcal S'$ involves only $T_{nn},T_{n\bar m},T_{\bar m\bar m}$, so $h_\Psi$ has only the components $h_{ll},h_{lm},h_{mm}$,
-and $\tilde h$ only $h_{ll},h_{l\bar m},h_{\bar m\bar m}$. By type counting, $\Psi_4$ depends only on
-$h_{nn},h_{n\bar m},h_{\bar m\bar m}$, so $\Psi_4[\tilde h]$ comes from $\tilde h_{\bar m\bar m}=\overline{h_{mm}}$ alone. That
-computation uses only $\Th'$ and the Ricci identities $\Th'\rho'=\rho'^2$, $\Th'\bar\rho'=\bar\rho'^2$, with no commutator
-or $\Lambda$-term, so it is literally the Kerr computation \cite{Wal78,LW02}.
+$\mathcal E\mathcal S'^\dagger=\mathcal T'^\dagger\mathcal O'^\dagger$, and $\mathcal O'^\dagger(\mathcal Q\Psi)=\mathcal Q\mathcal O\Psi=0$
+by \eqref{eq:adjoint}. So $\mathcal E h_\Psi=0$.
+
+For the second statement we count GHP weights. Recall that a quantity of type $(p,q)$ has boost weight
+$b=\frac12(p+q)$ and spin weight $\frac12(p-q)$; that $\Th,\Th',\eth,\eth'$ change $b$ by $+1,-1,0,0$; and that on a type D
+background the only spin coefficients of negative boost weight that do not vanish are $\rho'$ and $\bar\rho'$
+(type $(-1,-1)$), since $\kappa'=\sigma'=0$.
+
+\emph{Components of $h_\Psi$.} The operator $\mathcal S'$ is the source operator of the $\Psi_4$ equation, and involves only
+$T_{nn},T_{n\bar m},T_{\bar m\bar m}$. Its adjoint therefore produces a tensor with only the components
+$h_{ll},h_{lm},h_{mm}$. The component $h_{mm}$ has type $(2,-2)$ and boost weight $0$, while $\mathcal Q\Psi$ has type
+$(4,0)$ and boost weight $2$. A second-order operator that lowers the boost weight by $2$ and preserves the type
+difference must be built from $\Th'$, $\rho'$ and $\bar\rho'$. Hence
+\[
+h_{mm}=c\,(\Th'+a_1\rho'+b_1\bar\rho')(\Th'+a_2\rho'+b_2\bar\rho')(\mathcal Q\Psi)
+\]
+for universal constants $c\ne0$ and $a_j,b_j$.
+
+\emph{$\Psi_4$ of $\tilde h$.} The perturbation $\tilde h=\overline{h_\Psi}$ has only the components $\tilde h_{ll}$,
+$\tilde h_{l\bar m}$, $\tilde h_{\bar m\bar m}$, of boost weights $2,1,0$. The linearized $\Psi_4$ has type $(-4,0)$ and boost
+weight $-2$, and it is a second-order operator in $\tilde h$ (the tetrad perturbation contributes nothing, because
+$\Psi_3=\Psi_4=0$ on the background). For the same reason as before, only $\tilde h_{\bar m\bar m}$ can contribute, and
+\[
+\Psi_4[\tilde h]=c'\,(\Th'+a_3\rho'+b_3\bar\rho')(\Th'+a_4\rho'+b_4\bar\rho')\,\tilde h_{\bar m\bar m},\qquad c'\ne0 .
+\]
+The trace terms of the Weyl tensor, which are the only place where $\Lambda$ could enter, drop out because
+$g(n,n)=g(n,\bar m)=g(\bar m,\bar m)=0$.
+
+\emph{Composition.} Since $\Th'$ commutes with complex conjugation (it maps type $(p,q)$ to $(p-1,q-1)$ and conjugation
+swaps $p$ and $q$), we get $\Psi_4[\tilde h]=c'\bar c\,\mathcal D(\bar{\mathcal Q}\bar\Psi)$, where $\mathcal D$ is the composition of
+four first-order operators of the form $\Th'+a\rho'+b\bar\rho'$. Simplifying $\mathcal D$ uses only $\Th'$ and the Ricci
+identities $\Th'\rho'=\rho'^2$ and $\Th'\bar\rho'=\bar\rho'^2$, together with $\Th'\bar{\mathcal Q}=-4\bar\rho'\bar{\mathcal Q}$. None of
+these involves $\Lambda$ or a commutator. So the constants $a_j,b_j$ and the result of the simplification are exactly
+those of the Kerr case, where the outcome is $\mathcal D(\bar{\mathcal Q}\bar\Psi)=(\Th')^4(\bar{\mathcal Q}\bar\Psi)$, up to a nonzero
+constant \cite{Wal78,LW02}.
 \end{proof}
 
 \subsection{The kernel lemma}\label{subsec:kernel}
@@ -1095,21 +1166,48 @@ $r_1<r<r_2$, then $w=0$ on $M$.
 \begin{proof}
 The top coefficient of a generalized mode is a mode, and subtracting it lowers the order, so it suffices to treat a
 mode $w=e^{-i\sigma t_*}v$. Then $P(\sigma)v=0$ on $X=[r_1-\delta,r_2+\delta]\times S^2$, where $P(\sigma)$ has principal
-symbol the restriction of $\frac12G$ to covectors annihilating $\partial_{t_*}$. Consider the collar $r_1-\delta<r\le r_1$.
-There $G(dr,dr)=\Delta_r/\varrho^2\le0$, with equality only at $r=r_1$, and for $\delta$ small $\partial_{t_*}$ is spacelike,
-so $P(\sigma)$ is hyperbolic on $X\cap\{r<r_1\}$ with time function $r$. In coordinates $(r,\theta,\varphi_*)$,
+symbol the restriction of $\frac12G$ to covectors annihilating $\partial_{t_*}$. Consider the collar $r_1-\delta<r\le r_1$, and write $\rho=r_1-r$ and $D=-\Delta_r$, so that $D>0$ for
+$0<\rho<\delta$ and $c\rho\le D\le C\rho$ there.
+
+\emph{The structure of $P(\sigma)$.} The coordinate change $t_*=t-T(r)$, $\varphi_*=\varphi-\Phi(r)$ does not change $dr$, so
+$G(dr,dr)=\Delta_r/\varrho^2$, which is negative for $r<r_1$: there $r$ is a time function, and the future is the
+direction of decreasing $r$. The singular parts $\Phi'=\mp\Xi a/\Delta_r$ cancel the $\Delta_r^{-1}$ term in the
+Boyer--Lindquist value of $G^{\varphi\varphi}$, and one finds $G(d\varphi_*,d\varphi_*)=\Xi^2/(\varrho^2\Delta_\theta\sin^2\theta)$,
+while $G(dr,d\varphi_*)$ and $G(dr,dt_*)$ are smooth. On functions of the form $e^{-i\sigma t_*}v$ the $\partial_{t_*}$-derivatives
+become multiplication by $-i\sigma$. Hence
 \[
-\varrho^2P(\sigma)=\partial_r\Delta_r\partial_r+\mathcal A+\mathcal B\,\partial_r+\mathcal C,
+\varrho^2P(\sigma)=-\partial_\rho D\partial_\rho+\mathcal A+\mathfrak a\,\partial_\rho\partial_{\varphi_*}+\mathfrak b\,\partial_\rho+\mathfrak c,
 \]
-where $\mathcal A$ is a second-order operator on $S^2$, elliptic modulo $\partial_{\varphi_*}$-terms, and $\mathcal B,\mathcal C$
-have smooth coefficients (of order $\le1$ and $\le2$ in the angular variables, respectively). Let
-$E(r)=\int_{S^2}\big(|\Delta_r||\partial_rv|^2+|\nabla_{S^2}v|^2+|v|^2\big)$. The standard energy identity for this
-hyperbolic operator gives, for $r_1-\delta<r<r_1$,
-$|E'(r)|\le C\,E(r)/(r_1-r)$, the factor $(r_1-r)^{-1}\sim|\Delta_r|^{-1}$ coming from the first-order terms. Hence
-$E(r)\le E(r_1-\epsilon)\,\big(\epsilon/(r_1-r)\big)^{-C}$ for $r<r_1-\epsilon$. Since $v$ is smooth and vanishes for
-$r>r_1$, it vanishes to infinite order at $r=r_1$, so $E(r_1-\epsilon)=O(\epsilon^N)$ for every $N$. Letting
-$\epsilon\to0$ gives $E\equiv0$, i.e.\ $v=0$ in the collar. The collar beyond $r_2$ is treated in the same way, with
-$r$ increasing to the future.
+where $\mathcal A=\mathcal A(\rho)$ is a second-order operator on (sections of the line bundle over) $S^2$ whose principal
+symbol is negative definite, and $\mathfrak a,\mathfrak b$ are smooth functions and $\mathfrak c$ a smooth first-order
+angular operator. All coefficients are smooth in $\rho\in[0,\delta)$.
+
+\emph{Energy.} Fix $K$ so large that $Q_\rho(v):=\langle-\mathcal A(\rho)v,v\rangle+K\|v\|^2\ge\|v\|_{H^1(S^2)}^2$ for all
+$\rho\in[0,\delta)$, and set
+\[
+E(\rho)=\int_{S^2}D|\partial_\rho v|^2+Q_\rho(v) .
+\]
+Multiply $\varrho^2P(\sigma)v=0$ by $\partial_\rho\bar v$, integrate over $S^2$ and take real parts. Since
+$\Re\big(\partial_\rho(D\partial_\rho v)\,\partial_\rho\bar v\big)=\frac12\partial_\rho(D|\partial_\rho v|^2)+\frac12D'|\partial_\rho v|^2$, and since
+$\mathcal A$ is symmetric up to a first-order operator, we get
+\[
+\tfrac12E'(\rho)=-\tfrac12\int D'|\partial_\rho v|^2+\mathcal R,\qquad
+|\mathcal R|\le C\big(\|\partial_\rho v\|_{L^2}^2+\|v\|_{H^1}^2\big).
+\]
+Here $\mathcal R$ collects $\frac12\partial_\rho Q_\rho$ applied to $v$, the antisymmetric part of $\mathcal A$, the term
+$\Re\int\mathfrak a\,\partial_{\varphi_*}\partial_\rho v\,\partial_\rho\bar v=-\frac12\int(\partial_{\varphi_*}\mathfrak a)|\partial_\rho v|^2$, and the
+terms from $\mathfrak b,\mathfrak c$, which are bounded by Cauchy--Schwarz. Since $dD/d\rho=\Delta_r'(r)>0$ near $r_1$, the term with $D'$ is
+nonpositive, and we drop it. The unweighted norm of $\partial_\rho v$ is controlled by the weighted one,
+$\|\partial_\rho v\|_{L^2}^2\le E/(c\rho)$. Therefore
+\[
+E'(\rho)\le\frac{C}{\rho}E(\rho)\qquad(0<\rho<\delta).
+\]
+For $0<\epsilon<\rho$ this gives $E(\rho)\le E(\epsilon)(\rho/\epsilon)^{C}$. Since $v$ is smooth and vanishes for
+$r>r_1$, it vanishes to infinite order at $\rho=0$, so $E(\epsilon)=O(\epsilon^N)$ for every $N$. Taking $N>C$ and letting
+$\epsilon\to0$ gives $E(\rho)=0$, hence $v=0$ in the collar.
+
+The collar beyond the cosmological horizon, $r_2\le r<r_2+\delta$, is treated in the same way with $\rho=r-r_2$; there
+$\Delta_r<0$ again and the future is the direction of increasing $r$.
 \end{proof}
 
 \subsection{Linearized Goldberg--Sachs}
@@ -1257,6 +1355,56 @@ Then $\cL_{\partial_\varphi}(h-\cL_Xg)=-\cL_{Y_\varphi}g+\cL_{Y_\varphi}g=0$. So
 vanishing average, hence zero.
 \end{proof}
 
+\subsection{Charges}
+We use the Iyer--Wald formalism \cite{IW94}. Let $\mathsf L$ be the Einstein--Hilbert Lagrangian 4-form with cosmological
+constant, $\Theta(g;\delta g)$ its symplectic potential and $Q_Y$ the Noether charge 2-form of a vector field $Y$, so that,
+for every $Y$ and every metric $g$ with $\mathrm{Ric}(g)=\Lambda g$,
+\begin{equation}\label{eq:noether}
+\Theta(g;\cL_Yg)-Y\cdot\mathsf L=dQ_Y .
+\end{equation}
+For a Killing field $K$ of $g$ and a solution $h$ of the linearized equation, put
+$\omega_K[h]=\delta Q_K[h]-K\cdot\Theta(g;h)$, where $\delta Q_K[h]$ is the linearization of $Q_K$ in the direction $h$.
+Then $d\omega_K[h]=0$ \cite{IW94}.
+
+\begin{lemma}[Charges]\label{lem:charges}
+Let $K\in\{\partial_t,\zeta\}$, and let $h$ be smooth on $M$ with $D_g\mathrm{Ric}(h)=\Lambda h$. Then
+$\delta H_K[h]:=\oint_S\omega_K[h]$ is the same for every sphere $S=\{t_*=\tau,\ r=\rho\}\subset M$. It vanishes if
+$h=\cL_Yg$ for a smooth vector field $Y$. On the parameter derivatives it is
+$\delta H_K[c_M\partial_Mg+c_a\partial_ag]=c_M\partial_MH_K+c_a\partial_aH_K$, where $H_K$ is the conserved charge of $K$
+on the Kerr--de Sitter family, and the linear map $(c_M,c_a)\mapsto(\delta H_{\partial_t},\delta H_\zeta)$ is injective.
+\end{lemma}
+
+\begin{proof}
+Any two such spheres bound a compact region in $M$, which is diffeomorphic to $\R\times[r_1-\delta,r_2+\delta]\times S^2$.
+So the first claim is Stokes' theorem.
+
+Let $h=\cL_Yg$. The Noether charge is built covariantly from $g$ and $Y$, so $\delta Q_K[\cL_Yg]=\cL_YQ_K-Q_{[Y,K]}$.
+By Cartan's formula and \eqref{eq:noether} for $K$ (where $\cL_Kg=0$, so $\Theta(g;\cL_Kg)=0$),
+\[
+\cL_YQ_K=Y\cdot dQ_K+d(Y\cdot Q_K)=-Y\cdot K\cdot\mathsf L+d(Y\cdot Q_K).
+\]
+By \eqref{eq:noether} for $Y$, and again by Cartan's formula,
+\[
+K\cdot\Theta(g;\cL_Yg)=K\cdot Y\cdot\mathsf L+K\cdot dQ_Y=K\cdot Y\cdot\mathsf L+\cL_KQ_Y-d(K\cdot Q_Y),
+\]
+and $\cL_KQ_Y=Q_{[K,Y]}$ because $K$ is Killing. Since $Y\cdot K\cdot\mathsf L+K\cdot Y\cdot\mathsf L=0$ and
+$Q_{[Y,K]}+Q_{[K,Y]}=0$, we get
+\[
+\omega_K[\cL_Yg]=d\big(Y\cdot Q_K+K\cdot Q_Y\big),
+\]
+whose integral over a closed sphere vanishes.
+
+For the parameter derivatives, $\delta H_K$ is the variation of the conserved charges along the Kerr--de Sitter
+family \cite{IW94}. Up to a common constant factor, the charge of $\partial_\varphi$ is the angular momentum
+$J=aM/\Xi^2$, and the charge of $\partial_t$ is $E=M/\Xi$; this is the computation of \cite{GPP05}
+for Kerr--anti-de Sitter, with $\ell^{-2}$ replaced by $-\Lambda/3$. (If one instead uses the energy $M/\Xi^2$ conjugate
+to the vector field that is non-rotating at the cosmological end, the argument is the same.) The Jacobian of $(E,J)$ with
+respect to $(M,a)$ is $M(1-\alpha)/\Xi^4$, or $M/\Xi^4$ in the other normalization; both are nonzero, by
+Lemma~\ref{lem:alpha}. Since
+$\zeta=-\Xi(a^2\partial_t+a\partial_\varphi)$ with $a\ne0$, the pair $(\partial_t,\zeta)$ is an invertible linear combination
+of $(\partial_t,\partial_\varphi)$, and the charges are linear in $K$.
+\end{proof}
+
 \subsection{The stationary axisymmetric sector}
 \begin{proposition}\label{prop:stationary}
 If $\cL_{\partial_t}h=\cL_{\partial_\varphi}h=0$ and $\delta\Psi_0=\delta\Psi_4=0$, then
@@ -1336,10 +1484,9 @@ the background to the perturbed adapted coordinates, together with the rescaling
 \smallskip\noindent\textbf{Step 5: the gauge vector on all of $M$.} Here $\partial_Mg,\partial_ag$ are the parameter derivatives in the
 regular coordinates $(t_*,r,\theta,\varphi_*)$ \cite{HPV25}. By Lemma~\ref{lem:collar}, Steps 1--4 apply on each of the
 three components of $M\setminus\{r=r_1,r_2\}$ (where $\Psi_2\ne0$, $\Delta_R\ne0$), giving
-$h=c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag+\cL_{X^{(i)}}g$. The constants agree: for $K\in\{\partial_t,\zeta\}$ the
-Iyer--Wald charge $\delta H_K[h]$ is the integral of a closed form smooth on $M$, hence the same on every sphere
-$\{t_*=\tau,r=\rho\}$; it vanishes on pure gauge terms (proof of Theorem~\ref{thm:B}), and $(E,J)$ has nonzero Jacobian
-in $(M,a)$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$ and equals $\cL_{X^{(i)}}g$ on each region.
+$h=c_M^{(i)}\partial_Mg+c_a^{(i)}\partial_ag+\cL_{X^{(i)}}g$. The constants agree. Indeed, by Lemma~\ref{lem:charges}, for $K\in\{\partial_t,\zeta\}$ the charge
+$\delta H_K[h]$ can be computed on a sphere in any of the three regions; it kills the gauge term $\cL_{X^{(i)}}g$; and it
+determines $(c_M^{(i)},c_a^{(i)})$. So these constants do not depend on $i$. So $k:=h-c_M\partial_Mg-c_a\partial_ag$ is smooth on $M$ and equals $\cL_{X^{(i)}}g$ on each region.
 
 On each region $X^{(i)}$ may be taken axisymmetric and of the form $X_0+t_*K$: since $\cL_{\partial_t}k=\cL_{\partial_\varphi}k=0$,
 the fields $[\partial_t,X^{(i)}]$ and $[\partial_\varphi,X^{(i)}]$ are Killing, hence constant combinations of $\partial_t,\partial_\varphi$;
@@ -1353,9 +1500,24 @@ $X^r,X^\theta$. Then $\cL_Yg=k-\cL_{X^r\partial_r+X^\theta\partial_\theta}g=2\,d
 and this determines $(dY^t,dY^\varphi)$: if $\alpha\odot\partial_{t_*}^\flat+\beta\odot\partial_{\varphi_*}^\flat=0$ with
 $\alpha(\partial_{\varphi_*})=0$, then $\alpha=y\,\partial_{\varphi_*}^\flat$ and $y\,g_{\varphi\varphi}=0$. So off the axis the
 $X^{(i)}$ are restrictions of a single smooth field, up to Killing fields, which we absorb. Near the axis but off $\Sigma_{\rm ax}$,
-$X=X^{(i)}$ is smooth on each region. Hence $X$ is smooth on $M\setminus \Sigma_{\rm ax}$ with $\cL_Xg=k$. Finally, $\cL_Xg=k$ implies
-the Killing transport system: $(X,\nabla X)$ satisfies, along any curve, a linear ODE with coefficients smooth in $g$,
-$k$ and $\nabla k$. Transporting from points off $\Sigma_{\rm ax}$ extends $X$ smoothly across $\Sigma_{\rm ax}$. So $k=\cL_Xg$ on $M$. The same applies to the
+$X=X^{(i)}$ is smooth on each region. Hence $X$ is smooth on $M\setminus \Sigma_{\rm ax}$ with $\cL_Xg=k$. It remains to extend $X$ across $\Sigma_{\rm ax}$. For this we use Killing transport. Write $X_b$ for the 1-form
+$g(X,\cdot)$ and $F_{ab}=\nabla_{[a}X_{b]}$, so that $\nabla_aX_b=\frac12k_{ab}+F_{ab}$. Differentiating once more and
+using the Ricci identity in the standard way gives
+\[
+\nabla_cF_{ab}=(\mathcal R X)_{abc}+(\mathcal Mk)_{abc},
+\]
+where $\mathcal R X$ is a contraction of the Riemann tensor with $X$ and $\mathcal M k$ is a fixed linear combination of first derivatives of $k$. So along any smooth curve $\gamma$,
+the pair $(X,F)$ solves a linear ODE whose coefficients are smooth functions of $g$, $k$, $\nabla k$ and $\dot\gamma$.
+
+Let $p\in\Sigma_{\rm ax}$ and let $B$ be a geodesically convex neighborhood of $p$. Fix $q\in B\setminus\Sigma_{\rm ax}$. For
+$x\in B$ let $\gamma_x$ be the geodesic segment from $q$ to $x$, and let $(\tilde X,\tilde F)(x)$ be the value at $x$ of the
+solution of the transport ODE along $\gamma_x$ with initial value $(X,F)(q)$. Since $\gamma_x$ depends smoothly on $x$, so
+does $\tilde X$. If $\gamma_x$ avoids $\Sigma_{\rm ax}$, then $(X,F)$ itself solves the same ODE along $\gamma_x$, so
+$\tilde X(x)=X(x)$. The points $x$ whose segment meets $\Sigma_{\rm ax}$ form a cone over a submanifold of codimension
+three, hence a closed set of codimension at least two, which has empty interior. So $\tilde X=X$ on a dense subset of
+$B\setminus\Sigma_{\rm ax}$, hence on all of it by continuity. Thus $\tilde X$ is a smooth extension of $X$ across
+$\Sigma_{\rm ax}\cap B$. Doing this near every point of $\Sigma_{\rm ax}$, we obtain $X$ smooth on $M$ with $k=\cL_Xg$,
+by continuity. The same applies to the
 $t_*$-linear parts in the generalized-mode induction below.
 \end{proof}
 
@@ -1374,12 +1536,10 @@ Let $h_1:=(\cL_{\partial_t})^{k-1}h_0$. It is stationary and axisymmetric and so
 Proposition~\ref{prop:stationary} $h_1=c_M\partial_Mg+c_a\partial_ag+\cL_Xg$. By Step~5 of that proof, $X=X_0+t_*K$, where
 $X_0$ is stationary and $K=c^t\partial_{t_*}+c^\varphi\partial_{\varphi_*}$ is Killing.
 
-The Iyer--Wald charges $\delta H_K$, for $K\in\{\partial_t,\zeta\}$, are independent of the 2-sphere. They vanish
-on $\cL_Yg$ for every smooth $Y$: from $\Theta(\cL_Yg)=Y\cdot\mathsf L+dQ_Y$ and naturality of $Q$, one gets
-$\delta H_K[\cL_Yg]=-\oint(Q_{[Y,K]}+Q_{[K,Y]})=0$. Since $h_1=(\cL_{\partial_t})^{k-1}h_0$ with $k\ge2$, we have
+We use the charges of Lemma~\ref{lem:charges}, for $K\in\{\partial_t,\zeta\}$. Since $h_1=(\cL_{\partial_t})^{k-1}h_0$ with $k\ge2$, we have
 $\delta H_K[h_1]=\frac{d}{d\tau}\delta H_K[(\cL_{\partial_t})^{k-2}h_0]|_{\{t_*=\tau\}}=0$, because the charge of a
-solution does not depend on $\tau$. Hence $\delta H_K[c_M\partial_Mg+c_a\partial_ag]=0$. Since
-$(E,J)=(M/\Xi^2,aM/\Xi^2)$ has Jacobian $M/\Xi^4\ne0$ with respect to $(M,a)$, it follows that $c_M=c_a=0$.
+solution does not depend on $\tau$. Since the charges also vanish on $\cL_Xg$, we get $\delta H_K[c_M\partial_Mg+c_a\partial_ag]=0$, and injectivity in
+Lemma~\ref{lem:charges} gives $c_M=c_a=0$.
 
 Put $Z=\frac{t_*^{k-1}}{(k-1)!}X_0+\frac{t_*^{k}}{k!}K$, which is smooth since $t_*$ is regular. Because
 $[\partial_{t_*},X_0]=[\partial_{t_*},K]=0$ and $\partial_{t_*}t_*=1$, we get $(\mathrm{ad}_{\partial_{t_*}})^{k-1}Z=X_0+t_*K=X$. Hence
@@ -1489,6 +1649,10 @@ equations from solutions of decoupled equations, \emph{Phys. Rev. Lett.} \textbf
 \emph{Int. J. Mod. Phys. D} \textbf{15} (2006), 335--369.
 \bibitem{HS73} L.~P.~Hughston and P.~Sommers, The symmetries of Kerr black holes, \emph{Comm. Math. Phys.} \textbf{33}
 (1973), 129--133.
+\bibitem{IW94} V.~Iyer and R.~M.~Wald, Some properties of the Noether charge and a proposal for dynamical black hole
+entropy, \emph{Phys. Rev. D} \textbf{50} (1994), 846--864.
+\bibitem{GPP05} G.~W.~Gibbons, M.~J.~Perry and C.~N.~Pope, The first law of thermodynamics for Kerr--anti-de Sitter black
+holes, \emph{Class. Quantum Grav.} \textbf{22} (2005), 1503--1526.
 \bibitem{Vas13} A.~Vasy, Microlocal analysis of asymptotically hyperbolic and Kerr--de Sitter spaces, \emph{Invent.
 Math.} \textbf{194} (2013), 381--513.
 \end{thebibliography}
