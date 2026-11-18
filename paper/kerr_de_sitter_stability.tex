@@ -27,7 +27,7 @@
 \author{Jaideep Sai Padhi}
 \address{Purdue University, West Lafayette, IN, USA}
 \email{jpadhi@purdue.edu}
-\date{November 11, 2026}
+\date{November 18, 2026}
 
 \begin{document}
 
@@ -449,8 +449,9 @@ $\lambda\ge\lambda_{\rm cr}:=\ell_0(\ell_0+1)-4-4\alpha-4\alpha|m|(1+\alpha)-2(1
 $\ell_0=\max(|m|,2)$ (Proposition~\ref{prop:angular}). Since $L(z_0)$ is increasing in $B=\lambda C_0+c_1$, it suffices to prove
 \eqref{eq:margin} with $\lambda=\lambda_{\rm cr}$. Then $\Lambda/3$ times $L(z_0)-A/(2z_0)-2t$ is a quadratic polynomial
 $m^2Q_2+mQ_1+Q_0$ (with the modification $+4C_0\Lambda/3$ at $m=1$) whose coefficients are rational functions of
-$(r_0,r_2,a^2,\tau)$, where $\tau\in(0,1)$ parametrizes the window. One has $Q_0<0$, so it suffices to show positivity
-at $m=1$, at $m=2$ and of $Q_2$. After eliminating $a^2$ by the quadratic relation it satisfies, each of these reduces
+$(r_0,r_2,a^2,\tau)$, where $\tau\in(0,1)$ parametrizes the window. It suffices to show positivity at $m=1$, at $m=2$, and of $Q_2$. Indeed, if $Q_2>0$ the
+quadratic is convex in $m$; since $Q_0<0$, its value at $m=0$ is below its value at $m=2$, and convexity then makes
+it increasing on $[2,\infty)$. After eliminating $a^2$ by the quadratic relation it satisfies, each of these reduces
 to the positivity of finitely many polynomials on the open cube in $(r_0,1/r_2,\tau)$. All of them have nonnegative
 Bernstein coefficients on $[0,1]^3$, not all zero, which proves positivity on the open cube (Appendix~\ref{app:cert},
 item~C2).
@@ -658,7 +659,7 @@ rational in the window variables, independent of $m$ (except $\varpi_m$), and ex
 $r_0=r_1$. Then $(S_\alpha)\iff\varpi(1+4\eta+2\iota)\le3$. With $y=\theta v$, $v\in(0,1)$, and using
 $z-1=\theta(\eta+v)$ and $z=\theta(\iota+\eta+v)$, $(S_\beta)$ becomes: for all $v\in(0,1)$,
 \begin{gather*}
-W(v):=\gamma(\eta+v)^2-2\varpi vP-\varpi^2vE\ \ge0,\\
+W(v):=\gamma(\eta+v)^2-2\varpi v\mathcal R-\varpi^2vE\ \ge0,\\
 \mathcal R=2\eta(\eta+v)+(2\eta+v)\iota,\qquad E=\mathcal R(1-v)-v(\eta+v)(\eta+v+\iota).
 \end{gather*}
 
@@ -846,10 +847,11 @@ argument below applies with $\lambda=\ell(\ell+1)-4\ge2$.
 
 \emph{Case $m=0$ or $a=0$, $s=-2$.} The radial equation is $(\Delta_r^{-1}R')'+V\Delta_r^{-2}R=0$, with
 $V=-2\Lambda r^2-2(1-\alpha)-\lambda$. Put $g=\Delta_r^2R''''$. The Teukolsky--Starobinsky identity at $K=0$ shows
-that $g$ solves the same equation. Moreover $g$ vanishes like $\Delta_r^2$ at both horizons, so the energy identity
-$\int\Delta_r^{-1}|g'|^2=\int V\Delta_r^{-2}|g|^2\le0$ gives $g=0$. Thus $R$ is a cubic polynomial. Inserting a cubic into the equation gives a $4\times4$ linear system for its
-coefficients, with determinant $[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^2]^2$. Both roots of the quadratic
-are negative, and $\lambda\ge\lambda_{\rm cr}=2-4\alpha>0$ at $m=\xi=0$ by
+that $g$ solves the same equation. Moreover $g$ vanishes like $\Delta_r^2$ at both horizons: at $\sigma=0$ and $m=0$ (or $a=0$) all $\kappa_j$ vanish, so by
+Lemma~\ref{lem:bc} $R$ is smooth at $r_1$ and at $r_2$. Multiplying the equation for $g$ by $\bar g$ and integrating over $(r_1,r_2)$, the boundary terms therefore vanish,
+and we get $\int\Delta_r^{-1}|g'|^2=\int V\Delta_r^{-2}|g|^2$. The left side is nonnegative and the right side is
+nonpositive, since $V<0$. So $g=0$. Thus $R$ is a cubic polynomial. Inserting a cubic into the equation gives a $4\times4$ linear system for its
+coefficients, with determinant $[\lambda^2+6(1-\alpha)\lambda+8-4\alpha+8\alpha^2]^2$. The quadratic has positive coefficients (note $\alpha<1$), so its roots are negative or non-real, and $\lambda\ge\lambda_{\rm cr}=2-4\alpha>0$ at $m=\xi=0$ by
 Proposition~\ref{prop:angular} and Lemma~\ref{lem:alpha}. Hence the determinant is positive and $R=0$.
 
 \emph{Case $m=0$ or $a=0$, $s=+2$.} The function $\Delta_r^2R_{+2}$ solves the $s=-2$ equation, so we may repeat the argument.
@@ -1391,13 +1393,16 @@ that each relevant polynomial factor has Bernstein coefficients of one sign, not
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
 \item \emph{Dual potential.} After Vieta elimination, the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are
 divisible by $s^2-4$.
-\item \emph{Window margin.} With $\lambda=\lambda_{\rm cr}$ and $a^2$ reduced modulo $b^2-e_2b+e_4$, the sign
+\item \emph{Window margin.} Here and in C9, $b=a^2$ is the root of a quadratic $b^2-e_2b+e_4=0$ whose
+coefficients $e_2,e_4$ are explicit rational functions of $(r_0,r_2,\tau)$, and $D=e_2^2-4e_4$. A polynomial in $b$ is
+reduced modulo this quadratic to $F_1b+F_0$, and with $Y=-(2F_0+F_1e_2)$ its value at the relevant root is positive
+as soon as $F_1>0$ and $F_1^2D-Y^2>0$. With $\lambda=\lambda_{\rm cr}$ and $a^2$ reduced modulo $b^2-e_2b+e_4$, the sign
 conditions $F_1>0$, $P=F_1^2(e_2^2-4e_4)-Y^2>0$ for $Q_2$, $m=1$ and $m=2$ hold by a single-box Bernstein certificate
 on $[0,1]^3$ in $(r_0,1/r_2,\tau)$, for every irreducible factor (degrees up to $(34,36,8)$).
 \item \emph{One sign change.} The combinations $g_1,g_2$ of Lemma~\ref{lem:P1}, factored and certified in two
 variables.
 \item \emph{Seam inequality.} In $(0,1)^4$: $\partial_AN<0$ (one box); $N\ge0\Rightarrow \mathcal G>0$ at $A=0$ and at $A=A_*$
-(51 and 25 boxes), and at $\rho=1$; on each box one of the two polynomials is certified.
+(51 and 25 boxes), and the same two implications at $z=\hat z$; on each box one of the two polynomials is certified.
 \item \emph{Zero frequency.} The Teukolsky--Starobinsky identity at $K=0$ and the $4\times4$ determinant.
 \item \emph{Type D identities.} Exact checks, on KdS and on the accelerating NUT Pleba\'nski--Demia\'nski metric, of
 identities derived by hand.
