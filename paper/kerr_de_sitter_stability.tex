@@ -1440,10 +1440,29 @@ Step~5 glues the local gauge vectors across the horizons.
 \begin{proof}
 \textbf{Step 1: restoring reality.} Here $J[h]=\mathsf j_t\partial_t+\mathsf j_\varphi\partial_\varphi$ need not vanish. A constant phase change of
 $\phi$ removes $\mathsf j_t$. Subtracting a multiple of the tangent to the Pleba\'nski--Demia\'nski family in the direction of
-the acceleration removes $\mathsf j_\varphi$. To see this, note that $J$ is linear in $h$, and that its value on the
-acceleration tangent has nonzero $\partial_\varphi$-part. At present we have verified this only by a
-high-precision numerical evaluation on the full Pleba\'nski--Demia\'nski metric at sample parameter values (item~C6),
-not symbolically for all subextremal parameters; see Remark~\ref{rem:accgap}. Subtracting the appropriate multiple of that tangent therefore makes
+the acceleration removes $\mathsf j_\varphi$. To see this, note that $J$ is linear in $h$, so it suffices to find one
+perturbation whose $J$ has nonzero $\partial_\varphi$-part. We compute $\xi$ exactly along the accelerating family.
+Write the Pleba\'nski--Demia\'nski metric with zero NUT parameter in the form
+\[
+g_\alpha=\Omega^{-2}\Big[\frac{Q}{S}(d\tau-p^2d\sigma)^2-\frac SQ\,dr^2-\frac SP\,dp^2-\frac PS(d\tau+r^2d\sigma)^2\Big],
+\qquad \Omega=1-\alpha pr,\quad S=r^2+p^2,
+\]
+with $P=k-\epsilon p^2+2\alpha mp^3-(\alpha^2k+\Lambda/3)p^4$ and $Q=k-2mr+\epsilon r^2-(\alpha^2k+\Lambda/3)r^4$ \cite{GP06}. At
+$\alpha=0$ this is Kerr--de Sitter. Here $\Psi_2=-m\,\big(\Omega/(r+ip)\big)^3$, so $\phi=\Psi_2^{-1/3}$ is a constant multiple
+of $(r+ip)/\Omega$. The 2-form associated with the Killing spinor $\phi\,o_{(A}\iota_{B)}$ is $\phi$ times the self-dual
+principal bivector, which in these coordinates is
+\[
+\mathcal F=\frac{r+ip}{\Omega^{3}}\Big[(d\tau-p^2d\sigma)\wedge dr-i\,dp\wedge(d\tau+r^2d\sigma)\Big],
+\]
+and $\xi$ is a constant multiple of its divergence $\nabla_b\mathcal F^{ba}=|g|^{-1/2}\partial_b(|g|^{1/2}\mathcal F^{ba})$. A
+direct computation, exact in all parameters (item~C6), gives
+\[
+\xi_\alpha=3\big(\partial_\tau-i\alpha\,\partial_\sigma\big).
+\]
+(The opposite duality gives a vector field that is not Killing, which confirms the pairing.) The normalizing constant
+is real and independent of $\alpha$. Hence along the acceleration direction $\delta\xi=-3i\,\partial_\sigma$ per unit
+$\alpha$, and its imaginary part $-3\partial_\sigma$ is not a multiple of $\xi=3\partial_\tau$, which is proportional to
+$\partial_t$. So it has a nonzero $\partial_\varphi$-component, for every value of the parameters. Subtracting the appropriate multiple of that tangent therefore makes
 $\mathsf j_\varphi=0$. We do not need to know that the acceleration is the only tangent with this property: whatever
 multiple we subtract here is shown to be zero in Step~4. After this, reality holds, and $\xi$ and
 $\zeta$ are first-order Killing fields. They commute, since $\delta\xi$ and $\delta\zeta$ are background Killing
@@ -1535,15 +1554,6 @@ by continuity. The same applies to the
 $t_*$-linear parts in the generalized-mode induction below.
 \end{proof}
 
-\begin{remark}[An unverified step]\label{rem:accgap}
-Step~1 of the proof of Proposition~\ref{prop:stationary} uses that, for every subextremal $(\Lambda,M,a)$ with $a\ne0$,
-the first-order variation of $\xi$ along the acceleration direction of the Pleba\'nski--Demia\'nski family has
-an imaginary part with nonzero $\partial_\varphi$-component. We have checked this numerically at sample parameters,
-where the component is far from zero, but we do not yet have a proof valid on the whole parameter range. Only the
-stationary axisymmetric sector, that is Theorem~\ref{thm:B}(2), depends on this point; Theorem~\ref{thm:A} and
-Theorem~\ref{thm:B}(1) do not. Since Theorem~\ref{thm:C} uses Theorem~\ref{thm:B}(2) at $\sigma=0$, it depends on this
-point as well.
-\end{remark}
 
 \subsection{Generalized modes and proof of Theorem~\ref{thm:B}}
 \begin{proof}[Proof of Theorem~\ref{thm:B}]
@@ -1572,8 +1582,9 @@ $(\cL_{\partial_t})^{k-1}(h_0-\cL_Zg)=h_1-\cL_Xg=0$, so $h_0-\cL_Zg$ has order $
 
 \appendix
 \section{Computer-assisted steps}\label{app:cert}\sloppy
-Except for C6 and C9, all computations are exact over $\mathbb Q$ or $\mathbb Q(i)$. C6 is a numerical check,
-not a proof; C9 uses floating point with rigorous error bounds. A Bernstein certificate on a box means
+Except for part of C6 and for C9, all computations are exact over $\mathbb Q$ or $\mathbb Q(i)$, symbolically in
+the parameters. The numerical part of C6 is a consistency check that the argument does not use; C9 uses floating
+point with rigorous error bounds. A Bernstein certificate on a box means
 that each relevant polynomial factor has Bernstein coefficients of one sign, not all zero.
 \begin{enumerate}[label=C\arabic*.,leftmargin=*]
 \item \emph{Dual potential.} After Vieta elimination, the numerators of $n_1-(\lambda C_0+c_1)$ and $n_2+3$ are
@@ -1592,8 +1603,9 @@ variables.
 \item \emph{Type D identities.} Numerical evaluation in 40-digit arithmetic at sample parameter values ($\Lambda=1/20$,
 $a=3/5$, $M=1$, NUT parameter $0$ or $1/10$, acceleration $0$ or $1/20$), on KdS and on the accelerating NUT
 Pleba\'nski--Demia\'nski metric, of the identities above (which are proved by hand), of the KdS values of $\xi$ and
-$\zeta$, and of the phase of $\xi$ along the acceleration direction. Residuals are below $10^{-40}$. Only the last of
-these is used in the argument; see Remark~\ref{rem:accgap}.
+$\zeta$, and of the phase of $\xi$ along the acceleration direction. Residuals are below $10^{-40}$. These checks are not used in the
+argument. The one input from C6 that is used, the formula $\xi_\alpha=3(\partial_\tau-i\alpha\partial_\sigma)$ in Step~1 of
+Proposition~\ref{prop:stationary}, is computed exactly and symbolically in $(m,k,\epsilon,\Lambda,\alpha)$.
 \item \emph{Carter ansatz.} The Ricci tensor of the ansatz with symbolic $\Delta_R(R),\Delta_I(I)$, and the solution of
 the resulting linear equations.
 \item \emph{SdS Teukolsky--Starobinsky identities} \eqref{eq:sdsTS} (the script uses Teukolsky's separation

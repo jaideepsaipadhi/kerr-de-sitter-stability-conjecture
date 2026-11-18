@@ -39,7 +39,7 @@ Preprint (v1): Zenodo, [doi:10.5281/zenodo.24146364](https://doi.org/10.5281/zen
 | C3 | One sign change (Lemma 4.3) | `c3_build.py`, then `step135g.py I II` (uses `nnd.py`); `step134_P1new.py` prints the coefficients |
 | C4 | Seam inequality | `step172.py`, `step173_build.py`, `cover4.py` |
 | C5 | Zero frequency | `step125_sigma0_check.py` |
-| C6 | Type D identities (40-digit numerical checks, not exact) | `step92_ghp_check.py`, `step93_*.py`, `step95_pd_xi.py`, `step96_zeta.py`, `step97_r5_pd_check.py` |
+| C6 | Type D identities. `c6_pd_xi_exact.py` is exact and symbolic (the formula used in the proof); the others are 40-digit numerical consistency checks | `c6_pd_xi_exact.py`, `step92_ghp_check.py`, `step93_*.py`, `step95_pd_xi.py`, `step96_zeta.py`, `step97_r5_pd_check.py` |
 | C7 | Carter ansatz | `step102_carter_linear.py` |
 | C8 | Schwarzschild–de Sitter Teukolsky–Starobinsky identities | `step126_sds_ts.py`, `step127_thorn_ts.py` |
 | C9 | Cosmological side (Proposition 3.10), conditions (i)–(v) | (i) `cert3/smu_build.py`, `smu_cover7.py`, `smu_corner.py`; (ii) `cert3/sca_build.py`, `gcover.py`, `scg_tau.py`, `cover2d_f.py`, `scn3_build.py`, `scg6_*.py`, `cover2d_f6.py`, `cover3d_f.py`; (iii) `cert3/za_build.py`; (iv) `cert3/zp_build.py`; (iii)–(iv) via `cert3/cover3d_h.py` and `cert3/atlas.sh`; (v) `cert3/aux_build.py`, `cover3d_g.py` |
