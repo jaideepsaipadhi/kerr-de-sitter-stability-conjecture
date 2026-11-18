@@ -4,7 +4,7 @@
 import sys,time,itertools,pickle,os,numpy as np
 from fractions import Fraction as Fr
 from remcert import to_bern3
-sys.path.insert(0,'/home/claude/kds/cert2'); from bern_core import split,mn
+from bern_core import split,mn
 def ok_box(A,bx):
     if mn(A)<0: return False
     n=A.shape

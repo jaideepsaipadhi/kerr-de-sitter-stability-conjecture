@@ -2,7 +2,7 @@
 import sys,time,numpy as np
 from fractions import Fraction as Fr
 from math import comb,lcm
-sys.path.insert(0,'/home/claude/kds/cert2'); from bern_core import split,mn
+from bern_core import split,mn
 def to_bern3(p):
     d=p.degrees(); A=np.empty([k+1 for k in d],dtype=object); A.fill(Fr(0))
     for e,c in p.to_dict().items(): A[tuple(int(i) for i in e)]=Fr(int(c))
